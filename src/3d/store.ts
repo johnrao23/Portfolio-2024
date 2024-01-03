@@ -7,10 +7,10 @@ type State = {
   // ... other state and actions
 };
 
-export const useStore = ((set) => ({
+export const useStore = ((set: (arg0: (state: any) => void) => any) => ({
   physicsWorld: null,
   // ... other state initializations
-  addRigidBody: (body) => set((state) => {
+  addRigidBody: (body: any) => set((state: { physicsWorld: { addRigidBody: (arg0: any) => void; }; }) => {
     if (state.physicsWorld) {
       state.physicsWorld.addRigidBody(body);
       // You could also keep track of these bodies if needed
