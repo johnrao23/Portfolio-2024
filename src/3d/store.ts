@@ -7,7 +7,7 @@ type State = {
   // ... other state and actions
 };
 
-export const useStore = create<State>((set) => ({
+export const useStore = ((set) => ({
   physicsWorld: null,
   // ... other state initializations
   addRigidBody: (body) => set((state) => {
