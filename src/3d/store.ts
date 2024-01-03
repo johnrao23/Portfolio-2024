@@ -1,4 +1,4 @@
-import create from 'zustand';
+import { create } from 'zustand';
 import * as Ammo from 'ammo.js';
 
 type State = {
@@ -7,7 +7,7 @@ type State = {
   // ... other state and actions
 };
 
-export const useStore = ((set: (arg0: (state: any) => void) => any) => ({
+export const useStore = create((set: (arg0: (state: any) => void) => any) => ({
   physicsWorld: null,
   // ... other state initializations
   addRigidBody: (body: any) => set((state: { physicsWorld: { addRigidBody: (arg0: any) => void; }; }) => {
