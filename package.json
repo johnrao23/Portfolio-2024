@@ -16,6 +16,7 @@
     "@tweenjs/tween.js": "^21.0.0",
     "@types/react-router-dom": "^5.3.3",
     "ammo.js": "^0.0.10",
+    "ammojs-typed": "^1.0.6",
     "autoprefixer": "^10.4.16",
     "clsx": "^2.0.0",
     "dat.gui": "^0.7.9",
