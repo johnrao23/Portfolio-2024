@@ -21,8 +21,24 @@ const ThreeContainer: React.FC = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading 3D Scene...</div>; // Show loading indicator
+    return (
+      <div className="preload-overlay">
+        <div className="start-page-content-div">
+          <h1 className="john-text postload">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
+          <h1 className="postload start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
+          <h1 id="appDirections" className="start-page-text joystick-directions-text postload">Move the ball around with the arrow keys on the keyboard.</h1>
+          <button id="start-button" className="postload">EXPLORE</button>
+        </div>
+        <div className="trinity-rings-spinner">
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
+        </div>
+        <div className="loading-text-div">Loading<span className="loader__dot">.</span><span className="loader__dot">.</span><span className="loader__dot">.</span></div>
+      </div>
+    );
   }
+  
 
   return (
     <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
