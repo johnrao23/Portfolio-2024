@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import * as THREE from 'three';
-import * as Ammo from 'ammojs-typed';
+import Ammo from 'ammojs-typed';
 
 type State = {
   physicsWorld: Ammo.btDiscreteDynamicsWorld | null;
