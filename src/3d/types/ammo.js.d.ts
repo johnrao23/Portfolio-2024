@@ -1,1 +1,1 @@
-declare module 'ammo.js';
+declare module 'ammojs-typed';
