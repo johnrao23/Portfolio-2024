@@ -6,7 +6,8 @@
     "module": "ESNext",
     "skipLibCheck": true,
     "allowJs": true,
-    "typeRoots": ["./node_modules/@types", "./types", "node_modules/ammojs-typed/ammo/ambient"],
+    "typeRoots": ["./node_modules/@types", "./types", "node_modules/ammojs-typed/ammo/ambient/ammo.d.ts"],
+    
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
 
