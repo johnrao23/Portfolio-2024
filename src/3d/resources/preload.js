@@ -1,3 +1,5 @@
+// preload.js depreciated. Now handling in my ThreeContainer.tsx upon loading
+
 // /* eslint-disable no-undef */
 // export let preloadDivs = document.getElementsByClassName("preload");
 // export let preloadOpacity = document.getElementsByClassName("preload-overlay");
@@ -31,5 +33,3 @@
 //   document.getElementById("WEBGLcontainer").appendChild(warning);
 //   document.getElementById("WEBGLcontainer").appendChild(a);
 // }
-
-// preload.js depreciated. Now handling in my ThreeContainer.tsx upon loading
