@@ -1,1 +1,1 @@
-declare module 'three.js';
+declare module 'three';
