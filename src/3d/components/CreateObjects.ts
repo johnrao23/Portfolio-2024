@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { manager } from '../resources/world';
 
-let ballObject = null
+let ballObject = null;
 
 export const createBall = (scene: THREE.Scene, Ammo: any) => {
     let pos = { x: 8.75, y: 0, z: 0 };
