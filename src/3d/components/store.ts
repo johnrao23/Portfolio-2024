@@ -16,13 +16,14 @@ export const useStore = create<State>((set) => ({
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
 
   addRigidBody: (body, physicsBody) => {
-    set((state) => ({
-      rigidBodies: [...state.rigidBodies, body]
-    }));
-    
-    if (physicsBody && state.physicsWorld) {
-      // Assuming physicsWorld is the Ammo.js dynamics world
-      state.physicsWorld.addRigidBody(physicsBody);
-    }
+    set((currentState) => {
+      const updatedRigidBodies = [...currentState.rigidBodies, body];
+      
+      if (physicsBody && currentState.physicsWorld) {
+        currentState.physicsWorld.addRigidBody(physicsBody);
+      }
+
+      return { rigidBodies: updatedRigidBodies };
+    });
   },
 }));
