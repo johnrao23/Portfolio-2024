@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import * as Ammo from 'ammo.js';
+import Ammo from 'ammojs-typed';
 import { setupScene } from './SceneSetup';
 
 const ThreeContainer: React.FC = () => {
