@@ -10,7 +10,7 @@ export const createBall = (scene: THREE.Scene, Ammo: any) => {
     let mass = 3;
 
     var marble_loader = new THREE.TextureLoader(manager);
-    var marbleTexture = marble_loader.load("./src/jsm/earth.jpg");
+    var marbleTexture = marble_loader.load("../assets/earth.jpg");
     marbleTexture.wrapS = marbleTexture.wrapT = THREE.RepeatWrapping;
     marbleTexture.repeat.set(1, 1);
     marbleTexture.anisotropy = 1;
