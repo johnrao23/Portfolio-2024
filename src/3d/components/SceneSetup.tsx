@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import * as Ammo from 'ammo.js';
+import Ammo from 'ammojs-typed';
 import { createBall } from './CreateObjects.ts';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
