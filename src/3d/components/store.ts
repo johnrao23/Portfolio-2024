@@ -1,3 +1,19 @@
+// import { create } from 'zustand';
+// import * as THREE from 'three';
+
+// type State = {
+//   testMesh: InstanceType<typeof THREE.Mesh>;
+// };
+
+// export const useStore = create<State>(() => ({
+//   testMesh: new THREE.Mesh(),
+// }));
+
+
+
+
+
+
 import { create } from 'zustand';
 import * as THREE from "three";
 
