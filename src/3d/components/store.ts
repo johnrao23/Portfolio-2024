@@ -1,12 +1,12 @@
 import { create } from 'zustand';
-import * as THREE from "three";
+import * as THREE from 'three';
+import Ammo from 'ammojs-typed';
 
 type State = {
-  physicsWorld: any;
+  physicsWorld: Ammo.btDiscreteDynamicsWorld | null;
   rigidBodies: THREE.Mesh[];
-  setPhysicsWorld: (world: any) => void;
-  addRigidBody: (body: THREE.Mesh, physicsBody?: any) => void; // 'any' for Ammo.js rigid bodies
-  // ... other state and actions
+  setPhysicsWorld: (world: Ammo.btDiscreteDynamicsWorld) => void;
+  addRigidBody: (body: THREE.Mesh, physicsBody?: Ammo.btRigidBody) => void;
 };
 
 export const useStore = create<State>((set) => ({
@@ -20,12 +20,9 @@ export const useStore = create<State>((set) => ({
       rigidBodies: [...state.rigidBodies, body]
     }));
     
-    // Optional: Add Ammo.js related code here, if needed
     if (physicsBody && state.physicsWorld) {
       // Assuming physicsWorld is the Ammo.js dynamics world
       state.physicsWorld.addRigidBody(physicsBody);
     }
   },
-
-  // ... other actions
 }));
