@@ -73,3 +73,5 @@ export const createBall = (scene: THREE.Scene, Ammo: any) => {
     rigidBodies.push(ballObject);
   };
   
+
+  
