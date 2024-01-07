@@ -15,6 +15,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   
   // Create objects in the scene
   createBall(scene, Ammo);
+  createBeachBall(scene, Ammo);
 
   // More object creation or setup can go here...
 
