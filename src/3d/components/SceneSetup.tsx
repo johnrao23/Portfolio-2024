@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import Ammo from 'ammojs-typed';
-import { createBall } from './CreateObjects.ts';
+import { createBall, createBeachBall } from './CreateObjects.ts';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const setupScene = (Ammo: any, container: HTMLDivElement) => {
@@ -14,7 +14,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   // Additional setup...
   
   // Create objects in the scene
-  createBall(scene, Ammo); // Call createBall to add a ball to the scene
+  createBall(scene, Ammo);
 
   // More object creation or setup can go here...
 
