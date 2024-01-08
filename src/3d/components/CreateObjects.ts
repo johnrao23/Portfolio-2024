@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { useStore } from './store';
 import { manager } from '../resources/world';
 
-const ballObject = null;
+let ballObject = null;
 const cursorHoverObjects = [];
 const objectsWithLinks = [];
 const STATE = { DISABLE_DEACTIVATION: 4 };
