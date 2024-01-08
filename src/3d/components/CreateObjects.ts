@@ -129,62 +129,62 @@ export const createBall = (scene: THREE.Scene, Ammo: any) => {
     rigidBodies.push(ball);
   }
 
-    //create link boxes
-    function createBox(
-      x,
-      y,
-      z,
-      scaleX,
-      scaleY,
-      scaleZ,
-      boxTexture,
-      URLLink,
-      color = 0x000000,
-      transparent = true,
-    ) {
-      const boxScale = { x: scaleX, y: scaleY, z: scaleZ };
-      let quat = { x: 0, y: 0, z: 0, w: 1 };
-      let mass = 0; //mass of zero = infinite mass
+  //create link boxes
+  export const createBeachBall = (scene: THREE.Scene, Ammo: any) =>function createBox(
+    x,
+    y,
+    z,
+    scaleX,
+    scaleY,
+    scaleZ,
+    boxTexture,
+    URLLink,
+    color = 0x000000,
+    transparent = true,
+  ) {
+    const boxScale = { x: scaleX, y: scaleY, z: scaleZ };
+    let quat = { x: 0, y: 0, z: 0, w: 1 };
+    let mass = 0; //mass of zero = infinite mass
 
-      //load link logo
-      const loader = new THREE.TextureLoader(manager);
-      const texture = loader.load(boxTexture);
-      texture.magFilter = THREE.LinearFilter;
-      texture.minFilter = THREE.LinearFilter;
-      texture.encoding = THREE.sRGBEncoding;
-      const loadedTexture = new THREE.MeshBasicMaterial({
-        map: texture,
-        transparent: transparent,
-        color: 0xffffff,
-      });
+    //load link logo
+    const loader = new THREE.TextureLoader(manager);
+    const texture = loader.load(boxTexture);
+    texture.magFilter = THREE.LinearFilter;
+    texture.minFilter = THREE.LinearFilter;
+    texture.encoding = THREE.sRGBEncoding;
+    const loadedTexture = new THREE.MeshBasicMaterial({
+      map: texture,
+      transparent: transparent,
+      color: 0xffffff,
+    });
 
-      var borderMaterial = new THREE.MeshBasicMaterial({
-        color: color,
-      });
-      borderMaterial.color.convertSRGBToLinear();
+    var borderMaterial = new THREE.MeshBasicMaterial({
+      color: color,
+    });
+    borderMaterial.color.convertSRGBToLinear();
 
-      var materials = [
-        borderMaterial, // Left side
-        borderMaterial, // Right side
-        borderMaterial, // Top side   ---> THIS IS THE FRONT
-        borderMaterial, // Bottom side --> THIS IS THE BACK
-        loadedTexture, // Front side
-        borderMaterial, // Back side
-      ];
+    var materials = [
+      borderMaterial, // Left side
+      borderMaterial, // Right side
+      borderMaterial, // Top side   ---> THIS IS THE FRONT
+      borderMaterial, // Bottom side --> THIS IS THE BACK
+      loadedTexture, // Front side
+      borderMaterial, // Back side
+    ];
 
-      const linkBox = new THREE.Mesh(
-        new THREE.BoxBufferGeometry(boxScale.x, boxScale.y, boxScale.z),
-        materials,
-      );
-      linkBox.position.set(x, y, z);
-      linkBox.renderOrder = 1;
-      linkBox.castShadow = true;
-      linkBox.receiveShadow = true;
-      linkBox.userData = { URL: URLLink, email: URLLink };
-      scene.add(linkBox);
-      objectsWithLinks.push(linkBox.uuid);
+    const linkBox = new THREE.Mesh(
+      new THREE.BoxBufferGeometry(boxScale.x, boxScale.y, boxScale.z),
+      materials,
+    );
+    linkBox.position.set(x, y, z);
+    linkBox.renderOrder = 1;
+    linkBox.castShadow = true;
+    linkBox.receiveShadow = true;
+    linkBox.userData = { URL: URLLink, email: URLLink };
+    scene.add(linkBox);
+    objectsWithLinks.push(linkBox.uuid);
 
-      addRigidPhysics(linkBox, boxScale);
+    addRigidPhysics(linkBox, boxScale);
 
-      cursorHoverObjects.push(linkBox);
-    }
+    cursorHoverObjects.push(linkBox);
+  }
