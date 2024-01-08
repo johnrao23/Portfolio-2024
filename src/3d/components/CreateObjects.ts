@@ -130,8 +130,7 @@ export const createBall = (scene: THREE.Scene, Ammo: any) => {
   }
 
   //create link boxes
-  export const createBeachBall = (scene: THREE.Scene, Ammo: any) =>function createBox(
-    x,
+  export const createBeachBall = (scene: THREE.Scene, Ammo: any, x,
     y,
     z,
     scaleX,
@@ -140,7 +139,8 @@ export const createBall = (scene: THREE.Scene, Ammo: any) => {
     boxTexture,
     URLLink,
     color = 0x000000,
-    transparent = true,
+    transparent = true,) =>function createBox(
+    
   ) {
     const boxScale = { x: scaleX, y: scaleY, z: scaleZ };
     let quat = { x: 0, y: 0, z: 0, w: 1 };
