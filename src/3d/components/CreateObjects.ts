@@ -130,14 +130,14 @@ export const createBall = (scene: THREE.Scene, Ammo: any) => {
   }
 
   //create link boxes
-  export const createBox = (scene: THREE.Scene, Ammo: any, x,
-    y,
-    z,
-    scaleX,
-    scaleY,
-    scaleZ,
-    boxTexture,
-    URLLink,
+  export const createBox = (scene: THREE.Scene, Ammo: any, x: number,
+    y: number,
+    z: number,
+    scaleX: any,
+    scaleY: any,
+    scaleZ: any,
+    boxTexture: string,
+    URLLink: any,
     color = 0x000000,
     transparent = true,) => {
     const boxScale = { x: scaleX, y: scaleY, z: scaleZ };
