@@ -3,6 +3,7 @@ import { useStore } from './store';
 import { manager } from '../resources/world';
 
 let ballObject = null;
+let cursorHoverObjects = [];
 
 export const createBall = (scene: THREE.Scene, Ammo: any) => {
     let pos = { x: 8.75, y: 0, z: 0 };
