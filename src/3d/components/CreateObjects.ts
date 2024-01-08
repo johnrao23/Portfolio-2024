@@ -140,7 +140,7 @@ export const createBox = (scene: THREE.Scene, Ammo: any,
   boxTexture: string,
   URLLink: any,
   color = 0x000000,
-  transparent = true,) => {
+  transparent = true) => {
   const boxScale = { x: scaleX, y: scaleY, z: scaleZ };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass
