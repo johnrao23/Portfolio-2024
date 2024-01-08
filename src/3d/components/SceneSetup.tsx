@@ -17,7 +17,7 @@ import {
   woodTexture,
 } from "./Textures";
 
-export const setupScene = (Ammo: typeof Ammo, container: HTMLDivElement) => {
+export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   // Initialize renderer, scene, camera
   const scene = new THREE.Scene();
   const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
