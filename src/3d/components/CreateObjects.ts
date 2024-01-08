@@ -85,7 +85,7 @@ export const createBeachBall = (scene: THREE.Scene, Ammo: any) => {
 
   //import beach ball texture
   var texture_loader = new THREE.TextureLoader(manager);
-  var beachTexture = texture_loader.load("./src/jsm/BeachBallColor.jpg");
+  var beachTexture = texture_loader.load("../assets/BeachBallColor.jpg");
   beachTexture.wrapS = beachTexture.wrapT = THREE.RepeatWrapping;
   beachTexture.repeat.set(1, 1);
   beachTexture.anisotropy = 1;
