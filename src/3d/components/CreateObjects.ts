@@ -130,7 +130,7 @@ export const createBall = (scene: THREE.Scene, Ammo: any) => {
   }
 
   //create link boxes
-  export const createBeachBall = (scene: THREE.Scene, Ammo: any, x,
+  export const createBox = (scene: THREE.Scene, Ammo: any, x,
     y,
     z,
     scaleX,
