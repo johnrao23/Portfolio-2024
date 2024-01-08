@@ -1,6 +1,14 @@
 import * as THREE from 'three';
 import Ammo from 'ammojs-typed';
 import { createBall, createBeachBall, createBox } from './CreateObjects.ts';
+import {
+  billboardTextures,
+  boxTexture,
+  inputText,
+  URL,
+  stoneTexture,
+  woodTexture,
+} from "./Textures";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const setupScene = (Ammo: any, container: HTMLDivElement) => {
