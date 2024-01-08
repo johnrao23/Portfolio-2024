@@ -16,7 +16,18 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   // Create objects in the scene
   createBall(scene, Ammo);
   createBeachBall(scene, Ammo);
-  createBox(scene, Ammo)
+  createBox(scene, Ammo,
+    28,
+    2,
+    -100,
+    4,
+    4,
+    1,
+    boxTexture.Github,
+    URL.gitHub,
+    0x000000,
+    true,
+  );
 
   // More object creation or setup can go here...
 
