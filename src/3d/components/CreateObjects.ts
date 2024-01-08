@@ -122,10 +122,10 @@ export const createBeachBall = (scene: THREE.Scene, Ammo: any) => {
   let body = new Ammo.btRigidBody(rbInfo);
 
   body.setRollingFriction(1);
-  physicsWorld.addRigidBody(body);
+  const { addRigidBody } = useStore.getState();
+  addRigidBody(ball, body);
 
   ball.userData.physicsBody = body;
-  rigidBodies.push(ball);
 }
 
 //create link boxes
@@ -172,7 +172,7 @@ export const createBox = (scene: THREE.Scene, Ammo: any,
     ];
 
     const linkBox = new THREE.Mesh(
-      new THREE.BoxBufferGeometry(boxScale.x, boxScale.y, boxScale.z),
+      new THREE.BoxGeometry(boxScale.x, boxScale.y, boxScale.z),
       materials,
     );
     linkBox.position.set(x, y, z);
