@@ -2,8 +2,9 @@ import * as THREE from 'three';
 import { useStore } from './store';
 import { manager } from '../resources/world';
 
-let ballObject = null;
-let cursorHoverObjects = [];
+const ballObject = null;
+const cursorHoverObjects = [];
+const objectsWithLinks = [];
 
 export const createBall = (scene: THREE.Scene, Ammo: any) => {
     let pos = { x: 8.75, y: 0, z: 0 };
