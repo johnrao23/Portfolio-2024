@@ -1122,18 +1122,18 @@ const Main = () => {
       //   true,
       // );
 
-      createBox(
-        35.1,
-        2,
-        -100,
-        4,
-        4,
-        1,
-        boxTexture.LinkedIn,
-        URL.LinkedIn,
-        0x0077b5,
-        true,
-      );
+      // createBox(
+      //   35.1,
+      //   2,
+      //   -100,
+      //   4,
+      //   4,
+      //   1,
+      //   boxTexture.LinkedIn,
+      //   URL.LinkedIn,
+      //   0x0077b5,
+      //   true,
+      // );
 
       createBox(
         42.9,
