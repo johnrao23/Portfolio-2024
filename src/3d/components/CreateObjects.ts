@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { useStore } from './store';
 import { manager } from '../resources/world';
+import { stoneTexture } from './Textures';
 
 let ballObject = null;
 const cursorHoverObjects = [];
@@ -549,71 +550,10 @@ export const createWallZ = ( scene: THREE.Scene, Ammo: any, x: number, y: number
   addRigidPhysics(wall, wallScale);
 }
 
-//create brick wall
-export const wallOfBricks = () => {
-  const loader = new THREE.TextureLoader(manager);
-  var pos = new THREE.Vector3();
-  var quat = new THREE.Quaternion();
-  var brickMass = 0.1;
-  var brickLength = 3;
-  var brickDepth = 3;
-  var brickHeight = 1.5;
-  var numberOfBricksAcross = 6;
-  var numberOfRowsHigh = 6;
-
-  pos.set(70, brickHeight * 0.5, -90);
-  quat.set(0, 0, 0, 1);
-
-  for (var j = 0; j < numberOfRowsHigh; j++) {
-    var oddRow = j % 2 == 1;
-
-    pos.x = 85;
-
-    if (oddRow) {
-      pos.x += 0.25 * brickLength;
-    }
-
-    var currentRow = oddRow
-      ? numberOfBricksAcross + 1
-      : numberOfBricksAcross;
-    for (let i = 0; i < currentRow; i++) {
-      var brickLengthCurrent = brickLength;
-      var brickMassCurrent = brickMass;
-      if (oddRow && (i == 0 || i == currentRow - 1)) {
-        //first or last brick
-        brickLengthCurrent *= 0.5;
-        brickMassCurrent *= 0.5;
-      }
-      var brick = createBrick(
-        brickLengthCurrent,
-        brickHeight,
-        brickDepth,
-        brickMassCurrent,
-        pos,
-        quat,
-        new THREE.MeshStandardMaterial({
-          map: loader.load(stoneTexture),
-        }),
-      );
-      brick.castShadow = true;
-      brick.receiveShadow = true;
-
-      if (oddRow && (i == 0 || i == currentRow - 2)) {
-        //first or last brick
-        pos.x += brickLength * 0.25;
-      } else {
-        pos.x += brickLength;
-      }
-      pos.z += 0.0001;
-    }
-    pos.y += brickHeight;
-  }
-}
-
 //helper function to create individual brick mesh
-export const createBrick = (sx, sy, sz, mass, pos, quat, material) => {
+const createBrick = ( scene: THREE.Scene, Ammo: any, sx: any, sy: number, sz: any, mass: any, pos: any, quat: any, material: any) => {
   var threeObject = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(sx, sy, sz, 1, 1, 1),
+    new THREE.BoxGeometry(sx, sy, sz, 1, 1, 1),
     material,
   );
   var shape = new Ammo.btBoxShape(
@@ -621,13 +561,13 @@ export const createBrick = (sx, sy, sz, mass, pos, quat, material) => {
   );
   shape.setMargin(0.05);
 
-  createBrickBody(threeObject, shape, mass, pos, quat);
+  createBrickBody(scene, Ammo, threeObject, shape, mass, pos, quat);
 
   return threeObject;
 }
 
 //add physics to brick body
-export const createBrickBody = (threeObject, physicsShape, mass, pos, quat) => {
+const createBrickBody = (scene: THREE.Scene, Ammo: any, threeObject: any, physicsShape: any, mass: any, pos: any, quat: any) => {
   threeObject.position.copy(pos);
   threeObject.quaternion.copy(quat);
 
@@ -661,7 +601,60 @@ export const createBrickBody = (threeObject, physicsShape, mass, pos, quat) => {
     body.setActivationState(4);
   }
 
-  physicsWorld.addRigidBody(body);
+  const { addRigidBody } = useStore.getState();
+    addRigidBody(body);
+}
+
+//create brick wall
+export const wallOfBricks = (scene: THREE.Scene, Ammo: any) => {
+  const loader = new THREE.TextureLoader(manager);
+  var pos = new THREE.Vector3();
+  var quat = new THREE.Quaternion();
+  var brickMass = 0.1;
+  var brickLength = 3;
+  var brickDepth = 3;
+  var brickHeight = 1.5;
+  var numberOfBricksAcross = 6;
+  var numberOfRowsHigh = 6;
+
+  pos.set(70, brickHeight * 0.5, -90);
+  quat.set(0, 0, 0, 1);
+
+  for (var j = 0; j < numberOfRowsHigh; j++) {
+    var oddRow = j % 2 == 1;
+
+    pos.x = 85;
+
+    if (oddRow) {
+      pos.x += 0.25 * brickLength;
+    }
+
+    var currentRow = oddRow
+      ? numberOfBricksAcross + 1
+      : numberOfBricksAcross;
+    for (let i = 0; i < currentRow; i++) {
+      var brickLengthCurrent = brickLength;
+      var brickMassCurrent = brickMass;
+      if (oddRow && (i == 0 || i == currentRow - 1)) {
+        //first or last brick
+        brickLengthCurrent *= 0.5;
+        brickMassCurrent *= 0.5;
+      }
+      var brick = createBrick(scene, Ammo, brickLengthCurrent, brickHeight, brickDepth, brickMassCurrent, pos, quat, new THREE.MeshStandardMaterial({ map: loader.load(stoneTexture)
+      }));
+      brick.castShadow = true;
+      brick.receiveShadow = true;
+
+      if (oddRow && (i == 0 || i == currentRow - 2)) {
+        //first or last brick
+        pos.x += brickLength * 0.25;
+      } else {
+        pos.x += brickLength;
+      }
+      pos.z += 0.0001;
+    }
+    pos.y += brickHeight;
+  }
 }
 
 export const createTriangle = ( scene: THREE.Scene, Ammo: any, x: number, z: number ) => {
