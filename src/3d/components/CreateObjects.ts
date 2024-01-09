@@ -195,6 +195,7 @@ export const johnRaoWords = (
   x: number,
   y: number,
   z: number,) => {
+  const { addRigidPhysics } = useStore.getState();
   const boxScale = { x: 46, y: 3, z: 2 };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass
@@ -211,5 +212,5 @@ export const johnRaoWords = (
   linkBox.receiveShadow = true;
   objectsWithLinks.push(linkBox.uuid);
 
-  addRigidPhysics(linkBox, boxScale);
+  addRigidPhysics(linkBox, new THREE.Vector3(boxScale.x, boxScale.y, boxScale.z));
 }
