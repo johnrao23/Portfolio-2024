@@ -189,7 +189,12 @@ export const createBox = (scene: THREE.Scene, Ammo: any,
 }
 
 //create Ammo.js body to add solid mass to "John Rao Software Engineer"
-export const johnRaoWords = (x, y, z) => {
+export const johnRaoWords = (
+  scene: THREE.Scene,
+  Ammo: any,
+  x: number,
+  y: number,
+  z: number,) => {
   const boxScale = { x: 46, y: 3, z: 2 };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass
