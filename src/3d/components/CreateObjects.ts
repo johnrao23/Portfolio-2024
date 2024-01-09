@@ -353,7 +353,7 @@ export const loadHelloWorldText = () => {
 }
 
 //function to create billboard
-export const createBillboard = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number, textureImage: string, urlLink: any, rotation = 0, ) => {
+export const createBillboard = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number, textureImage: string, urlLink: any, rotation = 0 ) => {
   const billboardPoleScale = { x: 1, y: 5, z: 1 };
   const billboardSignScale = { x: 30, y: 15, z: 1 };
 
@@ -428,21 +428,14 @@ export const createBillboard = ( scene: THREE.Scene, Ammo: any, x: number, y: nu
 }
 
 //create vertical billboard
-export const createBillboardRotated(
-  x,
-  y,
-  z,
-  textureImage = billboardTextures.grassImage,
-  urlLink,
-  rotation = 0,
-) {
+export const createBillboardRotated = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number, textureImage: string, urlLink: any, rotation = 0 ) => {
   const billboardPoleScale = { x: 1, y: 2.5, z: 1 };
   const billboardSignScale = { x: 15, y: 20, z: 1 };
 
   /* default texture loading */
   const loader = new THREE.TextureLoader(manager);
   const billboardPole = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(
+    new THREE.BoxGeometry(
       billboardPoleScale.x,
       billboardPoleScale.y,
       billboardPoleScale.z,
@@ -509,7 +502,7 @@ export const createBillboardRotated(
 }
 
 //create X axis wall around entire plane
-export const createWallX(x, y, z) {
+export const createWallX = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number ) => {
   const wallScale = { x: 0.125, y: 4, z: 250 };
 
   const wall = new THREE.Mesh(
@@ -533,11 +526,11 @@ export const createWallX(x, y, z) {
 }
 
 //create Z axis wall around entire plane
-export const createWallZ(x, y, z) {
+export const createWallZ = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number ) => {
   const wallScale = { x: 250, y: 4, z: 0.125 };
 
   const wall = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(wallScale.x, wallScale.y, wallScale.z),
+    new THREE.BoxGeometry(wallScale.x, wallScale.y, wallScale.z),
     new THREE.MeshStandardMaterial({
       color: 0xffffff,
       opacity: 0.75,
@@ -557,7 +550,7 @@ export const createWallZ(x, y, z) {
 }
 
 //create brick wall
-export const wallOfBricks() {
+export const wallOfBricks = () => {
   const loader = new THREE.TextureLoader(manager);
   var pos = new THREE.Vector3();
   var quat = new THREE.Quaternion();
@@ -618,7 +611,7 @@ export const wallOfBricks() {
 }
 
 //helper function to create individual brick mesh
-export const createBrick(sx, sy, sz, mass, pos, quat, material) {
+export const createBrick = (sx, sy, sz, mass, pos, quat, material) => {
   var threeObject = new THREE.Mesh(
     new THREE.BoxBufferGeometry(sx, sy, sz, 1, 1, 1),
     material,
@@ -634,7 +627,7 @@ export const createBrick(sx, sy, sz, mass, pos, quat, material) {
 }
 
 //add physics to brick body
-export const createBrickBody(threeObject, physicsShape, mass, pos, quat) {
+export const createBrickBody = (threeObject, physicsShape, mass, pos, quat) => {
   threeObject.position.copy(pos);
   threeObject.quaternion.copy(quat);
 
@@ -671,7 +664,7 @@ export const createBrickBody(threeObject, physicsShape, mass, pos, quat) {
   physicsWorld.addRigidBody(body);
 }
 
-export const createTriangle(x, z) {
+export const createTriangle = ( scene: THREE.Scene, Ammo: any, x: number, z: number ) => {
   var geom = new THREE.Geometry();
   var v1 = new THREE.Vector3(4, 0, 0);
   var v2 = new THREE.Vector3(5, 0, 0);
