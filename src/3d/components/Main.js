@@ -355,25 +355,25 @@ const Main = () => {
     // }
 
     //create Ammo.js body to add solid mass to "John Rao Software Engineer"
-    function johnRaoWords(x, y, z) {
-      const boxScale = { x: 46, y: 3, z: 2 };
-      let quat = { x: 0, y: 0, z: 0, w: 1 };
-      let mass = 0; //mass of zero = infinite mass
+    // function johnRaoWords(x, y, z) {
+    //   const boxScale = { x: 46, y: 3, z: 2 };
+    //   let quat = { x: 0, y: 0, z: 0, w: 1 };
+    //   let mass = 0; //mass of zero = infinite mass
 
-      const linkBox = new THREE.Mesh(
-        new THREE.BoxBufferGeometry(boxScale.x, boxScale.y, boxScale.z),
-        new THREE.MeshPhongMaterial({
-          color: 0xff6600,
-        }),
-      );
+    //   const linkBox = new THREE.Mesh(
+    //     new THREE.BoxBufferGeometry(boxScale.x, boxScale.y, boxScale.z),
+    //     new THREE.MeshPhongMaterial({
+    //       color: 0xff6600,
+    //     }),
+    //   );
 
-      linkBox.position.set(x, y, z);
-      linkBox.castShadow = true;
-      linkBox.receiveShadow = true;
-      objectsWithLinks.push(linkBox.uuid);
+    //   linkBox.position.set(x, y, z);
+    //   linkBox.castShadow = true;
+    //   linkBox.receiveShadow = true;
+    //   objectsWithLinks.push(linkBox.uuid);
 
-      addRigidPhysics(linkBox, boxScale);
-    }
+    //   addRigidPhysics(linkBox, boxScale);
+    // }
 
     //loads text for John Rao Mesh
     function loadJohnText() {
