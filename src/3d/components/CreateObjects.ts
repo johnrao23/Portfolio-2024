@@ -129,17 +129,7 @@ export const createBeachBall = (scene: THREE.Scene, Ammo: any) => {
 }
 
 //create link boxes
-export const createBox = (scene: THREE.Scene, Ammo: any, 
-  x: number,
-  y: number,
-  z: number,
-  scaleX: any,
-  scaleY: any,
-  scaleZ: any,
-  boxTexture: string,
-  URLLink: any,
-  color = 0x000000,
-  transparent = true) => {
+export const createBox = (scene: THREE.Scene, Ammo: any, x: number, y: number, z: number, scaleX: any, scaleY: any, scaleZ: any, boxTexture: string, URLLink: any, color = 0x000000, transparent = true) => {
     const { addRigidPhysics } = useStore.getState();
     const boxScale = { x: scaleX, y: scaleY, z: scaleZ };
     let quat = { x: 0, y: 0, z: 0, w: 1 };
@@ -318,7 +308,7 @@ export const helloWorldWords = ( scene: THREE.Scene, Ammo: any, x: number, y: nu
 }
 
 //loads text for Hello World Mesh
-export const loadHelloWorldText() {
+export const loadHelloWorldText = () => {
   var text_loader = new THREE.FontLoader();
 
   text_loader.load("./src/jsm/Roboto_Regular.json", function (font) {
@@ -363,14 +353,7 @@ export const loadHelloWorldText() {
 }
 
 //function to create billboard
-export const createBillboard(
-  x,
-  y,
-  z,
-  textureImage = billboardTextures.grassImage,
-  urlLink,
-  rotation = 0,
-) {
+export const createBillboard = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number, textureImage: string, urlLink: any, rotation = 0, ) => {
   const billboardPoleScale = { x: 1, y: 5, z: 1 };
   const billboardSignScale = { x: 30, y: 15, z: 1 };
 
@@ -378,7 +361,7 @@ export const createBillboard(
   const loader = new THREE.TextureLoader(manager);
 
   const billboardPole = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(
+    new THREE.BoxGeometry(
       billboardPoleScale.x,
       billboardPoleScale.y,
       billboardPoleScale.z,
