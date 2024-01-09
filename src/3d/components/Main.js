@@ -1109,18 +1109,18 @@ const Main = () => {
       createTextOnPlane(-45, 0.01, -80, inputText.fairbnbText, 20, 40);
       createTextOnPlane(-16, 0.01, -75, inputText.scanAndGoText, 20, 40);
 
-      createBox(
-        28,
-        2,
-        -100,
-        4,
-        4,
-        1,
-        boxTexture.Github,
-        URL.gitHub,
-        0x000000,
-        true,
-      );
+      // createBox(
+      //   28,
+      //   2,
+      //   -100,
+      //   4,
+      //   4,
+      //   1,
+      //   boxTexture.Github,
+      //   URL.gitHub,
+      //   0x000000,
+      //   true,
+      // );
 
       createBox(
         35.1,
