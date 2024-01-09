@@ -880,36 +880,36 @@ const Main = () => {
     }
 
     //generic function to add physics to Mesh with scale
-    function addRigidPhysics(item, itemScale) {
-      let pos = { x: item.position.x, y: item.position.y, z: item.position.z };
-      let scale = { x: itemScale.x, y: itemScale.y, z: itemScale.z };
-      let quat = { x: 0, y: 0, z: 0, w: 1 };
-      let mass = 0;
-      var transform = new Ammo.btTransform();
-      transform.setIdentity();
-      transform.setOrigin(new Ammo.btVector3(pos.x, pos.y, pos.z));
-      transform.setRotation(
-        new Ammo.btQuaternion(quat.x, quat.y, quat.z, quat.w),
-      );
+    // function addRigidPhysics(item, itemScale) {
+    //   let pos = { x: item.position.x, y: item.position.y, z: item.position.z };
+    //   let scale = { x: itemScale.x, y: itemScale.y, z: itemScale.z };
+    //   let quat = { x: 0, y: 0, z: 0, w: 1 };
+    //   let mass = 0;
+    //   var transform = new Ammo.btTransform();
+    //   transform.setIdentity();
+    //   transform.setOrigin(new Ammo.btVector3(pos.x, pos.y, pos.z));
+    //   transform.setRotation(
+    //     new Ammo.btQuaternion(quat.x, quat.y, quat.z, quat.w),
+    //   );
 
-      var localInertia = new Ammo.btVector3(0, 0, 0);
-      var motionState = new Ammo.btDefaultMotionState(transform);
-      let colShape = new Ammo.btBoxShape(
-        new Ammo.btVector3(scale.x * 0.5, scale.y * 0.5, scale.z * 0.5),
-      );
-      colShape.setMargin(0.05);
-      colShape.calculateLocalInertia(mass, localInertia);
-      let rbInfo = new Ammo.btRigidBodyConstructionInfo(
-        mass,
-        motionState,
-        colShape,
-        localInertia,
-      );
-      let body = new Ammo.btRigidBody(rbInfo);
-      body.setActivationState(STATE.DISABLE_DEACTIVATION);
-      body.setCollisionFlags(2);
-      physicsWorld.addRigidBody(body);
-    }
+    //   var localInertia = new Ammo.btVector3(0, 0, 0);
+    //   var motionState = new Ammo.btDefaultMotionState(transform);
+    //   let colShape = new Ammo.btBoxShape(
+    //     new Ammo.btVector3(scale.x * 0.5, scale.y * 0.5, scale.z * 0.5),
+    //   );
+    //   colShape.setMargin(0.05);
+    //   colShape.calculateLocalInertia(mass, localInertia);
+    //   let rbInfo = new Ammo.btRigidBodyConstructionInfo(
+    //     mass,
+    //     motionState,
+    //     colShape,
+    //     localInertia,
+    //   );
+    //   let body = new Ammo.btRigidBody(rbInfo);
+    //   body.setActivationState(STATE.DISABLE_DEACTIVATION);
+    //   body.setCollisionFlags(2);
+    //   physicsWorld.addRigidBody(body);
+    // }
 
     function moveBall() {
       let scalingFactor = 20;
