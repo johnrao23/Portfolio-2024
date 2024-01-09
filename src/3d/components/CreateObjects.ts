@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { useStore } from './store';
 import { manager } from '../resources/world';
 import { stoneTexture } from './Textures';
@@ -201,10 +202,10 @@ export const johnRaoWords = ( scene: THREE.Scene, Ammo: any, x: number, y: numbe
   addRigidPhysics(linkBox, new THREE.Vector3(boxScale.x, boxScale.y, boxScale.z));
 }
 
-export const loadJohnText = () => {
+export const loadJohnText = (scene: THREE.Scene) => {
   var text_loader = new THREE.FontLoader();
 
-  text_loader.load("./src/jsm/Roboto_Regular.json", function (font) {
+  text_loader.load("./assets/Roboto_Regular.json", function (font: any) {
     var xMid, text;
 
     var color = 0xfffc00;
@@ -507,7 +508,7 @@ export const createWallX = ( scene: THREE.Scene, Ammo: any, x: number, y: number
   const wallScale = { x: 0.125, y: 4, z: 250 };
 
   const wall = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(wallScale.x, wallScale.y, wallScale.z),
+    new THREE.BoxGeometry(wallScale.x, wallScale.y, wallScale.z),
     new THREE.MeshStandardMaterial({
       color: 0xffffff,
       opacity: 0.75,
