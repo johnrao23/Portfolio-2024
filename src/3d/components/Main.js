@@ -1059,7 +1059,7 @@ const Main = () => {
       createPhysicsWorld();
 
       createGridPlane();
-      createBall();
+      // createBall();
 
       createWallX(125, 1.75, 0);
       createWallX(-125, 1.75, 0);
@@ -1102,7 +1102,7 @@ const Main = () => {
         Math.PI * 0.1,
       );
 
-      johnRaoWords(11.2, 1, -20);
+      // johnRaoWords(11.2, 1, -20);
       helloWorldWords(11.2, 1, -20);
       createTextOnPlane(-110, 0.01, -75, inputText.terpSolutionsText, 20, 40);
       createTextOnPlane(-77, 0.01, -80, inputText.bullVsBearText, 20, 40);
