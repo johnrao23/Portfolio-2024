@@ -54,6 +54,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   createBeachBall(scene, Ammo);
   createBox(scene, Ammo, 28, 2, -100, 4, 4, 1, boxTexture.Github, URL.gitHub, 0x000000, true);
   createBox(scene, Ammo, 35.1, 2, -100, 4, 4, 1, boxTexture.LinkedIn, URL.LinkedIn, 0x0077b5, true);
+  createBox(scene, Ammo, 42.9, 2, -100, 4, 4, 1, boxTexture.twitter, URL.twitter, 0x00a2f4, true);
   johnRaoWords(scene, Ammo, 11.2, 1, -20);
 
 

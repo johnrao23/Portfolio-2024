@@ -1135,18 +1135,18 @@ const Main = () => {
       //   true,
       // );
 
-      createBox(
-        42.9,
-        2,
-        -100,
-        4,
-        4,
-        1,
-        boxTexture.twitter,
-        URL.twitter,
-        0x00a2f4,
-        true,
-      );
+      // createBox(
+      //   42.9,
+      //   2,
+      //   -100,
+      //   4,
+      //   4,
+      //   1,
+      //   boxTexture.twitter,
+      //   URL.twitter,
+      //   0x00a2f4,
+      //   true,
+      // );
 
       // createBox(
       //   35,
