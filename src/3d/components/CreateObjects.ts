@@ -189,12 +189,7 @@ export const createBox = (scene: THREE.Scene, Ammo: any,
 }
 
 //create Ammo.js body to add solid mass to "John Rao Software Engineer"
-export const johnRaoWords = (
-  scene: THREE.Scene,
-  Ammo: any,
-  x: number,
-  y: number,
-  z: number,) => {
+export const johnRaoWords = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number ) => {
   const { addRigidPhysics } = useStore.getState();
   const boxScale = { x: 46, y: 3, z: 2 };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
@@ -215,7 +210,7 @@ export const johnRaoWords = (
   addRigidPhysics(linkBox, new THREE.Vector3(boxScale.x, boxScale.y, boxScale.z));
 }
 
-function loadJohnText() {
+export const loadJohnText = () => {
   var text_loader = new THREE.FontLoader();
 
   text_loader.load("./src/jsm/Roboto_Regular.json", function (font) {
@@ -259,7 +254,7 @@ function loadJohnText() {
 }
 
 //create "software engineer text"
-function loadEngineerText() {
+export const loadEngineerText = () => {
   var text_loader = new THREE.FontLoader();
 
   text_loader.load("./src/jsm/Roboto_Regular.json", function (font) {
@@ -302,7 +297,7 @@ function loadEngineerText() {
 }
 
 //create Ammo.js body to add solid mass to "Hello World"
-function helloWorldWords(x, y, z) {
+export const helloWorldWords = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number ) => {
   const boxScale = { x: 46, y: 3, z: 2 };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass
@@ -323,7 +318,7 @@ function helloWorldWords(x, y, z) {
 }
 
 //loads text for Hello World Mesh
-function loadHelloWorldText() {
+export const loadHelloWorldText() {
   var text_loader = new THREE.FontLoader();
 
   text_loader.load("./src/jsm/Roboto_Regular.json", function (font) {
@@ -368,7 +363,7 @@ function loadHelloWorldText() {
 }
 
 //function to create billboard
-function createBillboard(
+export const createBillboard(
   x,
   y,
   z,
@@ -450,7 +445,7 @@ function createBillboard(
 }
 
 //create vertical billboard
-function createBillboardRotated(
+export const createBillboardRotated(
   x,
   y,
   z,
@@ -531,7 +526,7 @@ function createBillboardRotated(
 }
 
 //create X axis wall around entire plane
-function createWallX(x, y, z) {
+export const createWallX(x, y, z) {
   const wallScale = { x: 0.125, y: 4, z: 250 };
 
   const wall = new THREE.Mesh(
@@ -555,7 +550,7 @@ function createWallX(x, y, z) {
 }
 
 //create Z axis wall around entire plane
-function createWallZ(x, y, z) {
+export const createWallZ(x, y, z) {
   const wallScale = { x: 250, y: 4, z: 0.125 };
 
   const wall = new THREE.Mesh(
@@ -579,7 +574,7 @@ function createWallZ(x, y, z) {
 }
 
 //create brick wall
-function wallOfBricks() {
+export const wallOfBricks() {
   const loader = new THREE.TextureLoader(manager);
   var pos = new THREE.Vector3();
   var quat = new THREE.Quaternion();
@@ -640,7 +635,7 @@ function wallOfBricks() {
 }
 
 //helper function to create individual brick mesh
-function createBrick(sx, sy, sz, mass, pos, quat, material) {
+export const createBrick(sx, sy, sz, mass, pos, quat, material) {
   var threeObject = new THREE.Mesh(
     new THREE.BoxBufferGeometry(sx, sy, sz, 1, 1, 1),
     material,
@@ -656,7 +651,7 @@ function createBrick(sx, sy, sz, mass, pos, quat, material) {
 }
 
 //add physics to brick body
-function createBrickBody(threeObject, physicsShape, mass, pos, quat) {
+export const createBrickBody(threeObject, physicsShape, mass, pos, quat) {
   threeObject.position.copy(pos);
   threeObject.quaternion.copy(quat);
 
@@ -693,7 +688,7 @@ function createBrickBody(threeObject, physicsShape, mass, pos, quat) {
   physicsWorld.addRigidBody(body);
 }
 
-function createTriangle(x, z) {
+export const createTriangle(x, z) {
   var geom = new THREE.Geometry();
   var v1 = new THREE.Vector3(4, 0, 0);
   var v2 = new THREE.Vector3(5, 0, 0);
