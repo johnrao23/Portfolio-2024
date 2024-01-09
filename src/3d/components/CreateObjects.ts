@@ -200,7 +200,7 @@ export const johnRaoWords = (
   let mass = 0; //mass of zero = infinite mass
 
   const linkBox = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(boxScale.x, boxScale.y, boxScale.z),
+    new THREE.BoxGeometry(boxScale.x, boxScale.y, boxScale.z),
     new THREE.MeshPhongMaterial({
       color: 0xff6600,
     }),
