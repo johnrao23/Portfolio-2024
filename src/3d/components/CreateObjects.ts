@@ -231,9 +231,12 @@ export const loadJohnText = (scene: THREE.Scene) => {
     geometry.computeBoundingBox();
     geometry.computeVertexNormals();
 
-    xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
-
-    geometry.translate(xMid, 0, 0);
+    if (geometry.boundingBox) {
+        xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
+        geometry.translate(xMid, 0, 0);
+    } else {
+        console.error("BoundingBox not computed");
+    }
 
     text = new THREE.Mesh(geometry, textMaterials);
     text.position.z = -20;
