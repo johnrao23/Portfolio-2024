@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { useStore } from './store';
 import { manager } from '../resources/world';
 import { stoneTexture } from './Textures';
@@ -215,7 +216,7 @@ export const loadJohnText = (scene: THREE.Scene) => {
       new THREE.MeshPhongMaterial({ color: color }), // side
     ];
 
-    var geometry = new THREE.TextGeometry("JOHN RAO", {
+    var geometry = new TextGeometry("JOHN RAO", {
       font: font,
       size: 3,
       height: 0.5,
