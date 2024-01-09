@@ -53,6 +53,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   createBall(scene, Ammo);
   createBeachBall(scene, Ammo);
   createBox(scene, Ammo, 28, 2, -100, 4, 4, 1, boxTexture.Github, URL.gitHub, 0x000000, true);
+  johnRaoWords(scene, Ammo, 11.2, 1, -20);
 
   // More object creation or setup can go here...
 
