@@ -1161,18 +1161,18 @@ const Main = () => {
       //   false
       // );
 
-      createBox(
-        50.5,
-        2,
-        -100,
-        4,
-        4,
-        1,
-        boxTexture.mail,
-        "mailto:johnrao23@gmail.com",
-        0x000000,
-        false,
-      );
+      // createBox(
+      //   50.5,
+      //   2,
+      //   -100,
+      //   4,
+      //   4,
+      //   1,
+      //   boxTexture.mail,
+      //   "mailto:johnrao23@gmail.com",
+      //   0x000000,
+      //   false,
+      // );
 
       // createBox(
       //   44,
