@@ -203,7 +203,7 @@ export const johnRaoWords = ( scene: THREE.Scene, Ammo: any, x: number, y: numbe
 }
 
 export const loadJohnText = (scene: THREE.Scene) => {
-  var text_loader = new THREE.FontLoader();
+  var text_loader = new FontLoader();
 
   text_loader.load("./assets/Roboto_Regular.json", function (font: any) {
     var xMid, text;
@@ -233,8 +233,6 @@ export const loadJohnText = (scene: THREE.Scene) => {
     xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
 
     geometry.translate(xMid, 0, 0);
-
-    var textGeo = new THREE.BufferGeometry().fromGeometry(geometry);
 
     text = new THREE.Mesh(geometry, textMaterials);
     text.position.z = -20;
