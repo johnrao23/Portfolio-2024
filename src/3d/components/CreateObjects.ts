@@ -248,10 +248,10 @@ export const loadJohnText = (scene: THREE.Scene) => {
 }
 
 //create "software engineer text"
-export const loadEngineerText = () => {
-  var text_loader = new THREE.FontLoader();
+export const loadEngineerText = (scene: THREE.Scene) => {
+  var text_loader = new FontLoader();
 
-  text_loader.load("./src/jsm/Roboto_Regular.json", function (font) {
+  text_loader.load("./assets/Roboto_Regular.json", function (font) {
     var xMid, text;
 
     var color = 0x00ff08;
@@ -261,7 +261,7 @@ export const loadEngineerText = () => {
       new THREE.MeshPhongMaterial({ color: color }), // side
     ];
 
-    var geometry = new THREE.TextGeometry("SOFTWARE ENGINEER", {
+    var geometry = new TextGeometry("SOFTWARE ENGINEER", {
       font: font,
       size: 1.5,
       height: 0.5,
@@ -274,9 +274,12 @@ export const loadEngineerText = () => {
     geometry.computeBoundingBox();
     geometry.computeVertexNormals();
 
-    xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
-
-    geometry.translate(xMid, 0, 0);
+    if (geometry.boundingBox) {
+        xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
+        geometry.translate(xMid, 0, 0);
+    } else {
+        console.error("BoundingBox not computed");
+    }
 
     var textGeo = new THREE.BufferGeometry().fromGeometry(geometry);
 
