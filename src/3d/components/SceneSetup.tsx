@@ -5,7 +5,8 @@ import { useStore } from './store';
 import { 
   createBall,
   createBeachBall,
-  createBox 
+  createBox,
+  johnRaoWords,
 } from './CreateObjects';
 
 import {
