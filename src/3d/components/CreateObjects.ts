@@ -329,7 +329,7 @@ export const loadHelloWorldText = () => {
       new THREE.MeshPhongMaterial({ color: color }), // side
     ];
 
-    var geometry = new THREE.TextGeometry("HELLO WORLD", {
+    var geometry = new TextGeometry("HELLO WORLD", {
       font: font,
       size: 3,
       height: 0.5,
