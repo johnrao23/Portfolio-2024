@@ -344,9 +344,12 @@ export const loadHelloWorldText = () => {
     geometry.computeBoundingBox();
     geometry.computeVertexNormals();
 
-    xMid = -2.8 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
-
-    geometry.translate(xMid, 0, 0);
+    if (geometry.boundingBox) {
+        xMid = -2.8 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
+        geometry.translate(xMid, 0, 0);
+    } else {
+        console.error("BoundingBox not computed");
+    }
 
     var textGeo = new THREE.BufferGeometry().fromGeometry(geometry);
 
