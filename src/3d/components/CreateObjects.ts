@@ -506,7 +506,8 @@ export const createBillboardRotated = ( scene: THREE.Scene, Ammo: any, x: number
 
   scene.add(billboardPole);
   scene.add(billboardSign);
-  addRigidPhysics(billboardPole, billboardPoleScale);
+  
+  addRigidPhysics(billboardPole, new THREE.Vector3(billboardPoleScale.x, billboardPoleScale.y, billboardPoleScale.z));
   addRigidPhysics(billboardSign, billboardSignScale);
 
   cursorHoverObjects.push(billboardSign);
