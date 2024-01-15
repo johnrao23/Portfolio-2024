@@ -7,6 +7,8 @@ const STATE = { DISABLE_DEACTIVATION: 4 };
 type State = {
   physicsWorld: Ammo.btDiscreteDynamicsWorld | null;
   rigidBodies: THREE.Mesh[];
+  ballObject: THREE.Mesh | null;
+  cursorHoverObjects: THREE.Object3D[];
   setPhysicsWorld: (world: Ammo.btDiscreteDynamicsWorld) => void;
   addRigidBody: (body: THREE.Mesh, physicsBody?: Ammo.btRigidBody) => void;
   addRigidPhysics: (item: THREE.Mesh, itemScale: THREE.Vector3) => void;
@@ -15,8 +17,13 @@ type State = {
 export const useStore = create<State>((set) => ({
   physicsWorld: null,
   rigidBodies: [],
+  ballObject: null,
+  cursorHoverObjects: [],
 
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
+  setBallObject: (newBallObject: THREE.Mesh | null) => set(() => ({ ballObject: newBallObject })),
+  addCursorHoverObject: (newObject: THREE.Object3D) => set((state) => ({ cursorHoverObjects: [...state.cursorHoverObjects, newObject] })),
+
 
   addRigidBody: (body, physicsBody) => {
     set((currentState) => {
