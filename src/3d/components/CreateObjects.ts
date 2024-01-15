@@ -430,9 +430,9 @@ export const createBillboard = ( scene: THREE.Scene, Ammo: any, x: number, y: nu
 
   scene.add(billboardPole);
   scene.add(billboardSign);
-  
+
   const { addRigidPhysics } = useStore.getState();
-  addRigidPhysics(billboardPole, billboardPoleScale);
+  addRigidPhysics(billboardPole, new THREE.Vector3(billboardPoleScale.x, billboardPoleScale.y, billboardPoleScale.z));
 
   cursorHoverObjects.push(billboardSign);
 }
