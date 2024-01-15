@@ -316,7 +316,7 @@ export const helloWorldWords = ( scene: THREE.Scene, Ammo: any, x: number, y: nu
 }
 
 //loads text for Hello World Mesh
-export const loadHelloWorldText = () => {
+export const loadHelloWorldText = (scene: THREE.Scene) => {
   var text_loader = new FontLoader();
 
   text_loader.load("./src/jsm/Roboto_Regular.json", function (font) {
@@ -351,8 +351,6 @@ export const loadHelloWorldText = () => {
     } else {
         console.error("BoundingBox not computed");
     }
-
-    var textGeo = new THREE.BufferGeometry().fromGeometry(geometry);
 
     text = new THREE.Mesh(geometry, textMaterials);
     text.position.z = 85;
