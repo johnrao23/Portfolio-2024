@@ -3,7 +3,7 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { useStore } from './store';
 import { manager } from '../resources/world';
-import { stoneTexture } from './Textures';
+import { stoneTexture, woodTexture } from './Textures';
 
 let ballObject = null;
 const cursorHoverObjects = [];
@@ -281,9 +281,8 @@ export const loadEngineerText = (scene: THREE.Scene) => {
         console.error("BoundingBox not computed");
     }
 
-    var textGeo = new THREE.BufferGeometry().fromGeometry(geometry);
 
-    text = new THREE.Mesh(textGeo, textMaterials);
+    text = new THREE.Mesh(geometry, textMaterials);
     text.position.z = -20;
     text.position.y = 0.1;
     text.position.x = 24;
