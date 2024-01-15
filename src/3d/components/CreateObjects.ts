@@ -8,6 +8,7 @@ import { stoneTexture, woodTexture } from './Textures';
 let ballObject = null;
 const cursorHoverObjects = [];
 const objectsWithLinks = [];
+const rigidBodies = [];
 const STATE = { DISABLE_DEACTIVATION: 4 };
 
 export const createBall = (scene: THREE.Scene, Ammo: any) => {
