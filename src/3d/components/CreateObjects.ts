@@ -13,6 +13,9 @@ const STATE = { DISABLE_DEACTIVATION: 4 };
 
 //create flat plane
 export const createGridPlane = (scene: THREE.Scene, Ammo: any) => {
+  
+  const physicsWorld = useStore.getState().physicsWorld;
+
   // block properties
   let pos = { x: 0, y: -0.25, z: 0 };
   let scale = { x: 250, y: 0.5, z: 250 };
@@ -70,6 +73,10 @@ export const createGridPlane = (scene: THREE.Scene, Ammo: any) => {
   body.setRollingFriction(10);
 
   // add to world
+  if (!physicsWorld) {
+    console.error('Physics world is not initialized');
+    return;
+}
   physicsWorld.addRigidBody(body);
 }
 
