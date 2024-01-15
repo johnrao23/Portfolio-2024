@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { scene, manager } from '../resources/world';
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 
 export function simpleText(
   x: number,
@@ -8,9 +9,9 @@ export function simpleText(
   inputText: string,
   fontSize: number
 ): void {
-  var text_loader = new THREE.FontLoader();
+  var text_loader = new FontLoader();;
 
-  text_loader.load('./assets/Roboto_Regular.json', function (font: THREE.Font) {
+  text_loader.load('./assets/Roboto_Regular.json', function (font: any) {
     var xMid: number, text: THREE.Mesh;
 
     var color = 0xffffff;
@@ -26,13 +27,16 @@ export function simpleText(
 
     var shapes = font.generateShapes(message, fontSize);
 
-    var geometry = new THREE.ShapeBufferGeometry(shapes);
+    var geometry = new THREE.ShapeGeometry(shapes);
 
     geometry.computeBoundingBox();
 
-    xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
-
-    geometry.translate(xMid, 0, 0);
+    if (geometry.boundingBox) {
+        xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
+        geometry.translate(xMid, 0, 0);
+    } else {
+        console.error("BoundingBox not computed");
+    }
 
     text = new THREE.Mesh(geometry, matLite);
     text.position.set(x, y, z);
@@ -48,9 +52,9 @@ export function floatingLabel(
   z: number,
   inputMessage: string
 ): void {
-  var text_loader = new THREE.FontLoader();
+  var text_loader = new FontLoader();
 
-  text_loader.load('./assets/Roboto_Regular.json', function (font: THREE.Font) {
+  text_loader.load('./assets/Roboto_Regular.json', function (font: any) {
     var xMid: number, text: THREE.Mesh;
 
     var color = 0xffffff;
