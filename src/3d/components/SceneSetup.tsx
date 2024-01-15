@@ -3,13 +3,13 @@ import Ammo from 'ammojs-typed';
 import { useStore } from './store';
 
 import { 
+  createGridPlane,
   createWallX,
   createWallZ,
   createBall,
   createBeachBall,
   createBox,
   johnRaoWords,
-  createGridPlane,
 } from './CreateObjects';
 
 import {
