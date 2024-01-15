@@ -3,6 +3,8 @@ import Ammo from 'ammojs-typed';
 import { useStore } from './store';
 
 import { 
+  createWallX,
+  createWallZ,
   createBall,
   createBeachBall,
   createBox,
@@ -50,6 +52,10 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   createPhysicsWorld();
 
   // Create objects in the scene
+  createWallX(scene, Ammo, 125, 1.75, 0);
+  createWallX(scene, Ammo, -125, 1.75, 0);
+  createWallZ(scene, Ammo, 0, 1.75, 125);
+  createWallZ(scene, Ammo, 0, 1.75, -125);
   createBall(scene, Ammo);
   createBeachBall(scene, Ammo);
   createBox(scene, Ammo, 28, 2, -100, 4, 4, 1, boxTexture.Github, URL.gitHub, 0x000000, true);

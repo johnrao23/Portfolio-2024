@@ -1061,10 +1061,10 @@ const Main = () => {
       createGridPlane();
       // createBall();
 
-      createWallX(125, 1.75, 0);
-      createWallX(-125, 1.75, 0);
-      createWallZ(0, 1.75, 125);
-      createWallZ(0, 1.75, -125);
+      // createWallX(125, 1.75, 0);
+      // createWallX(-125, 1.75, 0);
+      // createWallZ(0, 1.75, 125);
+      // createWallZ(0, 1.75, -125);
 
       createBillboard(
         -115,
