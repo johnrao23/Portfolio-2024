@@ -201,31 +201,6 @@ export const createBeachBall = (scene: THREE.Scene, Ammo: any) => {
   ball.userData.physicsBody = body;
 }
 
-export const moveBall = (scene: THREE.Scene, Ammo: any) => {
-  let scalingFactor = 20;
-  let moveX = moveDirection.right - moveDirection.left;
-  let moveZ = moveDirection.back - moveDirection.forward;
-  let moveY = 0;
-
-  if (ballObject.position.y < 2.01) {
-    moveX = moveDirection.right - moveDirection.left;
-    moveZ = moveDirection.back - moveDirection.forward;
-    moveY = 0;
-  } else {
-    moveX = moveDirection.right - moveDirection.left;
-    moveZ = moveDirection.back - moveDirection.forward;
-    moveY = -0.25;
-  }
-
-  // no movement
-  if (moveX == 0 && moveY == 0 && moveZ == 0) return;
-
-  let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
-  resultantImpulse.op_mul(scalingFactor);
-  let physicsBody = ballObject.userData.physicsBody;
-  physicsBody.setLinearVelocity(resultantImpulse);
-}
-
 //create link boxes
 export const createBox = (scene: THREE.Scene, Ammo: any, x: number, y: number, z: number, scaleX: any, scaleY: any, scaleZ: any, boxTexture: string, URLLink: any, color = 0x000000, transparent = true) => {
     const { addRigidPhysics } = useStore.getState();
