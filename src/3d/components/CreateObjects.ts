@@ -670,27 +670,32 @@ export const wallOfBricks = (scene: THREE.Scene, Ammo: any) => {
   }
 }
 
-export const createTriangle = ( scene: THREE.Scene, Ammo: any, x: number, z: number ) => {
-  var geom = new THREE.Geometry();
-  var v1 = new THREE.Vector3(4, 0, 0);
-  var v2 = new THREE.Vector3(5, 0, 0);
-  var v3 = new THREE.Vector3(4.5, 1, 0);
+export const createTriangle = (scene: THREE.Scene, Ammo: any, x: number, z: number) => {
+  // Create an empty buffer geometry
+  var geom = new THREE.BufferGeometry();
 
-  geom.vertices.push(v1);
-  geom.vertices.push(v2);
-  geom.vertices.push(v3);
+  // Define the vertices of the triangle
+  const vertices = new Float32Array([
+    4, 0, 0,   // vertex 1
+    5, 0, 0,   // vertex 2
+    4.5, 1, 0  // vertex 3
+  ]);
 
-  geom.faces.push(new THREE.Face3(0, 1, 2));
-  geom.computeFaceNormals();
+  // Add the vertices to the geometry
+  geom.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
 
+  // Create the mesh with the geometry and a basic material
   var mesh = new THREE.Mesh(
     geom,
-    new THREE.MeshBasicMaterial({ color: 0xffffff }),
+    new THREE.MeshBasicMaterial({ color: 0xffffff })
   );
+
+  // Apply transformations
   mesh.rotation.x = -Math.PI * 0.5;
-  //mesh.rotation.z = -90;
   mesh.position.y = 0.01;
   mesh.position.x = x;
   mesh.position.z = z;
+
+  // Add the mesh to the scene
   scene.add(mesh);
 }
