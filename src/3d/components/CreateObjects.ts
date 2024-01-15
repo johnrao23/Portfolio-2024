@@ -300,7 +300,7 @@ export const helloWorldWords = ( scene: THREE.Scene, Ammo: any, x: number, y: nu
   let mass = 0; //mass of zero = infinite mass
 
   const linkBox = new THREE.Mesh(
-    new THREE.BoxBufferGeometry(boxScale.x, boxScale.y, boxScale.z),
+    new THREE.BoxGeometry(boxScale.x, boxScale.y, boxScale.z),
     new THREE.MeshPhongMaterial({
       color: 0xff6600,
     }),
@@ -311,7 +311,8 @@ export const helloWorldWords = ( scene: THREE.Scene, Ammo: any, x: number, y: nu
   linkBox.receiveShadow = true;
   objectsWithLinks.push(linkBox.uuid);
 
-  addRigidPhysics(linkBox, boxScale);
+  const { addRigidPhysics } = useStore.getState();
+  addRigidPhysics(linkBox, new THREE.Vector3(boxScale.x, boxScale.y, boxScale.z));
 }
 
 //loads text for Hello World Mesh
