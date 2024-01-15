@@ -9,6 +9,7 @@ import {
   createBeachBall,
   createBox,
   johnRaoWords,
+  createGridPlane,
 } from './CreateObjects';
 
 import {
@@ -52,6 +53,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   createPhysicsWorld();
 
   // Create objects in the scene
+  createGridPlane(scene, Ammo);
   createWallX(scene, Ammo, 125, 1.75, 0);
   createWallX(scene, Ammo, -125, 1.75, 0);
   createWallZ(scene, Ammo, 0, 1.75, 125);
