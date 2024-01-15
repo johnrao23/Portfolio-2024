@@ -3,7 +3,7 @@ import * as THREE from "three";
 import { camera, renderer, scene } from "../resources/world";
 import { useStore } from "./store";
 
-export const pickPosition = { x: 0, y: 0 };
+export const pickPosition = new THREE.Vector2(0, 0);
 
 interface BallPosition {
   position: {
