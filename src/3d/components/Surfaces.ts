@@ -70,13 +70,16 @@ export function floatingLabel(
 
     var shapes = font.generateShapes(message, 1);
 
-    var geometry = new THREE.ShapeBufferGeometry(shapes);
+    var geometry = new THREE.ShapeGeometry(shapes);
 
     geometry.computeBoundingBox();
 
-    xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
-
-    geometry.translate(xMid, 0, 0);
+    if (geometry.boundingBox) {
+        xMid = -0.5 * (geometry.boundingBox.max.x - geometry.boundingBox.min.x);
+        geometry.translate(xMid, 0, 0);
+    } else {
+        console.error("BoundingBox not computed");
+    }
 
     text = new THREE.Mesh(geometry, matLite);
     text.position.set(x, y, z);
