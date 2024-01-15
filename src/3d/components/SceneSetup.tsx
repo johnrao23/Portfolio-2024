@@ -69,9 +69,11 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
 
   // Animation loop
   const animate = () => {
+    const deltaTime = clock.getDelta(); // Make sure `clock` is defined
+    moveBall(); // Update ball movement
+    updatePhysics(deltaTime); // Update physics
+    renderer.render(scene, camera); // Render the scene
     requestAnimationFrame(animate);
-    // Update logic here
-    renderer.render(scene, camera);
   };
   animate();
 
@@ -80,5 +82,58 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
     // Cleanup logic here
   };
 };
+
+function moveBall() {
+  let scalingFactor = 20;
+  let moveX = moveDirection.right - moveDirection.left;
+  let moveZ = moveDirection.back - moveDirection.forward;
+  let moveY = 0;
+
+  if (ballObject.position.y < 2.01) {
+    moveX = moveDirection.right - moveDirection.left;
+    moveZ = moveDirection.back - moveDirection.forward;
+    moveY = 0;
+  } else {
+    moveX = moveDirection.right - moveDirection.left;
+    moveZ = moveDirection.back - moveDirection.forward;
+    moveY = -0.25;
+  }
+
+  // no movement
+  if (moveX == 0 && moveY == 0 && moveZ == 0) return;
+
+  let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
+  resultantImpulse.op_mul(scalingFactor);
+  let physicsBody = ballObject.userData.physicsBody;
+  physicsBody.setLinearVelocity(resultantImpulse);
+}
+
+function updatePhysics(deltaTime) {
+  // Step world
+  physicsWorld.stepSimulation(deltaTime, 10);
+
+  // Update rigid bodies
+  for (let i = 0; i < rigidBodies.length; i++) {
+    let objThree = rigidBodies[i];
+    let objAmmo = objThree.userData.physicsBody;
+    let ms = objAmmo.getMotionState();
+    if (ms) {
+      ms.getWorldTransform(tmpTrans);
+      let p = tmpTrans.getOrigin();
+      let q = tmpTrans.getRotation();
+      objThree.position.set(p.x(), p.y(), p.z());
+      objThree.quaternion.set(q.x(), q.y(), q.z(), q.w());
+    }
+  }
+
+  //check to see if ball escaped the plane
+  if (ballObject.position.y < -50) {
+    scene.remove(ballObject);
+    createBall();
+  }
+
+  //check to see if ball is on text to rotate camera
+  rotateCamera(ballObject);
+}
 
 export default setupScene;

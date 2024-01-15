@@ -911,64 +911,64 @@ const Main = () => {
     //   physicsWorld.addRigidBody(body);
     // }
 
-    function moveBall() {
-      let scalingFactor = 20;
-      let moveX = moveDirection.right - moveDirection.left;
-      let moveZ = moveDirection.back - moveDirection.forward;
-      let moveY = 0;
+    // function moveBall() {
+    //   let scalingFactor = 20;
+    //   let moveX = moveDirection.right - moveDirection.left;
+    //   let moveZ = moveDirection.back - moveDirection.forward;
+    //   let moveY = 0;
 
-      if (ballObject.position.y < 2.01) {
-        moveX = moveDirection.right - moveDirection.left;
-        moveZ = moveDirection.back - moveDirection.forward;
-        moveY = 0;
-      } else {
-        moveX = moveDirection.right - moveDirection.left;
-        moveZ = moveDirection.back - moveDirection.forward;
-        moveY = -0.25;
-      }
+    //   if (ballObject.position.y < 2.01) {
+    //     moveX = moveDirection.right - moveDirection.left;
+    //     moveZ = moveDirection.back - moveDirection.forward;
+    //     moveY = 0;
+    //   } else {
+    //     moveX = moveDirection.right - moveDirection.left;
+    //     moveZ = moveDirection.back - moveDirection.forward;
+    //     moveY = -0.25;
+    //   }
 
-      // no movement
-      if (moveX == 0 && moveY == 0 && moveZ == 0) return;
+    //   // no movement
+    //   if (moveX == 0 && moveY == 0 && moveZ == 0) return;
 
-      let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
-      resultantImpulse.op_mul(scalingFactor);
-      let physicsBody = ballObject.userData.physicsBody;
-      physicsBody.setLinearVelocity(resultantImpulse);
-    }
+    //   let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
+    //   resultantImpulse.op_mul(scalingFactor);
+    //   let physicsBody = ballObject.userData.physicsBody;
+    //   physicsBody.setLinearVelocity(resultantImpulse);
+    // }
 
-    function renderFrame() {
-      // FPS stats module
-      stats.begin();
+    // function renderFrame() {
+    //   // FPS stats module
+    //   stats.begin();
 
-      const elapsedTime = galaxyClock.getElapsedTime() + 150;
+    //   const elapsedTime = galaxyClock.getElapsedTime() + 150;
 
-      let deltaTime = clock.getDelta();
-      if (!isTouchscreenDevice())
-        if (document.hasFocus()) {
-          moveBall();
-        } else {
-          moveDirection.forward = 0;
-          moveDirection.back = 0;
-          moveDirection.left = 0;
-          moveDirection.right = 0;
-        }
-      else {
-        moveBall();
-      }
+    //   let deltaTime = clock.getDelta();
+    //   if (!isTouchscreenDevice())
+    //     if (document.hasFocus()) {
+    //       moveBall();
+    //     } else {
+    //       moveDirection.forward = 0;
+    //       moveDirection.back = 0;
+    //       moveDirection.left = 0;
+    //       moveDirection.right = 0;
+    //     }
+    //   else {
+    //     moveBall();
+    //   }
 
-      updatePhysics(deltaTime);
+    //   updatePhysics(deltaTime);
 
-      moveParticles();
+    //   moveParticles();
 
-      renderer.render(scene, camera);
-      stats.end();
+    //   renderer.render(scene, camera);
+    //   stats.end();
 
-      galaxyMaterial.uniforms.uTime.value = elapsedTime * 5;
-      //galaxyPoints.position.set(-50, -50, 0);
+    //   galaxyMaterial.uniforms.uTime.value = elapsedTime * 5;
+    //   //galaxyPoints.position.set(-50, -50, 0);
 
-      // tells browser theres animation, update before the next repaint
-      requestAnimationFrame(renderFrame);
-    }
+    //   // tells browser theres animation, update before the next repaint
+    //   requestAnimationFrame(renderFrame);
+    // }
 
     //loading page section
     function startButtonEventListener() {
@@ -988,33 +988,33 @@ const Main = () => {
       }, 1000);
     }
 
-    function updatePhysics(deltaTime) {
-      // Step world
-      physicsWorld.stepSimulation(deltaTime, 10);
+    // function updatePhysics(deltaTime) {
+    //   // Step world
+    //   physicsWorld.stepSimulation(deltaTime, 10);
 
-      // Update rigid bodies
-      for (let i = 0; i < rigidBodies.length; i++) {
-        let objThree = rigidBodies[i];
-        let objAmmo = objThree.userData.physicsBody;
-        let ms = objAmmo.getMotionState();
-        if (ms) {
-          ms.getWorldTransform(tmpTrans);
-          let p = tmpTrans.getOrigin();
-          let q = tmpTrans.getRotation();
-          objThree.position.set(p.x(), p.y(), p.z());
-          objThree.quaternion.set(q.x(), q.y(), q.z(), q.w());
-        }
-      }
+    //   // Update rigid bodies
+    //   for (let i = 0; i < rigidBodies.length; i++) {
+    //     let objThree = rigidBodies[i];
+    //     let objAmmo = objThree.userData.physicsBody;
+    //     let ms = objAmmo.getMotionState();
+    //     if (ms) {
+    //       ms.getWorldTransform(tmpTrans);
+    //       let p = tmpTrans.getOrigin();
+    //       let q = tmpTrans.getRotation();
+    //       objThree.position.set(p.x(), p.y(), p.z());
+    //       objThree.quaternion.set(q.x(), q.y(), q.z(), q.w());
+    //     }
+    //   }
 
-      //check to see if ball escaped the plane
-      if (ballObject.position.y < -50) {
-        scene.remove(ballObject);
-        createBall();
-      }
+    //   //check to see if ball escaped the plane
+    //   if (ballObject.position.y < -50) {
+    //     scene.remove(ballObject);
+    //     createBall();
+    //   }
 
-      //check to see if ball is on text to rotate camera
-      rotateCamera(ballObject);
-    }
+    //   //check to see if ball is on text to rotate camera
+    //   rotateCamera(ballObject);
+    // }
 
     //document loading
     manager.onStart = function (item, loaded, total) {
