@@ -74,6 +74,60 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   createBox(scene, Ammo, 50.5, 2, -100, 4, 4, 1, boxTexture.mail, "mailto:johnrao23@gmail.com", 0x000000, false);
   johnRaoWords(scene, Ammo, 11.2, 1, -20);
 
+  // utility functions for animation loop
+  function moveBall() {
+    let moveDirection = { left: 0, right: 0, forward: 0, back: 0 };
+    let scalingFactor = 20;
+    let moveX = moveDirection.right - moveDirection.left;
+    let moveZ = moveDirection.back - moveDirection.forward;
+    let moveY = 0;
+  
+    if (ballObject.position.y < 2.01) {
+      moveX = moveDirection.right - moveDirection.left;
+      moveZ = moveDirection.back - moveDirection.forward;
+      moveY = 0;
+    } else {
+      moveX = moveDirection.right - moveDirection.left;
+      moveZ = moveDirection.back - moveDirection.forward;
+      moveY = -0.25;
+    }
+  
+    // no movement
+    if (moveX == 0 && moveY == 0 && moveZ == 0) return;
+  
+    let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
+    resultantImpulse.op_mul(scalingFactor);
+    let physicsBody = ballObject.userData.physicsBody;
+    physicsBody.setLinearVelocity(resultantImpulse);
+  }
+  
+  function updatePhysics(deltaTime) {
+    // Step world
+    physicsWorld.stepSimulation(deltaTime, 10);
+  
+    // Update rigid bodies
+    for (let i = 0; i < rigidBodies.length; i++) {
+      let objThree = rigidBodies[i];
+      let objAmmo = objThree.userData.physicsBody;
+      let ms = objAmmo.getMotionState();
+      if (ms) {
+        ms.getWorldTransform(tmpTrans);
+        let p = tmpTrans.getOrigin();
+        let q = tmpTrans.getRotation();
+        objThree.position.set(p.x(), p.y(), p.z());
+        objThree.quaternion.set(q.x(), q.y(), q.z(), q.w());
+      }
+    }
+  
+    //check to see if ball escaped the plane
+    if (ballObject.position.y < -50) {
+      scene.remove(ballObject);
+      createBall();
+    }
+  
+    //check to see if ball is on text to rotate camera
+    rotateCamera(ballObject);
+  }
 
   // Animation loop
   const animate = () => {
@@ -90,58 +144,5 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
     // Cleanup logic here
   };
 };
-
-function moveBall() {
-  let scalingFactor = 20;
-  let moveX = moveDirection.right - moveDirection.left;
-  let moveZ = moveDirection.back - moveDirection.forward;
-  let moveY = 0;
-
-  if (ballObject.position.y < 2.01) {
-    moveX = moveDirection.right - moveDirection.left;
-    moveZ = moveDirection.back - moveDirection.forward;
-    moveY = 0;
-  } else {
-    moveX = moveDirection.right - moveDirection.left;
-    moveZ = moveDirection.back - moveDirection.forward;
-    moveY = -0.25;
-  }
-
-  // no movement
-  if (moveX == 0 && moveY == 0 && moveZ == 0) return;
-
-  let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
-  resultantImpulse.op_mul(scalingFactor);
-  let physicsBody = ballObject.userData.physicsBody;
-  physicsBody.setLinearVelocity(resultantImpulse);
-}
-
-function updatePhysics(deltaTime) {
-  // Step world
-  physicsWorld.stepSimulation(deltaTime, 10);
-
-  // Update rigid bodies
-  for (let i = 0; i < rigidBodies.length; i++) {
-    let objThree = rigidBodies[i];
-    let objAmmo = objThree.userData.physicsBody;
-    let ms = objAmmo.getMotionState();
-    if (ms) {
-      ms.getWorldTransform(tmpTrans);
-      let p = tmpTrans.getOrigin();
-      let q = tmpTrans.getRotation();
-      objThree.position.set(p.x(), p.y(), p.z());
-      objThree.quaternion.set(q.x(), q.y(), q.z(), q.w());
-    }
-  }
-
-  //check to see if ball escaped the plane
-  if (ballObject.position.y < -50) {
-    scene.remove(ballObject);
-    createBall();
-  }
-
-  //check to see if ball is on text to rotate camera
-  rotateCamera(ballObject);
-}
 
 export default setupScene;
