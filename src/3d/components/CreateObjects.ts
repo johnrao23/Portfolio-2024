@@ -201,7 +201,7 @@ export const createBeachBall = (scene: THREE.Scene, Ammo: any) => {
   ball.userData.physicsBody = body;
 }
 
-export const moveBall = () => {
+export const moveBall = (scene: THREE.Scene, Ammo: any) => {
   let scalingFactor = 20;
   let moveX = moveDirection.right - moveDirection.left;
   let moveZ = moveDirection.back - moveDirection.forward;
