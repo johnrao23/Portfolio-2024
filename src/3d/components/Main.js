@@ -72,38 +72,38 @@ const Main = () => {
   // start Ammo Engine
   Ammo().then((Ammo) => {
     //Ammo.js variable declaration
-    let rigidBodies = [],
-      physicsWorld;
+    // let rigidBodies = [],
+    //   physicsWorld;
 
-    //Ammo Dynamic bodies for ball
-    let ballObject = null;
-    const STATE = { DISABLE_DEACTIVATION: 4 };
+    // //Ammo Dynamic bodies for ball
+    // let ballObject = null;
+    // const STATE = { DISABLE_DEACTIVATION: 4 };
 
-    //default transform object
-    let tmpTrans = new Ammo.btTransform();
+    // //default transform object
+    // let tmpTrans = new Ammo.btTransform();
 
-    // list of hyperlink objects
-    var objectsWithLinks = [];
+    // // list of hyperlink objects
+    // var objectsWithLinks = [];
 
-    //function to create physics world with Ammo.js
-    function createPhysicsWorld() {
-      //algortihms for full (not broadphase) collision detection
-      let collisionConfiguration = new Ammo.btDefaultCollisionConfiguration(),
-        dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration), // dispatch calculations for overlapping pairs/ collisions.
-        overlappingPairCache = new Ammo.btDbvtBroadphase(), //broadphase collision detection list of all possible colliding pairs
-        constraintSolver = new Ammo.btSequentialImpulseConstraintSolver(); //causes the objects to interact properly, like gravity, game logic forces, collisions
+    // //function to create physics world with Ammo.js
+    // function createPhysicsWorld() {
+    //   //algortihms for full (not broadphase) collision detection
+    //   let collisionConfiguration = new Ammo.btDefaultCollisionConfiguration(),
+    //     dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration), // dispatch calculations for overlapping pairs/ collisions.
+    //     overlappingPairCache = new Ammo.btDbvtBroadphase(), //broadphase collision detection list of all possible colliding pairs
+    //     constraintSolver = new Ammo.btSequentialImpulseConstraintSolver(); //causes the objects to interact properly, like gravity, game logic forces, collisions
 
-      // see bullet physics docs for info
-      physicsWorld = new Ammo.btDiscreteDynamicsWorld(
-        dispatcher,
-        overlappingPairCache,
-        constraintSolver,
-        collisionConfiguration,
-      );
+    //   // see bullet physics docs for info
+    //   physicsWorld = new Ammo.btDiscreteDynamicsWorld(
+    //     dispatcher,
+    //     overlappingPairCache,
+    //     constraintSolver,
+    //     collisionConfiguration,
+    //   );
 
-      // add gravity
-      physicsWorld.setGravity(new Ammo.btVector3(0, -50, 0));
-    }
+    //   // add gravity
+    //   physicsWorld.setGravity(new Ammo.btVector3(0, -50, 0));
+    // }
 
     // //create flat plane
     // function createGridPlane() {
