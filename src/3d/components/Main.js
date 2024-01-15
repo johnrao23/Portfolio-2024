@@ -105,67 +105,67 @@ const Main = () => {
       physicsWorld.setGravity(new Ammo.btVector3(0, -50, 0));
     }
 
-    //create flat plane
-    function createGridPlane() {
-      // block properties
-      let pos = { x: 0, y: -0.25, z: 0 };
-      let scale = { x: 250, y: 0.5, z: 250 };
-      let quat = { x: 0, y: 0, z: 0, w: 1 };
-      let mass = 0; //mass of zero = infinite mass
+    // //create flat plane
+    // function createGridPlane() {
+    //   // block properties
+    //   let pos = { x: 0, y: -0.25, z: 0 };
+    //   let scale = { x: 250, y: 0.5, z: 250 };
+    //   let quat = { x: 0, y: 0, z: 0, w: 1 };
+    //   let mass = 0; //mass of zero = infinite mass
 
-      //create grid overlay on plane
-      var grid = new THREE.GridHelper(250, 20, 0xffffff, 0xffffff);
-      grid.material.opacity = 0.5;
-      grid.material.transparent = true;
-      grid.position.y = 0.005;
-      scene.add(grid);
+    //   //create grid overlay on plane
+    //   var grid = new THREE.GridHelper(250, 20, 0xffffff, 0xffffff);
+    //   grid.material.opacity = 0.5;
+    //   grid.material.transparent = true;
+    //   grid.position.y = 0.005;
+    //   scene.add(grid);
 
-      //Create Threejs Plane
-      let blockPlane = new THREE.Mesh(
-        new THREE.BoxBufferGeometry(),
-        new THREE.MeshPhongMaterial({
-          color: 0xffffff,
-          transparent: true,
-          opacity: 0.25,
-        }),
-      );
-      blockPlane.position.set(pos.x, pos.y, pos.z);
-      blockPlane.scale.set(scale.x, scale.y, scale.z);
-      blockPlane.receiveShadow = true;
-      scene.add(blockPlane);
+    //   //Create Threejs Plane
+    //   let blockPlane = new THREE.Mesh(
+    //     new THREE.BoxBufferGeometry(),
+    //     new THREE.MeshPhongMaterial({
+    //       color: 0xffffff,
+    //       transparent: true,
+    //       opacity: 0.25,
+    //     }),
+    //   );
+    //   blockPlane.position.set(pos.x, pos.y, pos.z);
+    //   blockPlane.scale.set(scale.x, scale.y, scale.z);
+    //   blockPlane.receiveShadow = true;
+    //   scene.add(blockPlane);
 
-      //Ammo.js Physics
-      let transform = new Ammo.btTransform();
-      transform.setIdentity(); // sets safe default values
-      transform.setOrigin(new Ammo.btVector3(pos.x, pos.y, pos.z));
-      transform.setRotation(
-        new Ammo.btQuaternion(quat.x, quat.y, quat.z, quat.w),
-      );
-      let motionState = new Ammo.btDefaultMotionState(transform);
+    //   //Ammo.js Physics
+    //   let transform = new Ammo.btTransform();
+    //   transform.setIdentity(); // sets safe default values
+    //   transform.setOrigin(new Ammo.btVector3(pos.x, pos.y, pos.z));
+    //   transform.setRotation(
+    //     new Ammo.btQuaternion(quat.x, quat.y, quat.z, quat.w),
+    //   );
+    //   let motionState = new Ammo.btDefaultMotionState(transform);
 
-      //setup collision box
-      let colShape = new Ammo.btBoxShape(
-        new Ammo.btVector3(scale.x * 0.5, scale.y * 0.5, scale.z * 0.5),
-      );
-      colShape.setMargin(0.05);
+    //   //setup collision box
+    //   let colShape = new Ammo.btBoxShape(
+    //     new Ammo.btVector3(scale.x * 0.5, scale.y * 0.5, scale.z * 0.5),
+    //   );
+    //   colShape.setMargin(0.05);
 
-      let localInertia = new Ammo.btVector3(0, 0, 0);
-      colShape.calculateLocalInertia(mass, localInertia);
+    //   let localInertia = new Ammo.btVector3(0, 0, 0);
+    //   colShape.calculateLocalInertia(mass, localInertia);
 
-      //  provides information to create a rigid body
-      let rigidBodyStruct = new Ammo.btRigidBodyConstructionInfo(
-        mass,
-        motionState,
-        colShape,
-        localInertia,
-      );
-      let body = new Ammo.btRigidBody(rigidBodyStruct);
-      body.setFriction(10);
-      body.setRollingFriction(10);
+    //   //  provides information to create a rigid body
+    //   let rigidBodyStruct = new Ammo.btRigidBodyConstructionInfo(
+    //     mass,
+    //     motionState,
+    //     colShape,
+    //     localInertia,
+    //   );
+    //   let body = new Ammo.btRigidBody(rigidBodyStruct);
+    //   body.setFriction(10);
+    //   body.setRollingFriction(10);
 
-      // add to world
-      physicsWorld.addRigidBody(body);
-    }
+    //   // add to world
+    //   physicsWorld.addRigidBody(body);
+    // }
 
     // create ball
     // function createBall() {
