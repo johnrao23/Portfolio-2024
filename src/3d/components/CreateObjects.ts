@@ -534,7 +534,8 @@ export const createWallX = ( scene: THREE.Scene, Ammo: any, x: number, y: number
 
   scene.add(wall);
 
-  addRigidPhysics(wall, wallScale);
+  const { addRigidPhysics } = useStore.getState();
+  addRigidPhysics(wall, new THREE.Vector3(wallScale.x, wallScale.y, wallScale.z));
 }
 
 //create Z axis wall around entire plane
