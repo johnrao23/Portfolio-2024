@@ -1,12 +1,17 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import * as THREE from "three";
-import { scene, manager } from "./world";
+import * as THREE from 'three';
+import { scene, manager } from '../resources/world';
 
-export function simpleText(x, y, z, inputText, fontSize) {
+export function simpleText(
+  x: number,
+  y: number,
+  z: number,
+  inputText: string,
+  fontSize: number
+): void {
   var text_loader = new THREE.FontLoader();
 
-  text_loader.load("../src/jsm/Roboto_Regular.json", function (font) {
-    var xMid, text;
+  text_loader.load('./assets/Roboto_Regular.json', function (font: THREE.Font) {
+    var xMid: number, text: THREE.Mesh;
 
     var color = 0xffffff;
 
@@ -29,23 +34,24 @@ export function simpleText(x, y, z, inputText, fontSize) {
 
     geometry.translate(xMid, 0, 0);
 
-    // make shape ( N.B. edge view not visible )
-
     text = new THREE.Mesh(geometry, matLite);
-    text.position.z = z;
-    text.position.y = y;
-    text.position.x = x;
+    text.position.set(x, y, z);
     text.rotation.x = -Math.PI * 0.5;
 
     scene.add(text);
   });
 }
 
-export function floatingLabel(x, y, z, inputMessage) {
+export function floatingLabel(
+  x: number,
+  y: number,
+  z: number,
+  inputMessage: string
+): void {
   var text_loader = new THREE.FontLoader();
 
-  text_loader.load("../src/jsm/Roboto_Regular.json", function (font) {
-    var xMid, text;
+  text_loader.load('./assets/Roboto_Regular.json', function (font: THREE.Font) {
+    var xMid: number, text: THREE.Mesh;
 
     var color = 0xffffff;
 
@@ -68,25 +74,21 @@ export function floatingLabel(x, y, z, inputMessage) {
 
     geometry.translate(xMid, 0, 0);
 
-    // make shape ( N.B. edge view not visible )
-
     text = new THREE.Mesh(geometry, matLite);
-    text.position.z = z;
-    text.position.y = y;
-    text.position.x = x;
+    text.position.set(x, y, z);
     scene.add(text);
   });
 }
 
 export function allSkillsSection(
-  x,
-  y,
-  z,
-  xScale,
-  zScale,
-  boxTexture,
-  URLLink = null,
-) {
+  x: number,
+  y: number,
+  z: number,
+  xScale: number,
+  zScale: number,
+  boxTexture: string,
+  URLLink: string | null = null
+): void {
   const boxScale = { x: xScale, y: 0.1, z: zScale };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass
@@ -114,8 +116,14 @@ export function allSkillsSection(
   scene.add(linkBox);
 }
 
-export function createTextOnPlane(x, y, z, inputText, size1, size2) {
-  // word text
+export function createTextOnPlane(
+  x: number,
+  y: number,
+  z: number,
+  inputText: string,
+  size1: number,
+  size2: number
+): void {
   var activitiesGeometry = new THREE.PlaneBufferGeometry(size1, size2);
   const loader = new THREE.TextureLoader(manager);
   var activitiesTexture = loader.load(inputText);
@@ -129,9 +137,7 @@ export function createTextOnPlane(x, y, z, inputText, size1, size2) {
   activitiesMaterial.depthWrite = true;
   activitiesMaterial.depthTest = true;
   let activitiesText = new THREE.Mesh(activitiesGeometry, activitiesMaterial);
-  activitiesText.position.x = x;
-  activitiesText.position.y = y;
-  activitiesText.position.z = z;
+  activitiesText.position.set(x, y, z);
   activitiesText.rotation.x = -Math.PI * 0.5;
 
   activitiesText.renderOrder = 1;
