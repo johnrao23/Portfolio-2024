@@ -13,6 +13,14 @@ import {
 } from './CreateObjects';
 
 import {
+  pickPosition,
+  launchClickPosition,
+  getCanvasRelativePosition,
+  rotateCamera,
+  launchHover,
+} from "./Utilities";
+
+import {
   billboardTextures,
   boxTexture,
   inputText,
