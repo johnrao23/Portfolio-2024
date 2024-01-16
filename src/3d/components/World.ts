@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 // use Three.js to set up graphics
 import * as THREE from "three";
 import Stats from "stats.js";
