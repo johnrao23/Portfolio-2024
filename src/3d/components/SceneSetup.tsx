@@ -109,7 +109,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
     physicsBody.setLinearVelocity(resultantImpulse);
   }
   
-  function updatePhysics(deltaTime) {
+  function updatePhysics(deltaTime: number) {
     const { physicsWorld, rigidBodies, ballObject } = useStore.getState();
     if (!physicsWorld || !ballObject) return;
 
