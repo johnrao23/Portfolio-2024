@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { scene, manager } from '../resources/world';
+import { scene, manager } from './World';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 
 export function simpleText( x: number, y: number, z: number, inputText: string, fontSize: number ): void {

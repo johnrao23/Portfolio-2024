@@ -1,6 +1,6 @@
 //start link events
 import * as THREE from "three";
-import { camera, renderer, scene } from "../resources/world";
+import { camera, renderer, scene } from "./World";
 import { useStore } from "./store";
 
 export const pickPosition = new THREE.Vector2(0, 0);

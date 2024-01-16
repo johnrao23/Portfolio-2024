@@ -2,26 +2,26 @@
 // use Three.js to set up graphics
 import * as THREE from "three";
 import Stats from "stats.js";
-import galaxyVertexShader from "../jsm/vertex.glsl";
-import galaxyFragmentShader from "../jsm/fragment.glsl";
+import galaxyVertexShader from "../assets/vertex.glsl";
+import galaxyFragmentShader from "../assets/fragment.glsl";
 
 //threejs variable declaration
-export let clock,
-  scene,
-  camera,
-  renderer,
-  stats,
-  particleGroup,
-  particleAttributes,
-  particleSystemObject,
-  lensFlareObject,
-  galaxyClock;
+export let clock: THREE.Clock,
+galaxyClock: THREE.Clock,
+scene: THREE.Scene,
+camera: THREE.PerspectiveCamera,
+renderer: THREE.WebGLRenderer,
+stats: Stats,
+particleGroup: THREE.Object3D,
+particleAttributes: any, // Define a more specific type if possible
+particleSystemObject: THREE.Points,
+lensFlareObject: THREE.Mesh;
 
 //generic temporary transform to begin
 
 export let manager = new THREE.LoadingManager();
 
-export function createWorld() {
+export function createWorld() : void {
   clock = new THREE.Clock();
   galaxyClock = new THREE.Clock();
 
@@ -84,7 +84,7 @@ export function createWorld() {
   renderer.shadowMap.enabled = true;
 }
 
-export function glowingParticles() {
+export function glowingParticles() : void {
   var particleTextureLoader = new THREE.TextureLoader(manager);
   var particleTexture = particleTextureLoader.load("../src/jsm/spark.png");
 
@@ -125,7 +125,7 @@ export function glowingParticles() {
   scene.add(particleGroup);
 }
 
-export function createLensFlare(x, y, z, xScale, zScale, boxTexture) {
+export function createLensFlare(x, y, z, xScale, zScale, boxTexture) : void {
   const boxScale = { x: xScale, y: 0.1, z: zScale };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass

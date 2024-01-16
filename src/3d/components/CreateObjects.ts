@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { useStore } from './store';
-import { manager } from '../resources/world';
+import { manager } from './World';
 import { stoneTexture, woodTexture } from './Textures';
 
 const objectsWithLinks = [];
