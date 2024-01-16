@@ -12,6 +12,7 @@ import {
   createBillboard,
   createBillboardRotated,
   johnRaoWords,
+  helloWorldWords,
 } from './CreateObjects';
 
 import {
@@ -30,6 +31,13 @@ import {
   stoneTexture,
   woodTexture,
 } from "./Textures";
+
+import {
+  simpleText,
+  floatingLabel,
+  allSkillsSection,
+  createTextOnPlane,
+} from "./Surfaces";
 
 export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   // Initialize renderer, scene, camera
@@ -82,6 +90,11 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   createBillboard( scene, Ammo, -45, 2.5, -110, billboardTextures.fairbnbTexture, URL.getFairbnb, Math.PI * 0.1, );
   createBillboardRotated( scene, Ammo, -15, 1.25, -105, billboardTextures.scanAndGoTexture, URL.samsClub, Math.PI * 0.1, );
   johnRaoWords(scene, Ammo, 11.2, 1, -20);
+  helloWorldWords(11.2, 1, -20);
+  createTextOnPlane(-110, 0.01, -75, inputText.terpSolutionsText, 20, 40);
+  createTextOnPlane(-77, 0.01, -80, inputText.bullVsBearText, 20, 40);
+  createTextOnPlane(-45, 0.01, -80, inputText.fairbnbText, 20, 40);
+  createTextOnPlane(-16, 0.01, -75, inputText.scanAndGoText, 20, 40);
 
   // utility functions for animation loop
   function moveBall() {

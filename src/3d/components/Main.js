@@ -1103,11 +1103,11 @@ const Main = () => {
       // );
 
       // johnRaoWords(11.2, 1, -20);
-      helloWorldWords(11.2, 1, -20);
-      createTextOnPlane(-110, 0.01, -75, inputText.terpSolutionsText, 20, 40);
-      createTextOnPlane(-77, 0.01, -80, inputText.bullVsBearText, 20, 40);
-      createTextOnPlane(-45, 0.01, -80, inputText.fairbnbText, 20, 40);
-      createTextOnPlane(-16, 0.01, -75, inputText.scanAndGoText, 20, 40);
+      // helloWorldWords(11.2, 1, -20);
+      // createTextOnPlane(-110, 0.01, -75, inputText.terpSolutionsText, 20, 40);
+      // createTextOnPlane(-77, 0.01, -80, inputText.bullVsBearText, 20, 40);
+      // createTextOnPlane(-45, 0.01, -80, inputText.fairbnbText, 20, 40);
+      // createTextOnPlane(-16, 0.01, -75, inputText.scanAndGoText, 20, 40);
 
       // createBox(
       //   28,
