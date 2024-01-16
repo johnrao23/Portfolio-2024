@@ -9,6 +9,7 @@ type State = {
   rigidBodies: THREE.Mesh[];
   ballObject: THREE.Mesh | null;
   cursorHoverObjects: THREE.Object3D[];
+  addCursorHoverObject: (newObject: THREE.Object3D) => void;
   setPhysicsWorld: (world: Ammo.btDiscreteDynamicsWorld) => void;
   addRigidBody: (body: THREE.Mesh, physicsBody?: Ammo.btRigidBody) => void;
   addRigidPhysics: (item: THREE.Mesh, itemScale: THREE.Vector3) => void;
