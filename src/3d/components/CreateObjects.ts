@@ -501,10 +501,10 @@ export const createBillboard = ( scene: THREE.Scene, Ammo: any, x: number, y: nu
   scene.add(billboardPole);
   scene.add(billboardSign);
 
-  const { addRigidPhysics } = useStore.getState();
+  const { addRigidPhysics, addCursorHoverObject } = useStore.getState();
   addRigidPhysics(billboardPole, new THREE.Vector3(billboardPoleScale.x, billboardPoleScale.y, billboardPoleScale.z));
 
-  cursorHoverObjects.push(billboardSign);
+  addCursorHoverObject(billboardSign);
 }
 
 //create vertical billboard
