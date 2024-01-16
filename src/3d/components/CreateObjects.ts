@@ -509,7 +509,7 @@ export const createBillboard = ( scene: THREE.Scene, Ammo: any, x: number, y: nu
 
 //create vertical billboard
 export const createBillboardRotated = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number, textureImage: string, urlLink: any, rotation = 0 ) => {
-  const { addRigidPhysics } = useStore.getState();
+  const { addRigidPhysics, addCursorHoverObject } = useStore.getState();
   const billboardPoleScale = { x: 1, y: 2.5, z: 1 };
   const billboardSignScale = { x: 15, y: 20, z: 1 };
 
@@ -580,7 +580,7 @@ export const createBillboardRotated = ( scene: THREE.Scene, Ammo: any, x: number
   addRigidPhysics(billboardPole, new THREE.Vector3(billboardPoleScale.x, billboardPoleScale.y, billboardPoleScale.z));
   addRigidPhysics(billboardSign, new THREE.Vector3(billboardSignScale.x, billboardSignScale.y, billboardSignScale.z));
 
-  cursorHoverObjects.push(billboardSign);
+  addCursorHoverObject(billboardSign);
 }
 
 //create X axis wall around entire plane
