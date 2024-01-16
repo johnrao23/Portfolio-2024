@@ -39,6 +39,8 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
+  let tmpTrans = new Ammo.btTransform();
+
   // Function to create physics world
   function createPhysicsWorld() {
     let collisionConfiguration = new Ammo.btDefaultCollisionConfiguration(),

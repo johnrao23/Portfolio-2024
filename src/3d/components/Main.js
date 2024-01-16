@@ -79,7 +79,7 @@ const Main = () => {
     // let ballObject = null;
     // const STATE = { DISABLE_DEACTIVATION: 4 };
 
-    // //default transform object
+    // default transform object
     // let tmpTrans = new Ammo.btTransform();
 
     // // list of hyperlink objects
