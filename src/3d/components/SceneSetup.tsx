@@ -91,10 +91,10 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   createBillboardRotated( scene, Ammo, -15, 1.25, -105, billboardTextures.scanAndGoTexture, URL.samsClub, Math.PI * 0.1, );
   johnRaoWords(scene, Ammo, 11.2, 1, -20);
   helloWorldWords( scene, Ammo, 11.2, 1, -20);
-  createTextOnPlane( scene, Ammo, -110, 0.01, -75, inputText.terpSolutionsText, 20, 40);
-  createTextOnPlane(scene, Ammo, -77, 0.01, -80, inputText.bullVsBearText, 20, 40);
-  createTextOnPlane( scene, Ammo, -45, 0.01, -80, inputText.fairbnbText, 20, 40);
-  createTextOnPlane( scene, Ammo, -16, 0.01, -75, inputText.scanAndGoText, 20, 40);
+  createTextOnPlane( scene, -110, 0.01, -75, inputText.terpSolutionsText, 20, 40);
+  createTextOnPlane(scene, -77, 0.01, -80, inputText.bullVsBearText, 20, 40);
+  createTextOnPlane( scene, -45, 0.01, -80, inputText.fairbnbText, 20, 40);
+  createTextOnPlane( scene, -16, 0.01, -75, inputText.scanAndGoText, 20, 40);
 
   // utility functions for animation loop
   function moveBall() {
