@@ -9,10 +9,11 @@ type State = {
   rigidBodies: THREE.Mesh[];
   ballObject: THREE.Mesh | null;
   cursorHoverObjects: THREE.Object3D[];
-  addCursorHoverObject: (newObject: THREE.Object3D) => void;
   setPhysicsWorld: (world: Ammo.btDiscreteDynamicsWorld) => void;
   addRigidBody: (body: THREE.Mesh, physicsBody?: Ammo.btRigidBody) => void;
   addRigidPhysics: (item: THREE.Mesh, itemScale: THREE.Vector3) => void;
+  setBallObject: (newBallObject: THREE.Mesh | null) => void;
+  addCursorHoverObject: (newObject: THREE.Object3D) => void;
 };
 
 export const useStore = create<State>((set) => ({
@@ -22,9 +23,12 @@ export const useStore = create<State>((set) => ({
   cursorHoverObjects: [],
 
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
-  setBallObject: (newBallObject: THREE.Mesh | null) => set(() => ({ ballObject: newBallObject })),
-  addCursorHoverObject: (newObject: THREE.Object3D) => set((state) => ({ cursorHoverObjects: [...state.cursorHoverObjects, newObject] })),
 
+  setBallObject: (newBallObject: THREE.Mesh | null) => set({ ballObject: newBallObject }),
+
+  addCursorHoverObject: (newObject: THREE.Object3D) => set((state) => ({
+    cursorHoverObjects: [...state.cursorHoverObjects, newObject]
+  })),
 
   addRigidBody: (body, physicsBody) => {
     set((currentState) => {
@@ -76,4 +80,3 @@ export const useStore = create<State>((set) => ({
     });
   },
 }));
-
