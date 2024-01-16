@@ -2,13 +2,7 @@ import * as THREE from 'three';
 import { scene, manager } from '../resources/world';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 
-export function simpleText(
-  x: number,
-  y: number,
-  z: number,
-  inputText: string,
-  fontSize: number
-): void {
+export function simpleText( x: number, y: number, z: number, inputText: string, fontSize: number ): void {
   var text_loader = new FontLoader();;
 
   text_loader.load('./assets/Roboto_Regular.json', function (font: any) {
