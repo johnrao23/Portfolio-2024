@@ -10,6 +10,7 @@ import {
   createBeachBall,
   createBox,
   createBillboard,
+  createBillboardRotated,
   johnRaoWords,
 } from './CreateObjects';
 
@@ -76,6 +77,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   createBillboard( scene, Ammo, -115, 2.5, -105, billboardTextures.terpSolutionsTexture, URL.terpsolutions, Math.PI * 0.2, );
   createBillboard( scene, Ammo, -80, 2.5, -110, billboardTextures.bullVsBearTexture, URL.bullVsBearTrading, Math.PI * 0.15, );
   createBillboard( scene, Ammo, -45, 2.5, -110, billboardTextures.fairbnbTexture, URL.getFairbnb, Math.PI * 0.1, );
+  createBillboardRotated( scene, Ammo, -15, 1.25, -105, billboardTextures.scanAndGoTexture, URL.samsClub, Math.PI * 0.1, );
   johnRaoWords(scene, Ammo, 11.2, 1, -20);
 
   // utility functions for animation loop
