@@ -123,14 +123,7 @@ export function allSkillsSection(
   scene.add(linkBox);
 }
 
-export function createTextOnPlane(
-  x: number,
-  y: number,
-  z: number,
-  inputText: string,
-  size1: number,
-  size2: number
-): void {
+export function createTextOnPlane( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number, inputText: string, size1: number, size2: number ): void {
   var activitiesGeometry = new THREE.PlaneGeometry(size1, size2);
   const loader = new THREE.TextureLoader(manager);
   var activitiesTexture = loader.load(inputText);
