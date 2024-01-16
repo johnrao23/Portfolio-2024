@@ -13,7 +13,7 @@ camera: THREE.PerspectiveCamera,
 renderer: THREE.WebGLRenderer,
 stats: Stats,
 particleGroup: THREE.Object3D,
-particleAttributes: any, // Define a more specific type if possible
+particleAttributes: any,
 particleSystemObject: THREE.Points,
 lensFlareObject: THREE.Mesh;
 
@@ -125,7 +125,7 @@ export function glowingParticles() : void {
   scene.add(particleGroup);
 }
 
-export function createLensFlare(x, y, z, xScale, zScale, boxTexture) : void {
+export function createLensFlare(x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string) : void {
   const boxScale = { x: xScale, y: 0.1, z: zScale };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass
@@ -153,7 +153,7 @@ export function createLensFlare(x, y, z, xScale, zScale, boxTexture) : void {
   scene.add(lensFlareObject);
 }
 
-export function addParticles() {
+export function addParticles() : void {
   var geometry = new THREE.Geometry();
 
   for (let i = 0; i < 3000; i++) {
@@ -170,14 +170,14 @@ export function addParticles() {
   scene.add(particleSystemObject);
 }
 
-function getRandomArbitrary(min, max) {
+function getRandomArbitrary(min: number, max: number) : number {
   return Math.random() * (max - min) + min;
 }
 
-export let galaxyMaterial = null;
-export let galaxyPoints = null;
+export let galaxyMaterial: THREE.ShaderMaterial | null = null;
+export let galaxyPoints: THREE.Points | null = null;
 
-export const generateGalaxy = () => {
+export const generateGalaxy = () : void => {
   const parameters = {};
   parameters.count = 50000;
   parameters.size = 0.005;
@@ -292,7 +292,7 @@ export const generateGalaxy = () => {
   scene.add(galaxyPoints);
 };
 
-export function moveParticles() {
+export function moveParticles() : void {
   particleSystemObject.rotation.z += 0.0003;
   lensFlareObject.rotation.z += 0.0002;
   if (lensFlareObject.position.x < 750) {
