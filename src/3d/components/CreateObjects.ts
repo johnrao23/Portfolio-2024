@@ -5,8 +5,6 @@ import { useStore } from './store';
 import { manager } from '../resources/world';
 import { stoneTexture, woodTexture } from './Textures';
 
-let ballObject = null;
-const cursorHoverObjects = [];
 const objectsWithLinks = [];
 const rigidBodies = [];
 const STATE = { DISABLE_DEACTIVATION: 4 };
@@ -94,10 +92,10 @@ export const createBall = (scene: THREE.Scene, Ammo: any) => {
     marbleTexture.encoding = THREE.sRGBEncoding;
 
     //threeJS Section
-    let ball = (ballObject = new THREE.Mesh(
+    let ball = new THREE.Mesh(
       new THREE.SphereGeometry(radius, 32, 32),
       new THREE.MeshLambertMaterial({ map: marbleTexture }),
-    ));
+    );
 
     ball.geometry.computeBoundingSphere();
     ball.geometry.computeBoundingBox();
@@ -143,7 +141,9 @@ export const createBall = (scene: THREE.Scene, Ammo: any) => {
     addRigidBody(ball, body);
 
     ball.userData.physicsBody = body;
-    ballObject.userData.physicsBody = body;
+
+    // Directly update ballObject in the store
+    useStore.setState({ ballObject: ball });
   };
 
 export const createBeachBall = (scene: THREE.Scene, Ammo: any) => {
