@@ -40,12 +40,7 @@ export function simpleText( x: number, y: number, z: number, inputText: string, 
   });
 }
 
-export function floatingLabel(
-  x: number,
-  y: number,
-  z: number,
-  inputMessage: string
-): void {
+export function floatingLabel( x: number, y: number, z: number, inputMessage: string ): void {
   var text_loader = new FontLoader();
 
   text_loader.load('./assets/Roboto_Regular.json', function (font: any) {
@@ -81,15 +76,7 @@ export function floatingLabel(
   });
 }
 
-export function allSkillsSection(
-  x: number,
-  y: number,
-  z: number,
-  xScale: number,
-  zScale: number,
-  boxTexture: string,
-  URLLink: string | null = null
-): void {
+export function allSkillsSection( x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string, URLLink: string | null = null ): void {
   const boxScale = { x: xScale, y: 0.1, z: zScale };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass
