@@ -1056,9 +1056,9 @@ const Main = () => {
 
     function start() {
       createWorld();
-      createPhysicsWorld();
+      // createPhysicsWorld();
 
-      createGridPlane();
+      // createGridPlane();
       // createBall();
 
       // createWallX(125, 1.75, 0);
@@ -1066,41 +1066,41 @@ const Main = () => {
       // createWallZ(0, 1.75, 125);
       // createWallZ(0, 1.75, -125);
 
-      createBillboard(
-        -115,
-        2.5,
-        -105,
-        billboardTextures.terpSolutionsTexture,
-        URL.terpsolutions,
-        Math.PI * 0.2,
-      );
+      // createBillboard(
+      //   -115,
+      //   2.5,
+      //   -105,
+      //   billboardTextures.terpSolutionsTexture,
+      //   URL.terpsolutions,
+      //   Math.PI * 0.2,
+      // );
 
-      createBillboard(
-        -80,
-        2.5,
-        -110,
-        billboardTextures.bullVsBearTexture,
-        URL.bullVsBearTrading,
-        Math.PI * 0.15,
-      );
+      // createBillboard(
+      //   -80,
+      //   2.5,
+      //   -110,
+      //   billboardTextures.bullVsBearTexture,
+      //   URL.bullVsBearTrading,
+      //   Math.PI * 0.15,
+      // );
 
-      createBillboard(
-        -45,
-        2.5,
-        -110,
-        billboardTextures.fairbnbTexture,
-        URL.getFairbnb,
-        Math.PI * 0.1,
-      );
+      // createBillboard(
+      //   -45,
+      //   2.5,
+      //   -110,
+      //   billboardTextures.fairbnbTexture,
+      //   URL.getFairbnb,
+      //   Math.PI * 0.1,
+      // );
 
-      createBillboardRotated(
-        -15,
-        1.25,
-        -105,
-        billboardTextures.scanAndGoTexture,
-        URL.samsClub,
-        Math.PI * 0.1,
-      );
+      // createBillboardRotated(
+      //   -15,
+      //   1.25,
+      //   -105,
+      //   billboardTextures.scanAndGoTexture,
+      //   URL.samsClub,
+      //   Math.PI * 0.1,
+      // );
 
       // johnRaoWords(11.2, 1, -20);
       helloWorldWords(11.2, 1, -20);

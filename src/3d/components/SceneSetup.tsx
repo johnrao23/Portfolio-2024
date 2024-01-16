@@ -9,6 +9,7 @@ import {
   createBall,
   createBeachBall,
   createBox,
+  createBillboard,
   johnRaoWords,
 } from './CreateObjects';
 
@@ -72,10 +73,15 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   createBox(scene, Ammo, 35.1, 2, -100, 4, 4, 1, boxTexture.LinkedIn, URL.LinkedIn, 0x0077b5, true);
   createBox(scene, Ammo, 42.9, 2, -100, 4, 4, 1, boxTexture.twitter, URL.twitter, 0x00a2f4, true);
   createBox(scene, Ammo, 50.5, 2, -100, 4, 4, 1, boxTexture.mail, "mailto:johnrao23@gmail.com", 0x000000, false);
+  createBillboard( scene, Ammo, -115, 2.5, -105, billboardTextures.terpSolutionsTexture, URL.terpsolutions, Math.PI * 0.2, );
+  createBillboard( scene, Ammo, -80, 2.5, -110, billboardTextures.bullVsBearTexture, URL.bullVsBearTrading, Math.PI * 0.15, );
+  createBillboard( scene, Ammo, -45, 2.5, -110, billboardTextures.fairbnbTexture, URL.getFairbnb, Math.PI * 0.1, );
   johnRaoWords(scene, Ammo, 11.2, 1, -20);
 
   // utility functions for animation loop
   function moveBall() {
+    const { ballObject } = useStore.getState();
+    if (!ballObject || !ballObject.userData.physicsBody) return;
     let moveDirection = { left: 0, right: 0, forward: 0, back: 0 };
     let scalingFactor = 20;
     let moveX = moveDirection.right - moveDirection.left;
@@ -102,6 +108,9 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   }
   
   function updatePhysics(deltaTime) {
+    const { physicsWorld, rigidBodies, ballObject } = useStore.getState();
+    if (!physicsWorld || !ballObject) return;
+
     // Step world
     physicsWorld.stepSimulation(deltaTime, 10);
   
@@ -122,7 +131,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
     //check to see if ball escaped the plane
     if (ballObject.position.y < -50) {
       scene.remove(ballObject);
-      createBall();
+      createBall(scene, Ammo);
     }
   
     //check to see if ball is on text to rotate camera
