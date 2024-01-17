@@ -4,6 +4,8 @@ import Ammo from 'ammojs-typed';
 import Stats from 'stats.js';
 import { useStore } from './store';
 
+import { moveParticles } from './World';
+
 import { 
   createGridPlane,
   createWallX,
@@ -219,6 +221,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
       const deltaTime = clock.getDelta();
       moveBall(); // Update ball movement
       updatePhysics(deltaTime); // Update physics
+      moveParticles(particleSystemObject, lensFlareObject);
       renderer.render(scene, camera); // Render the scene
       stats.end();
     };
