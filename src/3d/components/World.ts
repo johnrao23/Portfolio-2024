@@ -13,15 +13,21 @@ particleSystemObject: THREE.Points,
 lensFlareObject: THREE.Mesh;
 
 
-export function glowingParticles(scene: THREE.Scene, manager: THREE.LoadingManager) : void {
+export function glowingParticles(scene: THREE.Scene, manager: THREE.LoadingManager, particleGroup: THREE.Object3D): void {
   var particleTextureLoader = new THREE.TextureLoader(manager);
   var particleTexture = particleTextureLoader.load("../assets/spark.png");
 
-  particleGroup = new THREE.Object3D();
-  particleGroup.position.x = -1;
-  particleGroup.position.y = 7;
-  particleGroup.position.z = 45;
-  particleAttributes = { startSize: [], startPosition: [], randomness: [] };
+  particleGroup.position.set(-1, 7, 45);
+
+  var particleAttributes: {
+    startSize: number[],
+    startPosition: THREE.Vector3[],
+    randomness: number[]
+  } = {
+    startSize: [],
+    startPosition: [],
+    randomness: []
+  };
 
   var totalParticles = 50;
   var radiusRange = 4;
@@ -29,30 +35,25 @@ export function glowingParticles(scene: THREE.Scene, manager: THREE.LoadingManag
     var spriteMaterial = new THREE.SpriteMaterial({
       map: particleTexture,
       color: 0xffffff,
+      blending: THREE.AdditiveBlending, // "glowing" particles
     });
 
     var sprite = new THREE.Sprite(spriteMaterial);
     sprite.scale.set(0.5, 0.5, 1.0); // imageWidth, imageHeight
-    sprite.position.set(
-      Math.random() - 0.5,
-      Math.random() - 0.5,
-      Math.random() - 0.5,
-    );
-
+    sprite.position.set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5);
     sprite.position.setLength(radiusRange * (Math.random() * 0.1 + 0.9));
-
     sprite.material.color.setHSL(Math.random(), 0.9, 0.7);
-
-    sprite.material.blending = THREE.AdditiveBlending; // "glowing" particles
     sprite.renderOrder = 1;
     particleGroup.add(sprite);
-    // add variable qualities to arrays, if they need to be accessed later
+
+    // Add variable qualities to arrays, if they need to be accessed later
     particleAttributes.startPosition.push(sprite.position.clone());
     particleAttributes.randomness.push(Math.random());
   }
 
   scene.add(particleGroup);
 }
+
 
 export function createLensFlare(scene: THREE.Scene, x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string) : void {
   const boxScale = { x: xScale, y: 0.1, z: zScale };
