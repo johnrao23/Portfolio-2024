@@ -4,84 +4,10 @@ import Stats from "stats.js";
 import galaxyVertexShader from "../assets/vertex.glsl";
 import galaxyFragmentShader from "../assets/fragment.glsl";
 
-//threejs variable declaration
-export let clock: THREE.Clock,
-galaxyClock: THREE.Clock,
-scene: THREE.Scene,
-camera: THREE.PerspectiveCamera,
-renderer: THREE.WebGLRenderer,
-stats: Stats,
-particleGroup: THREE.Object3D,
-particleAttributes: any,
-particleSystemObject: THREE.Points,
-lensFlareObject: THREE.Mesh;
 
 //generic temporary transform to begin
 
 export let manager = new THREE.LoadingManager();
-
-export function createWorld() : void {
-  clock = new THREE.Clock();
-  galaxyClock = new THREE.Clock();
-
-  // init new Three.js scene
-  scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000);
-
-  // camera
-  camera = new THREE.PerspectiveCamera(
-    45,
-    window.innerWidth / window.innerHeight,
-    1,
-    5000,
-  );
-  camera.position.set(0, 30, 70);
-  //camera.lookAt(scene.position);
-
-  //Add hemisphere light
-  let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.1);
-  hemiLight.color.setHSL(0.6, 0.6, 0.6);
-  hemiLight.groundColor.setHSL(0.1, 1, 0.4);
-  hemiLight.position.set(0, 50, 0);
-  scene.add(hemiLight);
-
-  //Add directional light
-  let dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
-  dirLight.color.setHSL(0.1, 1, 0.95);
-  dirLight.position.set(-10, 100, 50);
-  dirLight.position.multiplyScalar(100);
-  scene.add(dirLight);
-
-  dirLight.castShadow = true;
-
-  dirLight.shadow.mapSize.width = 4096;
-  dirLight.shadow.mapSize.height = 4096;
-
-  let d = 200;
-
-  dirLight.shadow.camera.left = -d;
-  dirLight.shadow.camera.right = d;
-  dirLight.shadow.camera.top = d;
-  dirLight.shadow.camera.bottom = -d;
-
-  dirLight.shadow.camera.far = 15000;
-
-  //Setup the renderer
-  renderer = new THREE.WebGLRenderer({ antialias: true });
-  //renderer.setClearColor(0xbfd1e5);
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  //renderer.shadowMap.type = THREE.BasicShadowMap;
-  document.body.appendChild(renderer.domElement);
-
-  stats = new Stats();
-  document.body.appendChild(stats.dom);
-
-  renderer.gammaInput = true;
-  renderer.gammaOutput = true;
-
-  renderer.shadowMap.enabled = true;
-}
 
 export function glowingParticles() : void {
   var particleTextureLoader = new THREE.TextureLoader(manager);
