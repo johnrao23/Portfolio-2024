@@ -54,7 +54,6 @@ export function glowingParticles(scene: THREE.Scene, manager: THREE.LoadingManag
   scene.add(particleGroup);
 }
 
-
 export function createLensFlare(scene: THREE.Scene, x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string) : void {
   const boxScale = { x: xScale, y: 0.1, z: zScale };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
@@ -83,26 +82,30 @@ export function createLensFlare(scene: THREE.Scene, x: number, y: number, z: num
   scene.add(lensFlareObject);
 }
 
-export function addParticles() : void {
-  var geometry = new THREE.Geometry();
+export function addParticles(scene: THREE.Scene): void {
+  // Using BufferGeometry instead of the deprecated Geometry
+  var geometry = new THREE.BufferGeometry();
 
+  const vertices = [];
   for (let i = 0; i < 3000; i++) {
-    var vertex = new THREE.Vector3();
-    vertex.x = getRandomArbitrary(-1100, 1100);
-    vertex.y = getRandomArbitrary(-1100, 1100);
-    vertex.z = getRandomArbitrary(-1100, -500);
-    geometry.vertices.push(vertex);
+    vertices.push(getRandomArbitrary(-1100, 1100)); // x
+    vertices.push(getRandomArbitrary(-1100, 1100)); // y
+    vertices.push(getRandomArbitrary(-1100, -500)); // z
   }
 
+  // Creating a Float32Array from the vertices and adding it to the geometry
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+
   var material = new THREE.PointsMaterial({ size: 3 });
-  particleSystemObject = new THREE.Points(geometry, material);
+  var particleSystemObject = new THREE.Points(geometry, material);
 
   scene.add(particleSystemObject);
 }
 
-function getRandomArbitrary(min: number, max: number) : number {
+function getRandomArbitrary(min: number, max: number): number {
   return Math.random() * (max - min) + min;
 }
+
 
 export let galaxyMaterial: THREE.ShaderMaterial | null = null;
 export let galaxyPoints: THREE.Points | null = null;
