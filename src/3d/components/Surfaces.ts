@@ -1,8 +1,7 @@
 import * as THREE from 'three';
-import { scene, manager } from './World';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 
-export function simpleText( x: number, y: number, z: number, inputText: string, fontSize: number ): void {
+export function simpleText(scene: THREE.Scene, x: number, y: number, z: number, inputText: string, fontSize: number ): void {
   var text_loader = new FontLoader();;
 
   text_loader.load('./assets/Roboto_Regular.json', function (font: any) {
@@ -40,7 +39,7 @@ export function simpleText( x: number, y: number, z: number, inputText: string, 
   });
 }
 
-export function floatingLabel( x: number, y: number, z: number, inputMessage: string ): void {
+export function floatingLabel( scene: THREE.Scene, x: number, y: number, z: number, inputMessage: string ): void {
   var text_loader = new FontLoader();
 
   text_loader.load('./assets/Roboto_Regular.json', function (font: any) {
@@ -76,7 +75,7 @@ export function floatingLabel( x: number, y: number, z: number, inputMessage: st
   });
 }
 
-export function allSkillsSection( x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string, URLLink: string | null = null ): void {
+export function allSkillsSection( scene: THREE.Scene, manager: THREE.LoadingManager, x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string, URLLink: string | null = null ): void {
   const boxScale = { x: xScale, y: 0.1, z: zScale };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass
@@ -104,7 +103,7 @@ export function allSkillsSection( x: number, y: number, z: number, xScale: numbe
   scene.add(linkBox);
 }
 
-export function createTextOnPlane( scene: THREE.Scene, x: number, y: number, z: number, inputText: string, size1: number, size2: number ): void {
+export function createTextOnPlane( scene: THREE.Scene, manager: THREE.LoadingManager, x: number, y: number, z: number, inputText: string, size1: number, size2: number ): void {
   var activitiesGeometry = new THREE.PlaneGeometry(size1, size2);
   const loader = new THREE.TextureLoader(manager);
   var activitiesTexture = loader.load(inputText);

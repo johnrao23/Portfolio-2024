@@ -1055,7 +1055,7 @@ const Main = () => {
     //initialize world and begin
 
     function start() {
-      createWorld();
+      // createWorld();
       // createPhysicsWorld();
 
       // createGridPlane();
