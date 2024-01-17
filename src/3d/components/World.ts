@@ -116,7 +116,6 @@ export const generateGalaxy = (scene: THREE.Scene) : void => {
   parameters.radius = 100;
   parameters.branches = 3;
   parameters.spin = 1;
-
   parameters.randomnessPower = 3;
   parameters.insideColor = "#ff6030";
   parameters.outsideColor = "#1b3984";
