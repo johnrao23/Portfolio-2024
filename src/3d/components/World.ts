@@ -6,7 +6,10 @@ import galaxyFragmentShader from "../assets/fragment.glsl";
 //threejs variable declaration
 let clock: THREE.Clock,
 particleSystemObject: THREE.Points,
-lensFlareObject: THREE.Mesh;
+lensFlareObject: THREE.Mesh,
+particleGroup: THREE.Object3D,
+particleAttributes: any;
+
 export let galaxyMaterial: THREE.ShaderMaterial | null = null;
 export let galaxyPoints: THREE.Points | null = null;
 
@@ -204,7 +207,7 @@ export const generateGalaxy = (
 };
 
 
-export function moveParticles(particleGroup: THREE.Object3D, particleAttributes: any, particleSystemObject: THREE.Points, lensFlareObject: THREE.Mesh) : void {
+export function moveParticles() : void {
   particleSystemObject.rotation.z += 0.0003;
   lensFlareObject.rotation.z += 0.0002;
   if (lensFlareObject.position.x < 750) {
