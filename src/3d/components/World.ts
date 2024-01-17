@@ -12,6 +12,17 @@ particleAttributes: any,
 particleSystemObject: THREE.Points,
 lensFlareObject: THREE.Mesh;
 
+type GalaxyParameters = {
+  count: number;
+  size: number;
+  radius: number;
+  branches: number;
+  spin: number;
+  randomnessPower: number;
+  insideColor: string;
+  outsideColor: string;
+  randomness: number;
+};
 
 export function glowingParticles(scene: THREE.Scene, manager: THREE.LoadingManager, particleGroup: THREE.Object3D): void {
   var particleTextureLoader = new THREE.TextureLoader(manager);
@@ -107,18 +118,6 @@ function getRandomArbitrary(min: number, max: number): number {
 
 export let galaxyMaterial: THREE.ShaderMaterial | null = null;
 export let galaxyPoints: THREE.Points | null = null;
-
-type GalaxyParameters = {
-  count: number;
-  size: number;
-  radius: number;
-  branches: number;
-  spin: number;
-  randomnessPower: number;
-  insideColor: string;
-  outsideColor: string;
-  randomness: number;
-};
 
 export const generateGalaxy = (
   scene: THREE.Scene,
