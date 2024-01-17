@@ -85,7 +85,7 @@ export function createWorld() : void {
 
 export function glowingParticles() : void {
   var particleTextureLoader = new THREE.TextureLoader(manager);
-  var particleTexture = particleTextureLoader.load("../src/jsm/spark.png");
+  var particleTexture = particleTextureLoader.load("../assets/spark.png");
 
   particleGroup = new THREE.Object3D();
   particleGroup.position.x = -1;
@@ -129,7 +129,7 @@ export function createLensFlare(x: number, y: number, z: number, xScale: number,
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass
 
-  var geometry = new THREE.PlaneBufferGeometry(xScale, zScale);
+  var geometry = new THREE.PlaneGeometry(xScale, zScale);
 
   const loader = new THREE.TextureLoader();
   const texture = loader.load(boxTexture);
