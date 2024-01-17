@@ -7,6 +7,8 @@ import galaxyFragmentShader from "../assets/fragment.glsl";
 let clock: THREE.Clock,
 particleSystemObject: THREE.Points,
 lensFlareObject: THREE.Mesh;
+export let galaxyMaterial: THREE.ShaderMaterial | null = null;
+export let galaxyPoints: THREE.Points | null = null;
 
 type GalaxyParameters = {
   count: number;
@@ -111,9 +113,6 @@ export function addParticles(scene: THREE.Scene): void {
 function getRandomArbitrary(min: number, max: number): number {
   return Math.random() * (max - min) + min;
 }
-
-export let galaxyMaterial: THREE.ShaderMaterial | null = null;
-export let galaxyPoints: THREE.Points | null = null;
 
 export const generateGalaxy = (
   scene: THREE.Scene,
