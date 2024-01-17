@@ -1016,31 +1016,31 @@ const Main = () => {
     //   rotateCamera(ballObject);
     // }
 
-    //document loading
-    manager.onStart = function (item, loaded, total) {
-      //console.log("Loading started");
-    };
+    // //document loading
+    // manager.onStart = function (item, loaded, total) {
+    //   //console.log("Loading started");
+    // };
 
-    manager.onLoad = function () {
-      var readyStateCheckInterval = setInterval(function () {
-        if (document.readyState === "complete") {
-          clearInterval(readyStateCheckInterval);
-          for (let i = 0; i < preloadDivs.length; i++) {
-            preloadDivs[i].style.visibility = "hidden"; // or
-            preloadDivs[i].style.display = "none";
-          }
-          for (let i = 0; i < postloadDivs.length; i++) {
-            postloadDivs[i].style.visibility = "visible"; // or
-            postloadDivs[i].style.display = "block";
-          }
-        }
-      }, 1000);
-      //console.log("Loading complete");
-    };
+    // manager.onLoad = function () {
+    //   var readyStateCheckInterval = setInterval(function () {
+    //     if (document.readyState === "complete") {
+    //       clearInterval(readyStateCheckInterval);
+    //       for (let i = 0; i < preloadDivs.length; i++) {
+    //         preloadDivs[i].style.visibility = "hidden"; // or
+    //         preloadDivs[i].style.display = "none";
+    //       }
+    //       for (let i = 0; i < postloadDivs.length; i++) {
+    //         postloadDivs[i].style.visibility = "visible"; // or
+    //         postloadDivs[i].style.display = "block";
+    //       }
+    //     }
+    //   }, 1000);
+    //   //console.log("Loading complete");
+    // };
 
-    manager.onError = function (url) {
-      //console.log("Error loading");
-    };
+    // manager.onError = function (url) {
+    //   //console.log("Error loading");
+    // };
 
     startButton.addEventListener("click", startButtonEventListener);
 
