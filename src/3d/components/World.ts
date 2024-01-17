@@ -15,11 +15,8 @@ particleAttributes: any,
 particleSystemObject: THREE.Points,
 lensFlareObject: THREE.Mesh;
 
-//generic temporary transform to begin
 
-export let manager = new THREE.LoadingManager();
-
-export function glowingParticles() : void {
+export function glowingParticles(scene: THREE.Scene, manager: THREE.LoadingManager) : void {
   var particleTextureLoader = new THREE.TextureLoader(manager);
   var particleTexture = particleTextureLoader.load("../assets/spark.png");
 
@@ -60,7 +57,7 @@ export function glowingParticles() : void {
   scene.add(particleGroup);
 }
 
-export function createLensFlare(x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string) : void {
+export function createLensFlare(scene: THREE.Scene, x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string) : void {
   const boxScale = { x: xScale, y: 0.1, z: zScale };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass
