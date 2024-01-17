@@ -1,6 +1,5 @@
 // use Three.js to set up graphics
 import * as THREE from "three";
-import Stats from "stats.js";
 import galaxyVertexShader from "../assets/vertex.glsl";
 import galaxyFragmentShader from "../assets/fragment.glsl";
 
@@ -9,8 +8,6 @@ export let clock: THREE.Clock,
 galaxyClock: THREE.Clock,
 scene: THREE.Scene,
 renderer: THREE.WebGLRenderer,
-stats: Stats,
-particleGroup: THREE.Object3D,
 particleAttributes: any,
 particleSystemObject: THREE.Points,
 lensFlareObject: THREE.Mesh;
