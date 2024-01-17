@@ -41,8 +41,15 @@ import {
   createTextOnPlane,
 } from "./Surfaces";
 
-export const setupScene = (Ammo: any, container: HTMLDivElement) => {
+export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () => void) => {
+
   useEffect(() => {
+    const loadingManager = new THREE.LoadingManager();
+
+    loadingManager.onLoad = function () {
+      onLoaded(); 
+    };
+
     // Initialize Three.js scene, camera, renderer
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0x000000);

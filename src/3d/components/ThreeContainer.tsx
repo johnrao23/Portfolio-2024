@@ -4,13 +4,12 @@ import { setupScene } from './SceneSetup';
 
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isLoading, setIsLoading] = useState(true); // State to manage loading
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     Ammo().then((AmmoLib: any) => {
       if (containerRef.current) {
-        setupScene(AmmoLib, containerRef.current);
-        setIsLoading(false); // Set loading to false once setup is complete
+        setupScene(AmmoLib, containerRef.current, () => setIsLoading(false));
       }
     });
 

@@ -4,6 +4,16 @@ import Stats from "stats.js";
 import galaxyVertexShader from "../assets/vertex.glsl";
 import galaxyFragmentShader from "../assets/fragment.glsl";
 
+//threejs variable declaration
+export let clock: THREE.Clock,
+galaxyClock: THREE.Clock,
+scene: THREE.Scene,
+renderer: THREE.WebGLRenderer,
+stats: Stats,
+particleGroup: THREE.Object3D,
+particleAttributes: any,
+particleSystemObject: THREE.Points,
+lensFlareObject: THREE.Mesh;
 
 //generic temporary transform to begin
 
