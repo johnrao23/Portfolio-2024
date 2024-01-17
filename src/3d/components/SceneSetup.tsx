@@ -221,7 +221,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
       const deltaTime = clock.getDelta();
       moveBall(); // Update ball movement
       updatePhysics(deltaTime); // Update physics
-      moveParticles(particleSystemObject, lensFlareObject);
+      moveParticles();
       renderer.render(scene, camera); // Render the scene
       stats.end();
     };
