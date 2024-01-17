@@ -109,7 +109,7 @@ function getRandomArbitrary(min: number, max: number) : number {
 export let galaxyMaterial: THREE.ShaderMaterial | null = null;
 export let galaxyPoints: THREE.Points | null = null;
 
-export const generateGalaxy = () : void => {
+export const generateGalaxy = (scene: THREE.Scene) : void => {
   const parameters = {};
   parameters.count = 50000;
   parameters.size = 0.005;
@@ -224,7 +224,7 @@ export const generateGalaxy = () : void => {
   scene.add(galaxyPoints);
 };
 
-export function moveParticles() : void {
+export function moveParticles(particleGroup: THREE.Object3D, particleAttributes: any) : void {
   particleSystemObject.rotation.z += 0.0003;
   lensFlareObject.rotation.z += 0.0002;
   if (lensFlareObject.position.x < 750) {
