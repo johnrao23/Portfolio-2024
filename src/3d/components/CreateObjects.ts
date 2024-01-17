@@ -430,7 +430,7 @@ export const loadHelloWorldText = (scene: THREE.Scene) => {
 }
 
 //function to create billboard
-export const createBillboard = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number, textureImage: string, urlLink: any, rotation = 0 ) => {
+export const createBillboard = ( scene: THREE.Scene, Ammo: any, manager: THREE.LoadingManager, x: number, y: number, z: number, textureImage: string, urlLink: any, rotation = 0 ) => {
   const billboardPoleScale = { x: 1, y: 5, z: 1 };
   const billboardSignScale = { x: 30, y: 15, z: 1 };
 
@@ -507,7 +507,7 @@ export const createBillboard = ( scene: THREE.Scene, Ammo: any, x: number, y: nu
 }
 
 //create vertical billboard
-export const createBillboardRotated = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number, textureImage: string, urlLink: any, rotation = 0 ) => {
+export const createBillboardRotated = ( scene: THREE.Scene, Ammo: any, manager: THREE.LoadingManager, x: number, y: number, z: number, textureImage: string, urlLink: any, rotation = 0 ) => {
   const { addRigidPhysics, addCursorHoverObject } = useStore.getState();
   const billboardPoleScale = { x: 1, y: 2.5, z: 1 };
   const billboardSignScale = { x: 15, y: 20, z: 1 };
@@ -688,7 +688,7 @@ const createBrickBody = (scene: THREE.Scene, Ammo: any, threeObject: any, physic
 }
 
 //create brick wall
-export const wallOfBricks = (scene: THREE.Scene, Ammo: any) => {
+export const wallOfBricks = (scene: THREE.Scene, Ammo: any, manager: THREE.LoadingManager) => {
   const loader = new THREE.TextureLoader(manager);
   var pos = new THREE.Vector3();
   var quat = new THREE.Quaternion();
