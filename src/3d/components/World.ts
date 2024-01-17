@@ -226,7 +226,7 @@ export function moveParticles(particleGroup: THREE.Object3D, particleAttributes:
   for (var c = 0; c < particleGroup.children.length; c++) {
     var sprite = particleGroup.children[c];
 
-    // pulse away/towards center
+    // pulse away towards center
     // individual rates of movement
     var a = particleAttributes.randomness[c] + 0.75;
     var pulseFactor = Math.sin(a * time) * 0.1 + 0.9;
@@ -237,7 +237,5 @@ export function moveParticles(particleGroup: THREE.Object3D, particleAttributes:
   }
 
   // rotate the entire group
-  //particleGroup.rotation.x = time * 0.5;
   particleGroup.rotation.y = time * 0.75;
-  // particleGroup.rotation.z = time * 1.0;
 }
