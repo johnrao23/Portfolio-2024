@@ -51,11 +51,11 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 
-    const clock = new THREE.Clock();
-    const galaxyClock = new THREE.Clock();
-    // Initialize stats
+    // Initialize stats, clocks
     const stats = new Stats();
     document.body.appendChild(stats.dom);
+    const clock = new THREE.Clock();
+    const galaxyClock = new THREE.Clock();
 
     //default transform object
     let tmpTrans = new Ammo.btTransform();
