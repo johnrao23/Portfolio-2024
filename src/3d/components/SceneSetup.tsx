@@ -61,13 +61,13 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
     let tmpTrans = new Ammo.btTransform();
 
     // Function to create physics world
-    function createPhysicsWorld() {
-      let collisionConfiguration = new Ammo.btDefaultCollisionConfiguration(),
-          dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration),
-          overlappingPairCache = new Ammo.btDbvtBroadphase(),
-          constraintSolver = new Ammo.btSequentialImpulseConstraintSolver();
+     const createPhysicsWorld = () => {
+      const collisionConfiguration = new Ammo.btDefaultCollisionConfiguration(),
+            dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration),
+            overlappingPairCache = new Ammo.btDbvtBroadphase(),
+            constraintSolver = new Ammo.btSequentialImpulseConstraintSolver();
 
-      let physicsWorld = new Ammo.btDiscreteDynamicsWorld(
+      const physicsWorld = new Ammo.btDiscreteDynamicsWorld(
         dispatcher,
         overlappingPairCache,
         constraintSolver,
@@ -78,10 +78,13 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
       // Use the store to set the physicsWorld
       const { setPhysicsWorld } = useStore.getState();
       setPhysicsWorld(physicsWorld);
-    }
+
+      return physicsWorld;
+    };
 
     // Initialize the physics world
-    createPhysicsWorld();
+    const physicsWorld = createPhysicsWorld();
+
 
     // Create objects in the scene
     createGridPlane(scene, Ammo);
@@ -182,7 +185,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
       document.body.removeChild(stats.dom);
       // ... additional cleanup
     };
-  }, [AmmoLib, container]); // Dependencies for useEffect
+  }, [Ammo, container]); // Dependencies for useEffect
 
   return null;
 };
