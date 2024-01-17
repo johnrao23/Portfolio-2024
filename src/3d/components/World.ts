@@ -120,7 +120,12 @@ type GalaxyParameters = {
   randomness: number;
 };
 
-export const generateGalaxy = (scene: THREE.Scene, galaxyVertexShader: string, galaxyFragmentShader: string, renderer: THREE.WebGLRenderer): void => {
+export const generateGalaxy = (
+  scene: THREE.Scene,
+  galaxyVertexShader: string,
+  galaxyFragmentShader: string,
+  renderer: THREE.WebGLRenderer
+): void => {
   const parameters: GalaxyParameters = {
     count: 50000,
     size: 0.005,
@@ -133,25 +138,23 @@ export const generateGalaxy = (scene: THREE.Scene, galaxyVertexShader: string, g
     randomness: 0.2,
   };
 
-  let geometry = null;
-  galaxyMaterial = null;
-  galaxyPoints = null;
+  // If galaxyPoints already exist, dispose of them before creating new ones
   if (galaxyPoints !== null) {
-    geometry.dispose();
-    galaxyMaterial.dispose();
+    galaxyPoints.geometry.dispose();
+    if (Array.isArray(galaxyPoints.material)) {
+      galaxyPoints.material.forEach(mat => mat.dispose());
+    } else {
+      galaxyPoints.material.dispose();
+    }
     scene.remove(galaxyPoints);
   }
 
-  /**
-   * Geometry
-   */
-  geometry = new THREE.BufferGeometry();
+  const geometry = new THREE.BufferGeometry();
 
   const positions = new Float32Array(parameters.count * 3);
   const randomness = new Float32Array(parameters.count * 3);
-
   const colors = new Float32Array(parameters.count * 3);
-  const scales = new Float32Array(parameters.count * 1);
+  const scales = new Float32Array(parameters.count);
 
   const insideColor = new THREE.Color(parameters.insideColor);
   const outsideColor = new THREE.Color(parameters.outsideColor);
@@ -159,28 +162,12 @@ export const generateGalaxy = (scene: THREE.Scene, galaxyVertexShader: string, g
   for (let i = 0; i < parameters.count; i++) {
     const i3 = i * 3;
 
-    // Position
     const radius = Math.random() * parameters.radius;
+    const branchAngle = ((i % parameters.branches) / parameters.branches) * Math.PI * 2;
 
-    const branchAngle =
-      ((i % parameters.branches) / parameters.branches) * Math.PI * 2;
-
-    const randomX =
-      Math.pow(Math.random(), parameters.randomnessPower) *
-      (Math.random() < 0.5 ? 1 : -1) *
-      parameters.randomness *
-      radius;
-    const randomY =
-      Math.pow(Math.random(), parameters.randomnessPower) *
-      (Math.random() < 0.5 ? 1 : -1) *
-      parameters.randomness *
-      radius;
-    const randomZ =
-      Math.pow(Math.random(), parameters.randomnessPower) *
-        (Math.random() < 0.5 ? 1 : -1) *
-        parameters.randomness *
-        radius -
-      50;
+    const randomX = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * parameters.randomness * radius;
+    const randomY = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * parameters.randomness * radius;
+    const randomZ = Math.pow(Math.random(), parameters.randomnessPower) * (Math.random() < 0.5 ? 1 : -1) * parameters.randomness * radius - 50;
 
     positions[i3] = Math.cos(branchAngle) * radius;
     positions[i3 + 1] = 0;
@@ -190,7 +177,6 @@ export const generateGalaxy = (scene: THREE.Scene, galaxyVertexShader: string, g
     randomness[i3 + 1] = randomY;
     randomness[i3 + 2] = randomZ;
 
-    // Color
     const mixedColor = insideColor.clone();
     mixedColor.lerp(outsideColor, radius / parameters.radius);
 
@@ -198,24 +184,15 @@ export const generateGalaxy = (scene: THREE.Scene, galaxyVertexShader: string, g
     colors[i3 + 1] = mixedColor.g;
     colors[i3 + 2] = mixedColor.b;
 
-    // Scale
     scales[i] = Math.random();
   }
 
-  geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-  geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
-  geometry.setAttribute("aScale", new THREE.BufferAttribute(scales, 1));
-  geometry.setAttribute(
-    "aRandomness",
-    new THREE.BufferAttribute(randomness, 3),
-  );
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+  geometry.setAttribute('aScale', new THREE.BufferAttribute(scales, 1));
+  geometry.setAttribute('aRandomness', new THREE.BufferAttribute(randomness, 3));
 
-  /**
-   * Material
-   */
   galaxyMaterial = new THREE.ShaderMaterial({
-    size: parameters.size,
-    sizeAttenuation: true,
     depthWrite: false,
     blending: THREE.AdditiveBlending,
     vertexColors: true,
@@ -227,13 +204,11 @@ export const generateGalaxy = (scene: THREE.Scene, galaxyVertexShader: string, g
     },
   });
 
-  /**
-   * Points
-   */
   galaxyPoints = new THREE.Points(geometry, galaxyMaterial);
   galaxyPoints.position.y = -50;
   scene.add(galaxyPoints);
 };
+
 
 export function moveParticles(particleGroup: THREE.Object3D, particleAttributes: any) : void {
   particleSystemObject.rotation.z += 0.0003;
