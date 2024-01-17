@@ -43,15 +43,19 @@ import {
 
 export const setupScene = (Ammo: any, container: HTMLDivElement) => {
   useEffect(() => {
-    // Initialize renderer, scene, camera
+    // Initialize Three.js scene, camera, renderer
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x000000);
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer();
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     container.appendChild(renderer.domElement);
 
     const clock = new THREE.Clock();
     const galaxyClock = new THREE.Clock();
+    // Initialize stats
+    const stats = new Stats();
+    document.body.appendChild(stats.dom);
 
     //default transform object
     let tmpTrans = new Ammo.btTransform();
