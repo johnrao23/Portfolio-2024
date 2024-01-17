@@ -105,21 +105,33 @@ function getRandomArbitrary(min: number, max: number): number {
   return Math.random() * (max - min) + min;
 }
 
-
 export let galaxyMaterial: THREE.ShaderMaterial | null = null;
 export let galaxyPoints: THREE.Points | null = null;
 
-export const generateGalaxy = (scene: THREE.Scene) : void => {
-  const parameters = {};
-  parameters.count = 50000;
-  parameters.size = 0.005;
-  parameters.radius = 100;
-  parameters.branches = 3;
-  parameters.spin = 1;
-  parameters.randomnessPower = 3;
-  parameters.insideColor = "#ff6030";
-  parameters.outsideColor = "#1b3984";
-  parameters.randomness = 0.2;
+type GalaxyParameters = {
+  count: number;
+  size: number;
+  radius: number;
+  branches: number;
+  spin: number;
+  randomnessPower: number;
+  insideColor: string;
+  outsideColor: string;
+  randomness: number;
+};
+
+export const generateGalaxy = (scene: THREE.Scene, galaxyVertexShader: string, galaxyFragmentShader: string, renderer: THREE.WebGLRenderer): void => {
+  const parameters: GalaxyParameters = {
+    count: 50000,
+    size: 0.005,
+    radius: 100,
+    branches: 3,
+    spin: 1,
+    randomnessPower: 3,
+    insideColor: "#ff6030",
+    outsideColor: "#1b3984",
+    randomness: 0.2,
+  };
 
   let geometry = null;
   galaxyMaterial = null;
