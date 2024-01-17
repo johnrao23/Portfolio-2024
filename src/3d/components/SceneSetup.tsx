@@ -87,17 +87,10 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
     dirLight.shadow.camera.far = 15000;
 
     //Setup the renderer
-    //renderer.setClearColor(0xbfd1e5);
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight);
-    //renderer.shadowMap.type = THREE.BasicShadowMap;
     document.body.appendChild(renderer.domElement);
-
-    document.body.appendChild(stats.dom);
-
-    renderer.gammaInput = true;
-    renderer.gammaOutput = true;
-
+    renderer.outputEncoding = THREE.sRGBEncoding;
     renderer.shadowMap.enabled = true;
 
     //default transform object
