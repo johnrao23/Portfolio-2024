@@ -4,11 +4,7 @@ import galaxyVertexShader from "../assets/vertex.glsl";
 import galaxyFragmentShader from "../assets/fragment.glsl";
 
 //threejs variable declaration
-export let clock: THREE.Clock,
-galaxyClock: THREE.Clock,
-scene: THREE.Scene,
-renderer: THREE.WebGLRenderer,
-particleAttributes: any,
+let clock: THREE.Clock,
 particleSystemObject: THREE.Points,
 lensFlareObject: THREE.Mesh;
 
