@@ -2,7 +2,6 @@ import * as THREE from 'three';
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 import { useStore } from './store';
-import { manager } from './World';
 import { stoneTexture, woodTexture } from './Textures';
 
 const objectsWithLinks = [];
@@ -78,7 +77,7 @@ export const createGridPlane = (scene: THREE.Scene, Ammo: any) => {
   physicsWorld.addRigidBody(body);
 }
 
-export const createBall = (scene: THREE.Scene, Ammo: any) => {
+export const createBall = (scene: THREE.Scene, Ammo: any, manager: THREE.LoadingManager) => {
     let pos = { x: 8.75, y: 0, z: 0 };
     let radius = 2;
     let quat = { x: 0, y: 0, z: 0, w: 1 };
@@ -146,7 +145,7 @@ export const createBall = (scene: THREE.Scene, Ammo: any) => {
     useStore.setState({ ballObject: ball });
   };
 
-export const createBeachBall = (scene: THREE.Scene, Ammo: any) => {
+export const createBeachBall = (scene: THREE.Scene, Ammo: any, manager: THREE.LoadingManager) => {
   let pos = { x: 20, y: 30, z: 0 };
   let radius = 2;
   let quat = { x: 0, y: 0, z: 0, w: 1 };
@@ -202,7 +201,7 @@ export const createBeachBall = (scene: THREE.Scene, Ammo: any) => {
 }
 
 //create link boxes
-export const createBox = (scene: THREE.Scene, Ammo: any, x: number, y: number, z: number, scaleX: any, scaleY: any, scaleZ: any, boxTexture: string, URLLink: any, color = 0x000000, transparent = true) => {
+export const createBox = (scene: THREE.Scene, Ammo: any, manager: THREE.LoadingManager, x: number, y: number, z: number, scaleX: any, scaleY: any, scaleZ: any, boxTexture: string, URLLink: any, color = 0x000000, transparent = true) => {
     const { addRigidPhysics, addCursorHoverObject } = useStore.getState();
     const boxScale = { x: scaleX, y: scaleY, z: scaleZ };
     let quat = { x: 0, y: 0, z: 0, w: 1 };
