@@ -83,7 +83,6 @@ export function createLensFlare(scene: THREE.Scene, x: number, y: number, z: num
 }
 
 export function addParticles(scene: THREE.Scene): void {
-  // Using BufferGeometry instead of the deprecated Geometry
   var geometry = new THREE.BufferGeometry();
 
   const vertices = [];
