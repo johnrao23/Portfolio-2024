@@ -16,6 +16,28 @@ import {
 } from './CreateObjects';
 
 import {
+  clock,
+  scene,
+  camera,
+  renderer,
+  stats,
+  manager,
+  createWorld,
+  lensFlareObject,
+  createLensFlare,
+  particleGroup,
+  particleAttributes,
+  particleSystemObject,
+  glowingParticles,
+  addParticles,
+  moveParticles,
+  generateGalaxy,
+  galaxyMaterial,
+  galaxyClock,
+  galaxyPoints,
+} from "./World";
+
+import {
   pickPosition,
   launchClickPosition,
   getCanvasRelativePosition,
