@@ -207,21 +207,21 @@ export const setupScene = (Ammo: any, container: HTMLDivElement) => {
 
     // Animation loop
     const animate = () => {
-      const deltaTime = clock.getDelta(); // Make sure `clock` is defined
+      requestAnimationFrame(animate);
+      stats.begin();
+      const deltaTime = clock.getDelta();
       moveBall(); // Update ball movement
       updatePhysics(deltaTime); // Update physics
-      stats.update(); // Update stats
       renderer.render(scene, camera); // Render the scene
-      requestAnimationFrame(animate);
+      stats.end();
     };
     animate();
-    // Cleanup function
+    
     return () => {
       container.removeChild(renderer.domElement);
       document.body.removeChild(stats.dom);
-      // ... additional cleanup
     };
-  }, [Ammo, container]); // Dependencies for useEffect
+  }, [Ammo, container]);
 
   return null;
 };
