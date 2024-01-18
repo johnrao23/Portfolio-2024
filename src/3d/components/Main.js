@@ -1187,10 +1187,10 @@ const Main = () => {
       //   false
       // );
 
-      floatingLabel(27.875, 4.5, -100, "Github");
-      floatingLabel(34.86, 4.5, -100, "LinkedIn");
-      floatingLabel(42.875, 4.5, -100, "Twitter");
-      floatingLabel(50.26, 4.5, -100, "Email");
+      // floatingLabel(27.875, 4.5, -100, "Github");
+      // floatingLabel(34.86, 4.5, -100, "LinkedIn");
+      // floatingLabel(42.875, 4.5, -100, "Twitter");
+      // floatingLabel(50.26, 4.5, -100, "Email");
       // floatingLabel(35, 6.5, -70, '  Static \nWebsite');
       // floatingLabel(35, 6.5, -70, "   How I \nmade this");
       // floatingLabel(44, 6.5, -70, '   How I \nmade this');
@@ -1234,13 +1234,13 @@ const Main = () => {
       createTriangle(88, -59);
       createTriangle(88, -55);
 
-      addParticles();
-      glowingParticles();
-      generateGalaxy();
+      // addParticles();
+      // glowingParticles();
+      // generateGalaxy();
 
       setupEventHandlers();
       // window.addEventListener('mousemove', onDocumentMouseMove, false);
-      renderFrame();
+      // renderFrame();
     }
 
     //check if user's browser has WebGL capabilities

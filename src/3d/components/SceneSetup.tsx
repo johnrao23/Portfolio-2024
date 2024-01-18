@@ -142,6 +142,10 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     createTextOnPlane(scene, loadingManager, -77, 0.01, -80, inputText.bullVsBearText, 20, 40);
     createTextOnPlane( scene, loadingManager, -45, 0.01, -80, inputText.fairbnbText, 20, 40);
     createTextOnPlane( scene, loadingManager, -16, 0.01, -75, inputText.scanAndGoText, 20, 40);
+    floatingLabel(scene, 27.875, 4.5, -100, "Github");
+    floatingLabel(scene, 34.86, 4.5, -100, "LinkedIn");
+    floatingLabel(scene, 42.875, 4.5, -100, "Twitter");
+    floatingLabel(scene, 50.26, 4.5, -100, "Email");
 
     // utility functions for animation loop
     function moveBall() {
