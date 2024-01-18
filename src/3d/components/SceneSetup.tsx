@@ -146,6 +146,11 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     floatingLabel(scene, 34.86, 4.5, -100, "LinkedIn");
     floatingLabel(scene, 42.875, 4.5, -100, "Twitter");
     floatingLabel(scene, 50.26, 4.5, -100, "Email");
+    allSkillsSection(-60, 0.025, 20, 40, 40, boxTexture.allSkills);
+    allSkillsSection(75, 0.025, 25, 30, 60, inputText.activities);
+    allSkillsSection(8.75, 0.025, 62, 17, 20, boxTexture.lucasNoah);
+    allSkillsSection(9, 0.01, 40, 20, 20, boxTexture.familyText);
+    allSkillsSection(9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
 
     // utility functions for animation loop
     function moveBall() {
