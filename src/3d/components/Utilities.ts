@@ -1,6 +1,5 @@
 //start link events
 import * as THREE from "three";
-import { camera, renderer, scene } from "./World";
 import { useStore } from "./store";
 
 export const pickPosition = new THREE.Vector2(0, 0);
@@ -12,6 +11,10 @@ interface BallPosition {
     z: number;
   };
 }
+
+let scene: THREE.Scene,
+renderer: THREE.WebGLRenderer,
+camera: THREE.PerspectiveCamera;
 
 
 export function rotateCamera(ballPosition: BallPosition): void {
@@ -74,9 +77,15 @@ export function rotateCamera(ballPosition: BallPosition): void {
     );
   }
 
+  const ballPosVector = new THREE.Vector3(
+    ballPosition.position.x,
+    ballPosition.position.y,
+    ballPosition.position.z,
+  );
+
   camPos.lerp(targetPos, 0.033);
   camera.position.copy(camPos);
-  camera.lookAt(ballPosition.position);
+  camera.lookAt(ballPosVector);
 }
 
 export function getCanvasRelativePosition(event: MouseEvent): { x: number; y: number } {
