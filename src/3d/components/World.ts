@@ -237,3 +237,32 @@ export function moveParticles() : void {
   // rotate the entire group
   particleGroup.rotation.y = time * 0.75;
 }
+
+export const addHemisphereLight = (scene: THREE.Scene) : void => {
+  let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.1);
+  hemiLight.color.setHSL(0.6, 0.6, 0.6);
+  hemiLight.groundColor.setHSL(0.1, 1, 0.4);
+  hemiLight.position.set(0, 50, 0);
+  scene.add(hemiLight);
+};
+
+export const addDirectionalLight = (scene: THREE.Scene) : void => {
+  let dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
+  dirLight.color.setHSL(0.1, 1, 0.95);
+  dirLight.position.set(-10, 100, 50);
+  dirLight.position.multiplyScalar(100);
+  scene.add(dirLight);
+
+  // Configure shadow properties
+  dirLight.castShadow = true;
+  dirLight.shadow.mapSize.width = 4096;
+  dirLight.shadow.mapSize.height = 4096;
+  let d = 200;
+  dirLight.shadow.camera.left = -d;
+  dirLight.shadow.camera.right = d;
+  dirLight.shadow.camera.top = d;
+  dirLight.shadow.camera.bottom = -d;
+  dirLight.shadow.camera.far = 15000;
+
+  return dirLight;
+};
