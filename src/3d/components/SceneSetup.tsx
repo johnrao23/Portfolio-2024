@@ -10,7 +10,8 @@ import {
   addParticles,
   generateGalaxy,
   glowingParticles,
-  moveParticles
+  moveParticles,
+  createLensFlare,
 } from './World';
 
 import { 
@@ -77,6 +78,8 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     // add lighting to scene
     addHemisphereLight(scene);
     addDirectionalLight(scene);
+
+    createLensFlare(scene, 50, -50, -800, 200, 200, boxTexture.lensFlareMain);
 
     // add background effects to scene
     addParticles(scene);
