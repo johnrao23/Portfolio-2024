@@ -1202,7 +1202,7 @@ const Main = () => {
       // allSkillsSection(9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
 
       //lensflare
-      createLensFlare(50, -50, -800, 200, 200, boxTexture.lensFlareMain);
+      // createLensFlare(50, -50, -800, 200, 200, boxTexture.lensFlareMain);
 
       loadJohnText();
       loadEngineerText();
