@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import * as THREE from 'three';
-import Ammo from 'ammojs-typed';
 import Stats from 'stats.js';
 import { useStore } from './store';
 
