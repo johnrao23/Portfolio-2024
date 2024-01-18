@@ -122,7 +122,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     createPhysicsWorld();
 
 
-    // Create objects in the scene
+    // Adding objects to the scene
     createGridPlane(scene, Ammo);
     createWallX(scene, Ammo, 125, 1.75, 0);
     createWallX(scene, Ammo, -125, 1.75, 0);
