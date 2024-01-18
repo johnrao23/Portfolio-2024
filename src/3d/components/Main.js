@@ -1195,11 +1195,11 @@ const Main = () => {
       // floatingLabel(35, 6.5, -70, "   How I \nmade this");
       // floatingLabel(44, 6.5, -70, '   How I \nmade this');
 
-      allSkillsSection(-60, 0.025, 20, 40, 40, boxTexture.allSkills);
-      allSkillsSection(75, 0.025, 25, 30, 60, inputText.activities);
-      allSkillsSection(8.75, 0.025, 62, 17, 20, boxTexture.lucasNoah);
-      allSkillsSection(9, 0.01, 40, 20, 20, boxTexture.familyText);
-      allSkillsSection(9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
+      // allSkillsSection(-60, 0.025, 20, 40, 40, boxTexture.allSkills);
+      // allSkillsSection(75, 0.025, 25, 30, 60, inputText.activities);
+      // allSkillsSection(8.75, 0.025, 62, 17, 20, boxTexture.lucasNoah);
+      // allSkillsSection(9, 0.01, 40, 20, 20, boxTexture.familyText);
+      // allSkillsSection(9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
 
       //lensflare
       createLensFlare(50, -50, -800, 200, 200, boxTexture.lensFlareMain);
