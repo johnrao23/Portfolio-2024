@@ -246,7 +246,7 @@ export const addHemisphereLight = (scene: THREE.Scene) : void => {
   scene.add(hemiLight);
 };
 
-export const addDirectionalLight = (scene: THREE.Scene) : void => {
+export const addDirectionalLight = (scene: THREE.Scene) => {
   let dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
   dirLight.color.setHSL(0.1, 1, 0.95);
   dirLight.position.set(-10, 100, 50);
