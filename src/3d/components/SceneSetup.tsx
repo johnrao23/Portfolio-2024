@@ -114,12 +114,10 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
       // Use the store to set the physicsWorld
       const { setPhysicsWorld } = useStore.getState();
       setPhysicsWorld(physicsWorld);
-
-      return physicsWorld;
     };
 
     // Initialize the physics world
-    const physicsWorld = createPhysicsWorld();
+    createPhysicsWorld();
 
 
     // Create objects in the scene
