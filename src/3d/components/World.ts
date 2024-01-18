@@ -25,7 +25,7 @@ type GalaxyParameters = {
   randomness: number;
 };
 
-export function glowingParticles(scene: THREE.Scene, manager: THREE.LoadingManager, particleGroup: THREE.Object3D): void {
+export function glowingParticles(scene: THREE.Scene, manager: THREE.LoadingManager): void {
   var particleTextureLoader = new THREE.TextureLoader(manager);
   var particleTexture = particleTextureLoader.load("../assets/spark.png");
 
