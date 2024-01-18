@@ -4,7 +4,7 @@ import Ammo from 'ammojs-typed';
 import Stats from 'stats.js';
 import { useStore } from './store';
 
-import { moveParticles } from './World';
+import { addDirectionalLight, addHemisphereLight, moveParticles } from './World';
 
 import { 
   createGridPlane,
@@ -67,33 +67,8 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     const clock = new THREE.Clock();
     const galaxyClock = new THREE.Clock();
 
-    //Add hemisphere light
-    let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.1);
-    hemiLight.color.setHSL(0.6, 0.6, 0.6);
-    hemiLight.groundColor.setHSL(0.1, 1, 0.4);
-    hemiLight.position.set(0, 50, 0);
-    scene.add(hemiLight);
-
-    //Add directional light
-    let dirLight = new THREE.DirectionalLight(0xffffff, 0.7);
-    dirLight.color.setHSL(0.1, 1, 0.95);
-    dirLight.position.set(-10, 100, 50);
-    dirLight.position.multiplyScalar(100);
-    scene.add(dirLight);
-
-    dirLight.castShadow = true;
-
-    dirLight.shadow.mapSize.width = 4096;
-    dirLight.shadow.mapSize.height = 4096;
-
-    let d = 200;
-
-    dirLight.shadow.camera.left = -d;
-    dirLight.shadow.camera.right = d;
-    dirLight.shadow.camera.top = d;
-    dirLight.shadow.camera.bottom = -d;
-
-    dirLight.shadow.camera.far = 15000;
+    addHemisphereLight(scene);
+    addDirectionalLight(scene);
 
     //Setup the renderer
     renderer.setPixelRatio(window.devicePixelRatio);
