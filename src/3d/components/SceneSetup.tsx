@@ -67,6 +67,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     const clock = new THREE.Clock();
     const galaxyClock = new THREE.Clock();
 
+    // add lighting to scene
     addHemisphereLight(scene);
     addDirectionalLight(scene);
 
