@@ -27,6 +27,9 @@ import {
   helloWorldWords,
   wallOfBricks,
   createTriangle,
+  loadJohnText,
+  loadEngineerText,
+  loadHelloWorldText,
 } from './CreateObjects';
 
 import {
@@ -140,6 +143,9 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     createBillboardRotated( scene, Ammo, loadingManager, -15, 1.25, -105, billboardTextures.scanAndGoTexture, URL.samsClub, Math.PI * 0.1, );
     johnRaoWords(scene, Ammo, 11.2, 1, -20);
     helloWorldWords( scene, Ammo, 11.2, 1, -20);
+    loadJohnText(scene);
+    loadEngineerText(scene);
+    loadHelloWorldText(scene);
     createTextOnPlane( scene, loadingManager, -110, 0.01, -75, inputText.terpSolutionsText, 20, 40);
     createTextOnPlane(scene, loadingManager, -77, 0.01, -80, inputText.bullVsBearText, 20, 40);
     createTextOnPlane( scene, loadingManager, -45, 0.01, -80, inputText.fairbnbText, 20, 40);

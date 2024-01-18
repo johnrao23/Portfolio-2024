@@ -1204,9 +1204,9 @@ const Main = () => {
       //lensflare
       // createLensFlare(50, -50, -800, 200, 200, boxTexture.lensFlareMain);
 
-      loadJohnText();
-      loadEngineerText();
-      loadHelloWorldText();
+      // loadJohnText();
+      // loadEngineerText();
+      // loadHelloWorldText();
 
       let touchText, instructionsText;
       if (isTouchscreenDevice()) {
