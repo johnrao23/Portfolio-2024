@@ -45,8 +45,6 @@ import {
   boxTexture,
   inputText,
   URL,
-  stoneTexture,
-  woodTexture,
 } from "./Textures";
 
 import {
