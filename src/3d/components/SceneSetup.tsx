@@ -33,7 +33,6 @@ import {
 } from './CreateObjects';
 
 import {
-  pickPosition,
   launchClickPosition,
   getCanvasRelativePosition,
   rotateCamera,

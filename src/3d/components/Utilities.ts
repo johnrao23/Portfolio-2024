@@ -2,8 +2,6 @@
 import * as THREE from "three";
 import { useStore } from "./store";
 
-export const pickPosition = new THREE.Vector2(0, 0);
-
 interface BallPosition {
   position: {
     x: number;
@@ -16,6 +14,7 @@ let scene: THREE.Scene,
 renderer: THREE.WebGLRenderer,
 camera: THREE.PerspectiveCamera;
 
+const pickPosition = new THREE.Vector2(0, 0);
 
 export function rotateCamera(ballPosition: BallPosition): void {
   var camPos = new THREE.Vector3(
