@@ -4,7 +4,14 @@ import Ammo from 'ammojs-typed';
 import Stats from 'stats.js';
 import { useStore } from './store';
 
-import { addDirectionalLight, addHemisphereLight, addParticles, glowingParticles, moveParticles } from './World';
+import { 
+  addDirectionalLight,
+  addHemisphereLight,
+  addParticles,
+  generateGalaxy,
+  glowingParticles,
+  moveParticles
+} from './World';
 
 import { 
   createGridPlane,
@@ -72,8 +79,9 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     addDirectionalLight(scene);
 
     // add background effects to scene
-    addParticles(scene)
-    glowingParticles(scene)
+    addParticles(scene);
+    glowingParticles(scene);
+    generateGalaxy(scene);
 
     //Setup the renderer
     renderer.setPixelRatio(window.devicePixelRatio);
