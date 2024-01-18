@@ -153,18 +153,18 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     allSkillsSection(scene, loadingManager, 8.75, 0.025, 62, 17, 20, boxTexture.lucasNoah);
     allSkillsSection(scene, loadingManager, 9, 0.01, 40, 20, 20, boxTexture.familyText);
     allSkillsSection(scene, loadingManager, 9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
-    simpleText(9, 0.01, 5, instructionsText, 1.25);
-    simpleText(39, 0.01, -83, touchText, 1.5);
-    simpleText(-60, 0.01, -5, "SKILLS", 3);
-    simpleText(-60, 0.01, -55, "EXPERIENCE & PROJECTS", 3);
-    simpleText(75, 0.01, -10, "TIMELINE", 3);
+    simpleText(scene, 9, 0.01, 5, instructionsText, 1.25);
+    simpleText(scene, 39, 0.01, -83, touchText, 1.5);
+    simpleText(scene, -60, 0.01, -5, "SKILLS", 3);
+    simpleText(scene, -60, 0.01, -55, "EXPERIENCE & PROJECTS", 3);
+    simpleText(scene, 75, 0.01, -10, "TIMELINE", 3);
     wallOfBricks(scene, Ammo, loadingManager);
-    createTriangle(88, -75);
-    createTriangle(88, -71);
-    createTriangle(88, -67);
-    createTriangle(88, -63);
-    createTriangle(88, -59);
-    createTriangle(88, -55);
+    createTriangle(scene, Ammo, 88, -75);
+    createTriangle(scene, Ammo, 88, -71);
+    createTriangle(scene, Ammo, 88, -67);
+    createTriangle(scene, Ammo, 88, -63);
+    createTriangle(scene, Ammo, 88, -59);
+    createTriangle(scene, Ammo, 88, -55);
 
     // utility functions for animation loop
     function moveBall() {
