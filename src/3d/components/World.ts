@@ -5,9 +5,11 @@ import galaxyFragmentShader from "../assets/fragment.glsl";
 
 //threejs variable declaration
 let clock: THREE.Clock,
+manager: THREE.LoadingManager,
 particleSystemObject: THREE.Points,
 lensFlareObject: THREE.Mesh,
 particleGroup: THREE.Object3D,
+renderer: THREE.WebGLRenderer,
 particleAttributes: any;
 
 export let galaxyMaterial: THREE.ShaderMaterial | null = null;
@@ -25,7 +27,7 @@ type GalaxyParameters = {
   randomness: number;
 };
 
-export function glowingParticles(scene: THREE.Scene, manager: THREE.LoadingManager): void {
+export function glowingParticles(scene: THREE.Scene): void {
   var particleTextureLoader = new THREE.TextureLoader(manager);
   var particleTexture = particleTextureLoader.load("../assets/spark.png");
 
@@ -117,12 +119,7 @@ function getRandomArbitrary(min: number, max: number): number {
   return Math.random() * (max - min) + min;
 }
 
-export const generateGalaxy = (
-  scene: THREE.Scene,
-  galaxyVertexShader: string,
-  galaxyFragmentShader: string,
-  renderer: THREE.WebGLRenderer
-): void => {
+export const generateGalaxy = ( scene: THREE.Scene, ): void => {
   const parameters: GalaxyParameters = {
     count: 50000,
     size: 0.005,
