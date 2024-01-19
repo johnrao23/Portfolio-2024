@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import * as THREE from 'three';
 import Ammo from 'ammojs-typed';
 import { setupScene } from './SceneSetup';
 import { launchClickPosition, launchHover } from './Utilities';
@@ -11,7 +10,10 @@ const ThreeContainer: React.FC = () => {
 
   const startButtonEventListener = () => {
     setIsLoading(false);
-    document.getElementById("preload-overlay").style.display = "none";
+    const preloadOverlay = document.getElementById("preload-overlay");
+    if (preloadOverlay) {
+        preloadOverlay.style.display = "none";
+    }
     document.removeEventListener("click", startButtonEventListener);
     document.addEventListener("click", launchClickPosition);
     createBeachBall();
