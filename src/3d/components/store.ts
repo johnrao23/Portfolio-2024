@@ -4,18 +4,20 @@ import Ammo from 'ammojs-typed';
 
 const STATE = { DISABLE_DEACTIVATION: 4 };
 
+type MoveDirection = { left: number; right: number; forward: number; back: number };
+
 type State = {
   physicsWorld: Ammo.btDiscreteDynamicsWorld | null;
   rigidBodies: THREE.Mesh[];
   ballObject: THREE.Mesh | null;
   cursorHoverObjects: THREE.Object3D[];
-  moveDirection: { left: number; right: number; forward: number; back: number };
+  moveDirection: MoveDirection;
   setPhysicsWorld: (world: Ammo.btDiscreteDynamicsWorld) => void;
   addRigidBody: (body: THREE.Mesh, physicsBody?: Ammo.btRigidBody) => void;
   addRigidPhysics: (item: THREE.Mesh, itemScale: THREE.Vector3) => void;
   setBallObject: (newBallObject: THREE.Mesh | null) => void;
   addCursorHoverObject: (newObject: THREE.Object3D) => void;
-  setMoveDirection: (direction: keyof typeof moveDirection, value: number) => void;
+  setMoveDirection: (direction: keyof MoveDirection, value: number) => void;
 };
 
 export const useStore = create<State>((set) => ({
