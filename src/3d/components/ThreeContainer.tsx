@@ -14,22 +14,23 @@ const ThreeContainer: React.FC = () => {
       }
     });
 
+    const startButton = document.getElementById("start-button");
     const startButtonEventListener = () => {
-      setIsLoading(false); // Assuming this hides the overlay
+      setIsLoading(false);
       setTimeout(() => {
         document.addEventListener("mousemove", launchHover);
       }, 1000);
     };
 
-    const startButton = document.getElementById("start-button");
     if (startButton) {
       startButton.addEventListener("click", startButtonEventListener);
-    };
+    }
 
     // Cleanup logic
     return () => {
       if (startButton) {
         startButton.removeEventListener("click", startButtonEventListener);
+      }
     };
   }, []);
 
