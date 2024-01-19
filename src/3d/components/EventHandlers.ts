@@ -71,26 +71,27 @@ type Coordinates = {
 };
 
 export function touchEvent(coordinates: Coordinates): void {
+  const { setMoveDirection } = useStore.getState();
   if (coordinates.x > 30) {
-    moveDirection.right = 1;
-    moveDirection.left = 0;
+    setMoveDirection('right', 1);
+    setMoveDirection('left', 0);
   } else if (coordinates.x < -30) {
-    moveDirection.left = 1;
-    moveDirection.right = 0;
+    setMoveDirection('left', 1);
+    setMoveDirection('right', 0);
   } else {
-    moveDirection.right = 0;
-    moveDirection.left = 0;
+    setMoveDirection('right', 0);
+    setMoveDirection('left', 0);
   }
 
   if (coordinates.y > 30) {
-    moveDirection.back = 1;
-    moveDirection.forward = 0;
+    setMoveDirection('back', 1);
+    setMoveDirection('forward', 0);
   } else if (coordinates.y < -30) {
-    moveDirection.forward = 1;
-    moveDirection.back = 0;
+    setMoveDirection('forward', 1);
+    setMoveDirection('back', 0);
   } else {
-    moveDirection.forward = 0;
-    moveDirection.back = 0;
+    setMoveDirection('forward', 0);
+    setMoveDirection('back', 0);
   }
 }
 
@@ -153,15 +154,16 @@ export function createJoystick(parent: HTMLElement): { getPosition: () => Coordi
   }
 
   function handleMouseUp(): void {
+    const { setMoveDirection } = useStore.getState();
     if (dragStart === null) return;
     stick.style.transition = ".2s";
     stick.style.transform = "translate3d(0px, 0px, 0px)";
     dragStart = null;
     currentPos = { x: 0, y: 0 };
-    moveDirection.forward = 0;
-    moveDirection.left = 0;
-    moveDirection.right = 0;
-    moveDirection.back = 0;
+    setMoveDirection('forward', 0);
+    setMoveDirection('left', 0);
+    setMoveDirection('right', 0);
+    setMoveDirection('back', 0);
   }
 
   parent.appendChild(stick);
