@@ -19,15 +19,15 @@ import {
   createJoystick,
 } from "./resources/eventHandlers";
 
-import {
-  preloadDivs,
-  preloadOpacity,
-  postloadDivs,
-  startScreenDivs,
-  startButton,
-  noWebGL,
-  fadeOutDivs,
-} from "./resources/preload";
+// import {
+//   preloadDivs,
+//   preloadOpacity,
+//   postloadDivs,
+//   startScreenDivs,
+//   startButton,
+//   noWebGL,
+//   fadeOutDivs,
+// } from "./resources/preload";
 
 // import {
 //   clock,
@@ -51,22 +51,22 @@ import {
 //   galaxyPoints,
 // } from "./resources/world";
 
-import {
-  simpleText,
-  floatingLabel,
-  allSkillsSection,
-  createTextOnPlane,
-} from "./resources/surfaces";
+// import {
+//   simpleText,
+//   floatingLabel,
+//   allSkillsSection,
+//   createTextOnPlane,
+// } from "./resources/surfaces";
 
-import {
-  pickPosition,
-  launchClickPosition,
-  getCanvasRelativePosition,
-  rotateCamera,
-  launchHover,
-} from "./resources/utils";
+// import {
+//   pickPosition,
+//   launchClickPosition,
+//   getCanvasRelativePosition,
+//   rotateCamera,
+//   launchHover,
+// } from "./resources/utils";
 
-export let cursorHoverObjects = [];
+// export let cursorHoverObjects = [];
 
 const Main = () => {
   // start Ammo Engine
