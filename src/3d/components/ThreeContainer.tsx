@@ -56,7 +56,6 @@ const ThreeContainer: React.FC = () => {
 
   return (
     <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
-      {/* Render your 3D scene here */}
     </div>
   );
 };
