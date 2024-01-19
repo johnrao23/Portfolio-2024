@@ -1,7 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
+import * as THREE from 'three';
 import Ammo from 'ammojs-typed';
 import { setupScene } from './SceneSetup';
-import { launchHover } from './Utilities';
+import { launchClickPosition, launchHover } from './Utilities';
+import { createBeachBall } from './CreateObjects';
 
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -9,6 +11,10 @@ const ThreeContainer: React.FC = () => {
 
   const startButtonEventListener = () => {
     setIsLoading(false);
+    document.getElementById("preload-overlay").style.display = "none";
+    document.removeEventListener("click", startButtonEventListener);
+    document.addEventListener("click", launchClickPosition);
+    createBeachBall();
     setTimeout(() => {
       document.addEventListener("mousemove", launchHover);
     }, 1000);

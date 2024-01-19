@@ -24,7 +24,6 @@ import {
   createWallX,
   createWallZ,
   createBall,
-  createBeachBall,
   createBox,
   createBillboard,
   createBillboardRotated,
@@ -41,7 +40,6 @@ import {
   launchClickPosition,
   getCanvasRelativePosition,
   rotateCamera,
-  launchHover,
 } from "./Utilities";
 
 import {
@@ -68,7 +66,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     };
     
     setupEventHandlers();
-    
+
     // Determine device user is using to access app
     if (isTouchscreenDevice()) {
       const joystickWrapper = document.getElementById("joystick-wrapper");
@@ -156,7 +154,6 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     createWallZ(scene, Ammo, 0, 1.75, 125);
     createWallZ(scene, Ammo, 0, 1.75, -125);
     createBall(scene, Ammo, loadingManager);
-    createBeachBall(scene, Ammo, loadingManager);
     createBox(scene, Ammo, loadingManager, 28, 2, -100, 4, 4, 1, boxTexture.Github, URL.gitHub, 0x000000, true);
     createBox(scene, Ammo, loadingManager, 35.1, 2, -100, 4, 4, 1, boxTexture.LinkedIn, URL.LinkedIn, 0x0077b5, true);
     createBox(scene, Ammo, loadingManager, 42.9, 2, -100, 4, 4, 1, boxTexture.twitter, URL.twitter, 0x00a2f4, true);

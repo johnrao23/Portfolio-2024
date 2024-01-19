@@ -8,6 +8,8 @@ const objectsWithLinks = [];
 const rigidBodies = [];
 const STATE = { DISABLE_DEACTIVATION: 4 };
 
+let scene: THREE.Scene, Ammo: any, manager: THREE.LoadingManager;
+
 //create flat plane
 export const createGridPlane = (scene: THREE.Scene, Ammo: any) => {
 
@@ -145,7 +147,7 @@ export const createBall = (scene: THREE.Scene, Ammo: any, manager: THREE.Loading
     useStore.setState({ ballObject: ball });
   };
 
-export const createBeachBall = (scene: THREE.Scene, Ammo: any, manager: THREE.LoadingManager) => {
+export const createBeachBall = () => {
   let pos = { x: 20, y: 30, z: 0 };
   let radius = 2;
   let quat = { x: 0, y: 0, z: 0, w: 1 };
