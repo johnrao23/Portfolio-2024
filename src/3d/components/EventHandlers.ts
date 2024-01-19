@@ -34,26 +34,27 @@ function handleKeyDown(event: KeyboardEvent): void {
 
 function handleKeyUp(event: KeyboardEvent): void {
   const keyCode = event.keyCode;
+  const { setMoveDirection } = useStore.getState();
 
   switch (keyCode) {
     case 87: // W: FORWARD
     case 38: // Up arrow
-      moveDirection.forward = 0;
+      setMoveDirection('forward', 0);
       break;
 
     case 83: // S: BACK
     case 40: // Down arrow
-      moveDirection.back = 0;
+      setMoveDirection('back', 0);
       break;
 
     case 65: // A: LEFT
     case 37: // Left arrow
-      moveDirection.left = 0;
+      setMoveDirection('left', 0);
       break;
 
     case 68: // D: RIGHT
     case 39: // Right arrow
-      moveDirection.right = 0;
+      setMoveDirection('right', 0);
       break;
   }
 }
