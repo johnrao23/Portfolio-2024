@@ -13,6 +13,11 @@ import {
   createLensFlare,
 } from './World';
 
+import {
+  isTouchscreenDevice,
+  createJoystick,
+} from './EventHandlers'
+
 import { 
   createGridPlane,
   createWallX,
@@ -60,6 +65,14 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     loadingManager.onLoad = function () {
       onLoaded(); 
     };
+
+    if (isTouchscreenDevice()) {
+      const joystickWrapper = document.getElementById("joystick-wrapper");
+      if (joystickWrapper) {
+        createJoystick(joystickWrapper);
+        joystickWrapper.style.visibility = "visible";
+      }
+    }
 
     // Initialize Three.js scene, camera, renderer
     const scene = new THREE.Scene();
