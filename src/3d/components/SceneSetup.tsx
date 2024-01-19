@@ -36,11 +36,7 @@ import {
   loadHelloWorldText,
 } from './CreateObjects';
 
-import {
-  launchClickPosition,
-  getCanvasRelativePosition,
-  rotateCamera,
-} from "./Utilities";
+import { rotateCamera } from "./Utilities";
 
 import {
   billboardTextures,

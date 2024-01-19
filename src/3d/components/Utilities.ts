@@ -87,7 +87,7 @@ export function rotateCamera(ballPosition: BallPosition): void {
   camera.lookAt(ballPosVector);
 }
 
-export function getCanvasRelativePosition(event: MouseEvent): { x: number; y: number } {
+function getCanvasRelativePosition(event: MouseEvent): { x: number; y: number } {
   const rect = renderer.domElement.getBoundingClientRect();
   return {
     x: ((event.clientX - rect.left) * renderer.domElement.width) / rect.width,
