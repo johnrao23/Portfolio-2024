@@ -170,32 +170,28 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
 
     // utility functions for animation loop
     function moveBall() {
-      const { ballObject } = useStore.getState();
+      const { ballObject, moveDirection } = useStore.getState();
       if (!ballObject || !ballObject.userData.physicsBody) return;
-      let moveDirection = { left: 0, right: 0, forward: 0, back: 0 };
+    
       let scalingFactor = 20;
       let moveX = moveDirection.right - moveDirection.left;
       let moveZ = moveDirection.back - moveDirection.forward;
       let moveY = 0;
     
       if (ballObject.position.y < 2.01) {
-        moveX = moveDirection.right - moveDirection.left;
-        moveZ = moveDirection.back - moveDirection.forward;
         moveY = 0;
       } else {
-        moveX = moveDirection.right - moveDirection.left;
-        moveZ = moveDirection.back - moveDirection.forward;
         moveY = -0.25;
       }
     
       // no movement
-      if (moveX == 0 && moveY == 0 && moveZ == 0) return;
+      if (moveX === 0 && moveY === 0 && moveZ === 0) return;
     
       let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
       resultantImpulse.op_mul(scalingFactor);
       let physicsBody = ballObject.userData.physicsBody;
       physicsBody.setLinearVelocity(resultantImpulse);
-    }
+    }    
     
     function updatePhysics(deltaTime: number) {
       const { physicsWorld, rigidBodies, ballObject } = useStore.getState();
