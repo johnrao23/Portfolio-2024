@@ -66,12 +66,24 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
       onLoaded(); 
     };
 
+    // Determine device user is using to access app
     if (isTouchscreenDevice()) {
       const joystickWrapper = document.getElementById("joystick-wrapper");
       if (joystickWrapper) {
         createJoystick(joystickWrapper);
         joystickWrapper.style.visibility = "visible";
       }
+    }
+
+    let touchText, instructionsText;
+    if (isTouchscreenDevice()) {
+      touchText = "Touch boxes with your \nfinger to open links";
+      instructionsText =
+        "   Use the joystick in the bottom \nleft of the screen to move the ball.";
+    } else {
+      touchText = "Click on boxes with \nthe mouse to open links";
+      instructionsText =
+        "Use the arrow keys on your \n keyboard to move the ball.";
     }
 
     // Initialize Three.js scene, camera, renderer
