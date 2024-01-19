@@ -11,13 +11,13 @@
 //   woodTexture,
 // } from "./resources/textures";
 
-import {
-  setupEventHandlers,
-  moveDirection,
-  isTouchscreenDevice,
-  touchEvent,
-  createJoystick,
-} from "./resources/eventHandlers";
+// import {
+//   setupEventHandlers,
+//   moveDirection,
+//   isTouchscreenDevice,
+//   touchEvent,
+//   createJoystick,
+// } from "./resources/eventHandlers";
 
 // import {
 //   preloadDivs,
