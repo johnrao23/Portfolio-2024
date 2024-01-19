@@ -971,22 +971,22 @@ const Main = () => {
   // }
 
   //loading page section
-  function startButtonEventListener() {
-    for (let i = 0; i < fadeOutDivs.length; i++) {
-      fadeOutDivs[i].classList.add("fade-out");
-    }
-    setTimeout(() => {
-      document.getElementById("preload-overlay").style.display = "none";
-    }, 750);
+  // function startButtonEventListener() {
+  //   for (let i = 0; i < fadeOutDivs.length; i++) {
+  //     fadeOutDivs[i].classList.add("fade-out");
+  //   }
+  //   setTimeout(() => {
+  //     document.getElementById("preload-overlay").style.display = "none";
+  //   }, 750);
 
-    startButton.removeEventListener("click", startButtonEventListener);
-    document.addEventListener("click", launchClickPosition);
-    createBeachBall();
+  //   startButton.removeEventListener("click", startButtonEventListener);
+  //   document.addEventListener("click", launchClickPosition);
+  //   createBeachBall();
 
-    setTimeout(() => {
-      document.addEventListener("mousemove", launchHover);
-    }, 1000);
-  }
+  //   setTimeout(() => {
+  //     document.addEventListener("mousemove", launchHover);
+  //   }, 1000);
+  // }
 
   // function updatePhysics(deltaTime) {
   //   // Step world
@@ -1042,7 +1042,7 @@ const Main = () => {
   //   //console.log("Error loading");
   // };
 
-  startButton.addEventListener("click", startButtonEventListener);
+  // startButton.addEventListener("click", startButtonEventListener);
 
   // if (isTouchscreenDevice()) {
   //   document.getElementById("appDirections").innerHTML =
