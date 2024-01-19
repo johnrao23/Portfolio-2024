@@ -69,7 +69,7 @@ type Coordinates = {
   y: number;
 };
 
-export function touchEvent(coordinates: Coordinates): void {
+function touchEvent(coordinates: Coordinates): void {
   const { setMoveDirection } = useStore.getState();
   if (coordinates.x > 30) {
     setMoveDirection('right', 1);
