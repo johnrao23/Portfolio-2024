@@ -7,6 +7,13 @@ const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
 
+  const startButtonEventListener = () => {
+    setIsLoading(false);
+    setTimeout(() => {
+      document.addEventListener("mousemove", launchHover);
+    }, 1000);
+  };
+
   useEffect(() => {
     Ammo().then((AmmoLib: any) => {
       if (containerRef.current) {
@@ -15,13 +22,6 @@ const ThreeContainer: React.FC = () => {
     });
 
     const startButton = document.getElementById("start-button");
-    const startButtonEventListener = () => {
-      setIsLoading(false);
-      setTimeout(() => {
-        document.addEventListener("mousemove", launchHover);
-      }, 1000);
-    };
-
     if (startButton) {
       startButton.addEventListener("click", startButtonEventListener);
     }
