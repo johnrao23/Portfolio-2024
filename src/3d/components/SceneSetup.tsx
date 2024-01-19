@@ -253,6 +253,11 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     return () => {
       container.removeChild(renderer.domElement);
       document.body.removeChild(stats.dom);
+      const joystickWrapper = document.getElementById("joystick-wrapper");
+      if (joystickWrapper) {
+        joystickWrapper.style.visibility = "hidden";
+        joystickWrapper.innerHTML = "";
+      }
     };
   }, [Ammo, container, onLoaded]);
 
