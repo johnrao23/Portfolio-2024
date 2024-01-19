@@ -1244,11 +1244,11 @@ const Main = () => {
     }
 
     //check if user's browser has WebGL capabilities
-    if (WEBGL.isWebGLAvailable()) {
-      start();
-    } else {
-      noWebGL();
-    }
+    // if (WEBGL.isWebGLAvailable()) {
+    //   start();
+    // } else {
+    //   noWebGL();
+    // }
   });
 };
 
