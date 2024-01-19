@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Ammo from 'ammojs-typed';
 import { setupScene } from './SceneSetup';
+import { launchHover } from './Utilities';
 
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,9 +14,22 @@ const ThreeContainer: React.FC = () => {
       }
     });
 
+    const startButtonEventListener = () => {
+      setIsLoading(false); // Assuming this hides the overlay
+      setTimeout(() => {
+        document.addEventListener("mousemove", launchHover);
+      }, 1000);
+    };
+
+    const startButton = document.getElementById("start-button");
+    if (startButton) {
+      startButton.addEventListener("click", startButtonEventListener);
+    };
+
     // Cleanup logic
     return () => {
-      // Implement any necessary cleanup for Ammo and Three.js
+      if (startButton) {
+        startButton.removeEventListener("click", startButtonEventListener);
     };
   }, []);
 
@@ -26,7 +40,7 @@ const ThreeContainer: React.FC = () => {
           <h1 className="john-text postload">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
           <h1 className="postload start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
           <h1 id="appDirections" className="start-page-text joystick-directions-text postload">Move the ball around with the arrow keys on the keyboard.</h1>
-          <button id="start-button" className="postload">EXPLORE</button>
+          <button id="start-button" onClick={startButtonEventListener} className="postload">EXPLORE</button>
         </div>
         <div className="trinity-rings-spinner">
           <div className="circle"></div>
