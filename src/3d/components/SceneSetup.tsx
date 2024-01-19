@@ -241,7 +241,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
       container.removeChild(renderer.domElement);
       document.body.removeChild(stats.dom);
     };
-  }, [Ammo, container]);
+  }, [Ammo, container, onLoaded]);
 
   return null;
 };
