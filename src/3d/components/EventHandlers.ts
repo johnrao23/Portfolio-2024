@@ -6,54 +6,54 @@ export function setupEventHandlers(): void {
 }
 
 function handleKeyDown(event: KeyboardEvent): void {
-  const keyCode = event.keyCode;
+  const key = event.key;
   const { setMoveDirection } = useStore.getState();
 
-  switch (keyCode) {
-    case 87: // W: FORWARD
-    case 38: // Up arrow
+  switch (key) {
+    case 'W':
+    case 'ArrowUp':
       setMoveDirection('forward', 1);
       break;
 
-    case 83: // S: BACK
-    case 40: // Down arrow
+    case 'S':
+    case 'ArrowDown':
       setMoveDirection('back', 1);
       break;
 
-    case 65: // A: LEFT
-    case 37: // Left arrow
+    case 'A':
+    case 'ArrowLeft':
       setMoveDirection('left', 1);
       break;
 
-    case 68: // D: RIGHT
-    case 39: // Right arrow
+    case 'D':
+    case 'ArrowRight':
       setMoveDirection('right', 1);
       break;
   }
 }
 
 function handleKeyUp(event: KeyboardEvent): void {
-  const keyCode = event.keyCode;
+  const key = event.key;
   const { setMoveDirection } = useStore.getState();
 
-  switch (keyCode) {
-    case 87: // W: FORWARD
-    case 38: // Up arrow
+  switch (key) {
+    case 'W':
+    case 'ArrowUp':
       setMoveDirection('forward', 0);
       break;
 
-    case 83: // S: BACK
-    case 40: // Down arrow
+    case 'S':
+    case 'ArrowDown':
       setMoveDirection('back', 0);
       break;
 
-    case 65: // A: LEFT
-    case 37: // Left arrow
+    case 'A':
+    case 'ArrowLeft':
       setMoveDirection('left', 0);
       break;
 
-    case 68: // D: RIGHT
-    case 39: // Right arrow
+    case 'D':
+    case 'ArrowRight':
       setMoveDirection('right', 0);
       break;
   }
@@ -62,7 +62,6 @@ function handleKeyUp(event: KeyboardEvent): void {
 export function isTouchscreenDevice(): boolean {
   return 'ontouchstart' in window || 'ontouchstart' in document.documentElement;
 }
-
 
 // Type definition for coordinates
 type Coordinates = {
