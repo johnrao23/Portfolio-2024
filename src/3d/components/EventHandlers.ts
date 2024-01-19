@@ -1,12 +1,4 @@
-// Type definition for the move direction
-type MoveDirection = {
-  left: number;
-  right: number;
-  forward: number;
-  back: number;
-};
-
-export let moveDirection: MoveDirection = { left: 0, right: 0, forward: 0, back: 0 };
+import { useStore } from './store';
 
 export function setupEventHandlers(): void {
   window.addEventListener("keydown", handleKeyDown, false);
@@ -15,26 +7,27 @@ export function setupEventHandlers(): void {
 
 function handleKeyDown(event: KeyboardEvent): void {
   const keyCode = event.keyCode;
+  const { setMoveDirection } = useStore.getState();
 
   switch (keyCode) {
     case 87: // W: FORWARD
     case 38: // Up arrow
-      moveDirection.forward = 1;
+      setMoveDirection('forward', 1);
       break;
 
     case 83: // S: BACK
     case 40: // Down arrow
-      moveDirection.back = 1;
+      setMoveDirection('back', 1);
       break;
 
     case 65: // A: LEFT
     case 37: // Left arrow
-      moveDirection.left = 1;
+      setMoveDirection('left', 1);
       break;
 
     case 68: // D: RIGHT
     case 39: // Right arrow
-      moveDirection.right = 1;
+      setMoveDirection('right', 1);
       break;
   }
 }
