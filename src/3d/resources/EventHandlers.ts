@@ -1,81 +1,82 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-// create keyboard control event listeners
+// Type definition for the move direction
+type MoveDirection = {
+  left: number;
+  right: number;
+  forward: number;
+  back: number;
+};
 
-export let moveDirection = { left: 0, right: 0, forward: 0, back: 0 };
+export let moveDirection: MoveDirection = { left: 0, right: 0, forward: 0, back: 0 };
 
-export function setupEventHandlers() {
+export function setupEventHandlers(): void {
   window.addEventListener("keydown", handleKeyDown, false);
   window.addEventListener("keyup", handleKeyUp, false);
 }
 
-function handleKeyDown(event) {
-  let keyCode = event.keyCode;
+function handleKeyDown(event: KeyboardEvent): void {
+  const keyCode = event.keyCode;
 
   switch (keyCode) {
-    case 87: //W: FORWARD
-    case 38: //up arrow
+    case 87: // W: FORWARD
+    case 38: // Up arrow
       moveDirection.forward = 1;
       break;
 
-    case 83: //S: BACK
-    case 40: //down arrow
+    case 83: // S: BACK
+    case 40: // Down arrow
       moveDirection.back = 1;
       break;
 
-    case 65: //A: LEFT
-    case 37: //left arrow
+    case 65: // A: LEFT
+    case 37: // Left arrow
       moveDirection.left = 1;
       break;
 
-    case 68: //D: RIGHT
-    case 39: //right arrow
+    case 68: // D: RIGHT
+    case 39: // Right arrow
       moveDirection.right = 1;
       break;
   }
 }
 
-function handleKeyUp(event) {
-  let keyCode = event.keyCode;
+function handleKeyUp(event: KeyboardEvent): void {
+  const keyCode = event.keyCode;
 
   switch (keyCode) {
-    case 87: //FORWARD
-    case 38:
+    case 87: // W: FORWARD
+    case 38: // Up arrow
       moveDirection.forward = 0;
       break;
 
-    case 83: //BACK
-    case 40:
+    case 83: // S: BACK
+    case 40: // Down arrow
       moveDirection.back = 0;
       break;
 
-    case 65: //LEFT
-    case 37:
+    case 65: // A: LEFT
+    case 37: // Left arrow
       moveDirection.left = 0;
       break;
 
-    case 68: //RIGHT
-    case 39:
+    case 68: // D: RIGHT
+    case 39: // Right arrow
       moveDirection.right = 0;
       break;
   }
 }
 
-export function isTouchscreenDevice() {
-  let supportsTouch = false;
-  if ("ontouchstart" in window)
-    // iOS & android
-    supportsTouch = true;
-  else if (window.navigator.msPointerEnabled)
-    // Win8
-    supportsTouch = true;
-  else if ("ontouchstart" in document.documentElement)
-    // Controversial way to check touch support
-    supportsTouch = true;
-
-  return supportsTouch;
+export function isTouchscreenDevice(): boolean {
+  return 'ontouchstart' in window || 'ontouchstart' in document.documentElement;
 }
 
-export function touchEvent(coordinates) {
+
+// Type definition for coordinates
+type Coordinates = {
+  x: number;
+  y: number;
+};
+
+export function touchEvent(coordinates: Coordinates): void {
   if (coordinates.x > 30) {
     moveDirection.right = 1;
     moveDirection.left = 0;
@@ -99,10 +100,10 @@ export function touchEvent(coordinates) {
   }
 }
 
-export function createJoystick(parent) {
-  const maxDiff = 62; //how far drag can go
+export function createJoystick(parent: HTMLElement): { getPosition: () => Coordinates } {
+  const maxDiff = 62; // How far drag can go
   const stick = document.createElement("div");
-  //stick.classList.add("joystick");
+  // stick.classList.add("joystick");
   stick.setAttribute("id", "joystick");
 
   stick.addEventListener("mousedown", handleMouseDown);
@@ -112,19 +113,18 @@ export function createJoystick(parent) {
   document.addEventListener("touchmove", handleMouseMove);
   document.addEventListener("touchend", handleMouseUp);
 
-  let dragStart = null;
-  let currentPos = { x: 0, y: 0 };
+  let dragStart: Coordinates | null = null;
+  let currentPos: Coordinates = { x: 0, y: 0 };
 
-  function handleMouseDown(event) {
+  function handleMouseDown(event: MouseEvent | TouchEvent): void {
     event.preventDefault();
     stick.style.transition = "0s";
 
-    if (event.changedTouches) {
+    if ('changedTouches' in event) {
       dragStart = {
         x: event.changedTouches[0].clientX,
         y: event.changedTouches[0].clientY,
       };
-
       return;
     }
     dragStart = {
@@ -133,18 +133,22 @@ export function createJoystick(parent) {
     };
   }
 
-  function handleMouseMove(event) {
+  function handleMouseMove(event: MouseEvent | TouchEvent): void {
     if (dragStart === null) return;
 
-    //console.log("entered handleMouseMove");
-    if (event.changedTouches) {
-      event.clientX = event.changedTouches[0].clientX;
-      event.clientY = event.changedTouches[0].clientY;
-      //touchEvent(currentPos);
+    let eventX: number;
+    let eventY: number;
+
+    if ('changedTouches' in event) {
+      eventX = event.changedTouches[0].clientX;
+      eventY = event.changedTouches[0].clientY;
+    } else {
+      eventX = event.clientX;
+      eventY = event.clientY;
     }
 
-    const xDiff = event.clientX - dragStart.x;
-    const yDiff = event.clientY - dragStart.y;
+    const xDiff = eventX - dragStart.x;
+    const yDiff = eventY - dragStart.y;
     const angle = Math.atan2(yDiff, xDiff);
     const distance = Math.min(maxDiff, Math.hypot(xDiff, yDiff));
     const xNew = distance * Math.cos(angle);
@@ -154,10 +158,10 @@ export function createJoystick(parent) {
     touchEvent(currentPos);
   }
 
-  function handleMouseUp(event) {
+  function handleMouseUp(): void {
     if (dragStart === null) return;
     stick.style.transition = ".2s";
-    stick.style.transform = `translate3d(0px, 0px, 0px)`;
+    stick.style.transform = "translate3d(0px, 0px, 0px)";
     dragStart = null;
     currentPos = { x: 0, y: 0 };
     moveDirection.forward = 0;
