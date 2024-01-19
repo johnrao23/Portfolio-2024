@@ -16,6 +16,7 @@ import {
 import {
   isTouchscreenDevice,
   createJoystick,
+  setupEventHandlers,
 } from './EventHandlers'
 
 import { 
@@ -65,7 +66,9 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     loadingManager.onLoad = function () {
       onLoaded(); 
     };
-
+    
+    setupEventHandlers();
+    
     // Determine device user is using to access app
     if (isTouchscreenDevice()) {
       const joystickWrapper = document.getElementById("joystick-wrapper");

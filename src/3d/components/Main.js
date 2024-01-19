@@ -1044,28 +1044,25 @@ const Main = () => {
 
   startButton.addEventListener("click", startButtonEventListener);
 
-  if (isTouchscreenDevice()) {
-    document.getElementById("appDirections").innerHTML =
-      "Use the joystick in the bottom left to move the ball. Please use your device in portrait orientation!";
-    createJoystick(document.getElementById("joystick-wrapper"));
-    document.getElementById("joystick-wrapper").style.visibility = "visible";
-    document.getElementById("joystick").style.visibility = "visible";
-  }
+  // if (isTouchscreenDevice()) {
+  //   document.getElementById("appDirections").innerHTML =
+  //     "Use the joystick in the bottom left to move the ball. Please use your device in portrait orientation!";
+  //   createJoystick(document.getElementById("joystick-wrapper"));
+  //   document.getElementById("joystick-wrapper").style.visibility = "visible";
+  //   document.getElementById("joystick").style.visibility = "visible";
+  // }
 
   //initialize world and begin
 
   function start() {
     // createWorld();
     // createPhysicsWorld();
-
     // createGridPlane();
     // createBall();
-
     // createWallX(125, 1.75, 0);
     // createWallX(-125, 1.75, 0);
     // createWallZ(0, 1.75, 125);
     // createWallZ(0, 1.75, -125);
-
     // createBillboard(
     //   -115,
     //   2.5,
@@ -1074,7 +1071,6 @@ const Main = () => {
     //   URL.terpsolutions,
     //   Math.PI * 0.2,
     // );
-
     // createBillboard(
     //   -80,
     //   2.5,
@@ -1083,7 +1079,6 @@ const Main = () => {
     //   URL.bullVsBearTrading,
     //   Math.PI * 0.15,
     // );
-
     // createBillboard(
     //   -45,
     //   2.5,
@@ -1092,7 +1087,6 @@ const Main = () => {
     //   URL.getFairbnb,
     //   Math.PI * 0.1,
     // );
-
     // createBillboardRotated(
     //   -15,
     //   1.25,
@@ -1101,14 +1095,12 @@ const Main = () => {
     //   URL.samsClub,
     //   Math.PI * 0.1,
     // );
-
     // johnRaoWords(11.2, 1, -20);
     // helloWorldWords(11.2, 1, -20);
     // createTextOnPlane(-110, 0.01, -75, inputText.terpSolutionsText, 20, 40);
     // createTextOnPlane(-77, 0.01, -80, inputText.bullVsBearText, 20, 40);
     // createTextOnPlane(-45, 0.01, -80, inputText.fairbnbText, 20, 40);
     // createTextOnPlane(-16, 0.01, -75, inputText.scanAndGoText, 20, 40);
-
     // createBox(
     //   28,
     //   2,
@@ -1121,7 +1113,6 @@ const Main = () => {
     //   0x000000,
     //   true,
     // );
-
     // createBox(
     //   35.1,
     //   2,
@@ -1134,7 +1125,6 @@ const Main = () => {
     //   0x0077b5,
     //   true,
     // );
-
     // createBox(
     //   42.9,
     //   2,
@@ -1147,7 +1137,6 @@ const Main = () => {
     //   0x00a2f4,
     //   true,
     // );
-
     // createBox(
     //   35,
     //   2,
@@ -1160,7 +1149,6 @@ const Main = () => {
     //   0xffffff,
     //   false
     // );
-
     // createBox(
     //   50.5,
     //   2,
@@ -1173,7 +1161,6 @@ const Main = () => {
     //   0x000000,
     //   false,
     // );
-
     // createBox(
     //   44,
     //   2,
@@ -1186,7 +1173,6 @@ const Main = () => {
     //   0x000000,
     //   false
     // );
-
     // floatingLabel(27.875, 4.5, -100, "Github");
     // floatingLabel(34.86, 4.5, -100, "LinkedIn");
     // floatingLabel(42.875, 4.5, -100, "Twitter");
@@ -1194,38 +1180,31 @@ const Main = () => {
     // floatingLabel(35, 6.5, -70, '  Static \nWebsite');
     // floatingLabel(35, 6.5, -70, "   How I \nmade this");
     // floatingLabel(44, 6.5, -70, '   How I \nmade this');
-
     // allSkillsSection(-60, 0.025, 20, 40, 40, boxTexture.allSkills);
     // allSkillsSection(75, 0.025, 25, 30, 60, inputText.activities);
     // allSkillsSection(8.75, 0.025, 62, 17, 20, boxTexture.lucasNoah);
     // allSkillsSection(9, 0.01, 40, 20, 20, boxTexture.familyText);
     // allSkillsSection(9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
-
     //lensflare
     // createLensFlare(50, -50, -800, 200, 200, boxTexture.lensFlareMain);
-
     // loadJohnText();
     // loadEngineerText();
     // loadHelloWorldText();
-
-    let touchText, instructionsText;
-    if (isTouchscreenDevice()) {
-      touchText = "Touch boxes with your \nfinger to open links";
-      instructionsText =
-        "   Use the joystick in the bottom \nleft of the screen to move the ball.";
-    } else {
-      touchText = "Click on boxes with \nthe mouse to open links";
-      instructionsText =
-        "Use the arrow keys on your \n keyboard to move the ball.";
-    }
-
+    // let touchText, instructionsText;
+    // if (isTouchscreenDevice()) {
+    //   touchText = "Touch boxes with your \nfinger to open links";
+    //   instructionsText =
+    //     "   Use the joystick in the bottom \nleft of the screen to move the ball.";
+    // } else {
+    //   touchText = "Click on boxes with \nthe mouse to open links";
+    //   instructionsText =
+    //     "Use the arrow keys on your \n keyboard to move the ball.";
+    // }
     // simpleText(9, 0.01, 5, instructionsText, 1.25);
-
     // simpleText(39, 0.01, -83, touchText, 1.5);
     // simpleText(-60, 0.01, -5, "SKILLS", 3);
     // simpleText(-60, 0.01, -55, "EXPERIENCE & PROJECTS", 3);
     // simpleText(75, 0.01, -10, "TIMELINE", 3);
-
     // wallOfBricks();
     // createTriangle(88, -75);
     // createTriangle(88, -71);
@@ -1233,12 +1212,10 @@ const Main = () => {
     // createTriangle(88, -63);
     // createTriangle(88, -59);
     // createTriangle(88, -55);
-
     // addParticles();
     // glowingParticles();
     // generateGalaxy();
-
-    setupEventHandlers();
+    // setupEventHandlers();
     // window.addEventListener('mousemove', onDocumentMouseMove, false);
     // renderFrame();
   }
