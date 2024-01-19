@@ -9,11 +9,13 @@ type State = {
   rigidBodies: THREE.Mesh[];
   ballObject: THREE.Mesh | null;
   cursorHoverObjects: THREE.Object3D[];
+  moveDirection: { left: number; right: number; forward: number; back: number };
   setPhysicsWorld: (world: Ammo.btDiscreteDynamicsWorld) => void;
   addRigidBody: (body: THREE.Mesh, physicsBody?: Ammo.btRigidBody) => void;
   addRigidPhysics: (item: THREE.Mesh, itemScale: THREE.Vector3) => void;
   setBallObject: (newBallObject: THREE.Mesh | null) => void;
   addCursorHoverObject: (newObject: THREE.Object3D) => void;
+  setMoveDirection: (direction: keyof typeof moveDirection, value: number) => void;
 };
 
 export const useStore = create<State>((set) => ({
@@ -21,6 +23,7 @@ export const useStore = create<State>((set) => ({
   rigidBodies: [],
   ballObject: null,
   cursorHoverObjects: [],
+  moveDirection: { left: 0, right: 0, forward: 0, back: 0 },
 
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
 
@@ -79,4 +82,8 @@ export const useStore = create<State>((set) => ({
       return { ...currentState, physicsWorld: currentState.physicsWorld };
     });
   },
+
+  setMoveDirection: (direction, value) => set((state) => ({
+    moveDirection: { ...state.moveDirection, [direction]: value }
+  })),
 }));
