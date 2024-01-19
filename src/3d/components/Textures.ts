@@ -114,5 +114,4 @@ export {
   URL,
   stoneTexture,
   woodTexture,
-  SVG
 };
