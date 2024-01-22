@@ -1,11 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
-// import Ammo from 'ammojs-typed';
+import Ammo from 'ammo.js';
 import { setupScene } from './SceneSetup';
 import { launchClickPosition, launchHover } from './Utilities';
 import { createBeachBall } from './CreateObjects';
-
-let Ammo; 
-
 
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,7 +12,7 @@ const ThreeContainer: React.FC = () => {
     setIsLoading(false);
     const preloadOverlay = document.getElementById("preload-overlay");
     if (preloadOverlay) {
-        preloadOverlay.style.display = "none";
+      preloadOverlay.style.display = "none";
     }
     document.removeEventListener("click", startButtonEventListener);
     document.addEventListener("click", launchClickPosition);
@@ -26,23 +23,21 @@ const ThreeContainer: React.FC = () => {
   };
 
   useEffect(() => {
-    import('ammo.js').then(AmmoLib => {
-      Ammo = AmmoLib;
-      if (containerRef.current) {
-        setupScene(Ammo, containerRef.current, () => setIsLoading(false));
-      }
-    });
+    if (Ammo && containerRef.current) {
+      setupScene(Ammo, containerRef.current, () => setIsLoading(false));
+    }
 
     const startButton = document.getElementById("start-button");
     if (startButton) {
       startButton.addEventListener("click", startButtonEventListener);
     }
 
-    // Cleanup logic
     return () => {
       if (startButton) {
         startButton.removeEventListener("click", startButtonEventListener);
       }
+      document.removeEventListener("click", launchClickPosition);
+      document.removeEventListener("mousemove", launchHover);
     };
   }, []);
 
