@@ -23,9 +23,9 @@ const ThreeContainer: React.FC = () => {
   };
 
   useEffect(() => {
-    Ammo().then((AmmoLib: any) => {
+    Ammo(Ammo).then(() => {
       if (containerRef.current) {
-        setupScene(AmmoLib, containerRef.current, () => setIsLoading(false));
+        setupScene(Ammo, containerRef.current, () => setIsLoading(false));
       }
     });
 
