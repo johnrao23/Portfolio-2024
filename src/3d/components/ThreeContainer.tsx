@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Ammo from 'ammojs-typed';
+// import Ammo from 'ammojs-typed';
 import { setupScene } from './SceneSetup';
 import { launchClickPosition, launchHover } from './Utilities';
 import { createBeachBall } from './CreateObjects';
+
+let Ammo; 
+
 
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -23,7 +26,8 @@ const ThreeContainer: React.FC = () => {
   };
 
   useEffect(() => {
-    Ammo(Ammo).then(() => {
+    import('ammo.js').then(AmmoLib => {
+      Ammo = AmmoLib;
       if (containerRef.current) {
         setupScene(Ammo, containerRef.current, () => setIsLoading(false));
       }
