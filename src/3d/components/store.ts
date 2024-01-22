@@ -1,19 +1,19 @@
 import { create } from 'zustand';
 import * as THREE from 'three';
-import Ammo from 'ammojs-typed';
+import Ammo from 'ammo.js';
 
 const STATE = { DISABLE_DEACTIVATION: 4 };
 
 type MoveDirection = { left: number; right: number; forward: number; back: number };
 
 type State = {
-  physicsWorld: Ammo.btDiscreteDynamicsWorld | null;
+  physicsWorld: any;
   rigidBodies: THREE.Mesh[];
   ballObject: THREE.Mesh | null;
   cursorHoverObjects: THREE.Object3D[];
   moveDirection: MoveDirection;
-  setPhysicsWorld: (world: Ammo.btDiscreteDynamicsWorld) => void;
-  addRigidBody: (body: THREE.Mesh, physicsBody?: Ammo.btRigidBody) => void;
+  setPhysicsWorld: (world: any) => void;
+  addRigidBody: (body: THREE.Mesh, physicsBody?: any) => void;
   addRigidPhysics: (item: THREE.Mesh, itemScale: THREE.Vector3) => void;
   setBallObject: (newBallObject: THREE.Mesh | null) => void;
   addCursorHoverObject: (newObject: THREE.Object3D) => void;
