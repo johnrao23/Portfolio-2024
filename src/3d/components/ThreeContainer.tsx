@@ -4,8 +4,6 @@ import { launchClickPosition, launchHover } from './Utilities';
 import { createBeachBall } from './CreateObjects';
 import { useStore } from './store';
 
-let AmmoLib: any;
-
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
