@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { setupScene } from './SceneSetup';
 import { launchClickPosition, launchHover } from './Utilities';
 import { createBeachBall } from './CreateObjects';
+import { useStore } from './store';
 
 let AmmoLib: any;
 
@@ -9,18 +10,17 @@ const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(true);
-  const [ammoLoaded, setAmmoLoaded] = useState(false);
+  
+  const { ammoLoaded, initializeAmmo } = useStore();
 
   useEffect(() => {
-    import('ammo.js').then(Ammo => {
-      AmmoLib = Ammo;
-      setAmmoLoaded(true);
-    });
-  }, []);
+    // Initialize Ammo.js through the Zustand store
+    initializeAmmo();
+  }, [initializeAmmo]);
 
   useEffect(() => {
     if (ammoLoaded && containerRef.current) {
-      setupScene(AmmoLib, containerRef.current, () => {
+      setupScene(useStore.getState().ammo, containerRef.current, () => {
         setIsLoading(false);
       });
     }
