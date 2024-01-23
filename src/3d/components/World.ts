@@ -208,6 +208,7 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
 
 
 export function moveParticles() : void {
+  if (!particleSystemObject || !lensFlareObject) return;
   particleSystemObject.rotation.z += 0.0003;
   lensFlareObject.rotation.z += 0.0002;
   if (lensFlareObject.position.x < 750) {
