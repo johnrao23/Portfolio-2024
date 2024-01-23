@@ -31,6 +31,8 @@ export function glowingParticles(scene: THREE.Scene): void {
   var particleTextureLoader = new THREE.TextureLoader(manager);
   var particleTexture = particleTextureLoader.load("../assets/spark.png");
 
+  // Initialize particleGroup here
+  var particleGroup = new THREE.Group();
   particleGroup.position.set(-1, 7, 45);
 
   var particleAttributes: {
@@ -67,6 +69,7 @@ export function glowingParticles(scene: THREE.Scene): void {
 
   scene.add(particleGroup);
 }
+
 
 export function createLensFlare(scene: THREE.Scene, x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string) : void {
   const boxScale = { x: xScale, y: 0.1, z: zScale };

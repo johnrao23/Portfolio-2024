@@ -55,7 +55,6 @@ import {
 export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () => void) => {
   console.log("setupScene started");
 
-  useEffect(() => {
     const loadingManager = new THREE.LoadingManager();
 
     loadingManager.onLoad = function () {
@@ -269,9 +268,6 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
         joystickWrapper.innerHTML = "";
       }
     };
-  }, [Ammo, container, onLoaded]);
-
-  return null;
-};
+  }
 
 export default setupScene;
