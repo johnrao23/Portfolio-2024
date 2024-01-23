@@ -219,8 +219,8 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     
     function updatePhysics(deltaTime: number) {
       try {
-      const { physicsWorld, rigidBodies, ballObject } = useStore.getState();
-      if (!physicsWorld || !ballObject) return;
+        const { physicsWorld, rigidBodies, ballObject } = useStore.getState();
+        if (!physicsWorld || !ballObject || !ballObject.userData || !ballObject.userData.physicsBody) return;
     
       // Step world
       physicsWorld.stepSimulation(deltaTime, 10);
