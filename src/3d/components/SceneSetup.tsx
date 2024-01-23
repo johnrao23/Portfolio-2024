@@ -221,7 +221,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
       try {
         const { physicsWorld, rigidBodies, ballObject } = useStore.getState();
         if (!physicsWorld || !ballObject || !ballObject.userData || !ballObject.userData.physicsBody) {
-          console.error("Missing elements in physics update", { physicsWorld, ballObject });
+          console.error("Missing or incomplete elements in physics update", { physicsWorld, ballObject });
           return;
         }
     
