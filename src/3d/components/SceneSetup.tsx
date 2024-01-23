@@ -244,11 +244,24 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
         }
       }
     
-      //check to see if ball escaped the plane
-      if (ballObject.position.y < -50) {
-        scene.remove(ballObject);
-        createBall(scene, Ammo, loadingManager);
-      }
+      // Check to see if ball escaped the plane
+  if (ballObject.position.y < -50) {
+    const { physicsWorld } = useStore.getState();
+    
+    // Remove the ball from the physics world
+    if (ballObject.userData.physicsBody) {
+      physicsWorld.removeRigidBody(ballObject.userData.physicsBody);
+    }
+
+    // Remove the ball from the scene
+    scene.remove(ballObject);
+
+    // Reset the ballObject in the store to null
+    useStore.setState({ ballObject: null });
+
+    // Create a new ball
+    createBall(scene, Ammo, loadingManager);
+  }
     
       //check to see if ball is on text to rotate camera
       rotateCamera(ballObject);
