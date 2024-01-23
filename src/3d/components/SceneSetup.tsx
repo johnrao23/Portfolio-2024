@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import * as THREE from 'three';
 import Stats from 'stats.js';
 import { useStore } from './store';
