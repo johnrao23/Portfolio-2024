@@ -220,6 +220,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     function updatePhysics(deltaTime: number) {
       try {
         const { physicsWorld, rigidBodies, ballObject } = useStore.getState();
+        console.log("Ball Object in updatePhysics:", ballObject);
         if (!physicsWorld || !ballObject || !ballObject.userData || !ballObject.userData.physicsBody) return;
     
       // Step world
