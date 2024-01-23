@@ -26,10 +26,13 @@ const ThreeContainer: React.FC = () => {
   useEffect(() => {
     console.log("useEffect called in ThreeContainer");
     if (Ammo && containerRef.current) {
+      console.log("Calling setupScene from ThreeContainer");
       setupScene(Ammo, containerRef.current, () => {
-        console.log("setupScene completed, setting isLoading to false");
+        console.log("setupScene callback called, setting isLoading to false");
         setIsLoading(false);
       });
+    } else {
+      console.log("Ammo is not loaded or containerRef is not available");
     }
 
     const startButton = document.getElementById("start-button");
