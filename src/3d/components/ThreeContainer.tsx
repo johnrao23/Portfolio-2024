@@ -1,13 +1,39 @@
 import React, { useEffect, useRef, useState } from 'react';
-import Ammo from 'ammo.js';
 import { setupScene } from './SceneSetup';
 import { launchClickPosition, launchHover } from './Utilities';
 import { createBeachBall } from './CreateObjects';
+
+let AmmoLib: any;
+
 
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(true);
+  const [ammoLoaded, setAmmoLoaded] = useState(false);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      console.log("containerRef is attached to:", containerRef.current);
+    } else {
+      console.log("containerRef is null");
+    }
+  }, []);
+
+  useEffect(() => {
+    import('ammo.js').then(Ammo => {
+      AmmoLib = Ammo;
+      setAmmoLoaded(true);
+    });
+  }, []);
+
+  useEffect(() => {
+    if (ammoLoaded && containerRef.current) {
+      setupScene(AmmoLib, containerRef.current, () => {
+        setIsLoading(false);
+      });
+    }
+  }, [ammoLoaded]);
 
   const startButtonEventListener = () => {
     setShowOverlay(false);
@@ -22,32 +48,6 @@ const ThreeContainer: React.FC = () => {
       document.addEventListener("mousemove", launchHover);
     }, 1000);
   };
-
-  useEffect(() => {
-    console.log("useEffect called in ThreeContainer");
-    if (Ammo && containerRef.current) {
-      console.log("Calling setupScene from ThreeContainer");
-      setupScene(Ammo, containerRef.current, () => {
-        console.log("setupScene callback called, setting isLoading to false");
-        setIsLoading(false);
-      });
-    } else {
-      console.log("Ammo is not loaded or containerRef is not available");
-    }
-
-    const startButton = document.getElementById("start-button");
-    if (startButton) {
-      startButton.addEventListener("click", startButtonEventListener);
-    }
-
-    return () => {
-      if (startButton) {
-        startButton.removeEventListener("click", startButtonEventListener);
-      }
-      document.removeEventListener("click", launchClickPosition);
-      document.removeEventListener("mousemove", launchHover);
-    };
-  }, []);
 
   if (isLoading) {
     return (
