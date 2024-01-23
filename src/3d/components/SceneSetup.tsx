@@ -220,8 +220,10 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     function updatePhysics(deltaTime: number) {
       try {
         const { physicsWorld, rigidBodies, ballObject } = useStore.getState();
-        console.log("Ball Object in updatePhysics:", ballObject);
-        if (!physicsWorld || !ballObject || !ballObject.userData || !ballObject.userData.physicsBody) return;
+        if (!physicsWorld || !ballObject || !ballObject.userData || !ballObject.userData.physicsBody) {
+          console.error("Missing elements in physics update", { physicsWorld, ballObject });
+          return;
+        }
     
       // Step world
       physicsWorld.stepSimulation(deltaTime, 10);
@@ -251,7 +253,8 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
       //check to see if ball is on text to rotate camera
       rotateCamera(ballObject);
     } catch (error) {
-      console.error("Error in updatePhysics:", error);
+      const { ballObject } = useStore.getState();
+      console.error("Error in updatePhysics:", error, { ballObject });
       isAnimating = false; // Stop animation loop on error
     }
   }
