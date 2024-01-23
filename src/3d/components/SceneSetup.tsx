@@ -191,6 +191,8 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     createTriangle(scene, Ammo, 88, -55);
 
     // utility functions for animation loop
+    let isAnimating = true;
+
     function moveBall() {
       const { ballObject, moveDirection } = useStore.getState();
       if (!ballObject || !ballObject.userData.physicsBody) return;
