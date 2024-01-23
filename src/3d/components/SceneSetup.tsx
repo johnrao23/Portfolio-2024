@@ -218,6 +218,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     }    
     
     function updatePhysics(deltaTime: number) {
+      try {
       const { physicsWorld, rigidBodies, ballObject } = useStore.getState();
       if (!physicsWorld || !ballObject) return;
     
@@ -248,22 +249,34 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     
       //check to see if ball is on text to rotate camera
       rotateCamera(ballObject);
+    } catch (error) {
+      console.error("Error in updatePhysics:", error);
+      isAnimating = false; // Stop animation loop on error
     }
+  }
 
     // Animation loop
     const animate = () => {
+      if (!isAnimating) return; // Stop the animation loop if flag is false
       requestAnimationFrame(animate);
-      stats.begin();
-      const deltaTime = clock.getDelta();
-      moveBall(); // Update ball movement
-      updatePhysics(deltaTime); // Update physics
-      moveParticles();
-      renderer.render(scene, camera); // Render the scene
-      stats.end();
+  
+      try {
+        stats.begin();
+        const deltaTime = clock.getDelta();
+        moveBall();
+        updatePhysics(deltaTime);
+        moveParticles();
+        renderer.render(scene, camera);
+        stats.end();
+      } catch (error) {
+        console.error("Error in animate loop:", error);
+        isAnimating = false; // Stop animation loop on error
+      }
     };
     animate();
     
     return () => {
+      isAnimating = false; // Ensure animation loop is stopped when component is unmounted
       container.removeChild(renderer.domElement);
       document.body.removeChild(stats.dom);
       const joystickWrapper = document.getElementById("joystick-wrapper");
