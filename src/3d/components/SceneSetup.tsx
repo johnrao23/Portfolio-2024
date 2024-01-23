@@ -108,7 +108,7 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     // add background effects to scene
     addParticles(scene);
     glowingParticles(scene);
-    generateGalaxy(scene);
+    generateGalaxy(scene, renderer);
 
     //Setup the renderer
     renderer.setPixelRatio(window.devicePixelRatio);

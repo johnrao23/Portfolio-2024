@@ -122,7 +122,7 @@ function getRandomArbitrary(min: number, max: number): number {
   return Math.random() * (max - min) + min;
 }
 
-export const generateGalaxy = ( scene: THREE.Scene, ): void => {
+export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRenderer): void => {
   const parameters: GalaxyParameters = {
     count: 50000,
     size: 0.005,
