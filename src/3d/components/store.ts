@@ -1,12 +1,14 @@
 import { create } from 'zustand';
 import * as THREE from 'three';
-import Ammo from 'ammo.js';
 
 const STATE = { DISABLE_DEACTIVATION: 4 };
 
 type MoveDirection = { left: number; right: number; forward: number; back: number };
 
 type State = {
+  ammo: any;
+  ammoLoaded: boolean;
+  initializeAmmo: () => Promise<void>;
   physicsWorld: any;
   rigidBodies: THREE.Mesh[];
   ballObject: THREE.Mesh | null;
@@ -20,12 +22,21 @@ type State = {
   setMoveDirection: (direction: keyof MoveDirection, value: number) => void;
 };
 
-export const useStore = create<State>((set) => ({
+export const useStore = create<State>((set, get) => ({
+  ammo: null,
+  ammoLoaded: false,
   physicsWorld: null,
   rigidBodies: [],
   ballObject: null,
   cursorHoverObjects: [],
   moveDirection: { left: 0, right: 0, forward: 0, back: 0 },
+
+  initializeAmmo: async () => {
+    if (!get().ammoLoaded) {
+      const Ammo = await import('ammo.js');
+      set({ ammo: Ammo, ammoLoaded: true });
+    }
+  },
 
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
 
@@ -52,6 +63,7 @@ export const useStore = create<State>((set) => ({
       if (!currentState.physicsWorld) return currentState;
 
       // Add Rigid Physics logic here
+      let Ammo = currentState.ammo;
       let pos = new Ammo.btVector3(item.position.x, item.position.y, item.position.z);
       let scale = new Ammo.btVector3(itemScale.x * 0.5, itemScale.y * 0.5, itemScale.z * 0.5);
       let quat = new Ammo.btQuaternion(0, 0, 0, 1);
