@@ -53,12 +53,14 @@ import {
 } from "./Surfaces";
 
 export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () => void) => {
+  console.log("setupScene started");
 
   useEffect(() => {
     const loadingManager = new THREE.LoadingManager();
 
     loadingManager.onLoad = function () {
       onLoaded(); 
+      console.log("setupScene completed and onLoaded called");
     };
     
     setupEventHandlers();

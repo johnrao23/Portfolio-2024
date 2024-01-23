@@ -7,6 +7,7 @@ import { createBeachBall } from './CreateObjects';
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [showOverlay, setShowOverlay] = useState(true);
 
   const startButtonEventListener = () => {
     setIsLoading(false);
@@ -23,8 +24,12 @@ const ThreeContainer: React.FC = () => {
   };
 
   useEffect(() => {
+    console.log("useEffect called in ThreeContainer");
     if (Ammo && containerRef.current) {
-      setupScene(Ammo, containerRef.current, () => setIsLoading(false));
+      setupScene(Ammo, containerRef.current, () => {
+        console.log("setupScene completed, setting isLoading to false");
+        setIsLoading(false);
+      });
     }
 
     const startButton = document.getElementById("start-button");
