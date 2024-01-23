@@ -10,6 +10,7 @@ const ThreeContainer: React.FC = () => {
   const [showOverlay, setShowOverlay] = useState(true);
 
   const startButtonEventListener = () => {
+    setShowOverlay(false);
     setIsLoading(false);
     const preloadOverlay = document.getElementById("preload-overlay");
     if (preloadOverlay) {
