@@ -10,17 +10,11 @@ const ThreeContainer: React.FC = () => {
   const [showOverlay, setShowOverlay] = useState(true);
   
   const { ammo, ammoLoaded, initializeAmmo } = useStore();
-  const isAmmoInitialized = useRef(false);
 
   useEffect(() => {
     initializeAmmo();
   }, [initializeAmmo]);
 
-  useEffect(() => {
-    if (ammoLoaded) {
-      isAmmoInitialized.current = true;
-    }
-  }, [ammoLoaded]);
 
   // Always call useSetupScene at the top level
   useSetupScene(ammo, containerRef.current, () => setIsLoading(false), ammoLoaded);
