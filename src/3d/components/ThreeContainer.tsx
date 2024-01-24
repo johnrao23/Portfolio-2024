@@ -9,20 +9,15 @@ const ThreeContainer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(true);
   
-  const { ammoLoaded, initializeAmmo } = useStore();
+  const { initializeAmmo } = useStore();
 
   useEffect(() => {
     // Initialize Ammo.js through the Zustand store
     initializeAmmo();
   }, [initializeAmmo]);
 
-  useEffect(() => {
-    if (ammoLoaded && containerRef.current) {
-      useSetupScene(useStore.getState().ammo, containerRef.current, () => {
-        setIsLoading(false);
-      });
-    }
-  }, [ammoLoaded]);
+ // Use the custom hook for setting up the scene
+ useSetupScene(useStore.getState().ammo, containerRef.current, () => setIsLoading(false));
 
   const startButtonEventListener = () => {
     setShowOverlay(false);

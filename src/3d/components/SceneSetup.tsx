@@ -52,7 +52,7 @@ import {
   createTextOnPlane,
 } from "./Surfaces";
 
-export const useSetupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () => void) => {
+export const useSetupScene = (Ammo: any, container: HTMLDivElement | null, onLoaded: () => void) => {
   console.log("setupScene started");
 
   useEffect(() => {
@@ -76,7 +76,7 @@ export const useSetupScene = (Ammo: any, container: HTMLDivElement, onLoaded: ()
     }
 
     let touchText, instructionsText;
-    
+
     if (isTouchscreenDevice()) {
       touchText = "Touch boxes with your \nfinger to open links";
       instructionsText =
