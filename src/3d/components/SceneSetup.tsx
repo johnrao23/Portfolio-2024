@@ -76,6 +76,7 @@ export const useSetupScene = (Ammo: any, container: HTMLDivElement, onLoaded: ()
     }
 
     let touchText, instructionsText;
+    
     if (isTouchscreenDevice()) {
       touchText = "Touch boxes with your \nfinger to open links";
       instructionsText =
@@ -246,64 +247,63 @@ export const useSetupScene = (Ammo: any, container: HTMLDivElement, onLoaded: ()
         }
       }
     
-      // Check to see if ball escaped the plane
-  if (ballObject.position.y < -50) {
-    const { physicsWorld } = useStore.getState();
-    
-    // Remove the ball from the physics world
-    if (ballObject.userData.physicsBody) {
-      physicsWorld.removeRigidBody(ballObject.userData.physicsBody);
+    // Check to see if ball escaped the plane
+    if (ballObject.position.y < -50) {
+      const { physicsWorld } = useStore.getState();
+      
+      // Remove the ball from the physics world
+      if (ballObject.userData.physicsBody) {
+        physicsWorld.removeRigidBody(ballObject.userData.physicsBody);
+      }
+
+      // Remove the ball from the scene
+      scene.remove(ballObject);
+
+      // Reset the ballObject in the store to null
+      useStore.setState({ ballObject: null });
+
+      // Create a new ball
+      createBall(scene, Ammo, loadingManager);
     }
-
-    // Remove the ball from the scene
-    scene.remove(ballObject);
-
-    // Reset the ballObject in the store to null
-    useStore.setState({ ballObject: null });
-
-    // Create a new ball
-    createBall(scene, Ammo, loadingManager);
-  }
-    
-      //check to see if ball is on text to rotate camera
-      rotateCamera(ballObject);
-    } catch (error) {
-      const { ballObject } = useStore.getState();
-      console.error("Error in updatePhysics:", error, { ballObject });
-      isAnimating = false; // Stop animation loop on error
-    }
-  }
-
-    // Animation loop
-    const animate = () => {
-      if (!isAnimating) return; // Stop the animation loop if flag is false
-      requestAnimationFrame(animate);
-  
-      try {
-        stats.begin();
-        const deltaTime = clock.getDelta();
-        moveBall();
-        updatePhysics(deltaTime);
-        moveParticles();
-        renderer.render(scene, camera);
-        stats.end();
+      
+        //check to see if ball is on text to rotate camera
+        rotateCamera(ballObject);
       } catch (error) {
-        console.error("Error in animate loop:", error);
+        const { ballObject } = useStore.getState();
+        console.error("Error in updatePhysics:", error, { ballObject });
         isAnimating = false; // Stop animation loop on error
       }
-    };
-    animate();
-    
-    return () => {
-      isAnimating = false; // Ensure animation loop is stopped when component is unmounted
-      container.removeChild(renderer.domElement);
-      document.body.removeChild(stats.dom);
-      const joystickWrapper = document.getElementById("joystick-wrapper");
-      if (joystickWrapper) {
-        joystickWrapper.style.visibility = "hidden";
-        joystickWrapper.innerHTML = "";
-      }
     }
-    }, [Ammo, container, onLoaded]);
-    return;
-  }
+
+      // Animation loop
+      const animate = () => {
+        if (!isAnimating) return; // Stop the animation loop if flag is false
+        requestAnimationFrame(animate);
+    
+        try {
+          stats.begin();
+          const deltaTime = clock.getDelta();
+          moveBall();
+          updatePhysics(deltaTime);
+          moveParticles();
+          renderer.render(scene, camera);
+          stats.end();
+        } catch (error) {
+          console.error("Error in animate loop:", error);
+          isAnimating = false; // Stop animation loop on error
+        }
+      };
+      animate();
+      
+      return () => {
+        isAnimating = false; // Ensure animation loop is stopped when component is unmounted
+        container.removeChild(renderer.domElement);
+        document.body.removeChild(stats.dom);
+        const joystickWrapper = document.getElementById("joystick-wrapper");
+        if (joystickWrapper) {
+          joystickWrapper.style.visibility = "hidden";
+          joystickWrapper.innerHTML = "";
+        }
+      }
+  }, [Ammo, container, onLoaded]);
+}
