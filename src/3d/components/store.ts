@@ -12,6 +12,7 @@ type State = {
   physicsWorld: any;
   rigidBodies: THREE.Mesh[];
   ballObject: THREE.Mesh | null;
+  recreateBall: boolean;
   cursorHoverObjects: THREE.Object3D[];
   moveDirection: MoveDirection;
   setPhysicsWorld: (world: any) => void;
@@ -28,6 +29,7 @@ export const useStore = create<State>((set, get) => ({
   physicsWorld: null,
   rigidBodies: [],
   ballObject: null,
+  recreateBall: false,
   cursorHoverObjects: [],
   moveDirection: { left: 0, right: 0, forward: 0, back: 0 },
 
@@ -49,14 +51,16 @@ export const useStore = create<State>((set, get) => ({
   addRigidBody: (body, physicsBody) => {
     set((currentState) => {
       const updatedRigidBodies = [...currentState.rigidBodies, body];
-
+  
       if (physicsBody && currentState.physicsWorld) {
         currentState.physicsWorld.addRigidBody(physicsBody);
       }
-
+  
+      console.log("Updated rigidBodies array:", updatedRigidBodies);
       return { rigidBodies: updatedRigidBodies };
     });
   },
+  
 
   addRigidPhysics: (item, itemScale) => {
     set((currentState) => {

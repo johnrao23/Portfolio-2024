@@ -254,21 +254,22 @@ export const useSetupScene = (
     
     // Check to see if ball escaped the plane
     if (ballObject.position.y < -50) {
-      const { physicsWorld } = useStore.getState();
+      const { physicsWorld, recreateBall } = useStore.getState();
       
-      // Remove the ball from the physics world
       if (ballObject.userData.physicsBody) {
         physicsWorld.removeRigidBody(ballObject.userData.physicsBody);
       }
-
-      // Remove the ball from the scene
       scene.remove(ballObject);
-
-      // Reset the ballObject in the store to null
-      useStore.setState({ ballObject: null });
-
-      // Create a new ball
-      createBall(scene, Ammo, loadingManager);
+    
+      if (!recreateBall) { // Check if the ball is not already being recreated
+        useStore.setState({ ballObject: null, recreateBall: true });
+    
+        // Delay before recreating the ball
+        setTimeout(() => {
+          createBall(scene, Ammo, loadingManager);
+          useStore.setState({ recreateBall: false });
+        }, 1000); // Delay of 1 second
+      }
     }
       
         //check to see if ball is on text to rotate camera
