@@ -52,10 +52,11 @@ import {
   createTextOnPlane,
 } from "./Surfaces";
 
-export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () => void) => {
+export const useSetupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () => void) => {
   console.log("setupScene started");
 
   useEffect(() => {
+    if (!Ammo || !container) return;
     const loadingManager = new THREE.LoadingManager();
 
     loadingManager.onLoad = function () {
@@ -306,5 +307,3 @@ export const setupScene = (Ammo: any, container: HTMLDivElement, onLoaded: () =>
     }, [Ammo, container, onLoaded]);
     return;
   }
-
-export default setupScene;

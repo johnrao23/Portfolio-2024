@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { setupScene } from './SceneSetup';
+import { useSetupScene } from './SceneSetup';
 import { launchClickPosition, launchHover } from './Utilities';
 import { createBeachBall } from './CreateObjects';
 import { useStore } from './store';
@@ -18,7 +18,7 @@ const ThreeContainer: React.FC = () => {
 
   useEffect(() => {
     if (ammoLoaded && containerRef.current) {
-      setupScene(useStore.getState().ammo, containerRef.current, () => {
+      useSetupScene(useStore.getState().ammo, containerRef.current, () => {
         setIsLoading(false);
       });
     }
