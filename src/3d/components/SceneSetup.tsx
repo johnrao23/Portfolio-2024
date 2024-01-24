@@ -297,8 +297,12 @@ export const useSetupScene = (Ammo: any, container: HTMLDivElement | null, onLoa
       
       return () => {
         isAnimating = false; // Ensure animation loop is stopped when component is unmounted
-        container.removeChild(renderer.domElement);
-        document.body.removeChild(stats.dom);
+        if (container && container.contains(renderer.domElement)) {
+          container.removeChild(renderer.domElement);
+        }
+        if (document.body.contains(stats.dom)) {
+          document.body.removeChild(stats.dom);
+        }
         const joystickWrapper = document.getElementById("joystick-wrapper");
         if (joystickWrapper) {
           joystickWrapper.style.visibility = "hidden";
