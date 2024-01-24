@@ -52,11 +52,16 @@ import {
   createTextOnPlane,
 } from "./Surfaces";
 
-export const useSetupScene = (Ammo: any, container: HTMLDivElement | null, onLoaded: () => void) => {
+export const useSetupScene = (
+  Ammo: any, 
+  container: HTMLDivElement | null, 
+  onLoaded: () => void, 
+  ammoLoaded: boolean
+) => {
   console.log("setupScene started");
 
   useEffect(() => {
-    if (!Ammo || !container) return;
+    if (!Ammo || !container || !ammoLoaded) return;
     const loadingManager = new THREE.LoadingManager();
 
     loadingManager.onLoad = function () {
@@ -309,5 +314,5 @@ export const useSetupScene = (Ammo: any, container: HTMLDivElement | null, onLoa
           joystickWrapper.innerHTML = "";
         }
       }
-  }, [Ammo, container, onLoaded]);
+  }, [Ammo, container, onLoaded, ammoLoaded]);
 }

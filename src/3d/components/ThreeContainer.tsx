@@ -22,7 +22,9 @@ const ThreeContainer: React.FC = () => {
     }
   }, [ammoLoaded]);
 
-  useSetupScene(ammo, isAmmoInitialized.current ? containerRef.current : null, () => setIsLoading(false));
+  // Always call useSetupScene at the top level
+  useSetupScene(ammo, containerRef.current, () => setIsLoading(false), ammoLoaded);
+
 
   const startButtonEventListener = () => {
     setShowOverlay(false);
