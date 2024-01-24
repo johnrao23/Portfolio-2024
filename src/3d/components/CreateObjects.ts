@@ -138,10 +138,10 @@ export const createBall = (scene: THREE.Scene, Ammo: any, manager: THREE.Loading
     //once state is set to disable, dynamic interaction no longer calculated
     body.setActivationState(STATE.DISABLE_DEACTIVATION);
 
+    ball.userData.physicsBody = body;
+
     const { addRigidBody } = useStore.getState();
     addRigidBody(ball, body);
-
-    ball.userData.physicsBody = body;
 
     // Directly update ballObject in the store
     useStore.setState({ ballObject: ball });
