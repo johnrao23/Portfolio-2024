@@ -17,7 +17,7 @@ const ThreeContainer: React.FC = () => {
       setTimeout(() => {
         setupScene(ammo, containerRef.current, () => setIsLoading(false), ammoLoaded);
 
-      }, 500);
+      }, 5000);
       // Place your additional code here that should run after ammo is initialized.
     });
   }, [initializeAmmo]);
