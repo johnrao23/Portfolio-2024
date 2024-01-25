@@ -14,17 +14,13 @@ const ThreeContainer: React.FC = () => {
   useEffect(() => {
     initializeAmmo().then(() => {
       console.log('Ammo is initialized, now do something else.');
-      setupScene(ammo, containerRef.current, () => setIsLoading(false), ammoLoaded);
+      setTimeout(() => {
+        setupScene(ammo, containerRef.current, () => setIsLoading(false), ammoLoaded);
+
+      }, 500);
+      // Place your additional code here that should run after ammo is initialized.
     });
   }, [initializeAmmo]);
-
-
-  // // Always call useSetupScene at the top level
-  // useEffect(() => {
-   
-  // },[])
-  
-
 
   const startButtonEventListener = () => {
     setShowOverlay(false);
