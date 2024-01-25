@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useSetupScene } from './SceneSetup';
+import { setupScene } from './SceneSetup';
 import { launchClickPosition, launchHover } from './Utilities';
 import { createBeachBall } from './CreateObjects';
 import { useStore } from './store';
@@ -12,12 +12,18 @@ const ThreeContainer: React.FC = () => {
   const { ammo, ammoLoaded, initializeAmmo } = useStore();
 
   useEffect(() => {
-    initializeAmmo();
+    initializeAmmo().then(() => {
+      console.log('Ammo is initialized, now do something else.');
+      setupScene(ammo, containerRef.current, () => setIsLoading(false), ammoLoaded);
+    });
   }, [initializeAmmo]);
 
 
-  // Always call useSetupScene at the top level
-  useSetupScene(ammo, containerRef.current, () => setIsLoading(false), ammoLoaded);
+  // // Always call useSetupScene at the top level
+  // useEffect(() => {
+   
+  // },[])
+  
 
 
   const startButtonEventListener = () => {
