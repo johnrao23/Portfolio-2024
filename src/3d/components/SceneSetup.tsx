@@ -314,5 +314,4 @@ export const setupScene = (
           joystickWrapper.innerHTML = "";
         }
       }
- ;
 }
