@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import * as THREE from 'three';
 import Stats from 'stats.js';
 import { useStore } from './store';
@@ -37,7 +37,7 @@ import {
   loadHelloWorldText,
 } from './CreateObjects';
 
-import { rotateCamera, launchClickPosition, launchHover } from "./Utilities";
+import { rotateCamera } from "./Utilities";
 
 import {
   billboardTextures,
@@ -322,31 +322,7 @@ const setupScene: React.FC<SetupSceneProps> = ({ Ammo, container, onLoaded, ammo
       };
     }, [Ammo, container, onLoaded, ammoLoaded]);
 
-      const [showOverlay, setShowOverlay] = useState(true);
-
-      const startButtonEventListener = () => {
-        setShowOverlay(false);
-        const preloadOverlay = document.getElementById("preload-overlay");
-        if (preloadOverlay) {
-          preloadOverlay.style.display = "none";
-        }
-        document.removeEventListener("click", startButtonEventListener);
-        document.addEventListener("click", launchClickPosition);
-        createBeachBall();
-        setTimeout(() => {
-          document.addEventListener("mousemove", launchHover);
-        }, 1000);
-      };
-  return (
-    showOverlay && (
-      <div className="start-page-content-div">
-        <h1 className="john-text postload">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
-        <h1 className="postload start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
-        <h1 id="appDirections" className="start-page-text joystick-directions-text postload">Move the ball around with the arrow keys on the keyboard.</h1>
-        <button id="start-button" onClick={startButtonEventListener} className="postload">EXPLORE</button>
-      </div>
-    )
-  )
+  return null;
 }
 
 export default setupScene;

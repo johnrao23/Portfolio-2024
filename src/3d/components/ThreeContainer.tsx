@@ -17,7 +17,18 @@ const ThreeContainer: React.FC = () => {
         setIsLoading(false);
       });
     }
-  }, [ammoLoaded, initializeAmmo, ammo]);
+  }, [ammoLoaded, initializeAmmo]);
+
+  useEffect(() => {
+    if (ammoLoaded && !isLoading && !showOverlay) {
+      setupScene({
+        Ammo: ammo, 
+        container: containerRef.current, 
+        onLoaded: () => setIsLoading(false), 
+        ammoLoaded: ammoLoaded
+      });
+    }
+  }, [ammoLoaded, isLoading, showOverlay, ammo]);
 
   const startButtonEventListener = () => {
     setShowOverlay(false);
@@ -45,7 +56,7 @@ const ThreeContainer: React.FC = () => {
           <div className="loading-text-div">Loading<span className="loader__dot">.</span><span className="loader__dot">.</span><span className="loader__dot">.</span></div>
         </div>
       )}
-      {!isLoading && showOverlay && (
+      {showOverlay && (
         <div className="start-page-content-div">
           <h1 className="john-text postload">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
           <h1 className="postload start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
@@ -53,8 +64,7 @@ const ThreeContainer: React.FC = () => {
           <button id="start-button" onClick={startButtonEventListener} className="postload">EXPLORE</button>
         </div>
       )}
-      <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
-      </div>
+      <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
     </div>
   );
 };
