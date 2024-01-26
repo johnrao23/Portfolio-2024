@@ -5,7 +5,6 @@ import { useStore } from './store';
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [showOverlay, setShowOverlay] = useState(true);
   
   const { ammo, ammoLoaded, initializeAmmo } = useStore();
 
