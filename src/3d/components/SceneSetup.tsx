@@ -24,7 +24,6 @@ import {
   createWallX,
   createWallZ,
   createBall,
-  createBeachBall,
   createBox,
   createBillboard,
   createBillboardRotated,
