@@ -12,15 +12,12 @@ const ThreeContainer: React.FC = () => {
   const { ammo, ammoLoaded, initializeAmmo } = useStore();
 
   useEffect(() => {
-    initializeAmmo().then(() => {
-      console.log('Ammo is initialized, now do something else.');
-      setTimeout(() => {
-        setupScene(ammo, containerRef.current, () => setIsLoading(false), ammoLoaded);
-
-      }, 5000);
-      // Place your additional code here that should run after ammo is initialized.
-    });
-  }, [initializeAmmo]);
+    if (!ammoLoaded) {
+      initializeAmmo().then(() => {
+        setIsLoading(false);
+      });
+    }
+  }, [ammoLoaded, initializeAmmo, ammo]);
 
   const startButtonEventListener = () => {
     setShowOverlay(false);
@@ -48,7 +45,7 @@ const ThreeContainer: React.FC = () => {
           <div className="loading-text-div">Loading<span className="loader__dot">.</span><span className="loader__dot">.</span><span className="loader__dot">.</span></div>
         </div>
       )}
-      {showOverlay && !isLoading && (
+      {!isLoading && showOverlay && (
         <div className="start-page-content-div">
           <h1 className="john-text postload">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
           <h1 className="postload start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
