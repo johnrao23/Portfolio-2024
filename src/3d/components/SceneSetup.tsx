@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as THREE from 'three';
 import Stats from 'stats.js';
 import { useStore } from './store';
@@ -63,6 +63,8 @@ type SetupSceneProps = {
 const setupScene: React.FC<SetupSceneProps> = ({ Ammo, container, onLoaded, ammoLoaded }) => {
   console.log("setupScene started");
 
+  useEffect(() => {
+    // Check prerequisites
     if (!Ammo || !container || !ammoLoaded) return;
     const loadingManager = new THREE.LoadingManager();
 
@@ -303,6 +305,23 @@ const setupScene: React.FC<SetupSceneProps> = ({ Ammo, container, onLoaded, ammo
       };
       animate();
 
+      
+      return () => {
+        isAnimating = false; // Ensure animation loop is stopped when component is unmounted
+        if (container && container.contains(renderer.domElement)) {
+          container.removeChild(renderer.domElement);
+        }
+        if (document.body.contains(stats.dom)) {
+          document.body.removeChild(stats.dom);
+        }
+        const joystickWrapper = document.getElementById("joystick-wrapper");
+        if (joystickWrapper) {
+          joystickWrapper.style.visibility = "hidden";
+          joystickWrapper.innerHTML = "";
+        }
+      };
+    }, [Ammo, container, onLoaded, ammoLoaded]);
+
       const [showOverlay, setShowOverlay] = useState(true);
 
       const startButtonEventListener = () => {
@@ -318,21 +337,6 @@ const setupScene: React.FC<SetupSceneProps> = ({ Ammo, container, onLoaded, ammo
           document.addEventListener("mousemove", launchHover);
         }, 1000);
       };
-      
-      return () => {
-        isAnimating = false; // Ensure animation loop is stopped when component is unmounted
-        if (container && container.contains(renderer.domElement)) {
-          container.removeChild(renderer.domElement);
-        }
-        if (document.body.contains(stats.dom)) {
-          document.body.removeChild(stats.dom);
-        }
-        const joystickWrapper = document.getElementById("joystick-wrapper");
-        if (joystickWrapper) {
-          joystickWrapper.style.visibility = "hidden";
-          joystickWrapper.innerHTML = "";
-        }
-      }
   return (
     showOverlay && (
       <div className="start-page-content-div">
