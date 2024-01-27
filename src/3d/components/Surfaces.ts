@@ -4,7 +4,7 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 export function simpleText(scene: THREE.Scene, x: number, y: number, z: number, inputText: string, fontSize: number ): void {
   var text_loader = new FontLoader();;
 
-  text_loader.load('../assets/Roboto_Regular.json', function (font: any) {
+  text_loader.load('Roboto_Regular.json', function (font: any) {
     var xMid: number, text: THREE.Mesh;
 
     var color = 0xffffff;
@@ -42,7 +42,7 @@ export function simpleText(scene: THREE.Scene, x: number, y: number, z: number, 
 export function floatingLabel( scene: THREE.Scene, x: number, y: number, z: number, inputMessage: string ): void {
   var text_loader = new FontLoader();
 
-  text_loader.load('../assets/Roboto_Regular.json', function (font: any) {
+  text_loader.load('Roboto_Regular.json', function (font: any) {
     var xMid: number, text: THREE.Mesh;
 
     var color = 0xffffff;
