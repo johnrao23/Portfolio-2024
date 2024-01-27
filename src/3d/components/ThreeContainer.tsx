@@ -18,7 +18,7 @@ const ThreeContainer: React.FC = () => {
   }, [ammoLoaded, initializeAmmo]);
 
   useEffect(() => {
-    if (ammoLoaded && !isLoading && !showOverlay) {
+    if (ammoLoaded && isLoading && !showOverlay) {
       setupScene({
         Ammo: ammo, 
         container: containerRef.current, 
