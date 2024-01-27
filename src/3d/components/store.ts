@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 import * as THREE from 'three';
+import Ammo from 'ammo.js';
 
 const STATE = { DISABLE_DEACTIVATION: 4 };
 
@@ -33,11 +34,13 @@ export const useStore = create<State>((set, get) => ({
   cursorHoverObjects: [],
   moveDirection: { left: 0, right: 0, forward: 0, back: 0 },
 
-  initializeAmmo: async () => {
+  initializeAmmo: () => {
     if (!get().ammoLoaded) {
-      const Ammo = await import('ammo.js');
-      set({ ammo: Ammo, ammoLoaded: true });
+      return Ammo().then((AmmoLib: typeof Ammo) => {
+        set({ ammo: AmmoLib, ammoLoaded: true });
+      });
     }
+    return Promise.resolve();
   },
 
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
