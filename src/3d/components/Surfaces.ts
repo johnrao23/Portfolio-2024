@@ -86,7 +86,7 @@ export function allSkillsSection( scene: THREE.Scene, manager: THREE.LoadingMana
   const texture = loader.load(boxTexture);
   texture.magFilter = THREE.LinearFilter;
   texture.minFilter = THREE.LinearFilter;
-  texture.encoding = THREE.sRGBEncoding;
+  texture.colorSpace = THREE.SRGBColorSpace;
   const loadedTexture = new THREE.MeshBasicMaterial({
     map: texture,
     transparent: true,
