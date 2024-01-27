@@ -453,7 +453,7 @@ export const createBillboard = ( scene: THREE.Scene, Ammo: any, manager: THREE.L
   const texture = loader.load(textureImage);
   texture.magFilter = THREE.LinearFilter;
   texture.minFilter = THREE.LinearFilter;
-  texture.encoding = THREE.sRGBEncoding;
+  texture.colorSpace = THREE.SRGBColorSpace;
   var borderMaterial = new THREE.MeshBasicMaterial({
     color: 0x000000,
   });
@@ -529,7 +529,7 @@ export const createBillboardRotated = ( scene: THREE.Scene, Ammo: any, manager: 
   const texture = loader.load(textureImage);
   texture.magFilter = THREE.LinearFilter;
   texture.minFilter = THREE.LinearFilter;
-  texture.encoding = THREE.sRGBEncoding;
+  texture.colorSpace = THREE.SRGBColorSpace;
   var borderMaterial = new THREE.MeshBasicMaterial({
     color: 0x000000,
   });
