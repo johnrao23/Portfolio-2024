@@ -214,7 +214,7 @@ export const createBox = (scene: THREE.Scene, Ammo: any, manager: THREE.LoadingM
     const texture = loader.load(boxTexture);
     texture.magFilter = THREE.LinearFilter;
     texture.minFilter = THREE.LinearFilter;
-    texture.encoding = THREE.sRGBEncoding;
+    texture.colorSpace = THREE.SRGBColorSpace;
     const loadedTexture = new THREE.MeshBasicMaterial({
       map: texture,
       transparent: transparent,
