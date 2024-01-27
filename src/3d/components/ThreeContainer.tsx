@@ -13,19 +13,23 @@ const ThreeContainer: React.FC = () => {
 
   useEffect(() => {
     if (!ammoLoaded) {
-      initializeAmmo().then(() => setIsLoading(false));
-    }
-  }, [ammoLoaded, initializeAmmo]);
-
-  useEffect(() => {
-    if (ammoLoaded && !isLoading && !showOverlay) {
+      initializeAmmo().then(() => {
+        setIsLoading(false);
+        setupScene({
+          Ammo: ammo, 
+          container: containerRef.current, 
+          onLoaded: () => setIsLoading(false)
+        });
+      });
+    } else if (!isLoading) {
       setupScene({
         Ammo: ammo, 
         container: containerRef.current, 
-        onLoaded: () => setIsLoading(false),
+        onLoaded: () => setIsLoading(false)
       });
     }
-  }, [ammoLoaded, isLoading, showOverlay, ammo]);
+  }, [ammoLoaded, isLoading, ammo]);
+  
 
   const startButtonEventListener = () => {
     setShowOverlay(false);

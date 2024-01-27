@@ -34,13 +34,11 @@ export const useStore = create<State>((set, get) => ({
   cursorHoverObjects: [],
   moveDirection: { left: 0, right: 0, forward: 0, back: 0 },
 
-  initializeAmmo: () => {
+  initializeAmmo: async () => {
     if (!get().ammoLoaded) {
-      return Ammo().then((AmmoLib: typeof Ammo) => {
-        set({ ammo: AmmoLib, ammoLoaded: true });
-      });
+      const AmmoLib = await import('ammo.js');
+      set({ ammo: AmmoLib, ammoLoaded: true });
     }
-    return Promise.resolve();
   },
 
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
