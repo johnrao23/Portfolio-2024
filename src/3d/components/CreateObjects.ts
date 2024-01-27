@@ -90,7 +90,7 @@ export const createBall = (scene: THREE.Scene, Ammo: any, manager: THREE.Loading
     marbleTexture.wrapS = marbleTexture.wrapT = THREE.RepeatWrapping;
     marbleTexture.repeat.set(1, 1);
     marbleTexture.anisotropy = 1;
-    marbleTexture.encoding = THREE.sRGBEncoding;
+    marbleTexture.colorSpace = THREE.SRGBColorSpace;
 
     //threeJS Section
     let ball = new THREE.Mesh(
@@ -159,7 +159,7 @@ export const createBeachBall = () => {
   beachTexture.wrapS = beachTexture.wrapT = THREE.RepeatWrapping;
   beachTexture.repeat.set(1, 1);
   beachTexture.anisotropy = 1;
-  beachTexture.encoding = THREE.sRGBEncoding;
+  beachTexture.colorSpace = THREE.SRGBColorSpace;
 
   //threeJS Section
   let ball = new THREE.Mesh(
