@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import setupScene from './SceneSetup';
+import { setupScene } from './SceneSetup';
 import { launchClickPosition, launchHover } from './Utilities';
 import { createBeachBall } from './CreateObjects';
 import { useStore } from './store';
@@ -13,9 +13,7 @@ const ThreeContainer: React.FC = () => {
 
   useEffect(() => {
     if (!ammoLoaded) {
-      initializeAmmo().then(() => {
-        setIsLoading(false);
-      });
+      initializeAmmo().then(() => setIsLoading(false));
     }
   }, [ammoLoaded, initializeAmmo]);
 
@@ -24,8 +22,7 @@ const ThreeContainer: React.FC = () => {
       setupScene({
         Ammo: ammo, 
         container: containerRef.current, 
-        onLoaded: () => setIsLoading(false), 
-        ammoLoaded: ammoLoaded
+        onLoaded: () => setIsLoading(false),
       });
     }
   }, [ammoLoaded, isLoading, showOverlay, ammo]);
@@ -45,7 +42,7 @@ const ThreeContainer: React.FC = () => {
   };
 
   return (
-    <div>
+    <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
       {isLoading && (
         <div className="preload-overlay">
           <div className="trinity-rings-spinner">
@@ -64,7 +61,6 @@ const ThreeContainer: React.FC = () => {
           <button id="start-button" onClick={startButtonEventListener} className="postload">EXPLORE</button>
         </div>
       )}
-      <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
     </div>
   );
 };
