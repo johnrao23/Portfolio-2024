@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import * as THREE from 'three';
-import Ammo from 'ammo.js';
+import * as Ammo from "../builds/ammo";
 
 const STATE = { DISABLE_DEACTIVATION: 4 };
 
