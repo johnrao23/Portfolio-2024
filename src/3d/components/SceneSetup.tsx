@@ -56,19 +56,18 @@ type SetupSceneProps = {
   Ammo: any;
   container: HTMLDivElement | null;
   onLoaded: () => void;
-  ammoLoaded: boolean;
 };
 
-export const setupScene = (container, Ammo) => {
+export const setupScene = ({ Ammo, container, onLoaded }: SetupSceneProps) => {
   console.log("setupScene started");
 
   if (!container || !Ammo) return;
-  const loadingManager = new THREE.LoadingManager();
 
-  // loadingManager.onLoad = function () {
-  //   onLoaded(); 
-  //   console.log("setupScene completed and onLoaded called");
-  // };
+  const loadingManager = new THREE.LoadingManager();
+  loadingManager.onLoad = () => {
+    console.log("setupScene completed");
+    onLoaded();
+  };
   
   setupEventHandlers();
 
