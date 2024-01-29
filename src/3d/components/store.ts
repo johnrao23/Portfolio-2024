@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 import * as THREE from 'three';
-import * as Ammo from "../builds/ammo";
 
 const STATE = { DISABLE_DEACTIVATION: 4 };
 
@@ -36,8 +35,13 @@ export const useStore = create<State>((set, get) => ({
 
   initializeAmmo: async () => {
     if (!get().ammoLoaded) {
-      const AmmoLib = await import('ammo.js');
-      set({ ammo: AmmoLib, ammoLoaded: true });
+      try {
+        const AmmoLib = await import('ammo.js');
+        set({ ammo: AmmoLib, ammoLoaded: true });
+        console.log("Ammo initialized in store:", AmmoLib);
+      } catch (error) {
+        console.error("Failed to load Ammo:", error);
+      }
     }
   },
 

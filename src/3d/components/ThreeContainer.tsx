@@ -9,21 +9,17 @@ const ThreeContainer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(true);
   
-  const { ammo, ammoLoaded, initializeAmmo } = useStore();
+  const { initializeAmmo, ammoLoaded, ammo } = useStore();
 
   useEffect(() => {
     if (!ammoLoaded) {
-      initializeAmmo().then(() => {
-        setIsLoading(false);
-        setupScene({
-          Ammo: ammo, 
-          container: containerRef.current, 
-          onLoaded: () => setIsLoading(false)
-        });
-      });
-    } else if (!isLoading) {
+      initializeAmmo();
+    }
+  }, [initializeAmmo, ammoLoaded]);
+
+  useEffect(() => {
+    if (ammoLoaded && !isLoading) {
       setupScene({
-        Ammo: ammo, 
         container: containerRef.current, 
         onLoaded: () => setIsLoading(false)
       });
