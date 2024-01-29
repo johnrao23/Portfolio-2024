@@ -58,16 +58,17 @@ type SetupSceneProps = {
 
 export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
   const { ammo: Ammo, setPhysicsWorld } = useStore();
-  console.log("setupScene started");
+  console.log("setupScene started. Ammo available:", !!Ammo, "Container available:", !!container);
 
-  if (!container || !Ammo) return;
+  if (!container || !Ammo) {
+    console.log("Exiting setupScene early due to missing container or Ammo");
+    return;
+  }
 
   const loadingManager = new THREE.LoadingManager();
-
   loadingManager.onError = (url) => console.error(`There was an error loading ${url}`);
-
   loadingManager.onLoad = () => {
-    console.log("setupScene completed");
+    console.log("All assets loaded");
     onLoaded();
   };
   
