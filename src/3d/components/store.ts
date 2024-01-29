@@ -3,7 +3,7 @@ import * as THREE from 'three';
 
 const STATE = { DISABLE_DEACTIVATION: 4 };
 
-type MoveDirection = { left: number; right: number; forward: number; back: number };
+export type MoveDirection = { left: number; right: number; forward: number; back: number };
 
 type State = {
   ammo: any;

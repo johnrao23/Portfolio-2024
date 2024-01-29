@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import Stats from 'stats.js';
-import { useStore } from './store';
+import { useStore, MoveDirection } from './store';
 
 import { 
   addDirectionalLight,
@@ -287,25 +287,28 @@ export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
 
     // Animation loop
     const animate = () => {
-      if (!isAnimating) return; // Stop the animation loop if flag is false
+      if (!isAnimating) return;
       requestAnimationFrame(animate);
-  
+
       try {
         stats.begin();
         const deltaTime = clock.getDelta();
         const { ballObject, moveDirection, physicsWorld, rigidBodies } = useStore.getState();
-        moveBall(ballObject, moveDirection);
-        updatePhysics(deltaTime, physicsWorld, rigidBodies, ballObject);
+
+        if (ballObject) {
+          moveBall(ballObject, moveDirection);
+          updatePhysics(deltaTime, physicsWorld, rigidBodies, ballObject);
+        }
+
         moveParticles();
         renderer.render(scene, camera);
         stats.end();
       } catch (error) {
         console.error("Error in animate loop:", error);
-        isAnimating = false; // Stop animation loop on error
+        isAnimating = false;
       }
     };
     animate();
-
     
     return () => {
       isAnimating = false; // Ensure animation loop is stopped when component is unmounted
