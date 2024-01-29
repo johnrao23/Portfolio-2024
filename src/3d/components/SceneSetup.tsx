@@ -206,7 +206,7 @@ export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
   // utility functions for animation loop
   let isAnimating = true;
 
-  function moveBall(ballObject, moveDirection) {
+  function moveBall(ballObject: THREE.Mesh, moveDirection: MoveDirection) {
     if (!ballObject || !ballObject.userData.physicsBody) return;
   
     let scalingFactor = 20;
@@ -226,10 +226,10 @@ export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
     resultantImpulse.op_mul(scalingFactor);
     let physicsBody = ballObject.userData.physicsBody;
     physicsBody.setLinearVelocity(resultantImpulse);
-  }
+}
   
   
-  function updatePhysics(deltaTime: number) {
+  function updatePhysics(deltaTime: number, physicsWorld: any, rigidBodies: THREE.Mesh[], ballObject: THREE.Mesh) {
     try {
       const { physicsWorld, rigidBodies, ballObject } = useStore.getState();
       if (!physicsWorld || !ballObject || !ballObject.userData || !ballObject.userData.physicsBody) {
