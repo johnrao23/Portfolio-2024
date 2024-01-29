@@ -204,7 +204,8 @@ export const createBeachBall = () => {
 
 //create link boxes
 export const createBox = (scene: THREE.Scene, Ammo: any, manager: THREE.LoadingManager, x: number, y: number, z: number, scaleX: any, scaleY: any, scaleZ: any, boxTexture: string, URLLink: any, color = 0x000000, transparent = true) => {
-    const { addRigidPhysics, addCursorHoverObject } = useStore.getState();
+    
+  const { addRigidPhysics, addCursorHoverObject } = useStore.getState();
     const boxScale = { x: scaleX, y: scaleY, z: scaleZ };
     let quat = { x: 0, y: 0, z: 0, w: 1 };
     let mass = 0; //mass of zero = infinite mass
@@ -254,6 +255,7 @@ export const createBox = (scene: THREE.Scene, Ammo: any, manager: THREE.LoadingM
 
 //create Ammo.js body to add solid mass to "John Rao Software Engineer"
 export const johnRaoWords = ( scene: THREE.Scene, Ammo: any, x: number, y: number, z: number ) => {
+  
   const { addRigidPhysics } = useStore.getState();
   const boxScale = { x: 46, y: 3, z: 2 };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
