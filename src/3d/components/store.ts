@@ -38,7 +38,7 @@ export const useStore = create<State>((set, get) => ({
       try {
         const AmmoLib = await import('ammo.js');
         set({ ammo: AmmoLib, ammoLoaded: true });
-        console.log("Ammo initialized in store:", AmmoLib);
+        console.log("Ammo initialized in store:");
       } catch (error) {
         console.error("Failed to load Ammo:", error);
       }
