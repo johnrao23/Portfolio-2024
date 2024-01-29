@@ -206,8 +206,7 @@ export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
   // utility functions for animation loop
   let isAnimating = true;
 
-  function moveBall() {
-    const { ballObject, moveDirection } = useStore.getState();
+  function moveBall(ballObject, moveDirection) {
     if (!ballObject || !ballObject.userData.physicsBody) return;
   
     let scalingFactor = 20;
@@ -221,14 +220,14 @@ export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
       moveY = -0.25;
     }
   
-    // no movement
     if (moveX === 0 && moveY === 0 && moveZ === 0) return;
   
     let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
     resultantImpulse.op_mul(scalingFactor);
     let physicsBody = ballObject.userData.physicsBody;
     physicsBody.setLinearVelocity(resultantImpulse);
-  }    
+  }
+  
   
   function updatePhysics(deltaTime: number) {
     try {
@@ -294,8 +293,9 @@ export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
       try {
         stats.begin();
         const deltaTime = clock.getDelta();
-        moveBall();
-        updatePhysics(deltaTime);
+        const { ballObject, moveDirection, physicsWorld, rigidBodies } = useStore.getState();
+        moveBall(ballObject, moveDirection);
+        updatePhysics(deltaTime, physicsWorld, rigidBodies, ballObject);
         moveParticles();
         renderer.render(scene, camera);
         stats.end();
