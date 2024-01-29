@@ -52,12 +52,12 @@ import {
 } from "./Surfaces";
 
 type SetupSceneProps = {
-  Ammo: any;
   container: HTMLDivElement | null;
   onLoaded: () => void;
 };
 
-export const setupScene = ({ Ammo, container, onLoaded }: SetupSceneProps) => {
+export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
+  const { ammo: Ammo, setPhysicsWorld } = useStore();
   console.log("setupScene started");
 
   if (!container || !Ammo) return;
@@ -128,7 +128,7 @@ export const setupScene = ({ Ammo, container, onLoaded }: SetupSceneProps) => {
   let tmpTrans = new Ammo.btTransform();
 
   // Function to create physics world
-    const createPhysicsWorld = () => {
+  const createPhysicsWorld = () => {
     const collisionConfiguration = new Ammo.btDefaultCollisionConfiguration(),
           dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration),
           overlappingPairCache = new Ammo.btDbvtBroadphase(),
@@ -142,14 +142,16 @@ export const setupScene = ({ Ammo, container, onLoaded }: SetupSceneProps) => {
     );
     physicsWorld.setGravity(new Ammo.btVector3(0, -50, 0));
 
-    // Use the store to set the physicsWorld
-    const { setPhysicsWorld } = useStore.getState();
-    setPhysicsWorld(physicsWorld);
+    setPhysicsWorld(physicsWorld); // Set the physics world in the store
   };
 
   // Initialize the physics world
-  createPhysicsWorld();
-
+  if (Ammo) {
+    createPhysicsWorld();
+  } else {
+    console.error("Ammo.js is not initialized");
+    return; // Exit the function if Ammo.js is not available
+  }
 
   // Adding objects to the scene
   createGridPlane(scene, Ammo);
