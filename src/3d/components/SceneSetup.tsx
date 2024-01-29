@@ -63,7 +63,9 @@ export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
   if (!container || !Ammo) return;
 
   const loadingManager = new THREE.LoadingManager();
-  
+
+  loadingManager.onError = (url) => console.error(`There was an error loading ${url}`);
+
   loadingManager.onLoad = () => {
     console.log("setupScene completed");
     onLoaded();
