@@ -9,7 +9,7 @@ const ThreeContainer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(true);
   
-  const { initializeAmmo, ammoLoaded, ammo } = useStore();
+  const { initializeAmmo, ammoLoaded } = useStore();
 
   useEffect(() => {
     console.log("Initializing Ammo: ammoLoaded =", ammoLoaded);
@@ -18,6 +18,15 @@ const ThreeContainer: React.FC = () => {
     }
   }, [initializeAmmo, ammoLoaded]);
 
+  // New useEffect: Updates isLoading when ammoLoaded changes
+  useEffect(() => {
+    if (ammoLoaded) {
+      console.log("Ammo is loaded, setting isLoading to false");
+      setIsLoading(false);
+    }
+  }, [ammoLoaded]);
+
+  // Second useEffect: Sets up the scene
   useEffect(() => {
     console.log("Preparing to setup scene: ammoLoaded =", ammoLoaded, "isLoading =", isLoading, "containerRef =", containerRef.current);
     if (ammoLoaded && !isLoading) {
@@ -29,7 +38,7 @@ const ThreeContainer: React.FC = () => {
         }
       });
     }
-  }, [ammoLoaded, isLoading, ammo]);
+  }, [ammoLoaded, isLoading]);
   
 
   const startButtonEventListener = () => {
