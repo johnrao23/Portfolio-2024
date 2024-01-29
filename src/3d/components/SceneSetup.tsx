@@ -63,6 +63,7 @@ export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
   if (!container || !Ammo) return;
 
   const loadingManager = new THREE.LoadingManager();
+  
   loadingManager.onLoad = () => {
     console.log("setupScene completed");
     onLoaded();
