@@ -1,7 +1,7 @@
 // use Three.js to set up graphics
 import * as THREE from "three";
-import galaxyVertexShader from "/assets/vertex.glsl";
-import galaxyFragmentShader from "/assets/fragment.glsl";
+import galaxyVertexShader from "../shaders/vertex.glsl";
+import galaxyFragmentShader from "../shaders/fragment.glsl";
 
 //threejs variable declaration
 let clock: THREE.Clock,
