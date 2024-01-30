@@ -34,11 +34,14 @@ const ThreeContainer: React.FC = () => {
         container: containerRef.current,
         Ammo: ammo,
         setPhysicsWorld: setPhysicsWorld,
-        onLoaded: () => setIsLoading(false)
+        onLoaded: () => {
+          setIsLoading(false)
+          setShowOverlay(true);
+        }
       });
       
     }
-  }, [ammoLoaded, isLoading]);
+  }, [ammoLoaded, isLoading, ammo, setPhysicsWorld]);
   
 
   const startButtonEventListener = () => {
