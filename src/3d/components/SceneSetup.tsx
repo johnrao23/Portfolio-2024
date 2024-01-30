@@ -256,25 +256,25 @@ export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
       }
     }
   
-  // Check to see if ball escaped the plane
-  if (ballObject.position.y < -50) {
-    const { physicsWorld, recreateBall } = useStore.getState();
-    
-    if (ballObject.userData.physicsBody) {
-      physicsWorld.removeRigidBody(ballObject.userData.physicsBody);
+    // Check if the ball escaped the plane
+    if (ballObject.position.y < -50) {
+      const { recreateBall } = useStore.getState();
+
+      if (ballObject.userData.physicsBody) {
+        physicsWorld.removeRigidBody(ballObject.userData.physicsBody);
+      }
+      scene.remove(ballObject);
+
+      if (!recreateBall) {
+        useStore.setState({ ballObject: null, recreateBall: true });
+
+        // Delay before recreating the ball
+        setTimeout(() => {
+          createBall(scene, Ammo, loadingManager);
+          useStore.setState({ recreateBall: false });
+        }, 1000); // Delay of 1 second
+      }
     }
-    scene.remove(ballObject);
-  
-    if (!recreateBall) { // Check if the ball is not already being recreated
-      useStore.setState({ ballObject: null, recreateBall: true });
-  
-      // Delay before recreating the ball
-      setTimeout(() => {
-        createBall(scene, Ammo, loadingManager);
-        useStore.setState({ recreateBall: false });
-      }, 1000); // Delay of 1 second
-    }
-  }
     
       //check to see if ball is on text to rotate camera
       rotateCamera(ballObject);
