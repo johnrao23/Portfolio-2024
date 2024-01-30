@@ -248,6 +248,10 @@ export const setupScene = ({
       // Update each rigid body
       for (let i = 0; i < rigidBodies.length; i++) {
         let objThree = rigidBodies[i];
+        if (!objThree.userData.physicsBody) {
+          console.error('Missing physicsBody for object:', objThree);
+          continue;
+        }
         let objAmmo = objThree.userData.physicsBody;
         if (objAmmo) {
           let ms = objAmmo.getMotionState();
