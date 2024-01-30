@@ -86,7 +86,7 @@ export const createBall = (scene: THREE.Scene, Ammo: any, manager: THREE.Loading
     let mass = 3;
 
     var marble_loader = new THREE.TextureLoader(manager);
-    var marbleTexture = marble_loader.load("../assets/earth.jpg");
+    var marbleTexture = marble_loader.load("/assets/earth.jpg");
     marbleTexture.wrapS = marbleTexture.wrapT = THREE.RepeatWrapping;
     marbleTexture.repeat.set(1, 1);
     marbleTexture.anisotropy = 1;
@@ -155,7 +155,7 @@ export const createBeachBall = () => {
 
   //import beach ball texture
   var texture_loader = new THREE.TextureLoader(manager);
-  var beachTexture = texture_loader.load("../assets/BeachBallColor.jpg");
+  var beachTexture = texture_loader.load("/assets/BeachBallColor.jpg");
   beachTexture.wrapS = beachTexture.wrapT = THREE.RepeatWrapping;
   beachTexture.repeat.set(1, 1);
   beachTexture.anisotropy = 1;

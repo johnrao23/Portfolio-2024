@@ -1,7 +1,7 @@
 // use Three.js to set up graphics
 import * as THREE from "three";
-import galaxyVertexShader from "../assets/vertex.glsl";
-import galaxyFragmentShader from "../assets/fragment.glsl";
+import galaxyVertexShader from "/assets/vertex.glsl";
+import galaxyFragmentShader from "/assets/fragment.glsl";
 
 //threejs variable declaration
 let clock: THREE.Clock,
@@ -29,7 +29,7 @@ type GalaxyParameters = {
 
 export function glowingParticles(scene: THREE.Scene): void {
   var particleTextureLoader = new THREE.TextureLoader(manager);
-  var particleTexture = particleTextureLoader.load("../assets/spark.png");
+  var particleTexture = particleTextureLoader.load("/assets/spark.png");
 
   // Initialize particleGroup here
   var particleGroup = new THREE.Group();
