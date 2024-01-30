@@ -279,7 +279,7 @@ export const johnRaoWords = ( scene: THREE.Scene, Ammo: any, x: number, y: numbe
 export const loadJohnText = (scene: THREE.Scene) => {
   var text_loader = new FontLoader();
 
-  text_loader.load("Roboto_Regular.json", function (font: any) {
+  text_loader.load("/assets/Roboto_Regular.json", function (font: any) {
     var xMid, text;
 
     var color = 0xfffc00;
@@ -324,7 +324,7 @@ export const loadJohnText = (scene: THREE.Scene) => {
 export const loadEngineerText = (scene: THREE.Scene) => {
   var text_loader = new FontLoader();
 
-  text_loader.load("Roboto_Regular.json", function (font) {
+  text_loader.load("/assets/Roboto_Regular.json", function (font) {
     var xMid, text;
 
     var color = 0x00ff08;
@@ -391,7 +391,7 @@ export const helloWorldWords = ( scene: THREE.Scene, Ammo: any, x: number, y: nu
 export const loadHelloWorldText = (scene: THREE.Scene) => {
   var text_loader = new FontLoader();
 
-  text_loader.load("Roboto_Regular.json", function (font) {
+  text_loader.load("/assets/Roboto_Regular.json", function (font) {
     var xMid, text;
 
     // var color = 0xfffc00;
