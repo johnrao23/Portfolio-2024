@@ -54,6 +54,11 @@ export const useStore = create<State>((set, get) => ({
   })),
 
   addRigidBody: (body, physicsBody) => {
+    console.log("Attempting to add rigid body:", { threeBody: body, physicsBody: physicsBody });
+  if (!physicsBody) {
+    console.error("No physicsBody to add for body:", body);
+    return;
+  }
     set((currentState) => {
       const updatedRigidBodies = [...currentState.rigidBodies, body];
   

@@ -688,7 +688,7 @@ const createBrickBody = (scene: THREE.Scene, Ammo: any, threeObject: any, physic
   }
 
   const { addRigidBody } = useStore.getState();
-    addRigidBody(body);
+  addRigidBody(threeObject, body);
 }
 
 //create brick wall
