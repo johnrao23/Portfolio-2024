@@ -35,7 +35,7 @@ import {
   loadHelloWorldText,
 } from './CreateObjects';
 
-import { rotateCamera } from "./Utilities";
+import { rotateCamera, BallPosition } from "./Utilities";
 
 import {
   billboardTextures,
@@ -284,9 +284,18 @@ export const setupScene = ({
         }, 1000); // Delay of 1 second
       }
     }
+
+    const ballPosition: BallPosition = {
+      position: {
+        x: ballObject.position.x,
+        y: ballObject.position.y,
+        z: ballObject.position.z
+      }
+    };
+
+    //check to see if ball is on text to rotate camera
+    rotateCamera(ballPosition, camera);
     
-      //check to see if ball is on text to rotate camera
-      rotateCamera(ballObject);
     } catch (error) {
       const { ballObject } = useStore.getState();
       console.error("Error in updatePhysics:", error, { ballObject });

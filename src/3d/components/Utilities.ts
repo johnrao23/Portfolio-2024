@@ -2,7 +2,7 @@
 import * as THREE from "three";
 import { useStore } from "./store";
 
-interface BallPosition {
+export interface BallPosition {
   position: {
     x: number;
     y: number;
@@ -16,7 +16,12 @@ camera: THREE.PerspectiveCamera;
 
 const pickPosition = new THREE.Vector2(0, 0);
 
-export function rotateCamera(ballPosition: BallPosition): void {
+export function rotateCamera(ballPosition: BallPosition, camera: THREE.PerspectiveCamera): void {
+  if (!camera) {
+    console.error("Camera not initialized");
+    return;
+  }
+  
   var camPos = new THREE.Vector3(
     camera.position.x,
     camera.position.y,
