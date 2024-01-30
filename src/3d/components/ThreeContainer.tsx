@@ -9,7 +9,7 @@ const ThreeContainer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(true);
   
-  const { initializeAmmo, ammoLoaded } = useStore();
+  const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld } = useStore();
 
   useEffect(() => {
     console.log("Initializing Ammo: ammoLoaded =", ammoLoaded);
@@ -31,12 +31,12 @@ const ThreeContainer: React.FC = () => {
     console.log("Preparing to setup scene: ammoLoaded =", ammoLoaded, "isLoading =", isLoading, "containerRef =", containerRef.current);
     if (ammoLoaded && !isLoading) {
       setupScene({
-        container: containerRef.current, 
-        onLoaded: () => {
-          console.log("Scene setup completed, setting isLoading to false");
-          setIsLoading(false);
-        }
+        container: containerRef.current,
+        Ammo: ammo,
+        setPhysicsWorld: setPhysicsWorld,
+        onLoaded: () => setIsLoading(false)
       });
+      
     }
   }, [ammoLoaded, isLoading]);
   
