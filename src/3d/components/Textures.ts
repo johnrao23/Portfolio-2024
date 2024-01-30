@@ -8,10 +8,10 @@ interface BillboardTextures {
 
 // Define billboard textures with updated paths
 let billboardTextures: BillboardTextures = {
-  terpSolutionsTexture: "/assets/png/terpSolutions.png",
-  bullVsBearTexture: "/assets/png/bvbbillboard.png",
-  fairbnbTexture: "/assets/png/fairbnb.png",
-  scanAndGoTexture: "/assets/png/SaG-billboard.png",
+  terpSolutionsTexture: "/assets/terpSolutions.png",
+  bullVsBearTexture: "/assets/bvbbillboard.png",
+  fairbnbTexture: "/assets/fairbnb.png",
+  scanAndGoTexture: "/assets/SaG-billboard.png",
 };
 
 // Define the structure for box textures
@@ -31,22 +31,22 @@ interface BoxTexture {
 
 // Define box textures with updated paths
 let boxTexture: BoxTexture = {
-  Github: "/assets/png/githubLogo.png",
-  twitter: "/assets/png/twitterLogo.png",
-  LinkedIn: "/assets/png/linkedInLogo.png",
-  mail: "/assets/png/envelope.png",
-  globe: "/assets/png/thunder.png",
-  reactIcon: "/assets/png/react.png",
-  allSkills: "/assets/png/allSkills.png",
-  lensFlareMain: "/assets/png/lensflare0.png",
-  lucasNoah: "/assets/jpg/LucasNoahPic.jpeg",
-  familyText: "/assets/png/Family.png",
-  writing: "/assets/png/writing.png",
+  Github: "/assets/githubLogo.png",
+  twitter: "/assets/twitterLogo.png",
+  LinkedIn: "/assets/linkedInLogo.png",
+  mail: "/assets/envelope.png",
+  globe: "/assets/thunder.png",
+  reactIcon: "/assets/react.png",
+  allSkills: "/assets/allSkills.png",
+  lensFlareMain: "/assets/lensflare0.png",
+  lucasNoah: "/assets/LucasNoahPic.jpeg",
+  familyText: "/assets/Family.png",
+  writing: "/assets/writing.png",
 };
 
 // Define material textures with updated paths
-let stoneTexture: string = "/assets/png/stone.png";
-let woodTexture: string = "/assets/jpg/woodTexture.jpg";
+let stoneTexture: string = "/assets/stone.png";
+let woodTexture: string = "/assets/woodTexture.jpg";
 
 // Define the structure and values for input text
 interface InputText {
@@ -60,12 +60,12 @@ interface InputText {
 
 // Define input text with updated paths
 let inputText: InputText = {
-  terpSolutionsText: "/assets/png/terp-solutions-text.png",
-  activities: "/assets/png/activities_text.png",
-  bullVsBearText: "/assets/png/bvb-text.png",
-  fairbnbText: "/assets/png/fairbnb-text.png",
-  scanAndGoText: "/assets/png/SaG-text.png",
-  staticPortfolio: "/assets/png/static-portfolio.png",
+  terpSolutionsText: "/assets/terp-solutions-text.png",
+  activities: "/assets/activities_text.png",
+  bullVsBearText: "/assets/bvb-text.png",
+  fairbnbText: "/assets/fairbnb-text.png",
+  scanAndGoText: "/assets/SaG-text.png",
+  staticPortfolio: "/assets/static-portfolio.png",
 };
 
 // Define SVG with updated paths
@@ -73,9 +73,9 @@ interface SVG {
   reactLogo: string;
 }
 
-let SVG: SVG = {
-  reactLogo: "/assets/svg/react-svg.svg",
-};
+// let SVG: SVG = {
+//   reactLogo: "/assets/svg/react-svg.svg",
+// };
 
 // Define URLs
 interface URL {
