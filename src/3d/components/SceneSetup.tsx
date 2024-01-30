@@ -53,11 +53,17 @@ import {
 
 type SetupSceneProps = {
   container: HTMLDivElement | null;
+  Ammo: any;
+  setPhysicsWorld: (world: any) => void;
   onLoaded: () => void;
 };
 
-export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
-  const { ammo: Ammo, setPhysicsWorld } = useStore();
+export const setupScene = ({
+  container,
+  Ammo,
+  setPhysicsWorld,
+  onLoaded
+}: SetupSceneProps) => {
   console.log("setupScene started. Ammo available:", !!Ammo, "Container available:", !!container);
 
   if (!container || !Ammo) {
