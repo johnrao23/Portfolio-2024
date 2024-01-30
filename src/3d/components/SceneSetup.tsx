@@ -228,33 +228,32 @@ export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
     physicsBody.setLinearVelocity(resultantImpulse);
 }
   
-  
   function updatePhysics(deltaTime: number, physicsWorld: any, rigidBodies: THREE.Mesh[], ballObject: THREE.Mesh) {
     try {
-      const { physicsWorld, rigidBodies, ballObject } = useStore.getState();
+      // Check for missing or incomplete elements
       if (!physicsWorld || !ballObject || !ballObject.userData || !ballObject.userData.physicsBody) {
         console.error("Missing or incomplete elements in physics update", { physicsWorld, ballObject });
         return;
       }
-  
-    // Step world
-    physicsWorld.stepSimulation(deltaTime, 10);
-  
-    // Update rigid bodies
-    for (let i = 0; i < rigidBodies.length; i++) {
-      let objThree = rigidBodies[i];
-      let objAmmo = objThree.userData.physicsBody;
-      if (objAmmo) {
-        let ms = objAmmo.getMotionState();
-        if (ms) {
-          ms.getWorldTransform(tmpTrans);
-          let p = tmpTrans.getOrigin();
-          let q = tmpTrans.getRotation();
-          objThree.position.set(p.x(), p.y(), p.z());
-          objThree.quaternion.set(q.x(), q.y(), q.z(), q.w());
+
+      // Step the physics world
+      physicsWorld.stepSimulation(deltaTime, 10);
+
+      // Update each rigid body
+      for (let i = 0; i < rigidBodies.length; i++) {
+        let objThree = rigidBodies[i];
+        let objAmmo = objThree.userData.physicsBody;
+        if (objAmmo) {
+          let ms = objAmmo.getMotionState();
+          if (ms) {
+            ms.getWorldTransform(tmpTrans);
+            let p = tmpTrans.getOrigin();
+            let q = tmpTrans.getRotation();
+            objThree.position.set(p.x(), p.y(), p.z());
+            objThree.quaternion.set(q.x(), q.y(), q.z(), q.w());
+          }
         }
       }
-    }
   
     // Check if the ball escaped the plane
     if (ballObject.position.y < -50) {
@@ -285,43 +284,43 @@ export const setupScene = ({ container, onLoaded }: SetupSceneProps) => {
     }
   }
 
-    // Animation loop
-    const animate = () => {
-      if (!isAnimating) return;
-      requestAnimationFrame(animate);
+  // Animation loop
+  const animate = () => {
+    if (!isAnimating) return;
+    requestAnimationFrame(animate);
 
-      try {
-        stats.begin();
-        const deltaTime = clock.getDelta();
-        const { ballObject, moveDirection, physicsWorld, rigidBodies } = useStore.getState();
+    try {
+      stats.begin();
+      const deltaTime = clock.getDelta();
+      const { ballObject, moveDirection, physicsWorld, rigidBodies } = useStore.getState();
 
-        if (ballObject) {
-          moveBall(ballObject, moveDirection);
-          updatePhysics(deltaTime, physicsWorld, rigidBodies, ballObject);
-        }
+      if (ballObject) {
+        moveBall(ballObject, moveDirection);
+        updatePhysics(deltaTime, physicsWorld, rigidBodies, ballObject);
+      }
 
-        moveParticles();
-        renderer.render(scene, camera);
-        stats.end();
-      } catch (error) {
-        console.error("Error in animate loop:", error);
-        isAnimating = false;
-      }
-    };
-    animate();
-    
-    return () => {
-      isAnimating = false; // Ensure animation loop is stopped when component is unmounted
-      if (container && container.contains(renderer.domElement)) {
-        container.removeChild(renderer.domElement);
-      }
-      if (document.body.contains(stats.dom)) {
-        document.body.removeChild(stats.dom);
-      }
-      const joystickWrapper = document.getElementById("joystick-wrapper");
-      if (joystickWrapper) {
-        joystickWrapper.style.visibility = "hidden";
-        joystickWrapper.innerHTML = "";
-      }
-    };
+      moveParticles();
+      renderer.render(scene, camera);
+      stats.end();
+    } catch (error) {
+      console.error("Error in animate loop:", error);
+      isAnimating = false;
+    }
+  };
+  animate();
+  
+  return () => {
+    isAnimating = false; // Ensure animation loop is stopped when component is unmounted
+    if (container && container.contains(renderer.domElement)) {
+      container.removeChild(renderer.domElement);
+    }
+    if (document.body.contains(stats.dom)) {
+      document.body.removeChild(stats.dom);
+    }
+    const joystickWrapper = document.getElementById("joystick-wrapper");
+    if (joystickWrapper) {
+      joystickWrapper.style.visibility = "hidden";
+      joystickWrapper.innerHTML = "";
+    }
+  };
 }
