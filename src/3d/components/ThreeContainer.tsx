@@ -18,7 +18,6 @@ const ThreeContainer: React.FC = () => {
     }
   }, [initializeAmmo, ammoLoaded]);
 
-  // New useEffect: Updates isLoading when ammoLoaded changes
   useEffect(() => {
     if (ammoLoaded) {
       console.log("Ammo is loaded, setting isLoading to false");
@@ -26,7 +25,6 @@ const ThreeContainer: React.FC = () => {
     }
   }, [ammoLoaded]);
 
-  // Second useEffect: Sets up the scene
   useEffect(() => {
     console.log("Preparing to setup scene: ammoLoaded =", ammoLoaded, "isLoading =", isLoading, "containerRef =", containerRef.current);
     if (ammoLoaded && !isLoading) {
