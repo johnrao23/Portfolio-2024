@@ -147,7 +147,7 @@ export const createBall = (scene: THREE.Scene, Ammo: any, manager: THREE.Loading
     useStore.setState({ ballObject: ball });
   };
 
-export const createBeachBall = () => {
+export const createBeachBall = (scene: THREE.Scene) => {
   let pos = { x: 20, y: 30, z: 0 };
   let radius = 2;
   let quat = { x: 0, y: 0, z: 0, w: 1 };

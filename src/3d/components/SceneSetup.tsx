@@ -110,6 +110,8 @@ export const setupScene = ({
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
+  useStore.setState({ scene });
+
   // Initialize stats, clocks
   const stats = new Stats();
   document.body.appendChild(stats.dom);

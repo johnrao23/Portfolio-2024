@@ -40,7 +40,12 @@ const ThreeContainer: React.FC = () => {
   const startButtonEventListener = () => {
     setShowOverlay(false);
     document.addEventListener("click", launchClickPosition);
-    createBeachBall();
+    const { scene } = useStore();
+    if (scene) {
+      createBeachBall(scene);
+    } else {
+      console.error("Scene is not initialized.");
+    }
     setTimeout(() => {
       document.addEventListener("mousemove", launchHover);
     }, 1000);
