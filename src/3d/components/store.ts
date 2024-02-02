@@ -10,7 +10,11 @@ type State = {
   ammoLoaded: boolean;
   initializeAmmo: () => Promise<void>;
   scene: THREE.Scene | null;
+  renderer: THREE.WebGLRenderer | null;
+  camera: THREE.PerspectiveCamera | null;
   setScene: (scene: THREE.Scene) => void;
+  setRenderer: (renderer: THREE.WebGLRenderer) => void;
+  setCamera: (camera: THREE.PerspectiveCamera) => void;
   physicsWorld: any;
   rigidBodies: THREE.Mesh[];
   ballObject: THREE.Mesh | null;
@@ -29,6 +33,8 @@ export const useStore = create<State>((set, get) => ({
   ammo: null,
   ammoLoaded: false,
   scene: null,
+  renderer: null,
+  camera: null,
   physicsWorld: null,
   rigidBodies: [],
   ballObject: null,
@@ -49,6 +55,8 @@ export const useStore = create<State>((set, get) => ({
   },
 
   setScene: (scene) => set({ scene }),
+  setRenderer: (renderer: THREE.WebGLRenderer) => set({ renderer }),
+  setCamera: (camera: THREE.PerspectiveCamera) => set({ camera }),
 
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
 
