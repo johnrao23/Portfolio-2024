@@ -110,7 +110,7 @@ export const setupScene = ({
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
-  useStore.setState({ scene });
+  useStore.setState({ scene, camera, renderer });
 
   // Initialize stats, clocks
   const stats = new Stats();
