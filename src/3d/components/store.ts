@@ -9,6 +9,8 @@ type State = {
   ammo: any;
   ammoLoaded: boolean;
   initializeAmmo: () => Promise<void>;
+  scene: THREE.Scene | null;
+  setScene: (scene: THREE.Scene) => void;
   physicsWorld: any;
   rigidBodies: THREE.Mesh[];
   ballObject: THREE.Mesh | null;
@@ -26,6 +28,7 @@ type State = {
 export const useStore = create<State>((set, get) => ({
   ammo: null,
   ammoLoaded: false,
+  scene: null,
   physicsWorld: null,
   rigidBodies: [],
   ballObject: null,
@@ -44,6 +47,8 @@ export const useStore = create<State>((set, get) => ({
       }
     }
   },
+
+  setScene: (scene) => set({ scene }),
 
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
 
