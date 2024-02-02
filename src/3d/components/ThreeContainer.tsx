@@ -48,7 +48,7 @@ const ThreeContainer: React.FC = () => {
 
   return (
     <>
-    {isLoading ? (
+    {isLoading && (
       <div className="preload-overlay">
         <div className="trinity-rings-spinner">
           <div className="circle"></div>
@@ -57,9 +57,8 @@ const ThreeContainer: React.FC = () => {
         </div>
         <div className="loading-text-div">Loading<span className="loader__dot">.</span><span className="loader__dot">.</span><span className="loader__dot">.</span></div>
       </div>
-    ) : (
-    <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
-      {showOverlay && (
+    )}
+      {!isLoading && showOverlay && (
         <div className="start-page-content-div">
           <h1 className="john-text">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
           <h1 className="start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
@@ -67,8 +66,8 @@ const ThreeContainer: React.FC = () => {
           <button id="start-button" onClick={startButtonEventListener}>EXPLORE</button>
         </div>
       )}
+      <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
     </div>
-    )}
     </>
   );
 };
