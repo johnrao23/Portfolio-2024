@@ -9,7 +9,7 @@ const ThreeContainer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(false);
   
-  const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld } = useStore();
+  const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld, scene } = useStore();
 
   useEffect(() => {
     if (!ammoLoaded) {
@@ -40,9 +40,8 @@ const ThreeContainer: React.FC = () => {
   const startButtonEventListener = () => {
     setShowOverlay(false);
     document.addEventListener("click", launchClickPosition);
-    const { scene } = useStore();
     if (scene) {
-      createBeachBall(scene);
+      createBeachBall(scene, ammo);
     } else {
       console.error("Scene is not initialized.");
     }
