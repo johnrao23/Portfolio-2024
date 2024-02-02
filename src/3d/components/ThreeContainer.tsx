@@ -7,12 +7,11 @@ import { useStore } from './store';
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [showOverlay, setShowOverlay] = useState(true);
+  const [showOverlay, setShowOverlay] = useState(false); // Initially false
   
   const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld } = useStore();
 
   useEffect(() => {
-    console.log("Initializing Ammo: ammoLoaded =", ammoLoaded);
     if (!ammoLoaded) {
       initializeAmmo();
     }
@@ -20,35 +19,26 @@ const ThreeContainer: React.FC = () => {
 
   useEffect(() => {
     if (ammoLoaded) {
-      console.log("Ammo is loaded, setting isLoading to false");
       setIsLoading(false);
     }
   }, [ammoLoaded]);
 
   useEffect(() => {
-    console.log("Preparing to setup scene: ammoLoaded =", ammoLoaded, "isLoading =", isLoading, "containerRef =", containerRef.current);
     if (ammoLoaded && !isLoading) {
       setupScene({
         container: containerRef.current,
         Ammo: ammo,
         setPhysicsWorld: setPhysicsWorld,
         onLoaded: () => {
-          setIsLoading(false)
-          setShowOverlay(true);
+          setIsLoading(false); // Confirm loading is done
+          setShowOverlay(true); // Show overlay after scene is loaded
         }
       });
-      
     }
   }, [ammoLoaded, isLoading, ammo, setPhysicsWorld]);
-  
 
   const startButtonEventListener = () => {
-    setShowOverlay(false);
-    const preloadOverlay = document.getElementById("preload-overlay");
-    if (preloadOverlay) {
-      preloadOverlay.style.display = "none";
-    }
-    document.removeEventListener("click", startButtonEventListener);
+    setShowOverlay(false); // Hide overlay when EXPLORE is clicked
     document.addEventListener("click", launchClickPosition);
     createBeachBall();
     setTimeout(() => {
@@ -57,17 +47,18 @@ const ThreeContainer: React.FC = () => {
   };
 
   return (
-    <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
-      {isLoading && (
-        <div className="preload-overlay">
-          <div className="trinity-rings-spinner">
-            <div className="circle"></div>
-            <div className="circle"></div>
-            <div className="circle"></div>
-          </div>
-          <div className="loading-text-div">Loading<span className="loader__dot">.</span><span className="loader__dot">.</span><span className="loader__dot">.</span></div>
+    <>
+    {isLoading && (
+      <div className="preload-overlay">
+        <div className="trinity-rings-spinner">
+          <div className="circle"></div>
+          <div className="circle"></div>
+          <div className="circle"></div>
         </div>
-      )}
+        <div className="loading-text-div">Loading<span className="loader__dot">.</span><span className="loader__dot">.</span><span className="loader__dot">.</span></div>
+      </div>
+    )}
+    <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
       {showOverlay && (
         <div className="start-page-content-div">
           <h1 className="john-text postload">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
@@ -77,6 +68,7 @@ const ThreeContainer: React.FC = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
