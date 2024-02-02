@@ -7,7 +7,7 @@ import { useStore } from './store';
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [showOverlay, setShowOverlay] = useState(false); // Initially false
+  const [showOverlay, setShowOverlay] = useState(false);
   
   const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld } = useStore();
 
@@ -30,8 +30,8 @@ const ThreeContainer: React.FC = () => {
         Ammo: ammo,
         setPhysicsWorld: setPhysicsWorld,
         onLoaded: () => {
-          setIsLoading(false); // Confirm loading is done
-          setShowOverlay(true); // Show overlay after scene is loaded
+          setIsLoading(false);
+          setShowOverlay(true);
         }
       });
     }
