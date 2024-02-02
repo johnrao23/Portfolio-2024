@@ -93,6 +93,11 @@ export function rotateCamera(ballPosition: BallPosition, camera: THREE.Perspecti
 }
 
 function getCanvasRelativePosition(event: MouseEvent): { x: number; y: number } {
+  const renderer = useStore.getState().renderer;
+  if (!renderer) {
+    console.error("Renderer is not initialized.");
+    return { x: 0, y: 0 };
+  }
   const rect = renderer.domElement.getBoundingClientRect();
   return {
     x: ((event.clientX - rect.left) * renderer.domElement.width) / rect.width,
@@ -101,6 +106,11 @@ function getCanvasRelativePosition(event: MouseEvent): { x: number; y: number } 
 }
 
 export function launchClickPosition(event: MouseEvent): void {
+  const { scene, renderer, camera } = useStore.getState();
+  if (!scene || !renderer || !camera) {
+    console.error("Renderer or Camera is not initialized.");
+    return;
+  }
   const pos = getCanvasRelativePosition(event);
   pickPosition.x = (pos.x / renderer.domElement.width) * 2 - 1;
   pickPosition.y = (pos.y / renderer.domElement.height) * -2 + 1; // note we flip Y
@@ -119,6 +129,11 @@ export function launchClickPosition(event: MouseEvent): void {
 
 export function launchHover(event: MouseEvent): void {
   event.preventDefault();
+  const { camera } = useStore.getState();
+  if (!camera) {
+    console.error("Camera is not initialized.");
+    return;
+  }
   var mouse = new THREE.Vector2();
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
