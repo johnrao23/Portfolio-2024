@@ -38,7 +38,7 @@ const ThreeContainer: React.FC = () => {
   }, [ammoLoaded, isLoading, ammo, setPhysicsWorld]);
 
   const startButtonEventListener = () => {
-    setShowOverlay(false); // Hide overlay when EXPLORE is clicked
+    setShowOverlay(false);
     document.addEventListener("click", launchClickPosition);
     createBeachBall();
     setTimeout(() => {
