@@ -51,7 +51,7 @@ const ThreeContainer: React.FC = () => {
   };
 
   return (
-    <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
+    <>
     {isLoading && (
       <div className="preload-overlay">
         <div className="trinity-rings-spinner">
@@ -62,6 +62,7 @@ const ThreeContainer: React.FC = () => {
         <div className="loading-text-div">Loading<span className="loader__dot">.</span><span className="loader__dot">.</span><span className="loader__dot">.</span></div>
       </div>
     )}
+    <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
       {showOverlay && (
         <div className="start-page-content-div">
           <h1 className="john-text postload">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
@@ -71,6 +72,7 @@ const ThreeContainer: React.FC = () => {
         </div>
       )}
     </div>
+    </>
   );
 };
 
