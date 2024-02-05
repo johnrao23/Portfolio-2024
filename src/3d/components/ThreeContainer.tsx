@@ -70,7 +70,7 @@ const ThreeContainer: React.FC = () => {
           <button id="start-button" onClick={startButtonEventListener}>EXPLORE</button>
         </div>
       )}
-    <div ref={containerRef} style={{ width: '100%', height: '100%', position: 'relative' }}>
+    <div ref={containerRef} style={{ width: '100%', height: '100%'}}>
     </div>
     </>
   );
