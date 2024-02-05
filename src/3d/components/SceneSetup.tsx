@@ -132,7 +132,7 @@ export const setupScene = ({
   //Setup the renderer
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
-  document.body.appendChild(renderer.domElement);
+  // document.body.appendChild(renderer.domElement);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.shadowMap.enabled = true;
 
