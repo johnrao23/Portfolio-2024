@@ -4,7 +4,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   overscroll-behavior: none;
-  position: fixed;
+  /* position: fixed; */
   width: 100vw;
   height: 100vh;
   overflow-y: hidden;
@@ -16,6 +16,7 @@ canvas {
   width: 100vw;
   height: 100vh;
   overflow-y: hidden;
+  z-index: 1;
 }
 
 #info {
@@ -127,9 +128,9 @@ select {
 }
 
 .preload-overlay {
-  height: 100%;
-  width: 100%;
-  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
   top: 0;
   left: 0;
   background-color: black;
@@ -170,9 +171,16 @@ select {
 }
 
 .start-page-content-div {
-  display: inline-block;
-  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1001;
 }
 
 #start-button {
@@ -188,6 +196,7 @@ select {
   -webkit-border-radius: none;
   outline: none;
   transition: 0.25s;
+  z-index: 1002;
 }
 
 #start-button:hover {
