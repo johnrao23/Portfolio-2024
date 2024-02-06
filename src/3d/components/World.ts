@@ -42,7 +42,7 @@ export function createSkyEffect(scene: THREE.Scene): void {
       uniforms,
       vertexShader: skyVertexShader,
       fragmentShader: skyFragmentShader,
-      side: THREE.BackSide // Render the inside of the sphere
+      side: THREE.BackSide
   });
 
   const skyMesh = new THREE.Mesh(skyGeo, skyMat);
