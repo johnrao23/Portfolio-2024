@@ -17,6 +17,8 @@ type State = {
   setCamera: (camera: THREE.PerspectiveCamera) => void;
   physicsWorld: any;
   rigidBodies: THREE.Mesh[];
+  galaxyMaterial: THREE.ShaderMaterial | null;
+  setGalaxyMaterial: (material: THREE.ShaderMaterial) => void;
   ballObject: THREE.Mesh | null;
   recreateBall: boolean;
   cursorHoverObjects: THREE.Object3D[];
@@ -37,6 +39,7 @@ export const useStore = create<State>((set, get) => ({
   camera: null,
   physicsWorld: null,
   rigidBodies: [],
+  galaxyMaterial: null,
   ballObject: null,
   recreateBall: false,
   cursorHoverObjects: [],
