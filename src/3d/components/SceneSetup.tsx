@@ -10,6 +10,7 @@ import {
   glowingParticles,
   moveParticles,
   createLensFlare,
+  createSkyEffect,
 } from './World';
 
 import {
@@ -129,6 +130,7 @@ export const setupScene = ({
   addParticles(scene);
   glowingParticles(scene);
   generateGalaxy(scene, renderer);
+  createSkyEffect(scene)
 
   //Setup the renderer
   renderer.setPixelRatio(window.devicePixelRatio);

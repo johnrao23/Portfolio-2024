@@ -3,6 +3,8 @@ import * as THREE from "three";
 import { useStore } from "./store";
 import galaxyVertexShader from "../shaders/vertex.glsl";
 import galaxyFragmentShader from "../shaders/fragment.glsl";
+import skyVertexShader from "../shaders/skyVertex.glsl";
+import skyFragmentShader from "../shaders/skyFragment.glsl";
 
 //threejs variable declaration
 let clock: THREE.Clock,
@@ -26,6 +28,26 @@ type GalaxyParameters = {
   outsideColor: string;
   randomness: number;
 };
+
+export function createSkyEffect(scene: THREE.Scene): void {
+  const uniforms = {
+      topColor: { value: new THREE.Color(0x0077FF) },
+      bottomColor: { value: new THREE.Color(0xffffff) },
+      offset: { value: 33 },
+      exponent: { value: 0.6 }
+  };
+
+  const skyGeo = new THREE.SphereGeometry(20000, 32, 32);
+  const skyMat = new THREE.ShaderMaterial({
+      uniforms,
+      vertexShader: skyVertexShader,
+      fragmentShader: skyFragmentShader,
+      side: THREE.BackSide // Render the inside of the sphere
+  });
+
+  const skyMesh = new THREE.Mesh(skyGeo, skyMat);
+  scene.add(skyMesh);
+}
 
 export function glowingParticles(scene: THREE.Scene): void {
   var particleTextureLoader = new THREE.TextureLoader(manager);
