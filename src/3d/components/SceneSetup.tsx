@@ -117,6 +117,7 @@ export const setupScene = ({
   document.body.appendChild(stats.dom);
   const clock = new THREE.Clock();
   const galaxyClock = new THREE.Clock();
+  galaxyClock.start();
 
   // add lighting to scene
   addHemisphereLight(scene);
@@ -314,6 +315,7 @@ export const setupScene = ({
       stats.begin();
       const deltaTime = clock.getDelta();
       const elapsedTime = galaxyClock.getElapsedTime();
+      const galaxyMaterial = useStore.getState().galaxyMaterial;
       const { ballObject, moveDirection, physicsWorld, rigidBodies } = useStore.getState();
 
       if (ballObject) {
@@ -321,7 +323,6 @@ export const setupScene = ({
         updatePhysics(deltaTime, physicsWorld, rigidBodies, ballObject);
       }
 
-      const galaxyMaterial = useStore.getState().galaxyMaterial;
       if (galaxyMaterial) {
         galaxyMaterial.uniforms.uTime.value = elapsedTime;
       }
