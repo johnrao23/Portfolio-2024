@@ -157,7 +157,7 @@ export const setupScene = ({
     );
     physicsWorld.setGravity(new Ammo.btVector3(0, -50, 0));
 
-    setPhysicsWorld(physicsWorld); // Set the physics world in the store
+    setPhysicsWorld(physicsWorld);
   };
 
   // Initialize the physics world
@@ -165,7 +165,7 @@ export const setupScene = ({
     createPhysicsWorld();
   } else {
     console.error("Ammo.js is not initialized");
-    return; // Exit the function if Ammo.js is not available
+    return;
   }
 
   // Adding objects to the scene
