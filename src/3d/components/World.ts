@@ -209,7 +209,6 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
   scene.add(galaxyPoints);
 };
 
-
 export function moveParticles() : void {
   if (!particleSystemObject || !lensFlareObject) return;
   particleSystemObject.rotation.z += 0.0003;
