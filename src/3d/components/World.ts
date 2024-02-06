@@ -10,7 +10,6 @@ manager: THREE.LoadingManager,
 particleSystemObject: THREE.Points,
 lensFlareObject: THREE.Mesh,
 particleGroup: THREE.Object3D,
-renderer: THREE.WebGLRenderer,
 particleAttributes: any;
 
 export let galaxyMaterial: THREE.ShaderMaterial | null = null;
