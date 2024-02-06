@@ -63,6 +63,8 @@ export const useStore = create<State>((set, get) => ({
 
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
 
+  setGalaxyMaterial: (material: THREE.ShaderMaterial) => set({ galaxyMaterial: material }),
+
   setBallObject: (newBallObject: THREE.Mesh | null) => set({ ballObject: newBallObject }),
 
   addCursorHoverObject: (newObject: THREE.Object3D) => set((state) => ({
