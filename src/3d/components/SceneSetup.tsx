@@ -314,7 +314,7 @@ export const setupScene = ({
     try {
       stats.begin();
       const deltaTime = clock.getDelta();
-      const elapsedTime = galaxyClock.getElapsedTime();
+      const elapsedTime = galaxyClock.getElapsedTime() + 150;
       const galaxyMaterial = useStore.getState().galaxyMaterial;
       const { ballObject, moveDirection, physicsWorld, rigidBodies } = useStore.getState();
 
@@ -324,7 +324,7 @@ export const setupScene = ({
       }
 
       if (galaxyMaterial) {
-        galaxyMaterial.uniforms.uTime.value = elapsedTime;
+        galaxyMaterial.uniforms.uTime.value = elapsedTime * 5;
       }
 
       moveParticles();
