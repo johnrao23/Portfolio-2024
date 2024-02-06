@@ -1,5 +1,6 @@
 // use Three.js to set up graphics
 import * as THREE from "three";
+import { useStore } from "./store";
 import galaxyVertexShader from "../shaders/vertex.glsl";
 import galaxyFragmentShader from "../shaders/fragment.glsl";
 
@@ -200,6 +201,8 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
       uSize: { value: 30 * renderer.getPixelRatio() },
     },
   });
+
+  useStore.getState().setGalaxyMaterial(galaxyMaterial);
 
   galaxyPoints = new THREE.Points(geometry, galaxyMaterial);
   galaxyPoints.position.y = -50;

@@ -313,11 +313,17 @@ export const setupScene = ({
     try {
       stats.begin();
       const deltaTime = clock.getDelta();
+      const elapsedTime = galaxyClock.getElapsedTime();
       const { ballObject, moveDirection, physicsWorld, rigidBodies } = useStore.getState();
 
       if (ballObject) {
         moveBall(ballObject, moveDirection);
         updatePhysics(deltaTime, physicsWorld, rigidBodies, ballObject);
+      }
+
+      const galaxyMaterial = useStore.getState().galaxyMaterial;
+      if (galaxyMaterial) {
+        galaxyMaterial.uniforms.uTime.value = elapsedTime;
       }
 
       moveParticles();
