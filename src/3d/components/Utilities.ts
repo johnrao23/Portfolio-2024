@@ -10,10 +10,6 @@ export interface BallPosition {
   };
 }
 
-let scene: THREE.Scene,
-renderer: THREE.WebGLRenderer,
-camera: THREE.PerspectiveCamera;
-
 const pickPosition = new THREE.Vector2(0, 0);
 
 export function rotateCamera(ballPosition: BallPosition, camera: THREE.PerspectiveCamera): void {
