@@ -175,8 +175,8 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
   const colors = new Float32Array(parameters.count * 3);
   const scales = new Float32Array(parameters.count);
 
-  const insideColor = new THREE.Color(parameters.insideColor);
-  const outsideColor = new THREE.Color(parameters.outsideColor);
+  const insideColor = new THREE.Color(parameters.insideColor).convertSRGBToLinear();
+  const outsideColor = new THREE.Color(parameters.outsideColor).convertSRGBToLinear();
 
   for (let i = 0; i < parameters.count; i++) {
     const i3 = i * 3;
@@ -228,6 +228,15 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
   galaxyPoints = new THREE.Points(geometry, galaxyMaterial);
   galaxyPoints.position.y = -50;
   scene.add(galaxyPoints);
+
+  // Log the colors after defining galaxyPoints
+  const colorsArray = colors; // Since we're directly using the 'colors' Float32Array
+  console.log(`First color: R=${colorsArray[0]}, G=${colorsArray[1]}, B=${colorsArray[2]}`);
+  // Log a few more to ensure variety and correctness
+  for (let i = 0; i < 10; i += 3) {
+    console.log(`Color ${i / 3}: R=${colorsArray[i]}, G=${colorsArray[i + 1]}, B=${colorsArray[i + 2]}`);
+  }
+
 };
 
 export function moveParticles() : void {
