@@ -157,6 +157,8 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
     randomness: 0.2,
   };
 
+  
+
   // If galaxyPoints already exist, dispose of them before creating new ones
   if (galaxyPoints !== null) {
     galaxyPoints.geometry.dispose();
