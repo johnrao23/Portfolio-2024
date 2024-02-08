@@ -115,7 +115,7 @@ export const setupScene = ({
 
   // Initialize stats, clocks
   const stats = new Stats();
-  document.body.appendChild(stats.dom);
+  container.appendChild(stats.dom);
   const clock = new THREE.Clock();
   const galaxyClock = new THREE.Clock();
   galaxyClock.start();
@@ -135,7 +135,6 @@ export const setupScene = ({
   //Setup the renderer
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
-  // document.body.appendChild(renderer.domElement);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.shadowMap.enabled = true;
 
@@ -344,8 +343,8 @@ export const setupScene = ({
     if (container && container.contains(renderer.domElement)) {
       container.removeChild(renderer.domElement);
     }
-    if (document.body.contains(stats.dom)) {
-      document.body.removeChild(stats.dom);
+    if (container.contains(stats.dom)) {
+      container.removeChild(stats.dom);
     }
     const joystickWrapper = document.getElementById("joystick-wrapper");
     if (joystickWrapper) {
