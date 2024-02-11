@@ -8,7 +8,7 @@ void main() {
     // Light point calculation
     float strength = distance(gl_PointCoord, vec2(0.5));
     strength = 1.0 - strength;
-    strength = pow(strength, 0.5);
+    strength = pow(strength, 1.5);
 
     // Final color in linear space before applying sRGB conversion
     vec3 colorLinear = mix(vec3(0.0), vColor, strength);
