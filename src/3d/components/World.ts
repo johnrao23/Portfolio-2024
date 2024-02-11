@@ -152,8 +152,8 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
     branches: 3,
     spin: 1,
     randomnessPower: 3,
-    insideColor: "0xff6030",
-    outsideColor: "0x1b3984",
+    insideColor: "#ff6030",
+    outsideColor: "#1b3984",
     randomness: 0.2,
   };
 
