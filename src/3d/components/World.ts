@@ -178,6 +178,9 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
   const insideColor = new THREE.Color(parameters.insideColor).convertSRGBToLinear();
   const outsideColor = new THREE.Color(parameters.outsideColor).convertSRGBToLinear();
 
+  console.log(insideColor);
+  console.log(outsideColor);
+
   for (let i = 0; i < parameters.count; i++) {
     const i3 = i * 3;
 
