@@ -31,8 +31,8 @@ type GalaxyParameters = {
 
 export function createSkyEffect(scene: THREE.Scene): void {
   const uniforms = {
-      topColor: { value: new THREE.Color(0x0077FF) },
-      bottomColor: { value: new THREE.Color(0xffffff) },
+      topColor: { value: new THREE.Color(0x0077FF).convertSRGBToLinear() },
+      bottomColor: { value: new THREE.Color(0xffffff).convertSRGBToLinear() },
       offset: { value: 33 },
       exponent: { value: 0.6 }
   };
@@ -152,8 +152,8 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
     branches: 3,
     spin: 1,
     randomnessPower: 3,
-    insideColor: "#ff6030",
-    outsideColor: "#1b3984",
+    insideColor: "0xff6030",
+    outsideColor: "0x1b3984",
     randomness: 0.2,
   };
 
