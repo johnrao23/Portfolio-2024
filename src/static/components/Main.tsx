@@ -7,6 +7,7 @@ const Main: React.FC = () => {
         <div>
             <NavBar />
             <h1>Main Content</h1>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
             <Footer />
         </div>
     );
