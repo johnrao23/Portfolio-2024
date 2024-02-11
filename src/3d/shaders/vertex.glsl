@@ -5,9 +5,12 @@ varying vec3 vColor;
 uniform float uTime;
 
 attribute vec3 aRandomness;
+attribute vec3 color; // Ensure you have this if you're using vColor
 
-void main()
-{
+// Declare the additional multiplier as a uniform
+uniform float additionalMultiplier;
+
+void main() {
     /**
      * Position
      */
@@ -29,14 +32,12 @@ void main()
     gl_Position = projectedPosition;
 
     /**
-     * Size
+     * Size - Updated to use additionalMultiplier
      */
-     gl_PointSize = uSize * aScale;
-    gl_PointSize *= (50.0 / - viewPosition.z);
+    gl_PointSize = uSize * aScale * additionalMultiplier * (50.0 / -viewPosition.z);
 
-       /**
+    /**
      * Color
      */
     vColor = color;
-
 }
