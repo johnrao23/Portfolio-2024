@@ -328,7 +328,7 @@ export const setupScene = ({
         galaxyMaterial.uniforms.uTime.value = elapsedTime * 5;
       }
 
-      moveParticles();
+      moveParticles(clock);
       renderer.render(scene, camera);
       stats.end();
     } catch (error) {

@@ -7,12 +7,8 @@ import skyVertexShader from "../shaders/skyVertex.glsl";
 import skyFragmentShader from "../shaders/skyFragment.glsl";
 
 //threejs variable declaration
-let clock: THREE.Clock,
-manager: THREE.LoadingManager,
-particleSystemObject: THREE.Points,
-lensFlareObject: THREE.Mesh,
-particleGroup: THREE.Object3D,
-particleAttributes: any;
+let manager: THREE.LoadingManager,
+lensFlareObject: THREE.Mesh;
 
 export let galaxyMaterial: THREE.ShaderMaterial | null = null;
 export let galaxyPoints: THREE.Points | null = null;
@@ -27,6 +23,12 @@ type GalaxyParameters = {
   insideColor: string;
   outsideColor: string;
   randomness: number;
+};
+
+type ParticleAttributes = {
+  startSize: number[];
+  startPosition: THREE.Vector3[];
+  randomness: number[];
 };
 
 export function createSkyEffect(scene: THREE.Scene): void {
@@ -50,48 +52,45 @@ export function createSkyEffect(scene: THREE.Scene): void {
 }
 
 export function glowingParticles(scene: THREE.Scene): void {
-  var particleTextureLoader = new THREE.TextureLoader(manager);
-  var particleTexture = particleTextureLoader.load("/assets/spark.png");
+  const particleTextureLoader = new THREE.TextureLoader(manager);
+  const particleTexture = particleTextureLoader.load("/assets/spark.png");
 
-  // Initialize particleGroup here
-  var particleGroup = new THREE.Group();
+  const particleGroup = new THREE.Group();
   particleGroup.position.set(-1, 7, 45);
 
-  var particleAttributes: {
-    startSize: number[],
-    startPosition: THREE.Vector3[],
-    randomness: number[]
-  } = {
+  const particleAttributes: ParticleAttributes = {
     startSize: [],
     startPosition: [],
     randomness: []
   };
 
-  var totalParticles = 50;
-  var radiusRange = 4;
-  for (var i = 0; i < totalParticles; i++) {
-    var spriteMaterial = new THREE.SpriteMaterial({
+  const totalParticles = 50;
+  const radiusRange = 4;
+  for (let i = 0; i < totalParticles; i++) {
+    const spriteMaterial = new THREE.SpriteMaterial({
       map: particleTexture,
       color: 0xffffff,
-      blending: THREE.AdditiveBlending, // "glowing" particles
+      blending: THREE.AdditiveBlending,
     });
 
-    var sprite = new THREE.Sprite(spriteMaterial);
-    sprite.scale.set(0.5, 0.5, 1.0); // imageWidth, imageHeight
+    const sprite = new THREE.Sprite(spriteMaterial);
+    sprite.scale.set(0.5, 0.5, 1.0);
     sprite.position.set(Math.random() - 0.5, Math.random() - 0.5, Math.random() - 0.5);
     sprite.position.setLength(radiusRange * (Math.random() * 0.1 + 0.9));
     sprite.material.color.setHSL(Math.random(), 0.9, 0.7);
     sprite.renderOrder = 1;
     particleGroup.add(sprite);
 
-    // Add variable qualities to arrays, if they need to be accessed later
+    // Add attributes for movement
     particleAttributes.startPosition.push(sprite.position.clone());
     particleAttributes.randomness.push(Math.random());
   }
 
   scene.add(particleGroup);
-}
 
+  useStore.getState().setParticleGroup(particleGroup);
+  useStore.getState().setParticleAttributes(particleAttributes);
+}
 
 export function createLensFlare(scene: THREE.Scene, x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string) : void {
   const boxScale = { x: xScale, y: 0.1, z: zScale };
@@ -233,36 +232,26 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
   scene.add(galaxyPoints);
 };
 
-export function moveParticles() : void {
-  if (!particleSystemObject || !lensFlareObject) return;
-  particleSystemObject.rotation.z += 0.0003;
-  lensFlareObject.rotation.z += 0.0002;
-  if (lensFlareObject.position.x < 750) {
-    lensFlareObject.position.x += 0.025;
-    lensFlareObject.position.y -= 0.001;
-  } else {
-    lensFlareObject.position.x = -750;
-    lensFlareObject.position.y = -50;
-  }
+export function moveParticles(clock: THREE.Clock): void {
+  const { particleGroup, particleAttributes } = useStore.getState();
 
-  //move stemkoski particles
-  var time = 7 * clock.getElapsedTime();
+  if (!particleGroup || !particleAttributes) return;
 
-  for (var c = 0; c < particleGroup.children.length; c++) {
-    var sprite = particleGroup.children[c];
+  const time = clock.getElapsedTime();
 
-    // pulse away towards center
-    // individual rates of movement
-    var a = particleAttributes.randomness[c] + 0.75;
-    var pulseFactor = Math.sin(a * time) * 0.1 + 0.9;
-    sprite.position.x = particleAttributes.startPosition[c].x * pulseFactor;
-    sprite.position.y =
-      particleAttributes.startPosition[c].y * pulseFactor * 1.5;
-    sprite.position.z = particleAttributes.startPosition[c].z * pulseFactor;
-  }
+  particleGroup.children.forEach((sprite, index) => {
+    const randomness = particleAttributes.randomness[index];
+    const startPosition = particleAttributes.startPosition[index];
+    // Adjust the movement logic as needed
+    const a = randomness + 0.75;
+    const pulseFactor = Math.sin(a * time) * 0.1 + 0.9;
+    sprite.position.x = startPosition.x * pulseFactor;
+    sprite.position.y = startPosition.y * pulseFactor;
+    sprite.position.z = startPosition.z * pulseFactor;
+  });
 
-  // rotate the entire group
-  particleGroup.rotation.y = time * 0.75;
+  // Example of additional group-wide animation, adjust as needed
+  particleGroup.rotation.y += 0.001;
 }
 
 export const addHemisphereLight = (scene: THREE.Scene) : void => {
