@@ -120,18 +120,6 @@ export const setupScene = ({
   const galaxyClock = new THREE.Clock();
   galaxyClock.start();
 
-  // add lighting to scene
-  addHemisphereLight(scene);
-  addDirectionalLight(scene);
-
-  createLensFlare(scene, 50, -50, -800, 200, 200, boxTexture.lensFlareMain);
-
-  // add background effects to scene
-  addParticles(scene);
-  glowingParticles(scene);
-  generateGalaxy(scene, renderer);
-  createSkyEffect(scene)
-
   //Setup the renderer
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -166,6 +154,18 @@ export const setupScene = ({
     console.error("Ammo.js is not initialized");
     return;
   }
+  
+   // add lighting to scene
+  addHemisphereLight(scene);
+  addDirectionalLight(scene);
+
+  createLensFlare(scene, 50, -50, -800, 200, 200, boxTexture.lensFlareMain);
+
+  // add background effects to scene
+  addParticles(scene);
+  glowingParticles(scene);
+  generateGalaxy(scene, renderer);
+  createSkyEffect(scene)
 
   // Adding objects to the scene
   createGridPlane(scene, Ammo);
