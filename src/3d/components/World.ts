@@ -266,7 +266,7 @@ export function moveParticles() : void {
 }
 
 export const addHemisphereLight = (scene: THREE.Scene) : void => {
-  let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 0.1);
+  let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 1.5);
   hemiLight.color.setHSL(0.6, 0.6, 0.6);
   hemiLight.groundColor.setHSL(0.1, 1, 0.4);
   hemiLight.position.set(0, 50, 0);
