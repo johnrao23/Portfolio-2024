@@ -136,7 +136,6 @@ export const setupScene = ({
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
-  console.log(renderer.outputColorSpace);
   renderer.shadowMap.enabled = true;
 
   //default transform object
