@@ -1,19 +1,28 @@
 varying vec3 vColor;
+void main()
+{
+     // Disc
+     /*
+    float strength = distance(gl_PointCoord, vec2(0.5));
+    strength = step(0.5, strength);
+    strength = 1.0 - strength;*/
 
-vec4 mySRGBTransferOETF(vec4 linearColor) {
-    return vec4(mix(pow(linearColor.rgb * 0.9478672986 + 0.0521327014, vec3(2.4)) * 1.055 - 0.055, linearColor.rgb * 12.92, step(linearColor.rgb, vec3(0.0031308))), linearColor.a);
-}
+    // Diffuse point
+    /*
+    float strength = distance(gl_PointCoord, vec2(0.5));
+    strength *= 2.0;
+    strength = 1.0 - strength;*/
 
-void main() {
-    // Light point calculation
+     // Light point
+    // Light point
     float strength = distance(gl_PointCoord, vec2(0.5));
     strength = 1.0 - strength;
-    strength = pow(strength, 1.5);
+    strength = pow(strength, 10.0);
 
-    // Final color in linear space before applying sRGB conversion
-    vec3 colorLinear = mix(vec3(0.0), vColor, strength);
-    vec4 colorOutputLinear = vec4(colorLinear, 1.0);
+    // Final color
+    vec3 color = mix(vec3(0.0), vColor, strength);
+    gl_FragColor = vec4(color, 1.0);
 
-    // Apply sRGB encoding to the linear color before output
-    gl_FragColor = mySRGBTransferOETF(colorOutputLinear);
+    // gl_FragColor = vec4(gl_PointCoord, 1.0, 1.0);   // we already have access to the UV in the fragment shader with gl_PointCoord
+    
 }
