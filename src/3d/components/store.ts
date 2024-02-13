@@ -19,6 +19,14 @@ type State = {
   rigidBodies: THREE.Mesh[];
   galaxyMaterial: THREE.ShaderMaterial | null;
   setGalaxyMaterial: (material: THREE.ShaderMaterial) => void;
+  particleGroup: THREE.Group | null;
+  particleAttributes: {
+    startSize: number[];
+    startPosition: THREE.Vector3[];
+    randomness: number[];
+  };
+  setParticleGroup: (group: THREE.Group) => void;
+  setParticleAttributes: (attributes: { startSize: number[]; startPosition: THREE.Vector3[]; randomness: number[]; }) => void;
   ballObject: THREE.Mesh | null;
   recreateBall: boolean;
   cursorHoverObjects: THREE.Object3D[];
@@ -40,6 +48,8 @@ export const useStore = create<State>((set, get) => ({
   physicsWorld: null,
   rigidBodies: [],
   galaxyMaterial: null,
+  particleGroup: null,
+  particleAttributes: { startSize: [], startPosition: [], randomness: [] },
   ballObject: null,
   recreateBall: false,
   cursorHoverObjects: [],
@@ -64,6 +74,8 @@ export const useStore = create<State>((set, get) => ({
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
 
   setGalaxyMaterial: (material: THREE.ShaderMaterial) => set({ galaxyMaterial: material }),
+  setParticleGroup: (group) => set({ particleGroup: group }),
+  setParticleAttributes: (attributes) => set({ particleAttributes: attributes }),
 
   setBallObject: (newBallObject: THREE.Mesh | null) => set({ ballObject: newBallObject }),
 
