@@ -237,7 +237,7 @@ export function moveParticles(clock: THREE.Clock): void {
 
   if (!particleGroup || !particleAttributes) return;
 
-  const time = clock.getElapsedTime();
+  const time = 7 * clock.getElapsedTime();
 
   particleGroup.children.forEach((sprite, index) => {
     const randomness = particleAttributes.randomness[index];
