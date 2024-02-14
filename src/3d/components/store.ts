@@ -18,7 +18,9 @@ type State = {
   physicsWorld: any;
   rigidBodies: THREE.Mesh[];
   galaxyMaterial: THREE.ShaderMaterial | null;
+  galaxyPoints: THREE.Points | null;
   setGalaxyMaterial: (material: THREE.ShaderMaterial) => void;
+  setGalaxyPoints: (galaxyPoints: THREE.Points | null) => void;
   particleGroup: THREE.Group | null;
   particleAttributes: {
     startSize: number[];
@@ -52,6 +54,7 @@ export const useStore = create<State>((set, get) => ({
   physicsWorld: null,
   rigidBodies: [],
   galaxyMaterial: null,
+  galaxyPoints: null,
   particleGroup: null,
   particleAttributes: { startSize: [], startPosition: [], randomness: [] },
   lensFlareObject: null,
@@ -80,6 +83,7 @@ export const useStore = create<State>((set, get) => ({
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
 
   setGalaxyMaterial: (material: THREE.ShaderMaterial) => set({ galaxyMaterial: material }),
+  setGalaxyPoints: (galaxyPoints: THREE.Points | null) => set({ galaxyPoints }),
   setParticleGroup: (group: THREE.Group) => set({ particleGroup: group }),
   setParticleAttributes: (attributes) => set({ particleAttributes: attributes }),
   setLensFlareObject: (newLensFlareObject: THREE.Mesh | null) => set({lensFlareObject: newLensFlareObject}),
