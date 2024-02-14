@@ -9,7 +9,7 @@ const ThreeContainer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(false);
   
-  const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld, scene, manager } = useStore();
+  const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld, scene } = useStore();
 
   useEffect(() => {
     if (!ammoLoaded) {
@@ -39,13 +39,10 @@ const ThreeContainer: React.FC = () => {
 
   const startButtonEventListener = () => {
     setShowOverlay(false);
+    console.log("Overlay should be hidden now");
     document.addEventListener("click", launchClickPosition);
     if (scene) {
-      if (manager !== null) {
-        createBeachBall(scene, ammo, manager);
-      } else {
-        console.error("LoadingManager is not initialized.");
-      }
+      createBeachBall(scene, ammo);
     } else {
       console.error("Scene is not initialized.");
     }

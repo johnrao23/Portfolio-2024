@@ -145,14 +145,14 @@ export const createBall = (scene: THREE.Scene, Ammo: any, manager: THREE.Loading
     useStore.setState({ ballObject: ball });
   };
 
-export const createBeachBall = (scene: THREE.Scene, Ammo: any, manager: THREE.LoadingManager) => {
+export const createBeachBall = (scene: THREE.Scene, Ammo: any) => {
   let pos = { x: 20, y: 30, z: 0 };
   let radius = 2;
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 20;
 
   //import beach ball texture
-  var texture_loader = new THREE.TextureLoader(manager);
+  var texture_loader = new THREE.TextureLoader();
   var beachTexture = texture_loader.load("/assets/BeachBallColor.jpg");
   beachTexture.wrapS = beachTexture.wrapT = THREE.RepeatWrapping;
   beachTexture.repeat.set(1, 1);
