@@ -73,17 +73,17 @@ export const useStore = create<State>((set, get) => ({
     }
   },
 
-  setScene: (scene) => set({ scene }),
+  setScene: (scene: THREE.Scene ) => set({ scene }),
   setRenderer: (renderer: THREE.WebGLRenderer) => set({ renderer }),
   setCamera: (camera: THREE.PerspectiveCamera) => set({ camera }),
 
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
 
   setGalaxyMaterial: (material: THREE.ShaderMaterial) => set({ galaxyMaterial: material }),
-  setParticleGroup: (group) => set({ particleGroup: group }),
+  setParticleGroup: (group: THREE.Group) => set({ particleGroup: group }),
   setParticleAttributes: (attributes) => set({ particleAttributes: attributes }),
   setLensFlareObject: (newLensFlareObject: THREE.Mesh | null) => set({lensFlareObject: newLensFlareObject}),
-  setParticleSystemObject: (object) => set({ particleSystemObject: object }),
+  setParticleSystemObject: (object: THREE.Points | null) => set({ particleSystemObject: object }),
 
   setBallObject: (newBallObject: THREE.Mesh | null) => set({ ballObject: newBallObject }),
 

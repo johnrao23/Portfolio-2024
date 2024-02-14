@@ -131,9 +131,11 @@ export function addParticles(scene: THREE.Scene): void {
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
 
   var material = new THREE.PointsMaterial({ size: 3 });
-  var particleSystemObject = new THREE.Points(geometry, material);
+  const particleSystemPoints = new THREE.Points(geometry, material);
 
-  scene.add(particleSystemObject);
+  scene.add(particleSystemPoints);
+
+  useStore.getState().setParticleSystemObject(particleSystemPoints);
 }
 
 function getRandomArbitrary(min: number, max: number): number {
