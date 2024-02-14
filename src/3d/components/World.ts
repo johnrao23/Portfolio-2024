@@ -6,9 +6,6 @@ import galaxyFragmentShader from "../shaders/fragment.glsl";
 import skyVertexShader from "../shaders/skyVertex.glsl";
 import skyFragmentShader from "../shaders/skyFragment.glsl";
 
-//threejs variable declaration
-let particleSystemObject: THREE.Points;
-
 export let galaxyMaterial: THREE.ShaderMaterial | null = null;
 export let galaxyPoints: THREE.Points | null = null;
 
@@ -92,33 +89,32 @@ export function glowingParticles(scene: THREE.Scene, manager: THREE.LoadingManag
 }
 
 export function createLensFlare(scene: THREE.Scene, x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string) : void {
-  const { lensFlareObject } = useStore.getState();
-
-  const boxScale = { x: xScale, y: 0.1, z: zScale };
-  let quat = { x: 0, y: 0, z: 0, w: 1 };
-  let mass = 0; //mass of zero = infinite mass
-
-  var geometry = new THREE.PlaneGeometry(xScale, zScale);
-
   const loader = new THREE.TextureLoader();
   const texture = loader.load(boxTexture);
   texture.magFilter = THREE.LinearFilter;
   texture.minFilter = THREE.LinearFilter;
   texture.colorSpace = THREE.SRGBColorSpace;
-  const loadedTexture = new THREE.MeshBasicMaterial({
+
+  const material = new THREE.MeshBasicMaterial({
     map: texture,
     transparent: true,
     opacity: 0.9,
+    depthWrite: true,
+    depthTest: true,
   });
-  loadedTexture.depthWrite = true;
-  loadedTexture.depthTest = true;
 
-  lensFlareObject = new THREE.Mesh(geometry, loadedTexture);
-  lensFlareObject.position.set(x, y, z);
-  lensFlareObject.renderOrder = 1;
+  const geometry = new THREE.PlaneGeometry(xScale, zScale);
 
-  lensFlareObject.receiveShadow = true;
-  scene.add(lensFlareObject);
+  const lensFlareMesh = new THREE.Mesh(geometry, material);
+  lensFlareMesh.position.set(x, y, z);
+  lensFlareMesh.renderOrder = 1;
+  lensFlareMesh.receiveShadow = true;
+
+  // Add the lens flare mesh to the scene
+  scene.add(lensFlareMesh);
+
+  // Update the lensFlareObject in the store
+  useStore.getState().setLensFlareObject(lensFlareMesh);
 }
 
 export function addParticles(scene: THREE.Scene): void {
@@ -247,15 +243,14 @@ export function moveParticles(clock: THREE.Clock): void {
     particleSystemObject.rotation.z += 0.0003;
   
     // Move lensFlareObject
-    // lensFlareObject.rotation.z += 0.0002;
-    // if (lensFlareObject.position.x < 750) {
-    //   lensFlareObject.position.x += 0.025;
-    //   lensFlareObject.position.y -= 0.001;
-    // } else {
-    //   lensFlareObject.position.x = -750;
-    //   lensFlareObject.position.y = -50;
-    // }
-
+    lensFlareObject.rotation.z += 0.0002;
+    if (lensFlareObject.position.x < 750) {
+      lensFlareObject.position.x += 0.025;
+      lensFlareObject.position.y -= 0.001;
+    } else {
+      lensFlareObject.position.x = -750;
+      lensFlareObject.position.y = -50;
+    }
 
   // Move particles within the group
   particleGroup.children.forEach((sprite, index) => {
@@ -270,8 +265,6 @@ export function moveParticles(clock: THREE.Clock): void {
     sprite.position.z = startPosition.z * pulseFactor;
   });
 }
-
-
 
 export const addHemisphereLight = (scene: THREE.Scene) : void => {
   let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 1.5);
