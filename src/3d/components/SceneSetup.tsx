@@ -72,9 +72,9 @@ export const setupScene = ({
     return;
   }
 
-  const loadingManager = new THREE.LoadingManager();
-  loadingManager.onError = (url) => console.error(`There was an error loading ${url}`);
-  loadingManager.onLoad = () => {
+  const manager = new THREE.LoadingManager();
+  manager.onError = (url) => console.error(`There was an error loading ${url}`);
+  manager.onLoad = () => {
     console.log("All assets loaded");
     onLoaded();
   };
@@ -111,7 +111,7 @@ export const setupScene = ({
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
-  useStore.setState({ scene, camera, renderer });
+  useStore.setState({ scene, camera, renderer, manager });
 
   // Initialize stats, clocks
   const stats = new Stats();
@@ -163,7 +163,7 @@ export const setupScene = ({
 
   // add background effects to scene
   addParticles(scene);
-  glowingParticles(scene, loadingManager);
+  glowingParticles(scene, manager);
   generateGalaxy(scene, renderer);
   createSkyEffect(scene)
 
@@ -173,39 +173,39 @@ export const setupScene = ({
   createWallX(scene, Ammo, -125, 1.75, 0);
   createWallZ(scene, Ammo, 0, 1.75, 125);
   createWallZ(scene, Ammo, 0, 1.75, -125);
-  createBall(scene, Ammo, loadingManager);
-  createBox(scene, Ammo, loadingManager, 28, 2, -100, 4, 4, 1, boxTexture.Github, URL.gitHub, 0x000000, true);
-  createBox(scene, Ammo, loadingManager, 35.1, 2, -100, 4, 4, 1, boxTexture.LinkedIn, URL.LinkedIn, 0x0077b5, true);
-  createBox(scene, Ammo, loadingManager, 42.9, 2, -100, 4, 4, 1, boxTexture.twitter, URL.twitter, 0x00a2f4, true);
-  createBox(scene, Ammo, loadingManager, 50.5, 2, -100, 4, 4, 1, boxTexture.mail, "mailto:johnrao23@gmail.com", 0x000000, false);
-  createBillboard( scene, Ammo, loadingManager, -115, 2.5, -105, billboardTextures.terpSolutionsTexture, URL.terpsolutions, Math.PI * 0.2, );
-  createBillboard( scene, Ammo, loadingManager, -80, 2.5, -110, billboardTextures.bullVsBearTexture, URL.bullVsBearTrading, Math.PI * 0.15, );
-  createBillboard( scene, Ammo, loadingManager, -45, 2.5, -110, billboardTextures.fairbnbTexture, URL.getFairbnb, Math.PI * 0.1, );
-  createBillboardRotated( scene, Ammo, loadingManager, -15, 1.25, -105, billboardTextures.scanAndGoTexture, URL.samsClub, Math.PI * 0.1, );
+  createBall(scene, Ammo, manager);
+  createBox(scene, Ammo, manager, 28, 2, -100, 4, 4, 1, boxTexture.Github, URL.gitHub, 0x000000, true);
+  createBox(scene, Ammo, manager, 35.1, 2, -100, 4, 4, 1, boxTexture.LinkedIn, URL.LinkedIn, 0x0077b5, true);
+  createBox(scene, Ammo, manager, 42.9, 2, -100, 4, 4, 1, boxTexture.twitter, URL.twitter, 0x00a2f4, true);
+  createBox(scene, Ammo, manager, 50.5, 2, -100, 4, 4, 1, boxTexture.mail, "mailto:johnrao23@gmail.com", 0x000000, false);
+  createBillboard( scene, Ammo, manager, -115, 2.5, -105, billboardTextures.terpSolutionsTexture, URL.terpsolutions, Math.PI * 0.2, );
+  createBillboard( scene, Ammo, manager, -80, 2.5, -110, billboardTextures.bullVsBearTexture, URL.bullVsBearTrading, Math.PI * 0.15, );
+  createBillboard( scene, Ammo, manager, -45, 2.5, -110, billboardTextures.fairbnbTexture, URL.getFairbnb, Math.PI * 0.1, );
+  createBillboardRotated( scene, Ammo, manager, -15, 1.25, -105, billboardTextures.scanAndGoTexture, URL.samsClub, Math.PI * 0.1, );
   johnRaoWords(scene, Ammo, 11.2, 1, -20);
   helloWorldWords( scene, Ammo, 11.2, 1, -20);
   loadJohnText(scene);
   loadEngineerText(scene);
   loadHelloWorldText(scene);
-  createTextOnPlane( scene, loadingManager, -110, 0.01, -75, inputText.terpSolutionsText, 20, 40);
-  createTextOnPlane(scene, loadingManager, -77, 0.01, -80, inputText.bullVsBearText, 20, 40);
-  createTextOnPlane( scene, loadingManager, -45, 0.01, -80, inputText.fairbnbText, 20, 40);
-  createTextOnPlane( scene, loadingManager, -16, 0.01, -75, inputText.scanAndGoText, 20, 40);
+  createTextOnPlane( scene, manager, -110, 0.01, -75, inputText.terpSolutionsText, 20, 40);
+  createTextOnPlane(scene, manager, -77, 0.01, -80, inputText.bullVsBearText, 20, 40);
+  createTextOnPlane( scene, manager, -45, 0.01, -80, inputText.fairbnbText, 20, 40);
+  createTextOnPlane( scene, manager, -16, 0.01, -75, inputText.scanAndGoText, 20, 40);
   floatingLabel(scene, 27.875, 4.5, -100, "Github");
   floatingLabel(scene, 34.86, 4.5, -100, "LinkedIn");
   floatingLabel(scene, 42.875, 4.5, -100, "Twitter");
   floatingLabel(scene, 50.26, 4.5, -100, "Email");
-  allSkillsSection(scene, loadingManager, -60, 0.025, 20, 40, 40, boxTexture.allSkills);
-  allSkillsSection(scene, loadingManager, 75, 0.025, 25, 30, 60, inputText.activities);
-  allSkillsSection(scene, loadingManager, 8.75, 0.025, 62, 17, 20, boxTexture.lucasNoah);
-  allSkillsSection(scene, loadingManager, 9, 0.01, 40, 20, 20, boxTexture.familyText);
-  allSkillsSection(scene, loadingManager, 9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
+  allSkillsSection(scene, manager, -60, 0.025, 20, 40, 40, boxTexture.allSkills);
+  allSkillsSection(scene, manager, 75, 0.025, 25, 30, 60, inputText.activities);
+  allSkillsSection(scene, manager, 8.75, 0.025, 62, 17, 20, boxTexture.lucasNoah);
+  allSkillsSection(scene, manager, 9, 0.01, 40, 20, 20, boxTexture.familyText);
+  allSkillsSection(scene, manager, 9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
   simpleText(scene, 9, 0.01, 5, instructionsText, 1.25);
   simpleText(scene, 39, 0.01, -83, touchText, 1.5);
   simpleText(scene, -60, 0.01, -5, "SKILLS", 3);
   simpleText(scene, -60, 0.01, -55, "EXPERIENCE & PROJECTS", 3);
   simpleText(scene, 75, 0.01, -10, "TIMELINE", 3);
-  wallOfBricks(scene, Ammo, loadingManager);
+  wallOfBricks(scene, Ammo, manager);
   createTriangle(scene, Ammo, 88, -75);
   createTriangle(scene, Ammo, 88, -71);
   createTriangle(scene, Ammo, 88, -67);
@@ -283,7 +283,7 @@ export const setupScene = ({
 
         // Delay before recreating the ball
         setTimeout(() => {
-          createBall(scene, Ammo, loadingManager);
+          createBall(scene, Ammo, manager);
           useStore.setState({ recreateBall: false });
         }, 1000); // Delay of 1 second
       }
