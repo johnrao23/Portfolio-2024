@@ -7,8 +7,7 @@ import skyVertexShader from "../shaders/skyVertex.glsl";
 import skyFragmentShader from "../shaders/skyFragment.glsl";
 
 //threejs variable declaration
-let manager: THREE.LoadingManager,
-particleSystemObject: THREE.Points;
+let particleSystemObject: THREE.Points;
 
 export let galaxyMaterial: THREE.ShaderMaterial | null = null;
 export let galaxyPoints: THREE.Points | null = null;
@@ -51,7 +50,7 @@ export function createSkyEffect(scene: THREE.Scene): void {
   scene.add(skyMesh);
 }
 
-export function glowingParticles(scene: THREE.Scene): void {
+export function glowingParticles(scene: THREE.Scene, manager: THREE.LoadingManager): void {
   const particleTextureLoader = new THREE.TextureLoader(manager);
   const particleTexture = particleTextureLoader.load("/assets/spark.png");
 
@@ -241,6 +240,23 @@ export function moveParticles(clock: THREE.Clock): void {
 
   const time = 7 * clock.getElapsedTime();
 
+    // Additional rotation for the entire group
+    particleGroup.rotation.y = time * 0.75;
+
+    // Move particleSystemObject
+    particleSystemObject.rotation.z += 0.0003;
+  
+    // Move lensFlareObject
+    // lensFlareObject.rotation.z += 0.0002;
+    // if (lensFlareObject.position.x < 750) {
+    //   lensFlareObject.position.x += 0.025;
+    //   lensFlareObject.position.y -= 0.001;
+    // } else {
+    //   lensFlareObject.position.x = -750;
+    //   lensFlareObject.position.y = -50;
+    // }
+
+
   // Move particles within the group
   particleGroup.children.forEach((sprite, index) => {
     const randomness = particleAttributes.randomness[index];
@@ -253,22 +269,6 @@ export function moveParticles(clock: THREE.Clock): void {
     sprite.position.y = startPosition.y * pulseFactor * 1.5;
     sprite.position.z = startPosition.z * pulseFactor;
   });
-
-  // Additional rotation for the entire group
-  particleGroup.rotation.y = time * 0.75;
-
-  // Move particleSystemObject
-  particleSystemObject.rotation.z += 0.0003;
-
-  // Move lensFlareObject
-  lensFlareObject.rotation.z += 0.0002;
-  if (lensFlareObject.position.x < 750) {
-    lensFlareObject.position.x += 0.025;
-    lensFlareObject.position.y -= 0.001;
-  } else {
-    lensFlareObject.position.x = -750;
-    lensFlareObject.position.y = -50;
-  }
 }
 
 

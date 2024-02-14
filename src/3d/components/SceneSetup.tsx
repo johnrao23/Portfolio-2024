@@ -163,7 +163,7 @@ export const setupScene = ({
 
   // add background effects to scene
   addParticles(scene);
-  glowingParticles(scene);
+  glowingParticles(scene, loadingManager);
   generateGalaxy(scene, renderer);
   createSkyEffect(scene)
 
