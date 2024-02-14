@@ -140,6 +140,17 @@ function getRandomArbitrary(min: number, max: number): number {
 }
 
 export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRenderer): void => {
+  const state = useStore.getState();
+
+  // Dispose of the existing galaxyPoints if it exists.
+  if (state.galaxyPoints !== null) {
+    state.galaxyPoints.geometry.dispose();
+    if (state.galaxyPoints.material instanceof THREE.Material) {
+      state.galaxyPoints.material.dispose();
+    }
+    scene.remove(state.galaxyPoints);
+  }
+
   const parameters: GalaxyParameters = {
     count: 50000,
     size: 0.005,
@@ -218,16 +229,7 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
   galaxyPoints.position.y = -50;
   scene.add(galaxyPoints);
 
-  // If galaxyPoints already exist, dispose of them before creating new ones
-  if (galaxyPoints !== null) {
-    galaxyPoints.geometry.dispose();
-    if (Array.isArray(galaxyPoints.material)) {
-      galaxyPoints.material.forEach(mat => mat.dispose());
-    } else {
-      galaxyPoints.material.dispose();
-    }
-    scene.remove(galaxyPoints);
-  }
+  useStore.setState({ galaxyPoints });
 };
 
 export function moveParticles(clock: THREE.Clock): void {
