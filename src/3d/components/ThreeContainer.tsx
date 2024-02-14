@@ -53,7 +53,6 @@ const ThreeContainer: React.FC = () => {
       document.addEventListener("mousemove", launchHover);
     }, 1000);
   };
-  
 
   return (
     <>
