@@ -12,9 +12,11 @@ type State = {
   scene: THREE.Scene | null;
   renderer: THREE.WebGLRenderer | null;
   camera: THREE.PerspectiveCamera | null;
+  manager: THREE.LoadingManager | null;
   setScene: (scene: THREE.Scene) => void;
   setRenderer: (renderer: THREE.WebGLRenderer) => void;
   setCamera: (camera: THREE.PerspectiveCamera) => void;
+  setManager: (manager: THREE.LoadingManager) => void;
   physicsWorld: any;
   rigidBodies: THREE.Mesh[];
   galaxyMaterial: THREE.ShaderMaterial | null;
@@ -51,6 +53,7 @@ export const useStore = create<State>((set, get) => ({
   scene: null,
   renderer: null,
   camera: null,
+  manager: null,
   physicsWorld: null,
   rigidBodies: [],
   galaxyMaterial: null,
@@ -79,6 +82,7 @@ export const useStore = create<State>((set, get) => ({
   setScene: (scene: THREE.Scene ) => set({ scene }),
   setRenderer: (renderer: THREE.WebGLRenderer) => set({ renderer }),
   setCamera: (camera: THREE.PerspectiveCamera) => set({ camera }),
+  setManager: (manager: THREE.LoadingManager) => set({ manager }),
 
   setPhysicsWorld: (world) => set({ physicsWorld: world }),
 

@@ -9,7 +9,7 @@ const ThreeContainer: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(false);
   
-  const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld, scene } = useStore();
+  const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld, scene, manager } = useStore();
 
   useEffect(() => {
     if (!ammoLoaded) {
@@ -41,7 +41,11 @@ const ThreeContainer: React.FC = () => {
     setShowOverlay(false);
     document.addEventListener("click", launchClickPosition);
     if (scene) {
-      createBeachBall(scene, ammo);
+      if (manager !== null) {
+        createBeachBall(scene, ammo, manager);
+      } else {
+        console.error("LoadingManager is not initialized.");
+      }
     } else {
       console.error("Scene is not initialized.");
     }
@@ -49,6 +53,7 @@ const ThreeContainer: React.FC = () => {
       document.addEventListener("mousemove", launchHover);
     }, 1000);
   };
+  
 
   return (
     <>
