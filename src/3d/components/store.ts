@@ -25,8 +25,10 @@ type State = {
     startPosition: THREE.Vector3[];
     randomness: number[];
   };
+  lensFlareObject: THREE.Mesh | null;
   setParticleGroup: (group: THREE.Group) => void;
   setParticleAttributes: (attributes: { startSize: number[]; startPosition: THREE.Vector3[]; randomness: number[]; }) => void;
+  setLensFlareObject: (newLensFlareObject: THREE.Mesh | null) => void;
   ballObject: THREE.Mesh | null;
   recreateBall: boolean;
   cursorHoverObjects: THREE.Object3D[];
@@ -50,6 +52,7 @@ export const useStore = create<State>((set, get) => ({
   galaxyMaterial: null,
   particleGroup: null,
   particleAttributes: { startSize: [], startPosition: [], randomness: [] },
+  lensFlareObject: null,
   ballObject: null,
   recreateBall: false,
   cursorHoverObjects: [],
@@ -76,6 +79,7 @@ export const useStore = create<State>((set, get) => ({
   setGalaxyMaterial: (material: THREE.ShaderMaterial) => set({ galaxyMaterial: material }),
   setParticleGroup: (group) => set({ particleGroup: group }),
   setParticleAttributes: (attributes) => set({ particleAttributes: attributes }),
+  setLensFlareObject: (newLensFlareObject: THREE.Mesh | null) => set({lensFlareObject: newLensFlareObject}),
 
   setBallObject: (newBallObject: THREE.Mesh | null) => set({ ballObject: newBallObject }),
 

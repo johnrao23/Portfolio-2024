@@ -8,7 +8,7 @@ import skyFragmentShader from "../shaders/skyFragment.glsl";
 
 //threejs variable declaration
 let manager: THREE.LoadingManager,
-lensFlareObject: THREE.Mesh;
+particleSystemObject: THREE.Points;
 
 export let galaxyMaterial: THREE.ShaderMaterial | null = null;
 export let galaxyPoints: THREE.Points | null = null;
@@ -93,6 +93,8 @@ export function glowingParticles(scene: THREE.Scene): void {
 }
 
 export function createLensFlare(scene: THREE.Scene, x: number, y: number, z: number, xScale: number, zScale: number, boxTexture: string) : void {
+  const { lensFlareObject } = useStore.getState();
+
   const boxScale = { x: xScale, y: 0.1, z: zScale };
   let quat = { x: 0, y: 0, z: 0, w: 1 };
   let mass = 0; //mass of zero = infinite mass
@@ -233,26 +235,43 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
 };
 
 export function moveParticles(clock: THREE.Clock): void {
-  const { particleGroup, particleAttributes } = useStore.getState();
+  const { particleGroup, particleAttributes, lensFlareObject } = useStore.getState();
 
   if (!particleGroup || !particleAttributes) return;
 
   const time = 7 * clock.getElapsedTime();
 
+  // Move particles within the group
   particleGroup.children.forEach((sprite, index) => {
     const randomness = particleAttributes.randomness[index];
     const startPosition = particleAttributes.startPosition[index];
-    // Adjust the movement logic as needed
+
     const a = randomness + 0.75;
     const pulseFactor = Math.sin(a * time) * 0.1 + 0.9;
+
     sprite.position.x = startPosition.x * pulseFactor;
-    sprite.position.y = startPosition.y * pulseFactor;
+    sprite.position.y = startPosition.y * pulseFactor * 1.5;
     sprite.position.z = startPosition.z * pulseFactor;
   });
 
-  // Example of additional group-wide animation, adjust as needed
-  particleGroup.rotation.y += 0.001;
+  // Additional rotation for the entire group
+  particleGroup.rotation.y = time * 0.75;
+
+  // Move particleSystemObject
+  particleSystemObject.rotation.z += 0.0003;
+
+  // Move lensFlareObject
+  lensFlareObject.rotation.z += 0.0002;
+  if (lensFlareObject.position.x < 750) {
+    lensFlareObject.position.x += 0.025;
+    lensFlareObject.position.y -= 0.001;
+  } else {
+    lensFlareObject.position.x = -750;
+    lensFlareObject.position.y = -50;
+  }
 }
+
+
 
 export const addHemisphereLight = (scene: THREE.Scene) : void => {
   let hemiLight = new THREE.HemisphereLight(0xffffff, 0xffffff, 1.5);
