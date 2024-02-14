@@ -230,27 +230,27 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
 };
 
 export function moveParticles(clock: THREE.Clock): void {
-  const { particleGroup, particleAttributes, lensFlareObject } = useStore.getState();
+  const { particleGroup, particleAttributes, lensFlareObject, particleSystemObject } = useStore.getState();
 
-  if (!particleGroup || !particleAttributes) return;
+  if (!particleGroup || !particleAttributes || !lensFlareObject || !particleSystemObject) return;
 
   const time = 7 * clock.getElapsedTime();
 
-    // Additional rotation for the entire group
-    particleGroup.rotation.y = time * 0.75;
+  // Rotate the entire particle group
+  particleGroup.rotation.y = time * 0.75;
 
-    // Move particleSystemObject
-    particleSystemObject.rotation.z += 0.0003;
-  
-    // Move lensFlareObject
-    lensFlareObject.rotation.z += 0.0002;
-    if (lensFlareObject.position.x < 750) {
-      lensFlareObject.position.x += 0.025;
-      lensFlareObject.position.y -= 0.001;
-    } else {
-      lensFlareObject.position.x = -750;
-      lensFlareObject.position.y = -50;
-    }
+  // Move particleSystemObject
+  particleSystemObject.rotation.z += 0.0003;
+
+  // Move lensFlareObject
+  lensFlareObject.rotation.z += 0.0002;
+  if (lensFlareObject.position.x < 750) {
+    lensFlareObject.position.x += 0.025;
+    lensFlareObject.position.y -= 0.001;
+  } else {
+    lensFlareObject.position.x = -750;
+    lensFlareObject.position.y = -50;
+  }
 
   // Move particles within the group
   particleGroup.children.forEach((sprite, index) => {
