@@ -234,11 +234,6 @@ export function moveParticles(clock: THREE.Clock): void {
 
   if (!particleGroup || !particleAttributes || !lensFlareObject || !particleSystemObject) return;
 
-  const time = 7 * clock.getElapsedTime();
-
-  // Rotate the entire particle group
-  particleGroup.rotation.y = time * 0.75;
-
   // Move particleSystemObject
   particleSystemObject.rotation.z += 0.0003;
 
@@ -252,6 +247,8 @@ export function moveParticles(clock: THREE.Clock): void {
     lensFlareObject.position.y = -50;
   }
 
+  const time = 7 * clock.getElapsedTime();
+
   // Move particles within the group
   particleGroup.children.forEach((sprite, index) => {
     const randomness = particleAttributes.randomness[index];
@@ -264,6 +261,9 @@ export function moveParticles(clock: THREE.Clock): void {
     sprite.position.y = startPosition.y * pulseFactor * 1.5;
     sprite.position.z = startPosition.z * pulseFactor;
   });
+
+    // Rotate the entire particle group
+    particleGroup.rotation.y = time * 0.75;
 }
 
 export const addHemisphereLight = (scene: THREE.Scene) : void => {
