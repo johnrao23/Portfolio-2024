@@ -6,9 +6,6 @@ import galaxyFragmentShader from "../shaders/fragment.glsl";
 import skyVertexShader from "../shaders/skyVertex.glsl";
 import skyFragmentShader from "../shaders/skyFragment.glsl";
 
-export let galaxyMaterial: THREE.ShaderMaterial | null = null;
-export let galaxyPoints: THREE.Points | null = null;
-
 type GalaxyParameters = {
   count: number;
   size: number;
@@ -155,17 +152,6 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
     randomness: 0.2,
   };
 
-  // If galaxyPoints already exist, dispose of them before creating new ones
-  if (galaxyPoints !== null) {
-    galaxyPoints.geometry.dispose();
-    if (Array.isArray(galaxyPoints.material)) {
-      galaxyPoints.material.forEach(mat => mat.dispose());
-    } else {
-      galaxyPoints.material.dispose();
-    }
-    scene.remove(galaxyPoints);
-  }
-
   const geometry = new THREE.BufferGeometry();
 
   const positions = new Float32Array(parameters.count * 3);
@@ -212,7 +198,7 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
   geometry.setAttribute('aScale', new THREE.BufferAttribute(scales, 1));
   geometry.setAttribute('aRandomness', new THREE.BufferAttribute(randomness, 3));
 
-  galaxyMaterial = new THREE.ShaderMaterial({
+  const galaxyMaterial = new THREE.ShaderMaterial({
     depthWrite: false,
     blending: THREE.AdditiveBlending,
     vertexColors: true,
@@ -226,9 +212,22 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
 
   useStore.getState().setGalaxyMaterial(galaxyMaterial);
 
-  galaxyPoints = new THREE.Points(geometry, galaxyMaterial);
+  console.log(galaxyMaterial)
+
+  const galaxyPoints = new THREE.Points(geometry, galaxyMaterial);
   galaxyPoints.position.y = -50;
   scene.add(galaxyPoints);
+
+  // If galaxyPoints already exist, dispose of them before creating new ones
+  if (galaxyPoints !== null) {
+    galaxyPoints.geometry.dispose();
+    if (Array.isArray(galaxyPoints.material)) {
+      galaxyPoints.material.forEach(mat => mat.dispose());
+    } else {
+      galaxyPoints.material.dispose();
+    }
+    scene.remove(galaxyPoints);
+  }
 };
 
 export function moveParticles(clock: THREE.Clock): void {
