@@ -110,18 +110,18 @@ export const setupScene = ({
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   container.appendChild(renderer.domElement);
 
+  //Setup the renderer
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.shadowMap.enabled = true;
+
   // Initialize stats, clocks
   const stats = new Stats();
   container.appendChild(stats.dom);
   const clock = new THREE.Clock();
   const galaxyClock = new THREE.Clock();
   galaxyClock.start();
-
-  //Setup the renderer
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.shadowMap.enabled = true;
 
   useStore.setState({ scene, camera, renderer, manager });
 
