@@ -634,22 +634,6 @@ export const createWallZ = ( scene: THREE.Scene, Ammo: any, x: number, y: number
   addRigidPhysics(wall, new THREE.Vector3(wallScale.x, wallScale.y, wallScale.z));
 }
 
-//helper function to create individual brick mesh
-const createBrick = ( scene: THREE.Scene, Ammo: any, sx: any, sy: number, sz: any, mass: any, pos: any, quat: any, material: any) => {
-  var threeObject = new THREE.Mesh(
-    new THREE.BoxGeometry(sx, sy, sz, 1, 1, 1),
-    material,
-  );
-  var shape = new Ammo.btBoxShape(
-    new Ammo.btVector3(sx * 0.5, sy * 0.5, sz * 0.5),
-  );
-  shape.setMargin(0.05);
-
-  createBrickBody(scene, Ammo, threeObject, shape, mass, pos, quat);
-
-  return threeObject;
-}
-
 //add physics to brick body
 const createBrickBody = (scene: THREE.Scene, Ammo: any, threeObject: any, physicsShape: any, mass: any, pos: any, quat: any) => {
   threeObject.position.copy(pos);
@@ -687,6 +671,22 @@ const createBrickBody = (scene: THREE.Scene, Ammo: any, threeObject: any, physic
 
   const { addRigidBody } = useStore.getState();
   addRigidBody(threeObject, body);
+}
+
+//helper function to create individual brick mesh
+const createBrick = ( scene: THREE.Scene, Ammo: any, sx: any, sy: number, sz: any, mass: any, pos: any, quat: any, material: any) => {
+  var threeObject = new THREE.Mesh(
+    new THREE.BoxGeometry(sx, sy, sz, 1, 1, 1),
+    material,
+  );
+  var shape = new Ammo.btBoxShape(
+    new Ammo.btVector3(sx * 0.5, sy * 0.5, sz * 0.5),
+  );
+  shape.setMargin(0.05);
+
+  createBrickBody(scene, Ammo, threeObject, shape, mass, pos, quat);
+
+  return threeObject;
 }
 
 //create brick wall
