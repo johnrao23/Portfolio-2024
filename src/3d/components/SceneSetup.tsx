@@ -108,10 +108,7 @@ export const setupScene = ({
   const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 5000 );
   camera.position.set(0, 30, 70);
   const renderer = new THREE.WebGLRenderer({ antialias: true });
-  renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
-
-  useStore.setState({ scene, camera, renderer, manager });
 
   // Initialize stats, clocks
   const stats = new Stats();
@@ -125,6 +122,8 @@ export const setupScene = ({
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.shadowMap.enabled = true;
+
+  useStore.setState({ scene, camera, renderer, manager });
 
   //default transform object
   let tmpTrans = new Ammo.btTransform();
