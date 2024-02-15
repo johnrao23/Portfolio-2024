@@ -178,12 +178,12 @@ export const setupScene = ({
   createBox(scene, Ammo, manager, 35.1, 2, -100, 4, 4, 1, boxTexture.LinkedIn, URL.LinkedIn, 0x0077b5, true);
   createBox(scene, Ammo, manager, 42.9, 2, -100, 4, 4, 1, boxTexture.twitter, URL.twitter, 0x00a2f4, true);
   createBox(scene, Ammo, manager, 50.5, 2, -100, 4, 4, 1, boxTexture.mail, "mailto:johnrao23@gmail.com", 0x000000, false);
-  createBillboard( scene, Ammo, manager, -115, 2.5, -105, billboardTextures.terpSolutionsTexture, URL.terpsolutions, Math.PI * 0.2, );
-  createBillboard( scene, Ammo, manager, -80, 2.5, -110, billboardTextures.bullVsBearTexture, URL.bullVsBearTrading, Math.PI * 0.15, );
-  createBillboard( scene, Ammo, manager, -45, 2.5, -110, billboardTextures.fairbnbTexture, URL.getFairbnb, Math.PI * 0.1, );
+  createBillboard(scene, Ammo, manager, -115, 2.5, -105, billboardTextures.terpSolutionsTexture, URL.terpsolutions, Math.PI * 0.2, );
+  createBillboard(scene, Ammo, manager, -80, 2.5, -110, billboardTextures.bullVsBearTexture, URL.bullVsBearTrading, Math.PI * 0.15, );
+  createBillboard(scene, Ammo, manager, -45, 2.5, -110, billboardTextures.fairbnbTexture, URL.getFairbnb, Math.PI * 0.1, );
   createBillboardRotated( scene, Ammo, manager, -15, 1.25, -105, billboardTextures.scanAndGoTexture, URL.samsClub, Math.PI * 0.1, );
   johnRaoWords(scene, Ammo, 11.2, 1, -20);
-  helloWorldWords( scene, Ammo, 11.2, 1, -20);
+  helloWorldWords(scene, Ammo, 11.2, 1, -20);
   loadJohnText(scene);
   loadEngineerText(scene);
   loadHelloWorldText(scene);
