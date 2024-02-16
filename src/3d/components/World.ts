@@ -1,8 +1,9 @@
 // use Three.js to set up graphics
 import * as THREE from "three";
 import { useStore } from "./store";
-import galaxyVertexShader from "../shaders/vertex.glsl";
-import galaxyFragmentShader from "../shaders/fragment.glsl";
+// import galaxyVertexShader from "../shaders/vertex.glsl";
+// import galaxyFragmentShader from "../shaders/fragment.glsl";
+import { fragmentShader, vertexShader } from "./shaders";
 import skyVertexShader from "../shaders/skyVertex.glsl";
 import skyFragmentShader from "../shaders/skyFragment.glsl";
 
@@ -13,8 +14,8 @@ type GalaxyParameters = {
   branches: number;
   spin: number;
   randomnessPower: number;
-  insideColor: string;
-  outsideColor: string;
+  insideColor: number;
+  outsideColor: number;
   randomness: number;
 };
 
@@ -158,8 +159,8 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
     branches: 3,
     spin: 1,
     randomnessPower: 3,
-    insideColor: "#ff6030",
-    outsideColor: "#1b3984",
+    insideColor: 0xff6030,
+    outsideColor: 0x1b3984,
     randomness: 0.2,
   };
 
@@ -213,8 +214,8 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
     depthWrite: false,
     blending: THREE.AdditiveBlending,
     vertexColors: true,
-    vertexShader: galaxyVertexShader,
-    fragmentShader: galaxyFragmentShader,
+    vertexShader: vertexShader,
+    fragmentShader: fragmentShader,
     uniforms: {
       uTime: { value: 0 },
       uSize: { value: 30 * renderer.getPixelRatio() },
