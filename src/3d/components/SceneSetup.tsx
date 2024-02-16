@@ -237,7 +237,11 @@ export const setupScene = ({
     physicsBody.setLinearVelocity(resultantImpulse);
 }
   
-  function updatePhysics(deltaTime: number, physicsWorld: any, rigidBodies: THREE.Mesh[], ballObject: THREE.Mesh) {
+  function updatePhysics(deltaTime: number) {
+    const physicsWorld = useStore.getState().physicsWorld;
+    const rigidBodies = useStore.getState().rigidBodies;
+    const ballObject = useStore.getState().ballObject;
+
     try {
       // Check for missing or incomplete elements
       if (!physicsWorld || !ballObject || !ballObject.userData || !ballObject.userData.physicsBody) {
@@ -320,7 +324,7 @@ export const setupScene = ({
 
       if (ballObject) {
         moveBall(ballObject, moveDirection);
-        updatePhysics(deltaTime, physicsWorld, rigidBodies, ballObject);
+        updatePhysics(deltaTime);
       }
 
       if (galaxyMaterial) {
