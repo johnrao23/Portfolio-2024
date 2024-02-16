@@ -1,24 +1,42 @@
-attribute vec3 position;
-attribute vec3 color;
-attribute float aScale;
-attribute vec3 aRandomness;
-
-uniform mat4 modelViewMatrix;
-uniform mat4 projectionMatrix;
 uniform float uSize;
+attribute float aScale;
 
 varying vec3 vColor;
+uniform float uTime;
 
-void main() {
+attribute vec3 aRandomness;
+
+void main()
+{
+    /**
+     * Position
+     */
+    vec4 modelPosition = modelMatrix * vec4(position, 1.0);
+    
+    // Rotate
+    float angle = atan(modelPosition.x, modelPosition.z);
+    float distanceToCenter = length(modelPosition.xz);
+    float angleOffset = (1.0 / distanceToCenter) * uTime * 0.2;
+    angle += angleOffset;
+    modelPosition.x = cos(angle) * distanceToCenter;
+    modelPosition.z = sin(angle) * distanceToCenter;
+
+    // Randomness
+    modelPosition.xyz += aRandomness;
+    
+    vec4 viewPosition = viewMatrix * modelPosition;
+    vec4 projectedPosition = projectionMatrix * viewPosition;
+    gl_Position = projectedPosition;
+
+    /**
+     * Size
+     */
+     gl_PointSize = uSize * aScale;
+    gl_PointSize *= (50.0 / - viewPosition.z);
+
+       /**
+     * Color
+     */
     vColor = color;
-    
-    // Apply randomness to position
-    vec3 pos = position + aRandomness;
-    
-    // Scale the points
-    vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
-    mvPosition.xyz += position * aScale;
 
-    gl_PointSize = uSize * (1.0 / -mvPosition.z);
-    gl_Position = projectionMatrix * mvPosition;
 }
