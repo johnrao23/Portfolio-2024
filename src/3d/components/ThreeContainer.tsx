@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { setupScene } from './SceneSetup';
 import { launchClickPosition, launchHover } from './Utilities';
 import { createBeachBall } from './CreateObjects';
@@ -8,6 +9,7 @@ const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(false);
+  const navigate = useNavigate();
   
   const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld, scene } = useStore();
 
@@ -69,6 +71,8 @@ const ThreeContainer: React.FC = () => {
           <h1 className="start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
           <h1 id="appDirections" className="start-page-text joystick-directions-text">Move the ball around with the arrow keys on the keyboard.</h1>
           <button id="start-button" onClick={startButtonEventListener}>EXPLORE</button>
+          <h1 className="yellow-text">OR</h1>
+          <button id="start-button" onClick=>Visit Static Site</button>
         </div>
       )}
     <div ref={containerRef} style={{ width: '100%', height: '100%'}}>
