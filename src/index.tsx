@@ -8,7 +8,7 @@ import WEBGL from './3d/components/WebGL';
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 const pathname = window.location.pathname;
 
-if (pathname.startsWith('/static') || !WEBGL.isWebGLAvailable()) {
+if (pathname.startsWith('/static/*') || !WEBGL.isWebGLAvailable()) {
   root.render(
     <React.StrictMode>
       <Router>

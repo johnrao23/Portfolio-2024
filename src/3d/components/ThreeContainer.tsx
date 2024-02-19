@@ -54,8 +54,9 @@ const ThreeContainer: React.FC = () => {
   };
 
   const goToStaticSite = () => {
-    return navigate("/static")
-  }
+    navigate("/static");
+  };
+  
 
   return (
     <>
