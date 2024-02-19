@@ -1,17 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './static/App';
 import ThreeContainer from './3d/ThreeContainer';
-import WEBGL from './3d/components/WebGL';
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
-const pathname = window.location.pathname;
 
-root.render(
+const AppRouter = () => (
   <React.StrictMode>
     <Router>
-      {pathname.startsWith('/static') || !WEBGL.isWebGLAvailable() ? <App /> : <ThreeContainer />}
+      <Routes>
+        <Route path="/static/*" element={<App />} />
+        <Route path="*" element={<ThreeContainer />} />
+      </Routes>
     </Router>
   </React.StrictMode>
 );
+
+root.render(<AppRouter />);

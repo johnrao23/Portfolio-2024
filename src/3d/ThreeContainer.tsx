@@ -4,6 +4,7 @@ import { setupScene } from './components/SceneSetup';
 import { launchClickPosition, launchHover } from './components/Utilities';
 import { createBeachBall } from './components/CreateObjects';
 import { useStore } from './components/store';
+import WEBGL from './components/WebGL';
 import '../index-3d.css';
 
 const ThreeContainer: React.FC = () => {
@@ -13,6 +14,15 @@ const ThreeContainer: React.FC = () => {
   const navigate = useNavigate();
   
   const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld, scene } = useStore();
+
+  useEffect(() => {
+    if (!WEBGL.isWebGLAvailable()) {
+      console.log("WebGL not available, navigating to static site.");
+      navigate("/static");
+    } else {
+      console.log("WebGL available, proceeding with 3D content.");
+    }
+  }, [navigate]);
 
   useEffect(() => {
     if (!ammoLoaded) {
