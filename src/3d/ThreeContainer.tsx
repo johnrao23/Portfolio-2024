@@ -55,7 +55,8 @@ const ThreeContainer: React.FC = () => {
   };
 
   const goToStaticSite = () => {
-    navigate("/static");
+    console.log("trying to go to static site")
+    return navigate("/static");
   };
   
 
@@ -78,7 +79,7 @@ const ThreeContainer: React.FC = () => {
           <h1 id="appDirections" className="start-page-text joystick-directions-text">Move the ball around with the arrow keys on the keyboard.</h1>
           <button id="start-button" onClick={startButtonEventListener}>EXPLORE</button>
           <h1 className="or-text">OR</h1>
-          <button id="static-button" onClick={goToStaticSite}>VISIT STATIC SITE</button>
+          <button id="static-button" onClick={() => goToStaticSite()}>VISIT STATIC SITE</button>
         </div>
       )}
     <div ref={containerRef} style={{ width: '100%', height: '100%'}}>
