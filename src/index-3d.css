@@ -170,6 +170,13 @@ select {
   font-size: calc(32px + (24 - 18) * (100vw - 400px) / (800 - 400));
 }
 
+.or-text {
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 40px;
+  font-size: calc(10px + (24 - 18) * (100vw - 400px) / (800 - 400));
+}
+
 .start-page-content-div {
   position: fixed;
   top: 0;
@@ -187,7 +194,7 @@ select {
 
 #start-button {
   margin: 0 auto;
-  margin-bottom: 20vh;
+  margin-bottom: 5vh;
   font-size: 25px;
   background-color: grey;
   border: none;
@@ -202,6 +209,27 @@ select {
 }
 
 #start-button:hover {
+  cursor: pointer;
+  transform: scale(1.15);
+}
+
+#static-button {
+  margin: 0 auto;
+  margin-bottom: 0vh;
+  font-size: 20px;
+  background-color: grey;
+  border: none;
+  color: #fffc00;
+  border-radius: 12px;
+  padding: 15px 30px 15px 30px;
+  -webkit-appearance: none;
+  -webkit-border-radius: none;
+  outline: none;
+  transition: 0.25s;
+  z-index: 1002;
+}
+
+#static-button:hover {
   cursor: pointer;
   transform: scale(1.15);
 }

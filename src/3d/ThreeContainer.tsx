@@ -77,8 +77,8 @@ const ThreeContainer: React.FC = () => {
           <h1 className="start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
           <h1 id="appDirections" className="start-page-text joystick-directions-text">Move the ball around with the arrow keys on the keyboard.</h1>
           <button id="start-button" onClick={startButtonEventListener}>EXPLORE</button>
-          <h1 className="yellow-text">OR</h1>
-          <button id="start-button" onClick={goToStaticSite}>Visit Static Site</button>
+          <h1 className="or-text">OR</h1>
+          <button id="static-button" onClick={goToStaticSite}>VISIT STATIC SITE</button>
         </div>
       )}
     <div ref={containerRef} style={{ width: '100%', height: '100%'}}>
