@@ -1,9 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { setupScene } from './SceneSetup';
-import { launchClickPosition, launchHover } from './Utilities';
-import { createBeachBall } from './CreateObjects';
-import { useStore } from './store';
+import { setupScene } from './components/SceneSetup';
+import { launchClickPosition, launchHover } from './components/Utilities';
+import { createBeachBall } from './components/CreateObjects';
+import { useStore } from './components/store';
+import '../index-3d.css';
 
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
