@@ -53,6 +53,10 @@ const ThreeContainer: React.FC = () => {
     }, 1000);
   };
 
+  const goToStaticSite = () => {
+    return navigate("/App")
+  }
+
   return (
     <>
     {isLoading && (
@@ -72,7 +76,7 @@ const ThreeContainer: React.FC = () => {
           <h1 id="appDirections" className="start-page-text joystick-directions-text">Move the ball around with the arrow keys on the keyboard.</h1>
           <button id="start-button" onClick={startButtonEventListener}>EXPLORE</button>
           <h1 className="yellow-text">OR</h1>
-          <button id="start-button" onClick=>Visit Static Site</button>
+          <button id="start-button" onClick={goToStaticSite}>Visit Static Site</button>
         </div>
       )}
     <div ref={containerRef} style={{ width: '100%', height: '100%'}}>
