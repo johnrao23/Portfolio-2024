@@ -72,28 +72,30 @@ const ThreeContainer: React.FC = () => {
 
   return (
     <>
-    {isLoading && (
-      <div className="preload-overlay">
-        <div className="trinity-rings-spinner">
-          <div className="circle"></div>
-          <div className="circle"></div>
-          <div className="circle"></div>
+      <div className="three-container">
+        {isLoading && (
+          <div className="preload-overlay">
+            <div className="trinity-rings-spinner">
+              <div className="circle"></div>
+              <div className="circle"></div>
+              <div className="circle"></div>
+            </div>
+            <div className="loading-text-div">Loading<span className="loader__dot">.</span><span className="loader__dot">.</span><span className="loader__dot">.</span></div>
+          </div>
+        )}
+        {showOverlay && (
+          <div className="start-page-content-div">
+            <h1 className="john-text">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
+            <h1 className="start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
+            <h1 id="appDirections" className="start-page-text joystick-directions-text">Move the ball around with the arrow keys on the keyboard.</h1>
+            <button id="start-button" onClick={startButtonEventListener}>EXPLORE</button>
+            <h1 className="or-text">OR</h1>
+            <button id="static-button" onClick={() => goToStaticSite()}>VISIT STATIC SITE</button>
+          </div>
+        )}
+        <div ref={containerRef} style={{ width: '100%', height: '100%'}}>
         </div>
-        <div className="loading-text-div">Loading<span className="loader__dot">.</span><span className="loader__dot">.</span><span className="loader__dot">.</span></div>
       </div>
-    )}
-    {showOverlay && (
-        <div className="start-page-content-div">
-          <h1 className="john-text">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
-          <h1 className="start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
-          <h1 id="appDirections" className="start-page-text joystick-directions-text">Move the ball around with the arrow keys on the keyboard.</h1>
-          <button id="start-button" onClick={startButtonEventListener}>EXPLORE</button>
-          <h1 className="or-text">OR</h1>
-          <button id="static-button" onClick={() => goToStaticSite()}>VISIT STATIC SITE</button>
-        </div>
-      )}
-    <div ref={containerRef} style={{ width: '100%', height: '100%'}}>
-    </div>
     </>
   );
 };
