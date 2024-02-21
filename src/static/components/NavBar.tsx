@@ -15,7 +15,7 @@ const sections = [
   { id: 'about', title: 'About' },
   { id: 'projects', title: 'Projects' },
   { id: 'experience', title: 'Experience' },
-  { id: 'technologies', title: 'Technologies' },
+  { id: 'skills', title: 'Skills' },
 ]
 
 function MenuIcon({
