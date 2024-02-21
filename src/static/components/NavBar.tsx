@@ -12,10 +12,10 @@ const sections = [
       </>
     ),
   },
-  { id: 'screencasts', title: 'Screencasts' },
-  { id: 'resources', title: 'Resources' },
-  { id: 'pricing', title: 'Pricing' },
-  { id: 'author', title: 'Author' },
+  { id: 'about', title: 'About' },
+  { id: 'projects', title: 'Projects' },
+  { id: 'experience', title: 'Experience' },
+  { id: 'technologies', title: 'Technologies' },
 ]
 
 function MenuIcon({
