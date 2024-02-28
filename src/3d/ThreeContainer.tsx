@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setupScene } from './components/SceneSetup';
 import { launchClickPosition, launchHover } from './components/Utilities';
+import { isTouchscreenDevice, createJoystick, setupEventHandlers, } from './components/EventHandlers';
 import { createBeachBall } from './components/CreateObjects';
 import { simpleText } from './components/Surfaces';
 import { useStore } from './components/store';
 import WEBGL from './components/WebGL';
-import { isTouchscreenDevice, createJoystick, setupEventHandlers, } from './components/EventHandlers'
 import '../index-3d.css';
 
 const ThreeContainer: React.FC = () => {
