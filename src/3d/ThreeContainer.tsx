@@ -39,6 +39,41 @@ const ThreeContainer: React.FC = () => {
   }, [ammoLoaded]);
 
   useEffect(() => {
+    setupEventHandlers();
+
+  // Determine device user is using to access app
+  if (isTouchscreenDevice()) {
+    const joystickWrapper = document.getElementById("joystick-wrapper");
+    if (joystickWrapper) {
+      createJoystick(joystickWrapper);
+      joystickWrapper.style.visibility = "visible";
+    }
+  }
+
+  let touchText, instructionsText;
+
+  if (isTouchscreenDevice()) {
+    touchText = "Touch boxes with your \nfinger to open links";
+    instructionsText =
+      "   Use the joystick in the bottom \nleft of the screen to move the ball.";
+  } else {
+    touchText = "Click on boxes with \nthe mouse to open links";
+    instructionsText =
+      "Use the arrow keys on your \n keyboard to move the ball.";
+  }
+
+  const joystickWrapper = document.getElementById("joystick-wrapper");
+  if (joystickWrapper) {
+    joystickWrapper.style.visibility = "hidden";
+    joystickWrapper.innerHTML = "";
+  }
+  if (scene) {
+  simpleText(scene, 9, 0.01, 5, instructionsText, 1.25);
+  simpleText(scene, 39, 0.01, -83, touchText, 1.5);
+  }
+  }, [isTouchscreenDevice]);
+
+  useEffect(() => {
     if (ammoLoaded && !isLoading) {
       setupScene({
         container: containerRef.current,
