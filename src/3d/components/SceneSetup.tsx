@@ -13,12 +13,6 @@ import {
   createSkyEffect,
 } from './World';
 
-import {
-  isTouchscreenDevice,
-  createJoystick,
-  setupEventHandlers,
-} from './EventHandlers'
-
 import { 
   createGridPlane,
   createWallX,
@@ -79,28 +73,6 @@ export const setupScene = ({
     onLoaded();
   };
   
-  setupEventHandlers();
-
-  // Determine device user is using to access app
-  if (isTouchscreenDevice()) {
-    const joystickWrapper = document.getElementById("joystick-wrapper");
-    if (joystickWrapper) {
-      createJoystick(joystickWrapper);
-      joystickWrapper.style.visibility = "visible";
-    }
-  }
-
-  let touchText, instructionsText;
-
-  if (isTouchscreenDevice()) {
-    touchText = "Touch boxes with your \nfinger to open links";
-    instructionsText =
-      "   Use the joystick in the bottom \nleft of the screen to move the ball.";
-  } else {
-    touchText = "Click on boxes with \nthe mouse to open links";
-    instructionsText =
-      "Use the arrow keys on your \n keyboard to move the ball.";
-  }
 
   // Initialize Three.js scene, camera, renderer
   const scene = new THREE.Scene();
@@ -199,8 +171,8 @@ export const setupScene = ({
   allSkillsSection(scene, manager, 8.75, 0.025, 62, 17, 20, boxTexture.lucasNoah);
   allSkillsSection(scene, manager, 9, 0.01, 40, 20, 20, boxTexture.familyText);
   // allSkillsSection(scene, manager, 9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
-  simpleText(scene, 9, 0.01, 5, instructionsText, 1.25);
-  simpleText(scene, 39, 0.01, -83, touchText, 1.5);
+  // simpleText(scene, 9, 0.01, 5, instructionsText, 1.25);
+  // simpleText(scene, 39, 0.01, -83, touchText, 1.5);
   simpleText(scene, -60, 0.01, -5, "SKILLS", 3);
   simpleText(scene, -60, 0.01, -55, "EXPERIENCE & PROJECTS", 3);
   simpleText(scene, 75, 0.01, -10, "TIMELINE", 3);
@@ -347,11 +319,6 @@ export const setupScene = ({
     }
     if (container.contains(stats.dom)) {
       container.removeChild(stats.dom);
-    }
-    const joystickWrapper = document.getElementById("joystick-wrapper");
-    if (joystickWrapper) {
-      joystickWrapper.style.visibility = "hidden";
-      joystickWrapper.innerHTML = "";
     }
   };
 }
