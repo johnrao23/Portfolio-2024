@@ -49,37 +49,26 @@ const ThreeContainer: React.FC = () => {
   }, []);
 
   useEffect(() => {
-  // Determine device user is using to access app
-  if (isTouchscreenDevice()) {
-    const joystickWrapper = document.getElementById("joystick-wrapper");
-    if (joystickWrapper) {
-      createJoystick(joystickWrapper);
-      joystickWrapper.style.visibility = "visible";
+    setIsTouchscreen(isTouchscreenDevice());
+    let touchText, instructionsText;
+
+    if (isTouchscreenDevice()) {
+      touchText = "Touch boxes with your \nfinger to open links";
+      instructionsText = "Use the joystick in the bottom \nleft of the screen to move the ball.";
+      if (joystickWrapperRef.current) {
+        createJoystick(joystickWrapperRef.current);
+        joystickWrapperRef.current.style.visibility = "visible";
+      }
+    } else {
+      touchText = "Click on boxes with \nthe mouse to open links";
+      instructionsText = "Use the arrow keys on your \n keyboard to move the ball.";
     }
-  }
 
-  let touchText, instructionsText;
-
-  if (isTouchscreenDevice()) {
-    touchText = "Touch boxes with your \nfinger to open links";
-    instructionsText =
-      "   Use the joystick in the bottom \nleft of the screen to move the ball.";
-  } else {
-    touchText = "Click on boxes with \nthe mouse to open links";
-    instructionsText =
-      "Use the arrow keys on your \n keyboard to move the ball.";
-  }
-
-  const joystickWrapper = document.getElementById("joystick-wrapper");
-  if (joystickWrapper) {
-    joystickWrapper.style.visibility = "hidden";
-    joystickWrapper.innerHTML = "";
-  }
-  if (scene) {
-  simpleText(scene, 9, 0.01, 5, instructionsText, 1.25);
-  simpleText(scene, 39, 0.01, -83, touchText, 1.5);
-  }
-  }, [isTouchscreenDevice]);
+    if (scene) {
+      simpleText(scene, 9, 0.01, 5, instructionsText, 1.25);
+      simpleText(scene, 39, 0.01, -83, touchText, 1.5);
+    }
+  }, [scene]);
 
   useEffect(() => {
     if (ammoLoaded && !isLoading) {
@@ -139,8 +128,7 @@ const ThreeContainer: React.FC = () => {
           </div>
         )}
         {isTouchscreen && (
-          <div className="joystick-wrapper">
-          </div>
+          <div ref={joystickWrapperRef} className="joystick-wrapper" />
         )}
         <div ref={containerRef} style={{ width: '100%', height: '100%'}}>
         </div>
