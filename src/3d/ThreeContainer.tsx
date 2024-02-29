@@ -45,7 +45,7 @@ const ThreeContainer: React.FC = () => {
       window.removeEventListener("keydown", handleKeyDown, false);
       window.removeEventListener("keyup", handleKeyUp, false);
     };
-  }, [setupEventHandlers]);
+  }, []);
 
   useEffect(() => {
   // Determine device user is using to access app
