@@ -5,7 +5,7 @@ export function setupEventHandlers(): void {
   window.addEventListener("keyup", handleKeyUp, false);
 }
 
-function handleKeyDown(event: KeyboardEvent): void {
+export function handleKeyDown(event: KeyboardEvent): void {
   const key = event.key;
   const { setMoveDirection } = useStore.getState();
 
@@ -32,7 +32,7 @@ function handleKeyDown(event: KeyboardEvent): void {
   }
 }
 
-function handleKeyUp(event: KeyboardEvent): void {
+export function handleKeyUp(event: KeyboardEvent): void {
   const key = event.key;
   const { setMoveDirection } = useStore.getState();
 

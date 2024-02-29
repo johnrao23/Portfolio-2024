@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { setupScene } from './components/SceneSetup';
 import { launchClickPosition, launchHover } from './components/Utilities';
-import { isTouchscreenDevice, createJoystick, setupEventHandlers, } from './components/EventHandlers';
+import { isTouchscreenDevice, createJoystick, setupEventHandlers, handleKeyUp, handleKeyDown } from './components/EventHandlers';
 import { createBeachBall } from './components/CreateObjects';
 import { simpleText } from './components/Surfaces';
 import { useStore } from './components/store';
@@ -41,6 +41,13 @@ const ThreeContainer: React.FC = () => {
   useEffect(() => {
     setupEventHandlers();
 
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown, false);
+      window.removeEventListener("keyup", handleKeyUp, false);
+    };
+  }, [setupEventHandlers]);
+
+  useEffect(() => {
   // Determine device user is using to access app
   if (isTouchscreenDevice()) {
     const joystickWrapper = document.getElementById("joystick-wrapper");
