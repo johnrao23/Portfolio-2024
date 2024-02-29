@@ -99,6 +99,7 @@ export function createJoystick(parent: HTMLElement): { getPosition: () => Coordi
   const stick = document.createElement("div");
   // stick.classList.add("joystick");
   stick.setAttribute("id", "joystick");
+  stick.style.visibility = "visible";
 
   stick.addEventListener("mousedown", handleMouseDown);
   document.addEventListener("mousemove", handleMouseMove);

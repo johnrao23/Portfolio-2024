@@ -129,7 +129,7 @@ const ThreeContainer: React.FC = () => {
           </div>
         )}
         {isTouchscreen && (
-          <div ref={joystickWrapperRef} className="joystick-wrapper" />
+          <div ref={joystickWrapperRef} className="joystick-wrapper joystick" />
         )}
         <div ref={containerRef} style={{ width: '100%', height: '100%'}}>
         </div>
