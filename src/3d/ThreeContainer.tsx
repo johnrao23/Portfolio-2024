@@ -122,7 +122,9 @@ const ThreeContainer: React.FC = () => {
           <div className="start-page-content-div">
             <h1 className="john-text">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
             <h1 className="start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
-            <h1 id="appDirections" className="start-page-text joystick-directions-text">Move the ball around with the arrow keys on the keyboard.</h1>
+            <h1 id="appDirections" className="start-page-text">
+              {isTouchscreen ? "Use the joystick in the bottom left to move the ball. Please use your device in portrait orientation!" : "Move the ball around with the arrow keys on the keyboard."}
+            </h1>
             <button id="start-button" onClick={startButtonEventListener}>EXPLORE</button>
             <h1 className="or-text">OR</h1>
             <button id="static-button" onClick={() => goToStaticSite()}>VISIT STATIC SITE</button>
