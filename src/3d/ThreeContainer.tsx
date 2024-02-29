@@ -138,6 +138,10 @@ const ThreeContainer: React.FC = () => {
             <button id="static-button" onClick={() => goToStaticSite()}>VISIT STATIC SITE</button>
           </div>
         )}
+        {isTouchscreen && (
+          <div className="joystick-wrapper">
+          </div>
+        )}
         <div ref={containerRef} style={{ width: '100%', height: '100%'}}>
         </div>
       </div>
