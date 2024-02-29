@@ -13,6 +13,7 @@ const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(false);
+  const [isTouchscreen, setIsTouchscreen] = useState(false);
   const navigate = useNavigate();
   
   const { initializeAmmo, ammoLoaded, ammo, setPhysicsWorld, scene } = useStore();
