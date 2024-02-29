@@ -11,6 +11,7 @@ import '../index-3d.css';
 
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const joystickWrapperRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(false);
   const [isTouchscreen, setIsTouchscreen] = useState(false);
