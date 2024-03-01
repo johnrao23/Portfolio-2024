@@ -97,9 +97,9 @@ function touchEvent(coordinates: Coordinates): void {
 export function createJoystick(parent: HTMLElement): { getPosition: () => Coordinates } {
   const maxDiff = 62; // How far drag can go
 
-  parent.classList.add("joystick-wrapper");
-  parent.style.visibility = "visible"; 
-  parent.style.zIndex = "10";
+  parent.id = 'joystick-wrapper';
+  parent.style.visibility = 'visible';
+
   const stick = document.createElement("div");
   // stick.classList.add("joystick");
   stick.setAttribute("id", "joystick");
