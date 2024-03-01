@@ -134,7 +134,7 @@ const ThreeContainer: React.FC = () => {
           <div ref={joystickRef} id="joystick-wrapper" className="joystick-wrapper">
           </div>
         )}
-        <div ref={containerRef} style={{ width: '100%', height: '100%', position: 'relative' }}>
+        <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
         </div>
       </div>
     </>
