@@ -11,7 +11,7 @@ import '../index-3d.css';
 
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const joystickContainerRef = useRef<HTMLDivElement>(null);
+  const joystickRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(false);
   const [isTouchscreen, setIsTouchscreen] = useState(false);
@@ -81,10 +81,7 @@ const ThreeContainer: React.FC = () => {
     setIsTouchscreen(isTouchscreenDevice());
     let touchText, instructionsText;
 
-    if (isTouchscreenDevice() && scene) {
-      if (joystickContainerRef.current) {
-        createJoystick(joystickContainerRef.current);
-      }
+    if (isTouchscreenDevice()) {
       touchText = "Touch boxes with your \nfinger to open links";
       instructionsText = "Use the joystick in the bottom \nleft of the screen to move the ball.";
     } else {
@@ -96,7 +93,13 @@ const ThreeContainer: React.FC = () => {
       simpleText(scene, 9, 0.01, 5, instructionsText, 1.25);
       simpleText(scene, 39, 0.01, -83, touchText, 1.5);
     }
-  }, [scene, isTouchscreen]);
+  }, [scene]);
+
+  useEffect(() => {
+    if (isTouchscreen && joystickRef.current) {
+      createJoystick(joystickRef.current);
+    }
+  }, [isTouchscreen]);
 
   const goToStaticSite = () => {
     return navigate("/static");
@@ -128,8 +131,8 @@ const ThreeContainer: React.FC = () => {
           </div>
         )}
         {isTouchscreen && (
-        <div className="joystick-wrapper" ref={joystickContainerRef}>
-        </div>
+          <div ref={joystickRef} id="joystick-wrapper" className="joystick-wrapper">
+          </div>
         )}
         <div ref={containerRef} style={{ width: '100%', height: '100%', position: 'relative' }}>
         </div>
