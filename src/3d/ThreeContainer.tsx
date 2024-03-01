@@ -11,7 +11,6 @@ import '../index-3d.css';
 
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const joystickWrapperRef = useRef<HTMLDivElement>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [showOverlay, setShowOverlay] = useState(false);
   const [isTouchscreen, setIsTouchscreen] = useState(false);
@@ -84,10 +83,6 @@ const ThreeContainer: React.FC = () => {
     if (isTouchscreenDevice()) {
       touchText = "Touch boxes with your \nfinger to open links";
       instructionsText = "Use the joystick in the bottom \nleft of the screen to move the ball.";
-      if (joystickWrapperRef.current) {
-        createJoystick(joystickWrapperRef.current);
-        joystickWrapperRef.current.style.visibility = "visible";
-      }
     } else {
       touchText = "Click on boxes with \nthe mouse to open links";
       instructionsText = "Use the arrow keys on your \n keyboard to move the ball.";
@@ -127,6 +122,9 @@ const ThreeContainer: React.FC = () => {
             <h1 className="or-text">OR</h1>
             <button id="static-button" onClick={() => goToStaticSite()}>VISIT STATIC SITE</button>
           </div>
+        )}
+        {isTouchscreen && (
+          <div className="joystick-wrapper joystick">{createJoystick()}</div>
         )}
         <div ref={containerRef} style={{ width: '100%', height: '100%', position: 'relative' }}>
         </div>
