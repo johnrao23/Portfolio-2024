@@ -203,7 +203,7 @@ select {
   color: #fffc00;
   border-radius: 12px;
   padding: 15px 30px 15px 30px;
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   -webkit-border-radius: none;
   outline: none;
   transition: 0.25s;
@@ -224,7 +224,7 @@ select {
   color: #fffc00;
   border-radius: 12px;
   padding: 15px 30px 15px 30px;
-  -webkit-appearance: none;
+  /* -webkit-appearance: none; */
   -webkit-border-radius: none;
   outline: none;
   transition: 0.25s;
