@@ -108,7 +108,7 @@ select {
   display: flex;
   justify-content: center;
   align-items: center;
-  visibility: hidden;
+  visibility: visible;
   opacity: 1;
   z-index: 10;
 }
@@ -121,7 +121,7 @@ select {
   user-select: none;
   width: 45%;
   margin: 0 auto;
-  visibility: hidden;
+  visibility: visible;
   opacity: 1;
   border: 1px solid rgba(255, 255, 255, 0.5);
   -webkit-user-select: none; /* Chrome/Safari */
