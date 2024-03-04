@@ -76,7 +76,7 @@ export const setupScene = ({
 
   // Initialize Three.js scene, camera, renderer
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x000000).convertSRGBToLinear();
+  scene.background = new THREE.Color(0x000000).convertLinearToSRGB();
   const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 5000 );
   camera.position.set(0, 30, 70);
   const renderer = new THREE.WebGLRenderer({ antialias: true });

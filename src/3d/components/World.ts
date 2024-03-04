@@ -152,7 +152,7 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
   }
 
   const parameters: GalaxyParameters = {
-    count: 50000,
+    count: 100000,
     size: 0.005,
     radius: 100,
     branches: 3,
@@ -170,11 +170,8 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
   const colors = new Float32Array(parameters.count * 3);
   const scales = new Float32Array(parameters.count);
 
-  const insideColor = new THREE.Color(parameters.insideColor).convertSRGBToLinear();
-  const outsideColor = new THREE.Color(parameters.outsideColor).convertSRGBToLinear();
-
-  console.log(insideColor);
-  console.log(outsideColor);
+  const insideColor = new THREE.Color(parameters.insideColor).convertLinearToSRGB();
+  const outsideColor = new THREE.Color(parameters.outsideColor).convertLinearToSRGB();
 
   for (let i = 0; i < parameters.count; i++) {
     const i3 = i * 3;
@@ -196,10 +193,6 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
 
     const mixedColor = insideColor.clone();
     mixedColor.lerp(outsideColor, radius / parameters.radius);
-
-    if (i === 0 || i === Math.floor(parameters.count / 2) || i === parameters.count - 1) {
-      console.log(`Point ${i}:`, mixedColor);
-  }
 
     colors[i3] = mixedColor.r;
     colors[i3 + 1] = mixedColor.g;
