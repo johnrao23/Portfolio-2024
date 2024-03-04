@@ -197,6 +197,10 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
     const mixedColor = insideColor.clone();
     mixedColor.lerp(outsideColor, radius / parameters.radius);
 
+    if (i === 0 || i === Math.floor(parameters.count / 2) || i === parameters.count - 1) {
+      console.log(`Point ${i}:`, mixedColor);
+  }
+
     colors[i3] = mixedColor.r;
     colors[i3 + 1] = mixedColor.g;
     colors[i3 + 2] = mixedColor.b;
