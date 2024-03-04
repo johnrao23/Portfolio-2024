@@ -223,7 +223,7 @@ export const createBox = (scene: THREE.Scene, Ammo: any, manager: THREE.LoadingM
     var borderMaterial = new THREE.MeshBasicMaterial({
       color: color,
     });
-    borderMaterial.color.convertSRGBToLinear();
+    borderMaterial.color.convertLinearToSRGB();
 
     var materials = [
       borderMaterial, // Left side

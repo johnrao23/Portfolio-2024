@@ -26,8 +26,8 @@ type ParticleAttributes = {
 
 export function createSkyEffect(scene: THREE.Scene): void {
   const uniforms = {
-      topColor: { value: new THREE.Color(0x0077FF).convertSRGBToLinear() },
-      bottomColor: { value: new THREE.Color(0xffffff).convertSRGBToLinear() },
+      topColor: { value: new THREE.Color(0x0077FF).convertLinearToSRGB() },
+      bottomColor: { value: new THREE.Color(0xffffff).convertLinearToSRGB() },
       offset: { value: 33 },
       exponent: { value: 0.6 }
   };
