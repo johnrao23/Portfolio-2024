@@ -152,7 +152,7 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
   }
 
   const parameters: GalaxyParameters = {
-    count: 100000,
+    count: 75000,
     size: 0.005,
     radius: 100,
     branches: 3,
