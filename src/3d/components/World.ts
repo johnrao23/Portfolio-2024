@@ -220,8 +220,6 @@ export const generateGalaxy = ( scene: THREE.Scene, renderer: THREE.WebGLRendere
 
   useStore.getState().setGalaxyMaterial(galaxyMaterial);
 
-  console.log(galaxyMaterial)
-
   const galaxyPoints = new THREE.Points(geometry, galaxyMaterial);
   galaxyPoints.position.y = -50;
   scene.add(galaxyPoints);
