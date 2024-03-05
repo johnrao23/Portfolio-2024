@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
+import AvatarButton from './AvatarButton';
 
 // Icons
 function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -108,10 +109,7 @@ const NavBar = () => {
     <header className="...">
       <div className="container mx-auto flex justify-between items-center p-4">
         {/* Left section of the navbar */}
-        <Link to="/" className="...">
-          {/* Logo or brand name */}
-          Brand
-        </Link>
+        <AvatarButton />
 
         {/* Center section of the navbar, typically navigation links */}
         <DesktopNavigation />
