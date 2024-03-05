@@ -2,11 +2,13 @@ import React from "react";
 import { NavBar } from "./NavBar";
 import { Footer } from "./Footer";
 import { Link } from "react-router-dom"; // Import Link
+import AvatarButton from "./AvatarButton";
 
 const Main: React.FC = () => {
     return (
         <div>
             <NavBar />
+            <AvatarButton />
             <h1>Main Content</h1>
             <h2>This will be a long page with navbar jumping to page sections</h2>
             <h2>This will be a long page with navbar jumping to page sections</h2>
