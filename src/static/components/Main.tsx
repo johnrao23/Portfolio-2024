@@ -17,6 +17,62 @@ const Main: React.FC = () => {
             <h2>This will be a long page with navbar jumping to page sections</h2>
             <h2>This will be a long page with navbar jumping to page sections</h2>
             <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
+            <h2>This will be a long page with navbar jumping to page sections</h2>
             <Link to="/static/about" style={{ textDecoration: 'none' }}>
                 <button>About Page</button>
             </Link>
