@@ -1,252 +1,126 @@
-import { useRef, useState } from 'react';
-import { Popover } from '@headlessui/react';
+import React, { Fragment, useEffect, useRef, useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
-import { GridPattern } from './GridPattern'
 
-const sections = [
-  {
-    id: 'table-of-contents',
-    title: (
-      <>
-        <span className="hidden lg:inline">Table of contents</span>
-        <span className="lg:hidden">Contents</span>
-      </>
-    ),
-  },
-  { id: 'about', title: 'About' },
-  { id: 'projects', title: 'Projects' },
-  { id: 'experience', title: 'Experience' },
-  { id: 'skills', title: 'Skills' },
-];
-
-function MenuIcon({
-  open,
-  ...props
-}: React.ComponentPropsWithoutRef<'svg'> & {
-  open: boolean
-}) {
+// Icons
+function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      viewBox="0 0 24 24"
-      {...props}
-    >
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
-        d={open ? 'M17 7 7 17M7 7l10 10' : 'm15 16-3 3-3-3M15 8l-3-3-3 3'}
+        d="m17.25 6.75-10.5 10.5M6.75 6.75l10.5 10.5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
-  )
-}
-
-export function NavBar() {
-  return (
-    <div className="sticky top-0 z-50 bg-white shadow">
-      <div className="absolute inset-x-0 top-0 h-32 text-slate-900/10 [mask-image:linear-gradient(white,transparent)]">
-        <GridPattern x="50%" />
-      </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
-          {sections.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
-              {typeof section.title === 'object' ? section.title.props.children : section.title}
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
   );
 }
 
+function ChevronDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg viewBox="0 0 8 6" aria-hidden="true" {...props}>
+      <path
+        d="M1.75 1.75 4 4.25l2.25-2.5"
+        fill="none"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
+function SunIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      {...props}
+    >
+      {/* SVG content */}
+    </svg>
+  );
+}
 
+function MoonIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      {/* SVG content */}
+    </svg>
+  );
+}
 
+// Navigation items
+function NavItem({ href, children }: { href: string; children: React.ReactNode }) {
+  const location = useLocation();
+  const isActive = location.pathname === href;
 
-// import { useEffect, useRef, useState } from 'react'
-// import { Popover } from '@headlessui/react'
-// import clsx from 'clsx'
+  return (
+    <li>
+      <Link
+        to={href}
+        className={clsx(
+          'relative block px-3 py-2 transition',
+          isActive ? 'text-teal-500 dark:text-teal-400' : 'hover:text-teal-500 dark:hover:text-teal-400'
+        )}
+      >
+        {children}
+      </Link>
+    </li>
+  );
+}
 
-// const sections = [
-//   {
-//     id: 'table-of-contents',
-//     title: (
-//       <>
-//         <span className="hidden lg:inline">Table of contents</span>
-//         <span className="lg:hidden">Contents</span>
-//       </>
-//     ),
-//   },
-//   { id: 'about', title: 'About' },
-//   { id: 'projects', title: 'Projects' },
-//   { id: 'experience', title: 'Experience' },
-//   { id: 'skills', title: 'Skills' },
-// ]
+function DesktopNavigation() {
+  return (
+    <nav>
+      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+        <NavItem href="/about">About</NavItem>
+        <NavItem href="/articles">Articles</NavItem>
+        <NavItem href="/projects">Projects</NavItem>
+        <NavItem href="/speaking">Speaking</NavItem>
+        <NavItem href="/uses">Uses</NavItem>
+      </ul>
+    </nav>
+  );
+}
 
-// function MenuIcon({
-//   open,
-//   ...props
-// }: React.ComponentPropsWithoutRef<'svg'> & {
-//   open: boolean
-// }) {
-//   return (
-//     <svg
-//       aria-hidden="true"
-//       fill="none"
-//       strokeWidth="2"
-//       strokeLinecap="round"
-//       strokeLinejoin="round"
-//       viewBox="0 0 24 24"
-//       {...props}
-//     >
-//       <path
-//         d={open ? 'M17 7 7 17M7 7l10 10' : 'm15 16-3 3-3-3M15 8l-3-3-3 3'}
-//       />
-//     </svg>
-//   )
-// }
+// Assuming you handle theme switching with your own implementation
+function ThemeToggle() {
+  const [theme, setTheme] = useState('light'); // Simplified for demonstration
+  const toggleTheme = () => setTheme(theme === 'light' ? 'dark' : 'light');
 
-// export function NavBar() {
-//   const navBarRef = useRef<React.ElementRef<'div'>>(null)
-//   const [activeIndex, setActiveIndex] = useState<number | null>(null)
-//   const mobileActiveIndex = activeIndex === null ? 0 : activeIndex
+  return (
+    <button onClick={toggleTheme} className="...">
+      {theme === 'light' ? <SunIcon /> : <MoonIcon />}
+    </button>
+  );
+}
 
-//   useEffect(() => {
-//     function updateActiveIndex() {
-//       if (!navBarRef.current) {
-//         return
-//       }
+const NavBar = () => {
+  const isHomePage = useLocation().pathname === '/';
 
-//       let newActiveIndex = null
-//       const elements = sections
-//         .map(({ id }) => document.getElementById(id))
-//         .filter((el): el is HTMLElement => el !== null)
-//       const bodyRect = document.body.getBoundingClientRect()
-//       const offset = bodyRect.top + navBarRef.current.offsetHeight + 1
+  return (
+    <header className="...">
+      <div className="container mx-auto flex justify-between items-center p-4">
+        {/* Left section of the navbar */}
+        <Link to="/" className="...">
+          {/* Logo or brand name */}
+          Brand
+        </Link>
 
-//       if (window.scrollY >= Math.floor(bodyRect.height) - window.innerHeight) {
-//         setActiveIndex(sections.length - 1)
-//         return
-//       }
+        {/* Center section of the navbar, typically navigation links */}
+        <DesktopNavigation />
 
-//       for (let index = 0; index < elements.length; index++) {
-//         if (
-//           window.scrollY >=
-//           elements[index].getBoundingClientRect().top - offset
-//         ) {
-//           newActiveIndex = index
-//         } else {
-//           break
-//         }
-//       }
+        {/* Right section of the navbar, typically buttons or icons */}
+        <ThemeToggle />
+      </div>
+    </header>
+  );
+}
 
-//       setActiveIndex(newActiveIndex)
-//     }
-
-//     updateActiveIndex()
-
-//     window.addEventListener('resize', updateActiveIndex)
-//     window.addEventListener('scroll', updateActiveIndex, { passive: true })
-
-//     return () => {
-//       window.removeEventListener('resize', updateActiveIndex)
-//       window.removeEventListener('scroll', updateActiveIndex)
-//     }
-//   }, [])
-
-//   return (
-//     <div ref={navBarRef} className="sticky top-0 z-50">
-//       <Popover className="sm:hidden">
-//         {({ open }) => (
-//           <>
-//             <div
-//               className={clsx(
-//                 'relative flex items-center px-4 py-3',
-//                 !open &&
-//                   'bg-white/95 shadow-sm [@supports(backdrop-filter:blur(0))]:bg-white/80 [@supports(backdrop-filter:blur(0))]:backdrop-blur',
-//               )}
-//             >
-//               {!open && (
-//                 <>
-//                   <span
-//                     aria-hidden="true"
-//                     className="font-mono text-sm text-blue-600"
-//                   >
-//                     {(mobileActiveIndex + 1).toString().padStart(2, '0')}
-//                   </span>
-//                   <span className="ml-4 text-base font-medium text-slate-900">
-//                     {sections[mobileActiveIndex].title}
-//                   </span>
-//                 </>
-//               )}
-//               <Popover.Button
-//                 className={clsx(
-//                   '-mr-1 ml-auto flex h-8 w-8 items-center justify-center',
-//                   open && 'relative z-10',
-//                 )}
-//                 aria-label="Toggle navigation menu"
-//               >
-//                 {!open && (
-//                   <>
-//                     {/* Increase hit area */}
-//                     <span className="absolute inset-0" />
-//                   </>
-//                 )}
-//                 <MenuIcon open={open} className="h-6 w-6 stroke-slate-700" />
-//               </Popover.Button>
-//             </div>
-//             <Popover.Panel className="absolute inset-x-0 top-0 bg-white/95 py-3.5 shadow-sm [@supports(backdrop-filter:blur(0))]:bg-white/80 [@supports(backdrop-filter:blur(0))]:backdrop-blur">
-//               {sections.map((section, sectionIndex) => (
-//                 <Popover.Button
-//                   as="a"
-//                   key={section.id}
-//                   href={`#${section.id}`}
-//                   className="flex items-center px-4 py-1.5"
-//                 >
-//                   <span
-//                     aria-hidden="true"
-//                     className="font-mono text-sm text-blue-600"
-//                   >
-//                     {(sectionIndex + 1).toString().padStart(2, '0')}
-//                   </span>
-//                   <span className="ml-4 text-base font-medium text-slate-900">
-//                     {section.title}
-//                   </span>
-//                 </Popover.Button>
-//               ))}
-//             </Popover.Panel>
-//             <div className="absolute inset-x-0 bottom-full z-10 h-4 bg-white" />
-//           </>
-//         )}
-//       </Popover>
-//       <div className="hidden sm:flex sm:h-32 sm:justify-center sm:border-b sm:border-slate-200 sm:bg-white/95 sm:[@supports(backdrop-filter:blur(0))]:bg-white/80 sm:[@supports(backdrop-filter:blur(0))]:backdrop-blur">
-//         <ol
-//           role="list"
-//           className="mb-[-2px] grid auto-cols-[minmax(0,15rem)] grid-flow-col text-base font-medium text-slate-900 [counter-reset:section]"
-//         >
-//           {sections.map((section, sectionIndex) => (
-//             <li key={section.id} className="flex [counter-increment:section]">
-//               <a
-//                 href={`#${section.id}`}
-//                 className={clsx(
-//                   'flex w-full flex-col items-center justify-center border-b-2 before:mb-2 before:font-mono before:text-sm before:content-[counter(section,decimal-leading-zero)]',
-//                   sectionIndex === activeIndex
-//                     ? 'border-blue-600 bg-blue-50 text-blue-600 before:text-blue-600'
-//                     : 'border-transparent before:text-slate-500 hover:bg-blue-50/40 hover:before:text-slate-900',
-//                 )}
-//               >
-//                 {section.title}
-//               </a>
-//             </li>
-//           ))}
-//         </ol>
-//       </div>
-//     </div>
-//   )
-// }
+export default NavBar;
