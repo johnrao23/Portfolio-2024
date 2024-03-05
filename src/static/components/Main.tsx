@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import NavBar from "./NavBar";
 import { Footer } from "./Footer";
-import { Link } from "react-router-dom";
+import { GitHubIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from "./SocialIcons";
 
 const Main: React.FC = () => {
     return (
