@@ -72,17 +72,17 @@ const Main: React.FC = () => {
                     </p>
                     <div className="mt-6 flex gap-6">
                         <SocialLink
-                            to="https://linkedin.com"
+                            to="https://www.linkedin.com/in/john-rao"
                             ariaLabel="Follow on LinkedIn"
                             icon={LinkedInIcon}
                         />
                         <SocialLink
-                            to="https://github.com"
+                            to="https://github.com/johnrao23"
                             ariaLabel="Follow on GitHub"
                             icon={GitHubIcon}
                         />
                         <SocialLink
-                            to="https://twitter.com"
+                            to="https://twitter.com/0xRao"
                             ariaLabel="Follow on Twitter"
                             icon={TwitterIcon}
                         />
