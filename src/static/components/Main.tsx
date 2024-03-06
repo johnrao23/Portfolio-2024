@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import clsx from 'clsx';
+import { Container } from "./Container";
 import NavBar from "./NavBar";
 import { Footer } from "./Footer";
 import { GitHubIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from "./SocialIcons";
@@ -34,7 +35,7 @@ const Main: React.FC = () => {
         const images = [JRThreeImg, FairbnbImg, TerpImg, SaGImg, LNImg];
 
         return (
-          <div className="mt-16 sm:mt-20">
+            <Container className="mt-16 sm:mt-20">
             <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
               {images.map((image, index) => (
                 <div
@@ -52,7 +53,7 @@ const Main: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </Container>
         );
     }
 
