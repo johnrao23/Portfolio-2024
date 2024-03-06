@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import { Footer } from "./Footer";
 import { GitHubIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from "./SocialIcons";
 import JRThreeImg from "../assets/3dsite.png";
-import image2 from './photos/image-2.jpg';
+import FairbnbImg from "../assets/fairbnb.png";
 import image3 from './photos/image-3.jpg';
 import image4 from './photos/image-4.jpg';
 import image5 from './photos/image-5.jpg';
@@ -14,11 +14,11 @@ const Main: React.FC = () => {
 
     function SocialLink({
         icon: Icon,
-        to, // Changed from `...props` to specifically destructuring `to`
+        to,
         ariaLabel
         }: React.ComponentPropsWithoutRef<typeof Link> & {
         icon: React.ComponentType<{ className?: string }>,
-        to: string, // Specify `to` prop explicitly
+        to: string,
         ariaLabel: string
         }) {
 
@@ -31,7 +31,7 @@ const Main: React.FC = () => {
 
     function Photos() {
         const rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2'];
-        const images = [JRThreeImg, image2, image3, image4, image5];
+        const images = [JRThreeImg, FairbnbImg, image3, image4, image5];
 
         return (
           <div className="mt-16 sm:mt-20">
