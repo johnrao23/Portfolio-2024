@@ -72,14 +72,9 @@ const Main: React.FC = () => {
                     </p>
                     <div className="mt-6 flex gap-6">
                         <SocialLink
-                            to="https://twitter.com"
-                            ariaLabel="Follow on Twitter"
-                            icon={TwitterIcon}
-                        />
-                        <SocialLink
-                            to="https://instagram.com"
-                            ariaLabel="Follow on Instagram"
-                            icon={InstagramIcon}
+                            to="https://linkedin.com"
+                            ariaLabel="Follow on LinkedIn"
+                            icon={LinkedInIcon}
                         />
                         <SocialLink
                             to="https://github.com"
@@ -87,9 +82,9 @@ const Main: React.FC = () => {
                             icon={GitHubIcon}
                         />
                         <SocialLink
-                            to="https://linkedin.com"
-                            ariaLabel="Follow on LinkedIn"
-                            icon={LinkedInIcon}
+                            to="https://twitter.com"
+                            ariaLabel="Follow on Twitter"
+                            icon={TwitterIcon}
                         />
                     </div>
                 </div>
