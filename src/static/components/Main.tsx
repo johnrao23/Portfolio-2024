@@ -35,32 +35,32 @@ const Main: React.FC = () => {
         const images = [JRThreeImg, FairbnbImg, TerpImg, SaGImg, LNImg];
 
         return (
-            <Container className="mt-16 sm:mt-20">
-            <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-              {images.map((image, index) => (
-                <div
-                  key={index}
-                  className={clsx(
-                    'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
-                    rotations[index % rotations.length],
-                  )}
-                >
-                  <img
-                    src={image}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
+            <div className="mt-16 sm:mt-20">
+                <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+                    {images.map((image, index) => (
+                        <div
+                            key={index}
+                            className={clsx(
+                                'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
+                                rotations[index % rotations.length],
+                            )}
+                            >
+                            <img
+                                src={image}
+                                alt=""
+                                className="absolute inset-0 h-full w-full object-cover"
+                            />
+                        </div>
+                    ))}
                 </div>
-              ))}
             </div>
-          </Container>
         );
     }
 
     return (
         <div>
             <NavBar />
-            <div className="mt-9">
+            <Container className="mt-9">
                 <div className="max-w-2xl">
                     <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
                         Software designer, founder, and father of three.
@@ -89,7 +89,7 @@ const Main: React.FC = () => {
                         />
                     </div>
                 </div>
-            </div>
+            </Container>
             <Photos />
             <Footer />
         </div>
