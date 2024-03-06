@@ -1,7 +1,11 @@
 export function TwitterIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     return (
       <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
-        <path d="M 14.0955 10.3165 L 22.2864 1 h -1.94072 l -7.11535 8.08768 L 7.55141 1 H 1 l 8.58949 12.2311 L 1 23 h 1.94072 l 7.50937 -8.54286 L 16.4486 23 H 23 L 14.0955 10.3165 Z M 11.4365 13.3385 l -0.871624 -1.2187 l -6.92431 -9.68815 h 2.98134 l 5.58978 7.82155 l 0.867949 1.2187 l 7.26506 10.1663 h -2.98134 L 11.4365 13.3385 Z" />
+        <path d="M1 2h2.5L18.5 22h-2.5z" />
+        <path d="M5.5 2h2.5L23 22h-2.5z" />
+        <path d="M3 2h5v2h-5z" />
+        <path d="M16 22h5v-2h-5z" />
+        <path d="M18.5 2h3.5L5 22h-3.5z" />
       </svg>
     )
   }
