@@ -7,7 +7,7 @@ import { GitHubIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from "./SocialIc
 import JRThreeImg from "../assets/3dsite.png";
 import FairbnbImg from "../assets/fairbnb.png";
 import TerpImg from "../assets/terpSolutions.png";
-import image4 from './photos/image-4.jpg';
+import SaGImg from "../assets/SaG-billboard.png";
 import image5 from './photos/image-5.jpg';
 
 const Main: React.FC = () => {
@@ -31,7 +31,7 @@ const Main: React.FC = () => {
 
     function Photos() {
         const rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2'];
-        const images = [JRThreeImg, FairbnbImg, TerpImg, image4, image5];
+        const images = [JRThreeImg, FairbnbImg, TerpImg, SaGImg, image5];
 
         return (
           <div className="mt-16 sm:mt-20">
