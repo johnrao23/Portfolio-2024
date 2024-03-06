@@ -14,13 +14,16 @@ const Main: React.FC = () => {
 
     function SocialLink({
         icon: Icon,
-        ...props
+        to, // Changed from `...props` to specifically destructuring `to`
+        ariaLabel
         }: React.ComponentPropsWithoutRef<typeof Link> & {
-        icon: React.ComponentType<{ className?: string }>
+        icon: React.ComponentType<{ className?: string }>,
+        to: string, // Specify `to` prop explicitly
+        ariaLabel: string
         }) {
 
         return (
-            <Link className="group -m-1 p-1" {...props}>
+            <Link to={to} className="group -m-1 p-1" aria-label={ariaLabel}> // Changed `href` to `to` and added `aria-label`
                 <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
             </Link>
         )
@@ -29,7 +32,7 @@ const Main: React.FC = () => {
     function Photos() {
         const rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2'];
         const images = [JRThreeImg, image2, image3, image4, image5];
-      
+
         return (
           <div className="mt-16 sm:mt-20">
             <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
@@ -51,7 +54,7 @@ const Main: React.FC = () => {
             </div>
           </div>
         );
-      }
+    }
 
     return (
         <div>
@@ -69,25 +72,25 @@ const Main: React.FC = () => {
                     </p>
                     <div className="mt-6 flex gap-6">
                         <SocialLink
-                            href="https://twitter.com"
+                            to="https://twitter.com"
                             ariaLabel="Follow on Twitter"
                             icon={TwitterIcon}
-                            />
+                        />
                         <SocialLink
-                            href="https://instagram.com"
+                            to="https://instagram.com"
                             ariaLabel="Follow on Instagram"
                             icon={InstagramIcon}
-                            />
+                        />
                         <SocialLink
-                            href="https://github.com"
+                            to="https://github.com"
                             ariaLabel="Follow on GitHub"
                             icon={GitHubIcon}
-                            />
+                        />
                         <SocialLink
-                            href="https://linkedin.com"
+                            to="https://linkedin.com"
                             ariaLabel="Follow on LinkedIn"
                             icon={LinkedInIcon}
-                            />
+                        />
                     </div>
                 </div>
             </div>
