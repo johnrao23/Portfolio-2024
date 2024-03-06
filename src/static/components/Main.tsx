@@ -95,9 +95,6 @@ const Main: React.FC = () => {
                 </div>
             </div>
             <Photos />
-            <Link to="/static/about" style={{ textDecoration: 'none' }}>
-                <button>About Page</button>
-            </Link>
             <Footer />
         </div>
     );
