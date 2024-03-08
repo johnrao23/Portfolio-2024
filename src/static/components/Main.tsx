@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { Container } from "./Container";
 import NavBar from "./NavBar";
 import { Footer } from "./Footer";
-import { GitHubIcon, InstagramIcon, LinkedInIcon, TwitterIcon } from "./SocialIcons";
+import { GitHubIcon, GalaxyIcon, LinkedInIcon, TwitterIcon } from "./SocialIcons";
 import JRThreeImg from "../assets/3dsite.png";
 import FairbnbImg from "../assets/fairbnb.png";
 import TerpImg from "../assets/terpSolutions.png";
@@ -73,6 +73,11 @@ const Main: React.FC = () => {
                         own terms.
                     </p>
                     <div className="mt-6 flex gap-6">
+                        <SocialLink
+                            to="https://www.johnrao.com"
+                            ariaLabel="Check out my 3d site"
+                            icon={GalaxyIcon}
+                        />
                         <SocialLink
                             to="https://www.linkedin.com/in/john-rao"
                             ariaLabel="Follow on LinkedIn"
