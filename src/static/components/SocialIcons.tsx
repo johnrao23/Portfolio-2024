@@ -23,7 +23,7 @@ export function XIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         <image href={GalaxyImg} height="24" width="24"/>
       </svg>
     );
-  }   
+  }
   
   export function GitHubIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     return (
