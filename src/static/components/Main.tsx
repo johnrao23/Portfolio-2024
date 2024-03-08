@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import { Container } from "./Container";
 import NavBar from "./NavBar";
 import { Footer } from "./Footer";
-import { GitHubIcon, GalaxyIcon, LinkedInIcon, TwitterIcon } from "./SocialIcons";
+import { GitHubIcon, GalaxyIcon, LinkedInIcon, XIcon } from "./SocialIcons";
 import JRThreeImg from "../assets/3dsite.png";
 import FairbnbImg from "../assets/fairbnb.png";
 import TerpImg from "../assets/terpSolutions.png";
@@ -91,7 +91,7 @@ const Main: React.FC = () => {
                         <SocialLink
                             to="https://twitter.com/0xRao"
                             ariaLabel="Follow on Twitter"
-                            icon={TwitterIcon}
+                            icon={XIcon}
                         />
                     </div>
                 </div>
