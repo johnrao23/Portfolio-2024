@@ -1,8 +1,10 @@
 import React from "react"
+import { Link } from "react-router-dom";
 import clsx from "clsx";
 import { Container } from "./Container";
 import NavBar from "./NavBar";
 import { Footer } from "./Footer";
+import { XIcon, GitHubIcon, GalaxyIcon, LinkedInIcon } from "./SocialIcons";
 
 export default function About() {
 
@@ -31,6 +33,7 @@ export default function About() {
       }
 
     return (
+        <>
         <NavBar />
       <Container className="mt-16 sm:mt-32">
         <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
@@ -80,7 +83,7 @@ export default function About() {
           </div>
           <div className="lg:pl-20">
             <ul role="list">
-              <SocialLink href="#" icon={TwitterIcon}>
+              <SocialLink href="#" icon={XIcon}>
                 Follow on Twitter
               </SocialLink>
               <SocialLink href="#" icon={InstagramIcon} className="mt-4">
@@ -97,11 +100,13 @@ export default function About() {
                 icon={MailIcon}
                 className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
               >
-                spencer@planetaria.tech
+                johnrao23@gmail.com
               </SocialLink>
             </ul>
           </div>
         </div>
       </Container>
+      <Footer />
+      </>
     )
   }
