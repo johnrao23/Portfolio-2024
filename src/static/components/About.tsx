@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { Container } from "./Container";
 import NavBar from "./NavBar";
 import { Footer } from "./Footer";
-import { XIcon, GitHubIcon, GalaxyIcon, LinkedInIcon } from "./SocialIcons";
+import { XIcon, GitHubIcon, GalaxyIcon, LinkedInIcon, MailIcon } from "./SocialIcons";
 
 export default function About() {
 
