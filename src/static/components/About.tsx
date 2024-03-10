@@ -5,7 +5,7 @@ import { Container } from "./Container";
 import { XIcon, GitHubIcon, GalaxyIcon, LinkedInIcon, MailIcon } from "./SocialIcons";
 import AvatarImg from "../assets/AvatarImg.jpg"
 
-export default function About() {
+const About: React.FC = () => {
 
     function SocialLink({
         className,
@@ -107,3 +107,5 @@ export default function About() {
         </>
     )
   }
+
+  export default About;
