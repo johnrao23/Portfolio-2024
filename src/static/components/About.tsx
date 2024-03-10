@@ -47,7 +47,7 @@ const About: React.FC = () => {
                 </div>
                 <div className="lg:order-first lg:row-span-2">
                     <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-                    I’m Spencer Sharp. I live in New York City, where I design the
+                    I’m John Rao. I live in New York, where I design the
                     future.
                     </h1>
                     <div className="mt-6 space-y-7 text-base text-zinc-600 dark:text-zinc-400">
@@ -81,24 +81,24 @@ const About: React.FC = () => {
                 </div>
                 <div className="lg:pl-20">
                     <ul role="list">
-                    <SocialLink to="#" icon={XIcon}>
-                        Follow on Twitter
-                    </SocialLink>
-                    <SocialLink to="#" icon={GalaxyIcon} className="mt-4">
-                        Follow on Instagram
-                    </SocialLink>
-                    <SocialLink to="#" icon={GitHubIcon} className="mt-4">
-                        Follow on GitHub
-                    </SocialLink>
-                    <SocialLink to="#" icon={LinkedInIcon} className="mt-4">
+                    <SocialLink to="https://www.linkedin.com/in/john-rao" icon={LinkedInIcon}>
                         Follow on LinkedIn
                     </SocialLink>
+                    <SocialLink to="https://github.com/johnrao23" icon={GitHubIcon} className="mt-4">
+                        Follow on GitHub
+                    </SocialLink>
+                    <SocialLink to="https://twitter.com/0xRao" icon={XIcon} className="mt-4">
+                        Follow on Twitter
+                    </SocialLink>
                     <SocialLink
-                        to="mailto:spencer@planetaria.tech"
+                        to="mailto:johnrao23@gmail.com"
                         icon={MailIcon}
                         className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
                     >
                         johnrao23@gmail.com
+                    </SocialLink>
+                    <SocialLink to="https://www.johnrao.com" icon={GalaxyIcon} className="mt-4">
+                        Check out my 3D Site
                     </SocialLink>
                     </ul>
                 </div>
