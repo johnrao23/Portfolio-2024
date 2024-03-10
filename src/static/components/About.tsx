@@ -86,7 +86,7 @@ export default function About() {
               <SocialLink href="#" icon={XIcon}>
                 Follow on Twitter
               </SocialLink>
-              <SocialLink href="#" icon={InstagramIcon} className="mt-4">
+              <SocialLink href="#" icon={GalaxyIcon} className="mt-4">
                 Follow on Instagram
               </SocialLink>
               <SocialLink href="#" icon={GitHubIcon} className="mt-4">
