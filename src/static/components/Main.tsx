@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import clsx from 'clsx';
 import { Container } from "./Container";
 import NavBar from "./NavBar";
-import { Footer } from "./Footer";
+import Footer from "./Footer";
+import About from "./About";
 import { GitHubIcon, GalaxyIcon, LinkedInIcon, XIcon } from "./SocialIcons";
 import JRThreeImg from "../assets/3dsite.png";
 import FairbnbImg from "../assets/fairbnb.png";
@@ -97,6 +98,7 @@ const Main: React.FC = () => {
                 </div>
             </Container>
             <Photos />
+            <About />
             <Footer />
         </div>
     );
