@@ -81,6 +81,51 @@ function AvatarContainer({
   )
 }
 
+
+// Navigation items
+function NavItem({
+    to,
+    children,
+  }: {
+    to: string
+    children: React.ReactNode
+  }) {
+    let isActive = usePathname() === to
+
+  return (
+    <li>
+      <Link
+        to={to}
+        className={clsx(
+          'relative block px-3 py-2 transition',
+          isActive
+            ? 'text-teal-500 dark:text-teal-400'
+            : 'hover:text-teal-500 dark:hover:text-teal-400',
+        )}
+      >
+        {children}
+        {isActive && (
+          <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0" />
+        )}
+      </Link>
+    </li>
+  )
+}
+
+function DesktopNavigation() {
+  return (
+    <nav>
+      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+        <NavItem to="/static/about">About</NavItem>
+        <NavItem to="/static">Projects</NavItem>
+        <NavItem to="/static">Experience</NavItem>
+        <NavItem to="/static">Skills</NavItem>
+        <NavItem to="/static">Hobbies</NavItem>
+      </ul>
+    </nav>
+  );
+}
+
 function MobileNavItem({
   to,
   children,
@@ -95,40 +140,6 @@ function MobileNavItem({
       </Popover.Button>
     </li>
   )
-}
-
-// Navigation items
-function NavItem({ href, children }: { href: string; children: React.ReactNode }) {
-  const location = useLocation();
-  const isActive = location.pathname === href;
-
-  return (
-    <li>
-      <Link
-        to={href}
-        className={clsx(
-          'relative block px-3 py-2 transition',
-          isActive ? 'text-teal-500 dark:text-teal-400' : 'hover:text-teal-500 dark:hover:text-teal-400'
-        )}
-      >
-        {children}
-      </Link>
-    </li>
-  );
-}
-
-function DesktopNavigation() {
-  return (
-    <nav>
-      <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/static/about">About</NavItem>
-        <NavItem href="/static">Projects</NavItem>
-        <NavItem href="/static">Experience</NavItem>
-        <NavItem href="/static">Skills</NavItem>
-        <NavItem href="/static">Hobbies</NavItem>
-      </ul>
-    </nav>
-  );
 }
 
 function MobileNavigation(
@@ -175,11 +186,11 @@ function MobileNavigation(
             </div>
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
-                <NavItem href="/static/about">About</NavItem>
-                <NavItem href="/static">Projects</NavItem>
-                <NavItem href="/static">Experience</NavItem>
-                <NavItem href="/static">Skills</NavItem>
-                <NavItem href="/static">Hobbies</NavItem>
+                <MobileNavItem to="/static/about">About</MobileNavItem>
+                <MobileNavItem to="/static">Projects</MobileNavItem>
+                <MobileNavItem to="/static">Experience</MobileNavItem>
+                <MobileNavItem to="/static">Skills</MobileNavItem>
+                <MobileNavItem to="/static">Hobbies</MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
@@ -209,8 +220,10 @@ const NavBar = () => {
         <AvatarContainer>
           <AvatarButton />
         </AvatarContainer>
-        <MobileNavigation />
-        <DesktopNavigation />
+        <div className="flex flex-1 justify-end md:justify-center">
+          <MobileNavigation className="pointer-events-auto md:hidden" />
+          <DesktopNavigation className="pointer-events-auto hidden md:block" />
+        </div>
         <ThemeToggle />
       </div>
     </header>
