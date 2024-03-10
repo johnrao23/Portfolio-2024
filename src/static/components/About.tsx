@@ -5,24 +5,25 @@ import { Container } from "./Container";
 import NavBar from "./NavBar";
 import { Footer } from "./Footer";
 import { XIcon, GitHubIcon, GalaxyIcon, LinkedInIcon, MailIcon } from "./SocialIcons";
+import AvatarImg from "../assets/AvatarImg.jpg"
 
 export default function About() {
 
     function SocialLink({
         className,
-        href,
+        to,
         children,
         icon: Icon,
       }: {
         className?: string
-        href: string
+        to: string
         icon: React.ComponentType<{ className?: string }>
         children: React.ReactNode
       }) {
         return (
           <li className={clsx(className, 'flex')}>
             <Link
-              href={href}
+              to={to}
               className="group flex text-sm font-medium text-zinc-800 transition hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
             >
               <Icon className="h-6 w-6 flex-none fill-zinc-500 transition group-hover:fill-teal-500" />
@@ -40,7 +41,7 @@ export default function About() {
           <div className="lg:pl-20">
             <div className="max-w-xs px-2.5 lg:max-w-none">
               <img
-                src={portraitImage}
+                src={AvatarImg}
                 alt=""
                 sizes="(min-width: 1024px) 32rem, 20rem"
                 className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
@@ -83,20 +84,20 @@ export default function About() {
           </div>
           <div className="lg:pl-20">
             <ul role="list">
-              <SocialLink href="#" icon={XIcon}>
+              <SocialLink to="#" icon={XIcon}>
                 Follow on Twitter
               </SocialLink>
-              <SocialLink href="#" icon={GalaxyIcon} className="mt-4">
+              <SocialLink to="#" icon={GalaxyIcon} className="mt-4">
                 Follow on Instagram
               </SocialLink>
-              <SocialLink href="#" icon={GitHubIcon} className="mt-4">
+              <SocialLink to="#" icon={GitHubIcon} className="mt-4">
                 Follow on GitHub
               </SocialLink>
-              <SocialLink href="#" icon={LinkedInIcon} className="mt-4">
+              <SocialLink to="#" icon={LinkedInIcon} className="mt-4">
                 Follow on LinkedIn
               </SocialLink>
               <SocialLink
-                href="mailto:spencer@planetaria.tech"
+                to="mailto:spencer@planetaria.tech"
                 icon={MailIcon}
                 className="mt-8 border-t border-zinc-100 pt-8 dark:border-zinc-700/40"
               >
