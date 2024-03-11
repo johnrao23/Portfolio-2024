@@ -5,13 +5,13 @@ import { Container } from "./Container";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import About from "./About";
+import Projects from "./Projects";
 import { GitHubIcon, GalaxyIcon, LinkedInIcon, XIcon } from "./SocialIcons";
 import JRThreeImg from "../assets/3dsite.png";
 import FairbnbImg from "../assets/fairbnb.png";
 import TerpImg from "../assets/terpSolutions.png";
 import SaGImg from "../assets/SaG-billboard.png";
 import LNImg from "../assets/LucasNoahPic.jpeg";
-import Projects from "./Projects";
 
 const Main: React.FC = () => {
 
