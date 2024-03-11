@@ -4,6 +4,7 @@ import Main from './components/Main';
 import "../index-static.css"
 import About from './components/About';
 import Projects from './components/Projects';
+import Experience from './components/Experience';
 
 const App: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const App: React.FC = () => {
       <Route path="/" element={<Main />} />
       <Route path="/about" element={<About />} />
       <Route path="/projects" element={<Projects />} />
+      <Route path="/experience" element={<Experience />} />
     </Routes>
   );
 };

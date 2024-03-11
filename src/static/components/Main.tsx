@@ -12,6 +12,7 @@ import FairbnbImg from "../assets/fairbnb.png";
 import TerpImg from "../assets/terpSolutions.png";
 import SaGImg from "../assets/SaG-billboard.png";
 import LNImg from "../assets/LucasNoahPic.jpeg";
+import Experience from "./Experience";
 
 const Main: React.FC = () => {
 
@@ -101,6 +102,7 @@ const Main: React.FC = () => {
             <Photos />
             <About />
             <Projects />
+            <Experience />
             <Footer />
         </div>
     );
