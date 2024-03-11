@@ -7,7 +7,6 @@ import { createBeachBall } from './components/CreateObjects';
 import { simpleText } from './components/Surfaces';
 import { useStore } from './components/store';
 import WEBGL from './components/WebGL';
-import '../index-3d.css';
 
 const ThreeContainer: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);

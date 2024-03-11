@@ -1,7 +1,6 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Main from './components/Main';
-import "../index-static.css"
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';

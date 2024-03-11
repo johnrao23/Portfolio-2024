@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './static/App';
 import ThreeContainer from './3d/ThreeContainer';
+import "./index.css"
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 
