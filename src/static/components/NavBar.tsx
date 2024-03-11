@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Popover, Transition } from '@headlessui/react'
 import clsx from 'clsx';
-import AvatarButton from './AvatarButton';
+import AvatarImg from "../assets/AvatarImg.jpg";
 
 // Icons
 function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -66,6 +66,12 @@ function MoonIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
+function clamp(number: number, a: number, b: number) {
+  let min = Math.min(a, b)
+  let max = Math.max(a, b)
+  return Math.min(Math.max(number, min), max)
+}
+
 function AvatarContainer({
   className,
   ...props
@@ -78,6 +84,34 @@ function AvatarContainer({
       )}
       {...props}
     />
+  )
+}
+
+function Avatar({
+  large = false,
+  className,
+  ...props
+}: Omit<React.ComponentPropsWithoutRef<typeof Link>, 'href'> & {
+  large?: boolean
+}) {
+  return (
+    <Link
+      href="/"
+      aria-label="Home"
+      className={clsx(className, 'pointer-events-auto')}
+      {...props}
+    >
+      <img
+        src={AvatarImg}
+        alt=""
+        sizes={large ? '4rem' : '2.25rem'}
+        className={clsx(
+          'rounded-full bg-zinc-100 object-cover dark:bg-zinc-800',
+          large ? 'h-16 w-16' : 'h-9 w-9',
+        )}
+        priority
+      />
+    </Link>
   )
 }
 
