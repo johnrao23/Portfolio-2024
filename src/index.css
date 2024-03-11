@@ -1,3 +1,10 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+.trinity-rings-spinner .circle {
+    /* Custom properties that don't have direct Tailwind equivalents */
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+  }

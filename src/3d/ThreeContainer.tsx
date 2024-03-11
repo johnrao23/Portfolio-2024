@@ -106,34 +106,45 @@ const ThreeContainer: React.FC = () => {
   
   return (
     <>
-      <div className="three-container">
+      <div className="fixed inset-0 m-0 p-0 font-sans text-white text-base overflow-hidden">
         {isLoading && (
-          <div className="preload-overlay">
-            <div className="trinity-rings-spinner">
-              <div className="circle"></div>
-              <div className="circle"></div>
-              <div className="circle"></div>
+          <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50">
+            <div className="relative w-[500px] h-[500px] flex justify-center items-center">
+              <div className="circle absolute w-[350px] h-[350px] border-[10px] border-spinner-yellow animate-spin-1 opacity-90"></div>
+              <div className="circle absolute w-[calc(350px*0.65)] h-[calc(350px*0.65)] border-[8px] border-spinner-yellow animate-spin-2 opacity-70"></div>
+              <div className="circle absolute w-[calc(350px*0.45)] h-[calc(350px*0.45)] border-[6px] border-spinner-yellow animate-spin-3 opacity-50"></div>
             </div>
-            <div className="loading-text-div">Loading<span className="loader__dot">.</span><span className="loader__dot">.</span><span className="loader__dot">.</span></div>
+            <div className="absolute text-2xl font-sans text-spinner-yellow">
+              Loading<span className="animate-blink">.</span><span className="animate-blink" style={{ animationDelay: '250ms' }}>.</span><span className="animate-blink" style={{ animationDelay: '500ms' }}>.</span>
+            </div>
           </div>
         )}
         {showOverlay && (
-          <div className="start-page-content-div">
-            <h1 className="john-text">Hi, I'm <span className="yellow-text">John Rao!</span></h1>
-            <h1 className="start-page-text interactive-site-text">This is an interactive 3D site built with Three.js!</h1>
-            <h1 id="appDirections" className="start-page-text">
-              {isTouchscreen ? "Use the joystick in the bottom left to move the ball. Please use your device in portrait orientation!" : "Move the ball around with the arrow keys on the keyboard."}
+          <div className="fixed inset-0 flex flex-col justify-center items-center bg-black bg-opacity-90 z-50">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Hi, I'm <span className="text-yellow-400">John Rao!</span>
             </h1>
-            <button id="start-button" onClick={startButtonEventListener}>EXPLORE</button>
-            <h1 className="or-text">OR</h1>
-            <button id="static-button" onClick={() => goToStaticSite()}>VISIT STATIC SITE</button>
+            <p className="text-xl md:text-2xl mb-4">
+              This is an interactive 3D site built with Three.js!
+            </p>
+            <p className="text-lg md:text-xl mb-4">
+              {isTouchscreen ? "Use the joystick in the bottom left to move the ball. Please use your device in portrait orientation!" : "Move the ball around with the arrow keys on the keyboard."}
+            </p>
+            <button className="bg-gray-500 text-yellow-400 font-bold uppercase rounded-lg p-3 mb-2 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={startButtonEventListener}>
+              Explore
+            </button>
+            <p className="text-base md:text-lg mb-4">OR</p>
+            <button className="bg-gray-500 text-yellow-400 font-bold uppercase rounded-lg p-3 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={goToStaticSite}>
+              Visit Static Site
+            </button>
           </div>
         )}
         {isTouchscreen && (
-          <div ref={joystickRef} id="joystick-wrapper" className="joystick-wrapper">
-          </div>
+          <div ref={joystickRef} id="joystick-wrapper" className="fixed bottom-4 left-4 border border-white border-opacity-50 rounded-full w-32 h-32 flex justify-center items-center">
+            <div id="joystick" className="bg-black bg-opacity-25 rounded-full cursor-pointer w-1/2 h-1/2 self-center justify-self-center border border-white border-opacity-50"></div>
+          </div>        
         )}
-        <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
+        <div ref={containerRef} className="w-full h-full">
         </div>
       </div>
     </>
