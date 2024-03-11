@@ -1,6 +1,6 @@
 import React from "react";
 
-const Projects = () => {
+const Projects:React.FC = () => {
     return (
         <div>
             <h1>Projects Section</h1>
