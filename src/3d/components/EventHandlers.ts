@@ -95,57 +95,78 @@ function touchEvent(coordinates: Coordinates): void {
 }
 
 export function createJoystick(parent: HTMLElement): { getPosition: () => Coordinates } {
-  const maxDiff = 62;
+  const maxDiff = 62; // How far drag can go
 
-  const stick = parent.querySelector("#joystick") as HTMLElement;
+  const stick = document.createElement("div");
+  // stick.classList.add("joystick");
+  stick.setAttribute("id", "joystick");
 
-  if (!stick) {
-    console.error("Joystick element not found.");
-    return {
-      getPosition: () => ({ x: 0, y: 0 })
+  stick.addEventListener("mousedown", handleMouseDown);
+  document.addEventListener("mousemove", handleMouseMove);
+  document.addEventListener("mouseup", handleMouseUp);
+  stick.addEventListener("touchstart", handleMouseDown);
+  document.addEventListener("touchmove", handleMouseMove);
+  document.addEventListener("touchend", handleMouseUp);
+
+  let dragStart: Coordinates | null = null;
+  let currentPos: Coordinates = { x: 0, y: 0 };
+
+  function handleMouseDown(event: MouseEvent | TouchEvent): void {
+    event.preventDefault();
+    stick.style.transition = "0s";
+
+    if ('changedTouches' in event) {
+      dragStart = {
+        x: event.changedTouches[0].clientX,
+        y: event.changedTouches[0].clientY,
+      };
+      return;
+    }
+    dragStart = {
+      x: event.clientX,
+      y: event.clientY,
     };
   }
 
-  const handleMouseDown = (event: MouseEvent | TouchEvent) => {
-    event.preventDefault();
-    stick.style.transition = "0s";
-    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
-    const clientY = 'touches' in event ? event.touches[0].clientY : event.clientY;
-    dragStart = { x: clientX, y: clientY };
-  };
+  function handleMouseMove(event: MouseEvent | TouchEvent): void {
+    if (dragStart === null) return;
 
-  const handleMouseMove = (event: MouseEvent | TouchEvent) => {
-    if (!dragStart) return;
-    const clientX = 'touches' in event ? event.touches[0].clientX : event.clientX;
-    const clientY = 'touches' in event ? event.touches[0].clientY : event.clientY;
-    const xDiff = clientX - dragStart.x;
-    const yDiff = clientY - dragStart.y;
+    let eventX: number;
+    let eventY: number;
+
+    if ('changedTouches' in event) {
+      eventX = event.changedTouches[0].clientX;
+      eventY = event.changedTouches[0].clientY;
+    } else {
+      eventX = event.clientX;
+      eventY = event.clientY;
+    }
+
+    const xDiff = eventX - dragStart.x;
+    const yDiff = eventY - dragStart.y;
     const angle = Math.atan2(yDiff, xDiff);
     const distance = Math.min(maxDiff, Math.hypot(xDiff, yDiff));
     const xNew = distance * Math.cos(angle);
     const yNew = distance * Math.sin(angle);
     stick.style.transform = `translate3d(${xNew}px, ${yNew}px, 0px)`;
     currentPos = { x: xNew, y: yNew };
-  };
+    touchEvent(currentPos);
+  }
 
-  const handleMouseUp = () => {
-    if (!dragStart) return;
+  function handleMouseUp(): void {
+    const { setMoveDirection } = useStore.getState();
+    if (dragStart === null) return;
     stick.style.transition = ".2s";
     stick.style.transform = "translate3d(0px, 0px, 0px)";
     dragStart = null;
     currentPos = { x: 0, y: 0 };
-  };
+    setMoveDirection('forward', 0);
+    setMoveDirection('left', 0);
+    setMoveDirection('right', 0);
+    setMoveDirection('back', 0);
+  }
 
-  stick.addEventListener("mousedown", handleMouseDown);
-  stick.addEventListener("touchstart", handleMouseDown);
-  document.addEventListener("mousemove", handleMouseMove);
-  document.addEventListener("touchmove", handleMouseMove, { passive: false });
-  document.addEventListener("mouseup", handleMouseUp);
-  document.addEventListener("touchend", handleMouseUp);
-
-  let dragStart: Coordinates | null = null;
-  let currentPos: Coordinates = { x: 0, y: 0 };
-
+  parent.appendChild(stick);
   return {
     getPosition: () => currentPos,
   };
