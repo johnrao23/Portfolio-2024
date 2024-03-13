@@ -122,7 +122,7 @@ const ThreeContainer: React.FC = () => {
         {showOverlay && (
           <div className="fixed inset-0 flex flex-col justify-center items-center bg-black bg-opacity-90 z-50">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Hi, I'm <span className="text-yellow-400">John Rao!</span>
+              Hi, I'm <span className="text-yellow-300">John Rao!</span>
             </h1>
             <p className="text-xl md:text-2xl mb-4">
               This is an interactive 3D site built with Three.js!
