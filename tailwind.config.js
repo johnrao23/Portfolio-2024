@@ -30,7 +30,7 @@ module.exports = {
         "spinner-yellow": "#fffc00",
       },
       zIndex: {
-        spinner: "50", // Example, adjust according to your needs
+        spinner: "50",
       },
     },
   },
