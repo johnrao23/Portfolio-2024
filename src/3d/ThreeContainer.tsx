@@ -109,7 +109,7 @@ const ThreeContainer: React.FC = () => {
       <div className="fixed inset-0 m-0 p-0 font-sans text-white text-base overflow-hidden">
         {isLoading && (
           <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50">
-            <div className="relative w-[500px] h-[500px] flex justify-center items-center">
+            <div className="trinity-rings-spinner relative w-[500px] h-[500px] flex justify-center items-center">
               <div className="circle absolute w-[350px] h-[350px] border-[10px] border-spinner-yellow animate-spin-1 opacity-90"></div>
               <div className="circle absolute w-[calc(350px*0.65)] h-[calc(350px*0.65)] border-[8px] border-spinner-yellow animate-spin-2 opacity-70"></div>
               <div className="circle absolute w-[calc(350px*0.45)] h-[calc(350px*0.45)] border-[6px] border-spinner-yellow animate-spin-3 opacity-50"></div>
