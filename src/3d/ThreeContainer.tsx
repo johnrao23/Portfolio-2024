@@ -124,10 +124,10 @@ const ThreeContainer: React.FC = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-12">
               Hi, I'm <span className="text-yellow-300">John Rao!</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-4">
+            <p className="px-4 sm:px-6 text-center text-xl md:text-2xl mb-8">
               This is an interactive 3D site built with Three.js!
             </p>
-            <p className="text-lg md:text-xl mb-20">
+            <p className="px-4 sm:px-6 text-center text-lg md:text-xl mb-20">
               {isTouchscreen ? "Use the joystick in the bottom left to move the ball. Please use your device in portrait orientation!" : "Move the ball around with the arrow keys on the keyboard."}
             </p>
             <button className="bg-gray-500 text-yellow-300 font-bold uppercase rounded-lg p-4 mb-8 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={startButtonEventListener}>
