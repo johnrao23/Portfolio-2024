@@ -121,20 +121,20 @@ const ThreeContainer: React.FC = () => {
         )}
         {showOverlay && (
           <div className="fixed inset-0 flex flex-col justify-center items-center bg-black bg-opacity-90 z-50">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold mb-12">
               Hi, I'm <span className="text-yellow-300">John Rao!</span>
             </h1>
             <p className="text-xl md:text-2xl mb-4">
               This is an interactive 3D site built with Three.js!
             </p>
-            <p className="text-lg md:text-xl mb-4">
+            <p className="text-lg md:text-xl mb-20">
               {isTouchscreen ? "Use the joystick in the bottom left to move the ball. Please use your device in portrait orientation!" : "Move the ball around with the arrow keys on the keyboard."}
             </p>
-            <button className="bg-gray-500 text-yellow-400 font-bold uppercase rounded-lg p-3 mb-2 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={startButtonEventListener}>
+            <button className="bg-gray-500 text-yellow-300 font-bold uppercase rounded-lg p-4 mb-8 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={startButtonEventListener}>
               Explore
             </button>
-            <p className="text-base md:text-lg mb-4">OR</p>
-            <button className="bg-gray-500 text-yellow-400 font-bold uppercase rounded-lg p-3 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={goToStaticSite}>
+            <p className="text-base md:text-lg mb-8">OR</p>
+            <button className="bg-gray-500 text-yellow-300 font-bold uppercase rounded-lg p-4 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={goToStaticSite}>
               Visit Static Site
             </button>
           </div>
