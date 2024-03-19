@@ -98,7 +98,6 @@ export function createJoystick(parent: HTMLElement): { getPosition: () => Coordi
   const maxDiff = 62; // How far drag can go
 
   const stick = document.createElement("div");
-  // stick.classList.add("joystick");
   stick.setAttribute("id", "joystick");
 
   stick.addEventListener("mousedown", handleMouseDown);
