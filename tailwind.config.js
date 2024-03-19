@@ -4,9 +4,9 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        "spin-1": "spin1 1.5s infinite linear",
-        "spin-2": "spin2 1.5s infinite linear",
-        "spin-3": "spin3 1.5s infinite linear",
+        "spin-1": "spin1 2s infinite linear",
+        "spin-2": "spin2 2s infinite linear",
+        "spin-3": "spin3 2s infinite linear",
         blink: "blink 1s infinite",
       },
       keyframes: {
