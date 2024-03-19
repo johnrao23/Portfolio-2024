@@ -141,7 +141,6 @@ const ThreeContainer: React.FC = () => {
         )}
         {isTouchscreen && (
           <div ref={joystickRef} id="joystick-wrapper" className="fixed bottom-4 left-4 border border-white border-opacity-50 rounded-full w-32 h-32 flex justify-center items-center">
-            <div id="joystick" className="bg-black bg-opacity-25 rounded-full cursor-pointer w-1/2 h-1/2 self-center justify-self-center border border-white border-opacity-50"></div>
           </div>        
         )}
         <div ref={containerRef} className="w-full h-full">
