@@ -130,11 +130,11 @@ const ThreeContainer: React.FC = () => {
             <p className="px-4 sm:px-6 text-center text-lg md:text-xl mb-20">
               {isTouchscreen ? "Use the joystick in the bottom left to move the ball. Please use your device in portrait orientation!" : "Move the ball around with the arrow keys on the keyboard."}
             </p>
-            <button className="bg-gray-500 text-yellow-300 font-bold uppercase rounded-lg p-4 mb-8 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={startButtonEventListener}>
+            <button className="bg-gray-500 text-yellow-300 text-xl font-bold uppercase rounded-lg p-4 mb-8 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={startButtonEventListener}>
               Explore
             </button>
             <p className="text-base md:text-lg mb-8">OR</p>
-            <button className="bg-gray-500 text-yellow-300 font-bold uppercase rounded-lg p-4 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={goToStaticSite}>
+            <button className="bg-gray-500 text-yellow-300 text-xl font-bold uppercase rounded-lg p-4 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={goToStaticSite}>
               Visit Static Site
             </button>
           </div>
