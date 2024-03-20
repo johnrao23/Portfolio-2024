@@ -9,12 +9,13 @@ import Experience from './components/Experience';
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-    <Routes>
-      <Route path="/" element={<Main />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/projects" element={<Projects />} />
-      <Route path="/experience" element={<Experience />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/experience" element={<Experience />} />
+      </Routes>
+    </ThemeProvider>
   );
 };
 
