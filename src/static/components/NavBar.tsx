@@ -5,7 +5,6 @@ import clsx from 'clsx';
 import { Container } from './Container';
 import AvatarImg from "../assets/AvatarImg.jpg";
 
-// Icons
 function CloseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
