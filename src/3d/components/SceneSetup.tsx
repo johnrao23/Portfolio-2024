@@ -145,10 +145,10 @@ export const setupScene = ({
   createWallZ(scene, Ammo, 0, 1.75, 125);
   createWallZ(scene, Ammo, 0, 1.75, -125);
   createBall(scene, Ammo, manager);
-  createBox(scene, Ammo, manager, 20, 2, -100, 4, 4, 1, boxTexture.StaticSite, URL.johnrao, 0xFFFFFF, true);
+  createBox(scene, Ammo, manager, 21, 2, -100, 4, 4, 1, boxTexture.StaticSite, URL.johnrao, 0x000000, true);
   createBox(scene, Ammo, manager, 28, 2, -100, 4, 4, 1, boxTexture.Github, URL.gitHub, 0x000000, true);
-  createBox(scene, Ammo, manager, 35.1, 2, -100, 4, 4, 1, boxTexture.LinkedIn, URL.LinkedIn, 0x0077b5, true);
-  createBox(scene, Ammo, manager, 42.9, 2, -100, 4, 4, 1, boxTexture.twitter, URL.twitter, 0x00a2f4, true);
+  createBox(scene, Ammo, manager, 35.1, 2, -100, 4, 4, 1, boxTexture.LinkedIn, URL.LinkedIn, 0x000000, true);
+  createBox(scene, Ammo, manager, 42.9, 2, -100, 4, 4, 1, boxTexture.twitter, URL.twitter, 0x000000, true);
   createBox(scene, Ammo, manager, 50.5, 2, -100, 4, 4, 1, boxTexture.mail, "mailto:johnrao23@gmail.com", 0x000000, false);
   createBillboard(scene, Ammo, manager, -115, 2.5, -105, billboardTextures.terpSolutionsTexture, URL.terpsolutions, Math.PI * 0.2, );
   createBillboard(scene, Ammo, manager, -80, 2.5, -110, billboardTextures.bullVsBearTexture, URL.bullVsBearTrading, Math.PI * 0.15, );
@@ -163,6 +163,7 @@ export const setupScene = ({
   createTextOnPlane(scene, manager, -77, 0.01, -80, inputText.bullVsBearText, 20, 40);
   createTextOnPlane( scene, manager, -45, 0.01, -80, inputText.fairbnbText, 20, 40);
   createTextOnPlane( scene, manager, -16, 0.01, -75, inputText.scanAndGoText, 20, 40);
+  floatingLabel(scene, 21, 4.5, -100, "Static");
   floatingLabel(scene, 27.875, 4.5, -100, "Github");
   floatingLabel(scene, 34.86, 4.5, -100, "LinkedIn");
   floatingLabel(scene, 42.875, 4.5, -100, "Twitter");
