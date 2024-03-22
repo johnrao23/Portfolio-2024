@@ -97,9 +97,6 @@ const Main: React.FC = () => {
                 </div>
             </Container>
             <Photos />
-            <About />
-            <Projects />
-            <Experience />
         </div>
     );
 };
