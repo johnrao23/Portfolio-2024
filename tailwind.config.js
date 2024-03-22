@@ -1,6 +1,7 @@
-/** @type {import('tailwindcss').Config} */
 import typographyPlugin from "@tailwindcss/typography";
-module.exports = {
+import typographyStyles from "./typography";
+
+export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
@@ -50,7 +51,6 @@ module.exports = {
       "8xl": ["6rem", { lineHeight: "1" }],
       "9xl": ["8rem", { lineHeight: "1" }],
     },
-    typography: typographyStyles,
   },
-  plugins: [typographyPlugin],
+  plugins: [typographyPlugin(typographyStyles)],
 };
