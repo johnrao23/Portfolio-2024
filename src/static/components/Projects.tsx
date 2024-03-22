@@ -1,6 +1,6 @@
-import { Card } from './Card'
-import { SimpleLayout } from './SimpleLayout'
-import { GalaxyIcon } from "./SocialIcons";
+import { Card } from './Card';
+import { SimpleLayout } from './SimpleLayout';
+import AvatarImg from "../assets/AvatarImg.jpg";
 
 const projects = [
   {
@@ -8,35 +8,35 @@ const projects = [
     description:
       'Creating technology to empower civilians to explore space on their own terms.',
     link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
-    logo: GalaxyIcon,
+    logo: AvatarImg,
   },
   {
     name: 'Animaginary',
     description:
       'High performance web animation library, hand-written in optimized WASM.',
     link: { href: '#', label: 'github.com' },
-    logo: GalaxyIcon,
+    logo: AvatarImg,
   },
   {
     name: 'HelioStream',
     description:
       'Real-time video streaming library, optimized for interstellar transmission.',
     link: { href: '#', label: 'github.com' },
-    logo: GalaxyIcon,
+    logo: AvatarImg,
   },
   {
     name: 'cosmOS',
     description:
       'The operating system that powers our Planetaria space shuttles.',
     link: { href: '#', label: 'github.com' },
-    logo: GalaxyIcon,
+    logo: AvatarImg,
   },
   {
     name: 'OpenShuttle',
     description:
       'The schematics for the first rocket I designed that successfully made it to orbit.',
     link: { href: '#', label: 'github.com' },
-    logo: GalaxyIcon,
+    logo: AvatarImg,
   },
 ]
 
