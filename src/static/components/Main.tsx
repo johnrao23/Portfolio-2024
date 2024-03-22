@@ -2,8 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import clsx from 'clsx';
 import { Container } from "./Container";
-import NavBar from "./NavBar";
-import Footer from "./Footer";
 import About from "./About";
 import Projects from "./Projects";
 import { GitHubIcon, GalaxyIcon, LinkedInIcon, XIcon } from "./SocialIcons";
@@ -63,7 +61,6 @@ const Main: React.FC = () => {
 
     return (
         <div>
-            <NavBar />
             <Container className="mt-9">
                 <div className="max-w-2xl">
                     <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
@@ -103,7 +100,6 @@ const Main: React.FC = () => {
             <About />
             <Projects />
             <Experience />
-            <Footer />
         </div>
     );
 };
