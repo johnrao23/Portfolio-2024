@@ -6,6 +6,8 @@ import Main from './components/Main';
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
+import Skills from './components/Skills';
+import Hobbies from './components/Hobbies';
 import "./prism.css"
 
 const App: React.FC = () => {
@@ -19,6 +21,8 @@ const App: React.FC = () => {
               <Route path="/about" element={<About />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/experience" element={<Experience />} />
+              <Route path="/skills" element={<Skills />} />
+              <Route path="/hobbies" element={<Hobbies />} />
             </Routes>
           </Layout>
         </div>
