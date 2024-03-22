@@ -5,6 +5,7 @@ import Main from './components/Main';
 import About from './components/About';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
+import "./prism.css"
 
 const App: React.FC = () => {
   return (
