@@ -96,7 +96,7 @@ interface URL {
 
 let URL: URL = {
   terpsolutions: "https://web.archive.org/web/20200302001846/https://terpsolutions.com/",
-  johnrao: "https://johnrao.com",
+  johnrao: "https://johnrao.com/static",
   bullVsBearTrading: "https://www.bullvsbeartrading.com",
   getFairbnb: "https://www.getfairbnb.com",
   samsClubURL: "https://www.samsclub.com/",
