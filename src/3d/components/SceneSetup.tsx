@@ -170,9 +170,7 @@ export const setupScene = ({
   allSkillsSection(scene, manager, 75, 0.025, 25, 30, 60, inputText.activities);
   allSkillsSection(scene, manager, 8.75, 0.025, 62, 17, 20, boxTexture.lucasNoah);
   allSkillsSection(scene, manager, 9, 0.01, 40, 20, 20, boxTexture.familyText);
-  // allSkillsSection(scene, manager, 9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
-  // simpleText(scene, 9, 0.01, 5, instructionsText, 1.25);
-  // simpleText(scene, 39, 0.01, -83, touchText, 1.5);
+  allSkillsSection(scene, manager, 9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
   simpleText(scene, -60, 0.01, -5, "SKILLS", 3);
   simpleText(scene, -60, 0.01, -55, "EXPERIENCE & PROJECTS", 3);
   simpleText(scene, 75, 0.01, -10, "TIMELINE", 3);
