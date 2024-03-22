@@ -84,13 +84,13 @@ const ThreeContainer: React.FC = () => {
       touchText = "Touch boxes with your \nfinger to open links";
       instructionsText = "Use the joystick in the bottom \nleft of the screen to move the ball.";
     } else {
-      touchText = "Click on boxes with \nthe mouse to open links";
+      touchText = "Click on boxes with the \n   mouse to open links";
       instructionsText = "Use the arrow keys on your \n keyboard to move the ball.";
     }
 
     if (scene) {
       simpleText(scene, 9, 0.01, 5, instructionsText, 1.25);
-      simpleText(scene, 39, 0.01, -83, touchText, 1.5);
+      simpleText(scene, 36, 0.01, -86, touchText, 1.5);
     }
   }, [scene]);
 
