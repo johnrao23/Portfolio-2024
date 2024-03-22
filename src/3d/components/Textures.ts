@@ -16,6 +16,7 @@ let billboardTextures: BillboardTextures = {
 
 // Define the structure for box textures
 interface BoxTexture {
+  StaticSite: string;
   Github: string;
   twitter: string;
   LinkedIn: string;
@@ -31,6 +32,7 @@ interface BoxTexture {
 
 // Define box textures with updated paths
 let boxTexture: BoxTexture = {
+  StaticSite: "/assets/johnraoLogo.png",
   Github: "/assets/githubLogo.png",
   twitter: "/assets/twitterLogo.png",
   LinkedIn: "/assets/linkedInLogo.png",
