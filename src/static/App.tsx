@@ -10,16 +10,20 @@ import "./prism.css"
 
 const App: React.FC = () => {
   return (
-    <ThemeProvider>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/experience" element={<Experience />} />
-        </Routes>
-      </Layout>
-    </ThemeProvider>
+    <div className = "flex h-full bg-zinc-50 dark:bg-black">
+      <ThemeProvider>
+        <div className="flex w-full">
+          <Layout>
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/experience" element={<Experience />} />
+            </Routes>
+          </Layout>
+        </div>
+      </ThemeProvider>
+    </div>
   );
 };
 
