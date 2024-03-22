@@ -1,4 +1,4 @@
-import { Card } from '@/components/Card'
+import { Card } from './Card'
 import { SimpleLayout } from './SimpleLayout'
 import logoAnimaginary from '@/images/logos/animaginary.svg'
 import logoCosmos from '@/images/logos/cosmos.svg'
