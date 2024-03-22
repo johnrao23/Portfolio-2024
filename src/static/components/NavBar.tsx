@@ -151,10 +151,10 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
         <NavItem to="/static/about">About</NavItem>
-        <NavItem to="/static">Projects</NavItem>
-        <NavItem to="/static">Experience</NavItem>
-        <NavItem to="/static">Skills</NavItem>
-        <NavItem to="/static">Hobbies</NavItem>
+        <NavItem to="/static/projects">Projects</NavItem>
+        <NavItem to="/static/experience">Experience</NavItem>
+        <NavItem to="/static/skills">Skills</NavItem>
+        <NavItem to="/static/hobbies">Hobbies</NavItem>
       </ul>
     </nav>
   );
@@ -221,10 +221,10 @@ function MobileNavigation(
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem to="/static/about">About</MobileNavItem>
-                <MobileNavItem to="/static">Projects</MobileNavItem>
-                <MobileNavItem to="/static">Experience</MobileNavItem>
-                <MobileNavItem to="/static">Skills</MobileNavItem>
-                <MobileNavItem to="/static">Hobbies</MobileNavItem>
+                <MobileNavItem to="/static/projects">Projects</MobileNavItem>
+                <MobileNavItem to="/static/experience">Experience</MobileNavItem>
+                <MobileNavItem to="/static/skills">Skills</MobileNavItem>
+                <MobileNavItem to="/static/hobbies">Hobbies</MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
