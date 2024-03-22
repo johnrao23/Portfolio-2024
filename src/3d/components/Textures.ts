@@ -100,7 +100,7 @@ let URL: URL = {
   bullVsBearTrading: "https://www.bullvsbeartrading.com",
   getFairbnb: "https://www.getfairbnb.com",
   samsClubURL: "https://www.samsclub.com/",
-  gitHub: "https://github.com/johnrao23/Portfolio-2022",
+  gitHub: "https://github.com/johnrao23/Portfolio-2024",
   twitter: "https://twitter.com/0xRao",
   LinkedIn: "https://www.linkedin.com/in/john-rao",
   email: "mailto:johnrao23@gmail.com",
