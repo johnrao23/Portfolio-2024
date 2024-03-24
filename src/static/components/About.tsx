@@ -72,7 +72,7 @@ const About: React.FC = () => {
                         photo back down to our family computer from space.
                     </p>
                     <p>
-                        Today, I’m the founder of Planetaria, where we’re working on
+                        Today, I’m the founder of Kallijax, where we’re working on
                         civilian space suits and manned shuttle kits you can assemble at
                         home so that the next generation of kids really <em>can</em> make
                         it to orbit — from the comfort of their own backyards.
