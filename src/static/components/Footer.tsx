@@ -1,15 +1,45 @@
-import { GridPattern } from './GridPattern'
+import React from 'react';
+import { Link } from "react-router-dom";
+import { ContainerInner, ContainerOuter } from './Container'
 
-export default function Footer() {
+function NavLink({
+  href,
+  children,
+}: {
+  href: string
+  children: React.ReactNode
+}) {
   return (
-    <footer className="relative pb-20 pt-5 sm:pb-32 sm:pt-14">
-      <div className="absolute inset-x-0 top-0 h-32 text-slate-900/10 [mask-image:linear-gradient(white,transparent)]">
-        <GridPattern x="50%" />
-      </div>
-      <div className="relative text-center text-sm text-slate-600">
-        <p>Copyright &copy; {new Date().getFullYear()} Kallijax Design, LLC</p>
-        <p>All rights reserved.</p>
-      </div>
+    <Link
+      to={href}
+      className="transition hover:text-teal-500 dark:hover:text-teal-400"
+    >
+      {children}
+    </Link>
+  )
+}
+
+export function Footer() {
+  return (
+    <footer className="mt-32 flex-none">
+      <ContainerOuter>
+        <div className="border-t border-zinc-100 pb-16 pt-10 dark:border-zinc-700/40">
+          <ContainerInner>
+            <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+              <div className="flex flex-wrap justify-center gap-x-6 gap-y-1 text-sm font-medium text-zinc-800 dark:text-zinc-200">
+                <NavLink href="/static/about">About</NavLink>
+                <NavLink href="/static/projects">Projects</NavLink>
+                <NavLink href="/static/experience">Experience</NavLink>
+                <NavLink href="/static/skills">Skills</NavLink>
+              </div>
+              <p className="text-sm text-zinc-400 dark:text-zinc-500">
+                &copy; {new Date().getFullYear()} Kallijax Design, LLC. All rights
+                reserved.
+              </p>
+            </div>
+          </ContainerInner>
+        </div>
+      </ContainerOuter>
     </footer>
   )
 }
