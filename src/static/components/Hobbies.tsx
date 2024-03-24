@@ -46,8 +46,8 @@ export default function Uses() {
       intro="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff."
     >
       <div className="space-y-20">
-        <ToolsSection title="Workstation">
-          <Tool title="16” MacBook Pro, M1 Max, 64GB RAM (2021)">
+        <ToolsSection title="Family">
+          <Tool title="Wife and Three Children">
             I was using an Intel-based 16” MacBook Pro prior to this and the
             difference is night and day. I’ve never heard the fans turn on a
             single time, even under the incredibly heavy loads I put it through
