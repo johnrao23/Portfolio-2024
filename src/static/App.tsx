@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Skills from './components/Skills';
 import Hobbies from './components/Hobbies';
+import NotFound from './components/404';
 import "./prism.css"
 
 const App: React.FC = () => {
@@ -23,6 +24,7 @@ const App: React.FC = () => {
               <Route path="/experience" element={<Experience />} />
               <Route path="/skills" element={<Skills />} />
               <Route path="/hobbies" element={<Hobbies />} />
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Layout>
         </div>
