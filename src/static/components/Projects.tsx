@@ -25,17 +25,17 @@ const projects = [
     logo: GalaxyIcon,
   },
   {
-    name: 'cosmOS',
+    name: 'Terp Solutions',
     description:
-      'The operating system that powers our Planetaria space shuttles.',
-    link: { href: '#', label: 'github.com' },
+      'Worked with a startup to design and develop an e-commerce website from scratch.',
+    link: { href: 'https://web.archive.org/web/20200302001846/https://terpsolutions.com/', label: 'terpsolutions.com' },
     logo: GalaxyIcon,
   },
   {
-    name: 'OpenShuttle',
+    name: 'The Odin Project',
     description:
-      'The schematics for the first rocket I designed that successfully made it to orbit.',
-    link: { href: '#', label: 'github.com' },
+      'This is where my journey into web development began and I have not stopped since!',
+    link: { href: 'https://www.theodinproject.com/', label: 'theodinproject.com' },
     logo: GalaxyIcon,
   },
 ]
