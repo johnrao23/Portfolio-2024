@@ -234,9 +234,8 @@ function MobileNavigation(
   )
 }
 
-const ThemeToggle = () => {
+function ThemeToggle() {
   const { theme, setTheme } = useTheme();
-
   const toggleTheme = () => {
     setTheme(theme === 'light' ? 'dark' : 'light');
   };
@@ -248,16 +247,14 @@ const ThemeToggle = () => {
       className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={toggleTheme}
     >
-      {
-        theme === 'light' ? (
-          <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden" />
-        ) : (
-          <MoonIcon className="h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block hover:fill-zinc-200 hover:stroke-zinc-400" />
-        )
-      }
+      {theme === 'light' ? (
+        <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700" />
+      ) : (
+        <MoonIcon className="h-6 w-6 stroke-teal-500 transition hover:stroke-teal-600 dark:fill-transparent" />
+      )}
     </button>
   );
-};
+}
 
 const NavBar = () => {
   const isHomePage = useLocation().pathname === '/static';
