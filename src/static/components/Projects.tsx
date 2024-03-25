@@ -20,8 +20,8 @@ const projects = [
   {
     name: 'BVB Trading',
     description:
-      'Real-time video streaming library, optimized for interstellar transmission.',
-    link: { href: '#', label: 'github.com' },
+      'Psuedo stock trading app to practice trading stocks using our money, instead of yours.',
+    link: { href: 'https://www.bullvsbeartrading.com', label: 'bullvsbeartrading.com' },
     logo: GalaxyIcon,
   },
   {
