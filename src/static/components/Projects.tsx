@@ -4,21 +4,21 @@ import { GalaxyIcon } from "./SocialIcons";
 
 const projects = [
   {
-    name: 'Planetaria',
+    name: 'Portfolio',
     description:
-      'Creating technology to empower civilians to explore space on their own terms.',
-    link: { href: 'http://planetaria.tech', label: 'planetaria.tech' },
+      'Interactive experience allowing users to explore my world while having fun!',
+    link: { href: 'https://johnrao.com', label: 'johnrao.com' },
     logo: GalaxyIcon,
   },
   {
-    name: 'Animaginary',
+    name: 'Fairbnb',
     description:
-      'High performance web animation library, hand-written in optimized WASM.',
-    link: { href: '#', label: 'github.com' },
+      'Rental booking application that uses the power of AI to answer user inqueries.',
+    link: { href: 'https://www.getfairbnb.com/', label: 'getfairbnb.com' },
     logo: GalaxyIcon,
   },
   {
-    name: 'HelioStream',
+    name: 'BVB Trading',
     description:
       'Real-time video streaming library, optimized for interstellar transmission.',
     link: { href: '#', label: 'github.com' },
