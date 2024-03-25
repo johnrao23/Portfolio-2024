@@ -1,6 +1,7 @@
 import { Card } from './Card';
 import { SimpleLayout } from './SimpleLayout';
 import { GalaxyIcon } from "./SocialIcons";
+import { OdinProject } from './Logos';
 
 const projects = [
   {
@@ -36,7 +37,7 @@ const projects = [
     description:
       'This is where my journey into web development began and I have not stopped since!',
     link: { href: 'https://www.theodinproject.com/', label: 'theodinproject.com' },
-    logo: GalaxyIcon,
+    logo: OdinProject,
   },
 ]
 
