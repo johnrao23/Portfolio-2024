@@ -250,7 +250,7 @@ function ThemeToggle() {
       {theme === 'light' ? (
         <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700" />
       ) : (
-        <MoonIcon className="h-6 w-6 stroke-teal-400 transition dark:block hover:stroke-teal-400" />
+        <MoonIcon className="h-6 w-6 stroke-teal-400 transition dark:block hover:stroke-teal-400 dark:fill-transparent" />
       )}
     </button>
   );
