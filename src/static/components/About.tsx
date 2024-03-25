@@ -58,7 +58,7 @@ const About: React.FC = () => {
                         myself to type on.
                     </p>
                     <p>
-                        The only thing I loved more than computers as a kid was space.
+                        The only thing I loved more than building things as a kid was space.
                         When I was 8, I climbed the 40-foot oak tree at the back of our
                         yard while wearing my older sister’s motorcycle helmet, counted
                         down from three, and jumped — hoping the tree was tall enough that
