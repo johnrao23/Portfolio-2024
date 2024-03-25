@@ -23,7 +23,7 @@ export function OdinLogo(props: React.ComponentPropsWithoutRef<'svg'>) {
     return (
       <div style={{ width: '100%', height: '100%' }}>
         <img
-          src={BvBLogoImg} /* Assuming project.logo is the image URL */
+          src={BvBLogoImg}
           alt="Project Logo"
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
