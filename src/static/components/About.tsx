@@ -4,6 +4,7 @@ import clsx from "clsx";
 import { Container } from "./Container";
 import { XIcon, GitHubIcon, GalaxyIcon, LinkedInIcon, MailIcon } from "./SocialIcons";
 import AvatarImg from "../assets/AvatarImg.jpg"
+import CartoonAvi from "../assets/CartoonAvi.webp"
 
 const About: React.FC = () => {
 
@@ -38,7 +39,7 @@ const About: React.FC = () => {
                 <div className="lg:pl-20">
                     <div className="max-w-xs px-2.5 lg:max-w-none">
                     <img
-                        src={AvatarImg}
+                        src={CartoonAvi}
                         alt=""
                         sizes="(min-width: 1024px) 32rem, 20rem"
                         className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
