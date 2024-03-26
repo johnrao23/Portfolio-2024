@@ -1,7 +1,7 @@
 import { Card } from './Card';
 import { SimpleLayout } from './SimpleLayout';
 import { GalaxyIcon } from "./SocialIcons";
-import { OdinLogo, BvBLogo, PTLogo } from './Logos';
+import { OdinLogo, BvBLogo, PTLogo, TSLogo } from './Logos';
 
 const projects = [
   {
@@ -30,7 +30,7 @@ const projects = [
     description:
       'Worked with a startup to design and develop an e-commerce website from scratch.',
     link: { href: 'https://web.archive.org/web/20200302001846/https://terpsolutions.com/', label: 'terpsolutions.com' },
-    logo: GalaxyIcon,
+    logo: TSLogo,
   },
   {
     name: 'The Odin Project',
@@ -64,7 +64,7 @@ export default function Projects() {
       >
         {projects.map((project) => (
           <Card as="li" key={project.name}>
-            <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+            <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:ring-0">
             <project.logo className="h-8 w-8" />
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
