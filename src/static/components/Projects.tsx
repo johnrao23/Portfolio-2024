@@ -19,7 +19,7 @@ const projects = [
     logo: PTLogo,
   },
   {
-    name: 'BVB Trading',
+    name: 'BvB Trading',
     description:
       'Psuedo stock trading app to practice trading stocks using our money, instead of yours.',
     link: { href: 'https://www.bullvsbeartrading.com', label: 'bullvsbeartrading.com' },
