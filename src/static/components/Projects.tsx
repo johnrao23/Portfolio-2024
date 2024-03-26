@@ -1,7 +1,7 @@
 import { Card } from './Card';
 import { SimpleLayout } from './SimpleLayout';
 import { GalaxyIcon } from "./SocialIcons";
-import { OdinLogo, BvBLogo1 } from './Logos';
+import { OdinLogo, BvBLogo } from './Logos';
 
 const projects = [
   {
@@ -23,7 +23,7 @@ const projects = [
     description:
       'Psuedo stock trading app to practice trading stocks using our money, instead of yours.',
     link: { href: 'https://www.bullvsbeartrading.com', label: 'bullvsbeartrading.com' },
-    logo: BvBLogo1,
+    logo: BvBLogo,
   },
   {
     name: 'Terp Solutions',
