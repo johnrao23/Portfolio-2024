@@ -1,7 +1,7 @@
 import { Card } from './Card';
 import { SimpleLayout } from './SimpleLayout';
 import { GalaxyIcon } from "./SocialIcons";
-import { OdinLogo, BvBLogo } from './Logos';
+import { OdinLogo, BvBLogo, PTLogo } from './Logos';
 
 const projects = [
   {
@@ -16,7 +16,7 @@ const projects = [
     description:
       'Rental booking application that uses the power of AI to answer user inqueries.',
     link: { href: 'https://www.getfairbnb.com/', label: 'getfairbnb.com' },
-    logo: GalaxyIcon,
+    logo: PTLogo,
   },
   {
     name: 'BVB Trading',
