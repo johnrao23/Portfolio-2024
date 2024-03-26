@@ -1,5 +1,3 @@
-import BvBLogoImg from "../assets/bvb_logo5.png";
-
 export function OdinLogo(props: React.ComponentPropsWithoutRef<'svg'>) {
     return (
       <svg width="44" height="60" viewBox="0 0 44 60" fill="none" xmlns="http://www.w3.org/2000/svg">
