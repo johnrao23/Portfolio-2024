@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from 'react';
 import { Link } from "react-router-dom";
 import clsx from 'clsx';
 import { Container } from "./Container";
@@ -32,18 +32,29 @@ const Main: React.FC = () => {
     function Photos() {
         const rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2'];
         const images = [SDImg, FairbnbImg, JRThreeImg, NYCImg, LNImg];
-
+        const containerRef = useRef<HTMLDivElement>(null);
+    
+        useEffect(() => {
+            if (containerRef.current) {
+                const container = containerRef.current;
+                const firstChild = container.firstChild as HTMLElement;
+                const childWidth = firstChild.offsetWidth;
+                const scrollTo = childWidth * 2.3;
+                container.scrollLeft = scrollTo - (container.offsetWidth / 2) + (childWidth / 2);
+            }
+        }, []);
+    
         return (
             <div className="mt-16 sm:mt-20">
-                <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+                <div
+                    ref={containerRef}
+                    className="flex flex-nowrap justify-start sm:justify-center gap-5 overflow-x-auto py-4 sm:gap-8 -my-4 sm:overflow-hidden"
+                >
                     {images.map((image, index) => (
                         <div
                             key={index}
-                            className={clsx(
-                                'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
-                                rotations[index % rotations.length],
-                            )}
-                            >
+                            className={`relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl ${rotations[index % rotations.length]}`}
+                        >
                             <img
                                 src={image}
                                 alt=""
@@ -55,7 +66,7 @@ const Main: React.FC = () => {
             </div>
         );
     }
-
+    
     return (
         <div>
             <Container className="mt-9">
