@@ -2,15 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import clsx from 'clsx';
 import { Container } from "./Container";
-import About from "./About";
-import Projects from "./Projects";
 import { GitHubIcon, GalaxyIcon, LinkedInIcon, XIcon } from "./SocialIcons";
 import JRThreeImg from "../assets/3dsite.png";
 import FairbnbImg from "../assets/fairbnb.png";
 import TerpImg from "../assets/terpSolutions.png";
 import SaGImg from "../assets/SaG-billboard.png";
 import LNImg from "../assets/LucasNoahPic.jpeg";
-import Experience from "./Experience";
 
 const Main: React.FC = () => {
 
