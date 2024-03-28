@@ -133,10 +133,10 @@ const ThreeContainer: React.FC = () => {
             <button className="bg-gray-500 text-yellow-300 text-xl font-bold uppercase rounded-lg p-4 mb-8 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={startButtonEventListener}>
               Explore
             </button>
-            {/* <p className="text-base md:text-lg mb-8">OR</p>
+            <p className="text-base md:text-lg mb-8">OR</p>
             <button className="bg-gray-500 text-yellow-300 text-xl font-bold uppercase rounded-lg p-4 hover:bg-gray-700 transition duration-200 ease-in-out focus:outline-none" onClick={goToStaticSite}>
               Visit Static Site
-            </button> */}
+            </button>
           </div>
         )}
         {isTouchscreen && (
