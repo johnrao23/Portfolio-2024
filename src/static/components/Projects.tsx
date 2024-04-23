@@ -22,7 +22,7 @@ const projects = [
     name: 'Wek Law',
     description:
       'Legal Website I designed and developed for a major law firm in Florida.',
-    link: { href: 'https://www.getfairbnb.com/', label: 'wweklaw.com' },
+    link: { href: 'https://www.getfairbnb.com/', label: 'weklaw.com' },
     logo: WLLogo,
   },
   {
