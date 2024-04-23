@@ -1,7 +1,7 @@
 import { Card } from './Card';
 import { SimpleLayout } from './SimpleLayout';
 import { GalaxyIcon } from "./SocialIcons";
-import { OdinLogo, BvBLogo, PTLogo, TSLogo } from './Logos';
+import { OdinLogo, BvBLogo, PTLogo, TSLogo, WLLogo } from './Logos';
 
 const projects = [
   {
@@ -17,6 +17,13 @@ const projects = [
       'Rental booking application that uses the power of AI to answer user inqueries.',
     link: { href: 'https://www.getfairbnb.com/', label: 'getfairbnb.com' },
     logo: PTLogo,
+  },
+  {
+    name: 'Wek Law',
+    description:
+      'Legal Website I designed and developed for a major law firm in Florida.',
+    link: { href: 'https://www.getfairbnb.com/', label: 'wweklaw.com' },
+    logo: WLLogo,
   },
   {
     name: 'BvB Trading',
