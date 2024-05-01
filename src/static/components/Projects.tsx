@@ -5,7 +5,7 @@ import { OdinLogo, BvBLogo, PTLogo, TSLogo, WLLogo } from './Logos';
 
 const projects = [
   {
-    name: 'Portfolio',
+    name: '3D Portfolio',
     description:
       'Interactive experience allowing users to explore my world while having fun!',
     link: { href: 'https://johnrao.com', label: 'johnrao.com' },
