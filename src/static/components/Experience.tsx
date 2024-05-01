@@ -1,6 +1,6 @@
-import { Card } from './Card'
-import { Section } from './Section'
-import { SimpleLayout } from './SimpleLayout'
+import { Card } from "./Card";
+import { Section } from "./Section";
+import { SimpleLayout } from "./SimpleLayout";
 
 function SpeakingSection({
   children,
@@ -10,7 +10,7 @@ function SpeakingSection({
     <Section {...props}>
       <div className="space-y-16">{children}</div>
     </Section>
-  )
+  );
 }
 
 function Appearance({
@@ -20,11 +20,11 @@ function Appearance({
   cta,
   href,
 }: {
-  title: string
-  description: string
-  event: string
-  cta: string
-  href: string
+  title: string;
+  description: string;
+  event: string;
+  cta: string;
+  href: string;
 }) {
   return (
     <Card as="article">
@@ -35,7 +35,7 @@ function Appearance({
       <Card.Description>{description}</Card.Description>
       <Card.Cta>{cta}</Card.Cta>
     </Card>
-  )
+  );
 }
 
 export default function Speaking() {
@@ -86,5 +86,5 @@ export default function Speaking() {
         </SpeakingSection>
       </div>
     </SimpleLayout>
-  )
+  );
 }

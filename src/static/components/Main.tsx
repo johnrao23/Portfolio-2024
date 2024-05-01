@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import clsx from "clsx";
 import { Container } from "./Container";
 import { Button } from "./Button";
-import { Card } from "./Card";
+import Speaking from "./Experience";
 import { GitHubIcon, GalaxyIcon, LinkedInIcon, XIcon } from "./SocialIcons";
 import { BriefcaseIcon, ArrowDownIcon, MailIcon } from "./MiscIcons";
 import {
@@ -17,7 +17,6 @@ import FairbnbImg from "../assets/fairbnb.png";
 import LNImg from "../assets/LucasNoahPic.jpeg";
 import NYCImg from "../assets/NYC.png";
 import SDImg from "../assets/DeskSetup.webp";
-import { formatDate } from "./FormatDate";
 
 const Main: React.FC = () => {
   function SocialLink({
@@ -40,21 +39,6 @@ const Main: React.FC = () => {
           )}
         />
       </Link>
-    );
-  }
-
-  function Article({ article }: { article: ArticleWithSlug }) {
-    return (
-      <Card as="article">
-        <Card.Title href={`/articles/${article.slug}`}>
-          {article.title}
-        </Card.Title>
-        <Card.Eyebrow as="time" dateTime={article.date} decorate>
-          {formatDate(article.date)}
-        </Card.Eyebrow>
-        <Card.Description>{article.description}</Card.Description>
-        <Card.Cta>Read article</Card.Cta>
-      </Card>
     );
   }
 
@@ -87,16 +71,27 @@ const Main: React.FC = () => {
       </form>
     );
   }
+  const LogoComponents: {
+    [key: string]: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  } = {
+    Airbnb: AirbnbLogo,
+    Facebook: FacebookLogo,
+    Starbucks: StarbucksLogo,
+    Planetaria: PlanetariaLogo,
+  };
 
-  interface Role {
-    company: string;
-    title: string;
-    logo: ImageProps["src"];
-    start: string | { label: string; dateTime: string };
-    end: string | { label: string; dateTime: string };
+  interface RoleProps {
+    role: {
+      company: string;
+      title: string;
+      logo: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+      start: string | { label: string; dateTime: string };
+      end: string | { label: string; dateTime: string };
+    };
   }
 
-  function Role({ role }: { role: Role }) {
+  function Role({ role }: RoleProps) {
+    const LogoComponent = LogoComponents[role.company];
     let startLabel =
       typeof role.start === "string" ? role.start : role.start.label;
     let startDate =
@@ -108,7 +103,8 @@ const Main: React.FC = () => {
     return (
       <li className="flex gap-4">
         <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-          <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+          {/* Render the logo component dynamically */}
+          {LogoComponent && <LogoComponent className="h-7 w-7" />}
         </div>
         <dl className="flex flex-auto flex-wrap gap-x-2">
           <dt className="sr-only">Company</dt>
@@ -134,7 +130,7 @@ const Main: React.FC = () => {
   }
 
   function Resume() {
-    let resume: Array<Role> = [
+    let resume = [
       {
         company: "Planetaria",
         title: "CEO",
@@ -179,7 +175,11 @@ const Main: React.FC = () => {
             <Role key={roleIndex} role={role} />
           ))}
         </ol>
-        <Button href="#" variant="secondary" className="group mt-6 w-full">
+        <Button
+          to="/download-cv"
+          variant="secondary"
+          className="group mt-6 w-full"
+        >
           Download CV
           <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
         </Button>
@@ -273,11 +273,7 @@ const Main: React.FC = () => {
       <Photos />
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
-            {articles.map((article) => (
-              <Article key={article.slug} article={article} />
-            ))}
-          </div>
+          <Speaking />
           <div className="space-y-10 lg:pl-16 xl:pl-24">
             <Newsletter />
             <Resume />
