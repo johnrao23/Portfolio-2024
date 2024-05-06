@@ -5,12 +5,13 @@ import { Container } from "./Container";
 import { Button } from "./Button";
 import { GitHubIcon, GalaxyIcon, LinkedInIcon, XIcon } from "./SocialIcons";
 import { BriefcaseIcon, ArrowDownIcon, MailIcon } from "./MiscIcons";
-import { kallijaxLogo, samsLogo, starbucksLogo, wekLogo } from "./WorkLogos";
+import { kallijaxLogo, samsLogo, citiLogo, wekLogo } from "./WorkLogos";
 import JRThreeImg from "../assets/3dsite.png";
 import FairbnbImg from "../assets/fairbnb.png";
 import LNImg from "../assets/LucasNoahPic.jpeg";
 import NYCImg from "../assets/NYC.png";
 import SDImg from "../assets/DeskSetup.webp";
+import resumePDF from "../assets/Resume2023.pdf";
 import { Card } from "./Card";
 
 const Main: React.FC = () => {
@@ -71,7 +72,7 @@ const Main: React.FC = () => {
   } = {
     Kallijax: kallijaxLogo,
     "Sam's Club": samsLogo,
-    Starbucks: starbucksLogo,
+    Citibank: citiLogo,
     "Wek Law": wekLogo,
   };
 
@@ -124,6 +125,10 @@ const Main: React.FC = () => {
   }
 
   function Resume() {
+    const handleDownload = () => {
+      window.open(resumePDF, "_blank");
+    };
+
     let resume = [
       {
         company: "Wek Law",
@@ -150,11 +155,11 @@ const Main: React.FC = () => {
         end: "2019",
       },
       {
-        company: "Starbucks",
-        title: "Shift Supervisor",
-        logo: starbucksLogo,
-        start: "2008",
-        end: "2011",
+        company: "Citibank",
+        title: "Personal Banker",
+        logo: citiLogo,
+        start: "2012",
+        end: "2013",
       },
     ];
 
@@ -170,7 +175,7 @@ const Main: React.FC = () => {
           ))}
         </ol>
         <Button
-          to="/download-cv"
+          onClick={handleDownload}
           variant="secondary"
           className="group mt-6 w-full"
         >
