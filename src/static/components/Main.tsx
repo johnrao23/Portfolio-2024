@@ -236,17 +236,6 @@ const Main: React.FC = () => {
   }
 
   function SpeakingSection({
-    children,
-    ...props
-  }: React.ComponentPropsWithoutRef<typeof Section>) {
-    return (
-      <Section {...props}>
-        <div className="space-y-16">{children}</div>
-      </Section>
-    );
-  }
-
-  function Appearance({
     title,
     description,
     event,
@@ -274,31 +263,27 @@ const Main: React.FC = () => {
   function Speaking() {
     return (
       <div className="space-y-20">
-        <SpeakingSection title="Conferences">
-          <Appearance
-            href="#"
-            title="In space, no one can watch you stream — until now"
-            description="A technical deep-dive into HelioStream, the real-time streaming library I wrote for transmitting live video back to Earth."
-            event="SysConf 2021"
-            cta="Watch video"
-          />
-        </SpeakingSection>
-        <SpeakingSection title="Podcasts">
-          <Appearance
-            href="#"
-            title="Using design as a competitive advantage"
-            description="How we used world-class visual design to attract a great team, win over customers, and get more press for Planetaria."
-            event="Encoding Design, July 2022"
-            cta="Listen to podcast"
-          />
-          <Appearance
-            href="#"
-            title="Bootstrapping an aerospace company to $17M ARR"
-            description="The story of how we built one of the most promising space startups in the world without taking any capital from investors."
-            event="The Escape Velocity Show, March 2022"
-            cta="Listen to podcast"
-          />
-        </SpeakingSection>
+        <SpeakingSection
+          href="#"
+          title="In space, no one can watch you stream — until now"
+          description="A technical deep-dive into HelioStream, the real-time streaming library I wrote for transmitting live video back to Earth."
+          event="SysConf 2021"
+          cta="Watch video"
+        />
+        <SpeakingSection
+          href="#"
+          title="Using design as a competitive advantage"
+          description="How we used world-class visual design to attract a great team, win over customers, and get more press for Planetaria."
+          event="Encoding Design, July 2022"
+          cta="Listen to podcast"
+        />
+        <SpeakingSection
+          href="#"
+          title="Bootstrapping an aerospace company to $17M ARR"
+          description="The story of how we built one of the most promising space startups in the world without taking any capital from investors."
+          event="The Escape Velocity Show, March 2022"
+          cta="Listen to podcast"
+        />
       </div>
     );
   }
