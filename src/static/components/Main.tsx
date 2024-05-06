@@ -5,20 +5,13 @@ import { Container } from "./Container";
 import { Button } from "./Button";
 import { GitHubIcon, GalaxyIcon, LinkedInIcon, XIcon } from "./SocialIcons";
 import { BriefcaseIcon, ArrowDownIcon, MailIcon } from "./MiscIcons";
-import {
-  AirbnbLogo,
-  FacebookLogo,
-  StarbucksLogo,
-  PlanetariaLogo,
-} from "./WorkLogos";
+import { kallijaxLogo, samsLogo, starbucksLogo, wekLogo } from "./WorkLogos";
 import JRThreeImg from "../assets/3dsite.png";
 import FairbnbImg from "../assets/fairbnb.png";
 import LNImg from "../assets/LucasNoahPic.jpeg";
 import NYCImg from "../assets/NYC.png";
 import SDImg from "../assets/DeskSetup.webp";
 import { Card } from "./Card";
-import { Section } from "./Section";
-import { SimpleLayout } from "./SimpleLayout";
 
 const Main: React.FC = () => {
   function SocialLink({
@@ -76,10 +69,10 @@ const Main: React.FC = () => {
   const LogoComponents: {
     [key: string]: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   } = {
-    Airbnb: AirbnbLogo,
-    Facebook: FacebookLogo,
-    Starbucks: StarbucksLogo,
-    Planetaria: PlanetariaLogo,
+    Kallijax: kallijaxLogo,
+    "Sam's Club": samsLogo,
+    Starbucks: starbucksLogo,
+    "Wek Law": wekLogo,
   };
 
   interface RoleProps {
@@ -133,33 +126,33 @@ const Main: React.FC = () => {
   function Resume() {
     let resume = [
       {
-        company: "Planetaria",
-        title: "CEO",
-        logo: PlanetariaLogo,
-        start: "2019",
+        company: "Wek Law",
+        title: "Web Developer",
+        logo: wekLogo,
+        start: "2024",
         end: {
           label: "Present",
           dateTime: new Date().getFullYear().toString(),
         },
       },
       {
-        company: "Airbnb",
-        title: "Product Designer",
-        logo: AirbnbLogo,
-        start: "2014",
-        end: "2019",
+        company: "Kallijax",
+        title: "Web Designer",
+        logo: kallijaxLogo,
+        start: "2018",
+        end: "2023",
       },
       {
-        company: "Facebook",
-        title: "iOS Software Engineer",
-        logo: FacebookLogo,
-        start: "2011",
-        end: "2014",
+        company: "Sam's Club",
+        title: "Marketing Specialist",
+        logo: samsLogo,
+        start: "2016",
+        end: "2019",
       },
       {
         company: "Starbucks",
         title: "Shift Supervisor",
-        logo: StarbucksLogo,
+        logo: starbucksLogo,
         start: "2008",
         end: "2011",
       },

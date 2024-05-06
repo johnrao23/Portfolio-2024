@@ -1,4 +1,4 @@
-export function AirbnbLogo(props: React.ComponentPropsWithoutRef<"svg">) {
+export function kallijaxLogo(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <rect width="28" height="28" rx="14" fill="#FF5A5F" />
@@ -17,7 +17,7 @@ export function AirbnbLogo(props: React.ComponentPropsWithoutRef<"svg">) {
   );
 }
 
-export function FacebookLogo(props: React.ComponentPropsWithoutRef<"svg">) {
+export function samsLogo(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#a)">
@@ -41,7 +41,7 @@ export function FacebookLogo(props: React.ComponentPropsWithoutRef<"svg">) {
   );
 }
 
-export function StarbucksLogo(props: React.ComponentPropsWithoutRef<"svg">) {
+export function citiLogo(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#a)">
@@ -65,7 +65,7 @@ export function StarbucksLogo(props: React.ComponentPropsWithoutRef<"svg">) {
   );
 }
 
-export function PlanetariaLogo(props: React.ComponentPropsWithoutRef<"svg">) {
+export function wekLogo(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#a)">
