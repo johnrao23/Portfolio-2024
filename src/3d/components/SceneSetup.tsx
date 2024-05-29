@@ -1,8 +1,8 @@
-import * as THREE from 'three';
-import Stats from 'stats.js';
-import { useStore, MoveDirection } from './store';
+import * as THREE from "three";
+import Stats from "stats.js";
+import { useStore, MoveDirection } from "./store";
 
-import { 
+import {
   addDirectionalLight,
   addHemisphereLight,
   addParticles,
@@ -11,9 +11,9 @@ import {
   moveParticles,
   createLensFlare,
   createSkyEffect,
-} from './World';
+} from "./World";
 
-import { 
+import {
   createGridPlane,
   createWallX,
   createWallZ,
@@ -28,16 +28,11 @@ import {
   loadJohnText,
   loadEngineerText,
   loadHelloWorldText,
-} from './CreateObjects';
+} from "./CreateObjects";
 
 import { rotateCamera, BallPosition } from "./Utilities";
 
-import {
-  billboardTextures,
-  boxTexture,
-  inputText,
-  URL,
-} from "./Textures";
+import { billboardTextures, boxTexture, inputText, URL } from "./Textures";
 
 import {
   simpleText,
@@ -57,9 +52,14 @@ export const setupScene = ({
   container,
   Ammo,
   setPhysicsWorld,
-  onLoaded
+  onLoaded,
 }: SetupSceneProps) => {
-  console.log("setupScene started. Ammo available:", !!Ammo, "Container available:", !!container);
+  console.log(
+    "setupScene started. Ammo available:",
+    !!Ammo,
+    "Container available:",
+    !!container,
+  );
 
   if (!container || !Ammo) {
     console.log("Exiting setupScene early due to missing container or Ammo");
@@ -72,12 +72,16 @@ export const setupScene = ({
     console.log("All assets loaded");
     onLoaded();
   };
-  
 
   // Initialize Three.js scene, camera, renderer
   const scene = new THREE.Scene();
   scene.background = new THREE.Color(0x000000).convertLinearToSRGB();
-  const camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 5000 );
+  const camera = new THREE.PerspectiveCamera(
+    45,
+    window.innerWidth / window.innerHeight,
+    1,
+    5000,
+  );
   camera.position.set(0, 30, 70);
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   container.appendChild(renderer.domElement);
@@ -103,15 +107,15 @@ export const setupScene = ({
   // Function to create physics world
   const createPhysicsWorld = () => {
     const collisionConfiguration = new Ammo.btDefaultCollisionConfiguration(),
-          dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration),
-          overlappingPairCache = new Ammo.btDbvtBroadphase(),
-          constraintSolver = new Ammo.btSequentialImpulseConstraintSolver();
+      dispatcher = new Ammo.btCollisionDispatcher(collisionConfiguration),
+      overlappingPairCache = new Ammo.btDbvtBroadphase(),
+      constraintSolver = new Ammo.btSequentialImpulseConstraintSolver();
 
     const physicsWorld = new Ammo.btDiscreteDynamicsWorld(
       dispatcher,
       overlappingPairCache,
       constraintSolver,
-      collisionConfiguration
+      collisionConfiguration,
     );
     physicsWorld.setGravity(new Ammo.btVector3(0, -50, 0));
 
@@ -125,8 +129,8 @@ export const setupScene = ({
     console.error("Ammo.js is not initialized");
     return;
   }
-  
-   // add lighting to scene
+
+  // add lighting to scene
   addHemisphereLight(scene);
   addDirectionalLight(scene);
 
@@ -136,7 +140,7 @@ export const setupScene = ({
   addParticles(scene);
   glowingParticles(scene, manager);
   generateGalaxy(scene, renderer);
-  createSkyEffect(scene)
+  createSkyEffect(scene);
 
   // Adding objects to the scene
   createGridPlane(scene, Ammo);
@@ -145,34 +149,207 @@ export const setupScene = ({
   createWallZ(scene, Ammo, 0, 1.75, 125);
   createWallZ(scene, Ammo, 0, 1.75, -125);
   createBall(scene, Ammo, manager);
-  createBox(scene, Ammo, manager, 21, 2, -100, 4, 4, 1, boxTexture.StaticSite, URL.johnrao, 0x000000, true);
-  createBox(scene, Ammo, manager, 28, 2, -100, 4, 4, 1, boxTexture.Github, URL.gitHub, 0x000000, true);
-  createBox(scene, Ammo, manager, 35.1, 2, -100, 4, 4, 1, boxTexture.LinkedIn, URL.LinkedIn, 0x000000, true);
-  createBox(scene, Ammo, manager, 42.9, 2, -100, 4, 4, 1, boxTexture.twitter, URL.twitter, 0x000000, true);
-  createBox(scene, Ammo, manager, 50.5, 2, -100, 4, 4, 1, boxTexture.mail, "mailto:johnrao23@gmail.com", 0x000000, false);
-  createBillboard(scene, Ammo, manager, -115, 2.5, -105, billboardTextures.terpSolutionsTexture, URL.terpsolutions, Math.PI * 0.2, );
-  createBillboard(scene, Ammo, manager, -80, 2.5, -110, billboardTextures.bullVsBearTexture, URL.bullVsBearTrading, Math.PI * 0.15, );
-  createBillboard(scene, Ammo, manager, -45, 2.5, -110, billboardTextures.fairbnbTexture, URL.getFairbnb, Math.PI * 0.1, );
-  createBillboardRotated( scene, Ammo, manager, -15, 1.25, -105, billboardTextures.scanAndGoTexture, URL.samsClub, Math.PI * 0.1, );
+  createBox(
+    scene,
+    Ammo,
+    manager,
+    21,
+    2,
+    -100,
+    4,
+    4,
+    1,
+    boxTexture.StaticSite,
+    URL.johnrao,
+    0x000000,
+    true,
+  );
+  createBox(
+    scene,
+    Ammo,
+    manager,
+    28,
+    2,
+    -100,
+    4,
+    4,
+    1,
+    boxTexture.Github,
+    URL.gitHub,
+    0x000000,
+    true,
+  );
+  createBox(
+    scene,
+    Ammo,
+    manager,
+    35.1,
+    2,
+    -100,
+    4,
+    4,
+    1,
+    boxTexture.LinkedIn,
+    URL.LinkedIn,
+    0x000000,
+    true,
+  );
+  createBox(
+    scene,
+    Ammo,
+    manager,
+    42.9,
+    2,
+    -100,
+    4,
+    4,
+    1,
+    boxTexture.twitter,
+    URL.twitter,
+    0x000000,
+    true,
+  );
+  createBox(
+    scene,
+    Ammo,
+    manager,
+    50.5,
+    2,
+    -100,
+    4,
+    4,
+    1,
+    boxTexture.mail,
+    "mailto:johnrao23@gmail.com",
+    0x000000,
+    false,
+  );
+  createBillboard(
+    scene,
+    Ammo,
+    manager,
+    -120,
+    2.5,
+    -100,
+    billboardTextures.terpSolutionsTexture,
+    URL.terpsolutions,
+    Math.PI * 0.2,
+  );
+  createBillboard(
+    scene,
+    Ammo,
+    manager,
+    -88,
+    2.5,
+    -110,
+    billboardTextures.bullVsBearTexture,
+    URL.bullVsBearTrading,
+    Math.PI * 0.1,
+  );
+  createBillboard(
+    scene,
+    Ammo,
+    manager,
+    -52,
+    2.5,
+    -110,
+    billboardTextures.fairbnbTexture,
+    URL.getFairbnb,
+    Math.PI * 0.1,
+  );
+  createBillboard(
+    scene,
+    Ammo,
+    manager,
+    -16,
+    2.5,
+    -110,
+    billboardTextures.scanAndGoTexture,
+    URL.samsClub,
+    Math.PI * 0.1,
+  );
   johnRaoWords(scene, Ammo, 11.2, 1, -20);
   helloWorldWords(scene, Ammo, 11.2, 1, -20);
   loadJohnText(scene);
   loadEngineerText(scene);
   loadHelloWorldText(scene);
-  createTextOnPlane( scene, manager, -110, 0.01, -75, inputText.terpSolutionsText, 20, 40);
-  createTextOnPlane(scene, manager, -77, 0.01, -80, inputText.bullVsBearText, 20, 40);
-  createTextOnPlane( scene, manager, -45, 0.01, -80, inputText.fairbnbText, 20, 40);
-  createTextOnPlane( scene, manager, -16, 0.01, -75, inputText.scanAndGoText, 20, 40);
+  createTextOnPlane(
+    scene,
+    manager,
+    -112,
+    0.01,
+    -73,
+    inputText.terpSolutionsText,
+    20,
+    40,
+  );
+  createTextOnPlane(
+    scene,
+    manager,
+    -84,
+    0.01,
+    -80,
+    inputText.bullVsBearText,
+    20,
+    40,
+  );
+  createTextOnPlane(
+    scene,
+    manager,
+    -51,
+    0.01,
+    -80,
+    inputText.fairbnbText,
+    20,
+    40,
+  );
+  createTextOnPlane(
+    scene,
+    manager,
+    -17,
+    0.01,
+    -80,
+    inputText.scanAndGoText,
+    20,
+    40,
+  );
   floatingLabel(scene, 21, 4.5, -100, "Static");
   floatingLabel(scene, 27.875, 4.5, -100, "Github");
   floatingLabel(scene, 34.86, 4.5, -100, "LinkedIn");
   floatingLabel(scene, 42.875, 4.5, -100, "Twitter");
   floatingLabel(scene, 50.26, 4.5, -100, "Email");
-  allSkillsSection(scene, manager, -60, 0.025, 20, 40, 40, boxTexture.allSkills);
+  allSkillsSection(
+    scene,
+    manager,
+    -60,
+    0.025,
+    20,
+    40,
+    40,
+    boxTexture.allSkills,
+  );
   allSkillsSection(scene, manager, 75, 0.025, 25, 30, 60, inputText.activities);
-  allSkillsSection(scene, manager, 8.75, 0.025, 62, 17, 20, boxTexture.lucasNoah);
+  allSkillsSection(
+    scene,
+    manager,
+    8.75,
+    0.025,
+    62,
+    17,
+    20,
+    boxTexture.lucasNoah,
+  );
   allSkillsSection(scene, manager, 9, 0.01, 40, 20, 20, boxTexture.familyText);
-  allSkillsSection(scene, manager, 9, 0.01, 20, 21, 10.5, inputText.staticPortfolio);
+  allSkillsSection(
+    scene,
+    manager,
+    9,
+    0.01,
+    20,
+    21,
+    10.5,
+    inputText.staticPortfolio,
+  );
   simpleText(scene, -60, 0.01, -5, "SKILLS", 3);
   simpleText(scene, -60, 0.01, -55, "EXPERIENCE & PROJECTS", 3);
   simpleText(scene, 75, 0.01, -10, "TIMELINE", 3);
@@ -189,34 +366,42 @@ export const setupScene = ({
 
   function moveBall(ballObject: THREE.Mesh, moveDirection: MoveDirection) {
     if (!ballObject || !ballObject.userData.physicsBody) return;
-  
+
     let scalingFactor = 20;
     let moveX = moveDirection.right - moveDirection.left;
     let moveZ = moveDirection.back - moveDirection.forward;
     let moveY = 0;
-  
+
     if (ballObject.position.y < 2.01) {
       moveY = 0;
     } else {
       moveY = -0.25;
     }
-  
+
     if (moveX === 0 && moveY === 0 && moveZ === 0) return;
-  
+
     let resultantImpulse = new Ammo.btVector3(moveX, moveY, moveZ);
     resultantImpulse.op_mul(scalingFactor);
     let physicsBody = ballObject.userData.physicsBody;
     physicsBody.setLinearVelocity(resultantImpulse);
-}
-  
+  }
+
   function updatePhysics(deltaTime: number, ballObject: THREE.Mesh) {
     const physicsWorld = useStore.getState().physicsWorld;
     const rigidBodies = useStore.getState().rigidBodies;
 
     try {
       // Check for missing or incomplete elements
-      if (!physicsWorld || !ballObject || !ballObject.userData || !ballObject.userData.physicsBody) {
-        console.error("Missing or incomplete elements in physics update", { physicsWorld, ballObject });
+      if (
+        !physicsWorld ||
+        !ballObject ||
+        !ballObject.userData ||
+        !ballObject.userData.physicsBody
+      ) {
+        console.error("Missing or incomplete elements in physics update", {
+          physicsWorld,
+          ballObject,
+        });
         return;
       }
 
@@ -227,7 +412,7 @@ export const setupScene = ({
       for (let i = 0; i < rigidBodies.length; i++) {
         let objThree = rigidBodies[i];
         if (!objThree.userData.physicsBody) {
-          console.error('Missing physicsBody for object:', objThree);
+          console.error("Missing physicsBody for object:", objThree);
           continue;
         }
         let objAmmo = objThree.userData.physicsBody;
@@ -242,38 +427,37 @@ export const setupScene = ({
           }
         }
       }
-  
-    // Check if the ball escaped the plane
-    if (ballObject.position.y < -50) {
-      const { recreateBall } = useStore.getState();
 
-      if (ballObject.userData.physicsBody) {
-        physicsWorld.removeRigidBody(ballObject.userData.physicsBody);
+      // Check if the ball escaped the plane
+      if (ballObject.position.y < -50) {
+        const { recreateBall } = useStore.getState();
+
+        if (ballObject.userData.physicsBody) {
+          physicsWorld.removeRigidBody(ballObject.userData.physicsBody);
+        }
+        scene.remove(ballObject);
+
+        if (!recreateBall) {
+          useStore.setState({ ballObject: null, recreateBall: true });
+
+          // Delay before recreating the ball
+          setTimeout(() => {
+            createBall(scene, Ammo, manager);
+            useStore.setState({ recreateBall: false });
+          }, 1000); // Delay of 1 second
+        }
       }
-      scene.remove(ballObject);
 
-      if (!recreateBall) {
-        useStore.setState({ ballObject: null, recreateBall: true });
+      const ballPosition: BallPosition = {
+        position: {
+          x: ballObject.position.x,
+          y: ballObject.position.y,
+          z: ballObject.position.z,
+        },
+      };
 
-        // Delay before recreating the ball
-        setTimeout(() => {
-          createBall(scene, Ammo, manager);
-          useStore.setState({ recreateBall: false });
-        }, 1000); // Delay of 1 second
-      }
-    }
-
-    const ballPosition: BallPosition = {
-      position: {
-        x: ballObject.position.x,
-        y: ballObject.position.y,
-        z: ballObject.position.z
-      }
-    };
-
-    //check to see if ball is on text to rotate camera
-    rotateCamera(ballPosition, camera);
-    
+      //check to see if ball is on text to rotate camera
+      rotateCamera(ballPosition, camera);
     } catch (error) {
       const { ballObject } = useStore.getState();
       console.error("Error in updatePhysics:", error, { ballObject });
@@ -291,7 +475,8 @@ export const setupScene = ({
       const deltaTime = clock.getDelta();
       const elapsedTime = galaxyClock.getElapsedTime() + 150;
       const galaxyMaterial = useStore.getState().galaxyMaterial;
-      const { ballObject, moveDirection, physicsWorld, rigidBodies } = useStore.getState();
+      const { ballObject, moveDirection, physicsWorld, rigidBodies } =
+        useStore.getState();
 
       if (ballObject) {
         moveBall(ballObject, moveDirection);
@@ -311,7 +496,7 @@ export const setupScene = ({
     }
   };
   animate();
-  
+
   return () => {
     isAnimating = false; // Ensure animation loop is stopped when component is unmounted
     if (container && container.contains(renderer.domElement)) {
@@ -321,4 +506,4 @@ export const setupScene = ({
       container.removeChild(stats.dom);
     }
   };
-}
+};

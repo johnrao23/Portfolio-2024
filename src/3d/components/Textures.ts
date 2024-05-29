@@ -11,7 +11,7 @@ let billboardTextures: BillboardTextures = {
   terpSolutionsTexture: "/assets/terpSolutions.png",
   bullVsBearTexture: "/assets/bvbbillboard.png",
   fairbnbTexture: "/assets/fairbnb.png",
-  scanAndGoTexture: "/assets/SaG-billboard.png",
+  scanAndGoTexture: "/assets/wekLawBillboard.png",
 };
 
 // Define the structure for box textures
