@@ -3,7 +3,7 @@ interface BillboardTextures {
   terpSolutionsTexture: string;
   bullVsBearTexture: string;
   fairbnbTexture: string;
-  scanAndGoTexture: string;
+  wekLawTexture: string;
 }
 
 // Define billboard textures with updated paths
@@ -11,7 +11,7 @@ let billboardTextures: BillboardTextures = {
   terpSolutionsTexture: "/assets/terpSolutions.png",
   bullVsBearTexture: "/assets/bvbbillboard.png",
   fairbnbTexture: "/assets/fairbnb.png",
-  scanAndGoTexture: "/assets/wekLawBillboard.png",
+  wekLawTexture: "/assets/wekLawBillboard.png",
 };
 
 // Define the structure for box textures
@@ -85,13 +85,13 @@ interface URL {
   johnrao: string;
   bullVsBearTrading: string;
   getFairbnb: string;
-  samsClubURL: string;
+  wekLawURL: string;
   gitHub: string;
   twitter: string;
   LinkedIn: string;
   email: string;
   githubBullVsBear: string;
-  samsClub: string;
+  wekLaw: string;
 }
 
 let URL: URL = {
@@ -99,13 +99,13 @@ let URL: URL = {
   johnrao: "https://johnrao.com/static",
   bullVsBearTrading: "https://www.bullvsbeartrading.com",
   getFairbnb: "https://www.getfairbnb.com",
-  samsClubURL: "https://www.samsclub.com/",
+  wekLawURL: "https://www.weklaw.com/",
   gitHub: "https://github.com/johnrao23/Portfolio-2024",
   twitter: "https://twitter.com/0xRao",
   LinkedIn: "https://www.linkedin.com/in/john-rao",
   email: "mailto:johnrao23@gmail.com",
   githubBullVsBear: "https://github.com/johnrao23/bull-vs-bear-trading",
-  samsClub: "https://www.samsclub.com/",
+  wekLaw: "https://www.weklaw.com/",
 };
 
 // Export all defined structures

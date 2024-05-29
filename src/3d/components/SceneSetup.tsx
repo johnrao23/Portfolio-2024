@@ -20,7 +20,6 @@ import {
   createBall,
   createBox,
   createBillboard,
-  createBillboardRotated,
   johnRaoWords,
   helloWorldWords,
   wallOfBricks,
@@ -264,8 +263,8 @@ export const setupScene = ({
     -16,
     2.5,
     -110,
-    billboardTextures.scanAndGoTexture,
-    URL.samsClub,
+    billboardTextures.wekLawTexture,
+    URL.wekLaw,
     Math.PI * 0.1,
   );
   johnRaoWords(scene, Ammo, 11.2, 1, -20);
