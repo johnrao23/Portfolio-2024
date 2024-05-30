@@ -308,7 +308,7 @@ export const setupScene = ({
     -17,
     0.01,
     -80,
-    inputText.scanAndGoText,
+    inputText.wekLawText,
     20,
     40,
   );

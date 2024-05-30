@@ -56,7 +56,7 @@ interface InputText {
   activities: string;
   bullVsBearText: string;
   fairbnbText: string;
-  scanAndGoText: string;
+  wekLawText: string;
   staticPortfolio: string;
 }
 
@@ -66,7 +66,7 @@ let inputText: InputText = {
   activities: "/assets/activities_text.png",
   bullVsBearText: "/assets/bvb-text.png",
   fairbnbText: "/assets/fairbnb-text.png",
-  scanAndGoText: "/assets/SaG-text.png",
+  wekLawText: "/assets/weklaw-text.png",
   staticPortfolio: "/assets/static-portfolio.png",
 };
 
