@@ -5,7 +5,7 @@ import { Container } from "./Container";
 import { Button } from "./Button";
 import { GitHubIcon, GalaxyIcon, LinkedInIcon, XIcon } from "./SocialIcons";
 import { BriefcaseIcon, ArrowDownIcon, MailIcon } from "./MiscIcons";
-import { kallijaxLogo, samsLogo, citiLogo, wekLogo } from "./WorkLogos";
+import { kallijaxLogo, samsLogo, tsLogo, wekLogo } from "./WorkLogos";
 import JRThreeImg from "../assets/3dsite.png";
 import FairbnbImg from "../assets/fairbnb.png";
 import LNImg from "../assets/LucasNoahPic.jpeg";
@@ -70,10 +70,10 @@ const Main: React.FC = () => {
   const LogoComponents: {
     [key: string]: React.ComponentType<React.SVGProps<SVGSVGElement>>;
   } = {
-    Kallijax: kallijaxLogo,
-    "Sam's Club": samsLogo,
-    Citibank: citiLogo,
     "Wek Law": wekLogo,
+    Kallijax: kallijaxLogo,
+    "Terp Solutions": tsLogo,
+    "Sam's Club": samsLogo,
   };
 
   interface RoleProps {
@@ -148,18 +148,18 @@ const Main: React.FC = () => {
         end: "2023",
       },
       {
-        company: "Sam's Club",
+        company: "Terp Solutions",
         title: "Marketing Specialist",
+        logo: tsLogo,
+        start: "2019",
+        end: "2020",
+      },
+      {
+        company: "Sam's Club",
+        title: "Marketing Manager",
         logo: samsLogo,
         start: "2016",
         end: "2019",
-      },
-      {
-        company: "Citibank",
-        title: "Personal Banker",
-        logo: citiLogo,
-        start: "2012",
-        end: "2013",
       },
     ];
 

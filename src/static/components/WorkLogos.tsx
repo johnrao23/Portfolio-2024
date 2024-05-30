@@ -49,7 +49,7 @@ export function samsLogo(props: React.ComponentPropsWithoutRef<"svg">) {
   );
 }
 
-export function citiLogo(props: React.ComponentPropsWithoutRef<"svg">) {
+export function tsLogo(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clip-path="url(#a)">
