@@ -41,47 +41,63 @@ function Appearance({
 export default function Experience() {
   return (
     <SimpleLayout
-      title="I’ve spoken at events all around the world and been interviewed for many podcasts."
-      intro="One of my favorite ways to share my ideas is live on stage, where there’s so much more communication bandwidth than there is in writing, and I love podcast interviews because they give me the opportunity to answer questions instead of just present my opinions."
+      title="A Journey of Growth and Innovation: Embracing the Future of Technology"
+      intro="As a software engineer, I have been on a path marked by continuous growth and innovation. From my initial projects to my recent work with Weisser, Elazar & Kantor, PLLC, I have honed my skills in developing dynamic web applications. My passion for technology and design drives me to create impactful digital experiences, and I am eager to continue developing my skills in software engineering."
     >
       <div className="space-y-20">
-        <ExperienceSection title="Conferences">
+        <ExperienceSection title="Professional Experience">
           <Appearance
-            href="#"
-            title="In space, no one can watch you stream — until now"
-            description="A technical deep-dive into HelioStream, the real-time streaming library I wrote for transmitting live video back to Earth."
-            event="SysConf 2021"
-            cta="Watch video"
+            href="https://www.weklaw.com"
+            title="Web Developer at Weisser, Elazar & Kantor, PLLC"
+            description="Designed and developed a comprehensive website using Next.js and Tailwind UI, integrated accessibility compliance, multi-language support, and live chat features. Utilized Google Analytics and Firebase/Firestore to enhance user engagement and manage user information."
+            event="2024"
+            cta="Visit website"
           />
           <Appearance
             href="#"
-            title="Lessons learned from our first product recall"
-            description="They say that if you’re not embarassed by your first version, you’re doing it wrong. Well when you’re selling DIY space shuttle kits it turns out it’s a bit more complicated."
-            event="Business of Startups 2020"
-            cta="Watch video"
+            title="Web Development Specialist at Kallijax"
+            description="Led the creation of e-commerce websites, collaborated closely with software engineers and company executives, and established a business specializing in comprehensive digital marketing and web development."
+            event="2018 to 2022"
+            cta="Learn more"
           />
         </ExperienceSection>
-        <ExperienceSection title="Podcasts">
+        <ExperienceSection title="Projects">
+          <Appearance
+            href="https://www.johnrao.com"
+            title="Interactive 3D Portfolio"
+            description="Built a 3D interactive portfolio with Three.js and Ammo.js for real-time physics detection. Designed with a mobile-first approach and incorporated joystick functionality for mobile devices."
+            event="Personal Project"
+            cta="View project"
+          />
+          <Appearance
+            href="https://www.getfairbnb.com"
+            title="Fairbnb"
+            description="Developed a pseudo property rental application with React and Tailwind CSS. Integrated Firebase Authentication and Firestore for secure user management and used Zustand for state management."
+            event="Personal Project"
+            cta="Explore Fairbnb"
+          />
+          <Appearance
+            href="https://www.bullvsbeartrading.com"
+            title="Bull vs Bear Trading"
+            description="Created a pseudo stock trading application with a React frontend and Node.js backend. Utilized MongoDB for database management and Redux for global state management."
+            event="Personal Project"
+            cta="Try trading"
+          />
+        </ExperienceSection>
+        <ExperienceSection title="Education">
           <Appearance
             href="#"
-            title="Using design as a competitive advantage"
-            description="How we used world-class visual design to attract a great team, win over customers, and get more press for Planetaria."
-            event="Encoding Design, July 2022"
-            cta="Listen to podcast"
+            title="Binghamton University"
+            description="Bachelor of Science in Financial Economics. Served as President of Enactus and was appointed CEO, leading the team to top 3% nationwide and winning regional and national competitions."
+            event="Binghamton, NY"
+            cta="View credentials"
           />
           <Appearance
             href="#"
-            title="Bootstrapping an aerospace company to $17M ARR"
-            description="The story of how we built one of the most promising space startups in the world without taking any capital from investors."
-            event="The Escape Velocity Show, March 2022"
-            cta="Listen to podcast"
-          />
-          <Appearance
-            href="#"
-            title="Programming your company operating system"
-            description="On the importance of creating systems and processes for running your business so that everyone on the team knows how to make the right decision no matter the situation."
-            event="How They Work Radio, September 2021"
-            cta="Listen to podcast"
+            title="The Odin Project"
+            description="Completed a self-paced, open-source coding curriculum to acquire full-stack programming skills, applied in real-world projects focusing on HTML/CSS, JavaScript, and React."
+            event="Online"
+            cta="Learn more"
           />
         </ExperienceSection>
       </div>
