@@ -1,8 +1,8 @@
-import { Card } from './Card'
-import { Section } from './Section'
-import { SimpleLayout } from './SimpleLayout'
+import { Card } from "./Card";
+import { Section } from "./Section";
+import { SimpleLayout } from "./SimpleLayout";
 
-function SpeakingSection({
+function SkillsSection({
   children,
   ...props
 }: React.ComponentPropsWithoutRef<typeof Section>) {
@@ -10,81 +10,99 @@ function SpeakingSection({
     <Section {...props}>
       <div className="space-y-16">{children}</div>
     </Section>
-  )
+  );
 }
 
-function Appearance({
+function Skill({
   title,
   description,
-  event,
-  cta,
-  href,
+  examples,
 }: {
-  title: string
-  description: string
-  event: string
-  cta: string
-  href: string
+  title: string;
+  description: string;
+  examples: string[];
 }) {
   return (
     <Card as="article">
-      <Card.Title as="h3" href={href}>
-        {title}
-      </Card.Title>
-      <Card.Eyebrow decorate>{event}</Card.Eyebrow>
-      <Card.Description>{description}</Card.Description>
-      <Card.Cta>{cta}</Card.Cta>
+      <Card.Title as="h3">{title}</Card.Title>
+      <Card.Description>
+        {description}
+        <ul className="list-disc ml-5 mt-2">
+          {examples.map((example, index) => (
+            <li key={index}>{example}</li>
+          ))}
+        </ul>
+      </Card.Description>
     </Card>
-  )
+  );
 }
 
-export default function Speaking() {
+export default function Skills() {
   return (
     <SimpleLayout
-      title="I’ve spoken at events all around the world and been interviewed for many podcasts."
-      intro="One of my favorite ways to share my ideas is live on stage, where there’s so much more communication bandwidth than there is in writing, and I love podcast interviews because they give me the opportunity to answer questions instead of just present my opinions."
+      title="Showcasing Technical Expertise through Real-World Applications"
+      intro="Throughout my journey as a software engineer, I have acquired and honed a diverse set of technical skills. From frontend and backend development to creating interactive 3D experiences, I have applied these skills across various projects to deliver impactful digital solutions. Here are some highlights of my technical skills and projects."
     >
       <div className="space-y-20">
-        <SpeakingSection title="JavaScript">
-          <Appearance
-            href="#"
-            title="In space, no one can watch you stream — until now"
-            description="A technical deep-dive into HelioStream, the real-time streaming library I wrote for transmitting live video back to Earth."
-            event="SysConf 2021"
-            cta="Watch video"
+        <SkillsSection title="Technical Skills">
+          <Skill
+            title="Frontend Development"
+            description="Expertise in building dynamic and responsive user interfaces."
+            examples={[
+              "Used React and Next.js to develop complex UIs for web applications.",
+              "Styled components using Tailwind CSS and Bootstrap for consistent design.",
+              "Implemented state management with Redux and Zustand for efficient application state handling.",
+            ]}
           />
-          <Appearance
-            href="#"
-            title="Lessons learned from our first product recall"
-            description="They say that if you’re not embarassed by your first version, you’re doing it wrong. Well when you’re selling DIY space shuttle kits it turns out it’s a bit more complicated."
-            event="Business of Startups 2020"
-            cta="Watch video"
+          <Skill
+            title="Backend Development"
+            description="Skilled in developing and maintaining server-side applications."
+            examples={[
+              "Developed RESTful APIs with Node.js and Express to handle client-server communication.",
+              "Managed databases using MongoDB, ensuring efficient data storage and retrieval.",
+              "Utilized Firebase for backend services including authentication and real-time databases.",
+            ]}
           />
-        </SpeakingSection>
-        <SpeakingSection title="Podcasts">
-          <Appearance
-            href="#"
-            title="Using design as a competitive advantage"
-            description="How we used world-class visual design to attract a great team, win over customers, and get more press for Planetaria."
-            event="Encoding Design, July 2022"
-            cta="Listen to podcast"
+          <Skill
+            title="3D Graphics and Interactive Design"
+            description="Proficient in creating interactive 3D web experiences."
+            examples={[
+              "Built a 3D portfolio using Three.js and Ammo.js for real-time physics detection.",
+              "Designed with a mobile-first approach, incorporating joystick functionality for mobile devices.",
+            ]}
           />
-          <Appearance
-            href="#"
-            title="Bootstrapping an aerospace company to $17M ARR"
-            description="The story of how we built one of the most promising space startups in the world without taking any capital from investors."
-            event="The Escape Velocity Show, March 2022"
-            cta="Listen to podcast"
+        </SkillsSection>
+        <SkillsSection title="Project Highlights">
+          <Skill
+            title="Web Developer at WEK Law"
+            description="Designed and developed a comprehensive website for Weisser, Elazar & Kantor, PLLC."
+            examples={[
+              "Built from scratch using Next.js and styled with Tailwind UI for a modern and responsive user experience.",
+              "Integrated essential functionalities such as accessibility compliance, multi-language support using Crowdin and i18n, and live chat features to enhance user engagement.",
+              "Implemented Google Analytics to measure user engagement and utilized Firebase/Firestore to manage user information.",
+            ]}
           />
-          <Appearance
-            href="#"
-            title="Programming your company operating system"
-            description="On the importance of creating systems and processes for running your business so that everyone on the team knows how to make the right decision no matter the situation."
-            event="How They Work Radio, September 2021"
-            cta="Listen to podcast"
+          <Skill
+            title="Fairbnb"
+            description="A pseudo property rental application with advanced features."
+            examples={[
+              "Developed user interfaces with React and Tailwind CSS for a seamless user experience.",
+              "Integrated Firebase Authentication for secure user login and management.",
+              "Implemented state management using Zustand for optimized performance.",
+              "Enhanced user interaction by integrating the ChatGPT API, allowing users to ask and receive answers to any questions.",
+            ]}
           />
-        </SpeakingSection>
+          <Skill
+            title="Bull vs Bear Trading"
+            description="A stock trading application with comprehensive functionalities."
+            examples={[
+              "Developed a full-stack application with a React frontend and Node.js backend.",
+              "Utilized MongoDB for storing and managing user and stock data.",
+              "Implemented Redux for global state management ensuring consistent application state.",
+            ]}
+          />
+        </SkillsSection>
       </div>
     </SimpleLayout>
-  )
+  );
 }
