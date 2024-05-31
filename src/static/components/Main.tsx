@@ -262,25 +262,25 @@ const Main: React.FC = () => {
     return (
       <div className="space-y-20">
         <SpeakingSection
-          href="#"
-          title="In space, no one can watch you stream — until now"
-          description="A technical deep-dive into HelioStream, the real-time streaming library I wrote for transmitting live video back to Earth."
-          event="SysConf 2021"
-          cta="Watch video"
+          href="https://www.weklaw.com"
+          title="Web Developer at Weisser, Elazar & Kantor, PLLC"
+          description="Designed and developed a comprehensive website from scratch using Next.js, styled with Tailwind UI for a modern and responsive user experience."
+          event="2024"
+          cta="Visit website"
         />
         <SpeakingSection
-          href="#"
-          title="Using design as a competitive advantage"
-          description="How we used world-class visual design to attract a great team, win over customers, and get more press for Planetaria."
-          event="Encoding Design, July 2022"
-          cta="Listen to podcast"
+          href="https://www.getfairbnb.com"
+          title="Fairbnb"
+          description="Developed a pseudo property rental application with React and Tailwind CSS, integrated Firebase Authentication for secure user management, and enhanced user interaction by integrating the ChatGPT API."
+          event="Personal Project"
+          cta="Explore Fairbnb"
         />
         <SpeakingSection
-          href="#"
-          title="Bootstrapping an aerospace company to $17M ARR"
-          description="The story of how we built one of the most promising space startups in the world without taking any capital from investors."
-          event="The Escape Velocity Show, March 2022"
-          cta="Listen to podcast"
+          href="https://www.bullvsbeartrading.com"
+          title="Bull vs Bear Trading"
+          description="Created a pseudo stock trading application with a React frontend and Node.js backend, using MongoDB for database management and Redux for global state management."
+          event="Personal Project"
+          cta="Try trading"
         />
       </div>
     );
@@ -294,9 +294,10 @@ const Main: React.FC = () => {
             Software developer, founder, and adventure enthusiast.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m John, a software developer and entrepreneur based in New York.
-            I’m the founder and CEO of Kallijax, where we develop technologies
-            that empower people to explore the world on their own terms.
+            I’m John, a software developer based in New York. With a passion for
+            creating dynamic web applications, I specialize in frontend
+            development and hope to continue contributing to impactful projects
+            with a passionate team.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink
