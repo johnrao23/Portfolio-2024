@@ -1,123 +1,92 @@
-import { Card } from './Card'
-import { Section } from './Section'
-import { SimpleLayout } from './SimpleLayout'
+import { Card } from "./Card";
+import { Section } from "./Section";
+import { SimpleLayout } from "./SimpleLayout";
 
-function ToolsSection({
+function HobbiesSection({
   children,
   ...props
 }: React.ComponentPropsWithoutRef<typeof Section>) {
   return (
     <Section {...props}>
-      <ul role="list" className="space-y-16">
-        {children}
-      </ul>
+      <div className="space-y-16">{children}</div>
     </Section>
-  )
+  );
 }
 
-function Tool({
+function Appearance({
   title,
+  description,
+  event,
+  cta,
   href,
-  children,
 }: {
-  title: string
-  href?: string
-  children: React.ReactNode
+  title: string;
+  description: string;
+  event: string;
+  cta: string;
+  href?: string;
 }) {
   return (
-    <Card as="li">
+    <Card as="article">
       <Card.Title as="h3" href={href}>
         {title}
       </Card.Title>
-      <Card.Description>{children}</Card.Description>
+      <Card.Eyebrow decorate>{event}</Card.Eyebrow>
+      <Card.Description>{description}</Card.Description>
+      <Card.Cta>{cta}</Card.Cta>
     </Card>
-  )
+  );
 }
 
-export const metadata = {
-  title: 'Uses',
-  description: 'Software I use, gadgets I love, and other things I recommend.',
-}
-
-export default function Uses() {
+export default function Hobbies() {
   return (
     <SimpleLayout
-      title="Software I use, gadgets I love, and other things I recommend."
-      intro="I get asked a lot about the things I use to build software, stay productive, or buy to fool myself into thinking I’m being productive when I’m really just procrastinating. Here’s a big list of all of my favorite stuff."
+      title="Exploring My Interests and Passions"
+      intro="Outside of work, I have a variety of interests that keep me engaged and inspired. I am passionate about learning how cryptocurrency will impact the future and change people's lives. Below are three articles I feel strongly about. As well as crypto, I also enjoy spending time with my beautiful family and playing sports to stay active."
     >
       <div className="space-y-20">
-        <ToolsSection title="Family">
-          <Tool title="Wife and Three Children">
-            I was using an Intel-based 16” MacBook Pro prior to this and the
-            difference is night and day. I’ve never heard the fans turn on a
-            single time, even under the incredibly heavy loads I put it through
-            with our various launch simulations.
-          </Tool>
-          <Tool title="Apple Pro Display XDR (Standard Glass)">
-            The only display on the market if you want something HiDPI and
-            bigger than 27”. When you’re working at planetary scale, every pixel
-            you can get counts.
-          </Tool>
-          <Tool title="IBM Model M SSK Industrial Keyboard">
-            They don’t make keyboards the way they used to. I buy these any time
-            I see them go up for sale and keep them in storage in case I need
-            parts or need to retire my main.
-          </Tool>
-          <Tool title="Apple Magic Trackpad">
-            Something about all the gestures makes me feel like a wizard with
-            special powers. I really like feeling like a wizard with special
-            powers.
-          </Tool>
-          <Tool title="Herman Miller Aeron Chair">
-            If I’m going to slouch in the worst ergonomic position imaginable
-            all day, I might as well do it in an expensive chair.
-          </Tool>
-        </ToolsSection>
-        <ToolsSection title="Development tools">
-          <Tool title="Sublime Text 4">
-            I don’t care if it’s missing all of the fancy IDE features everyone
-            else relies on, Sublime Text is still the best text editor ever
-            made.
-          </Tool>
-          <Tool title="iTerm2">
-            I’m honestly not even sure what features I get with this that aren’t
-            just part of the macOS Terminal but it’s what I use.
-          </Tool>
-          <Tool title="TablePlus">
-            Great software for working with databases. Has saved me from
-            building about a thousand admin interfaces for my various projects
-            over the years.
-          </Tool>
-        </ToolsSection>
-        <ToolsSection title="Design">
-          <Tool title="Figma">
-            We started using Figma as just a design tool but now it’s become our
-            virtual whiteboard for the entire company. Never would have expected
-            the collaboration features to be the real hook.
-          </Tool>
-        </ToolsSection>
-        <ToolsSection title="Productivity">
-          <Tool title="Alfred">
-            It’s not the newest kid on the block but it’s still the fastest. The
-            Sublime Text of the application launcher world.
-          </Tool>
-          <Tool title="Reflect">
-            Using a daily notes system instead of trying to keep things
-            organized by topics has been super powerful for me. And with
-            Reflect, it’s still easy for me to keep all of that stuff
-            discoverable by topic even though all of my writing happens in the
-            daily note.
-          </Tool>
-          <Tool title="SavvyCal">
-            Great tool for scheduling meetings while protecting my calendar and
-            making sure I still have lots of time for deep work during the week.
-          </Tool>
-          <Tool title="Focus">
-            Simple tool for blocking distracting websites when I need to just do
-            the work and get some momentum going.
-          </Tool>
-        </ToolsSection>
+        <HobbiesSection title="Crypto">
+          <Appearance
+            href="https://www.coindesk.com/learn/what-is-defi/"
+            title="The Rise of Decentralized Finance"
+            description="This article discusses how decentralized finance (DeFi) is transforming traditional financial systems by leveraging blockchain technology."
+            event="CoinDesk, 2023"
+            cta="Read article"
+          />
+          <Appearance
+            href="https://hbr.org/2021/05/how-blockchain-is-changing-finance"
+            title="How Blockchain is Changing the World"
+            description="An insightful look into the various applications of blockchain technology beyond cryptocurrency, including supply chain management and digital identity verification."
+            event="Harvard Business Review, 2021"
+            cta="Read article"
+          />
+          <Appearance
+            href="https://www.forbes.com/sites/forbesfinancecouncil/2021/02/12/the-future-of-money-cryptocurrency/"
+            title="Cryptocurrency: The Future of Money"
+            description="Exploring the potential of cryptocurrency to revolutionize the global financial system and its implications for the future of money."
+            event="Forbes, 2021"
+            cta="Read article"
+          />
+        </HobbiesSection>
+        <HobbiesSection title="Family">
+          <Appearance
+            href="/static"
+            title="Spending Time with My Family"
+            description="I have three young boys, ages 5, 3, and 15 months. I love spending time with them and going on vacations and adventures. We often go to the beach and enjoy exploring the world together."
+            event="Family Time"
+            cta="See more"
+          />
+        </HobbiesSection>
+        <HobbiesSection title="Sports">
+          <Appearance
+            href="/static"
+            title="Passion for Sports"
+            description="I love to play basketball and football, and I ride my bike everywhere. I'm a fan of the New York Knicks and the New York Jets, so please be kind to me because my teams always disappoint me every year."
+            event="Sports Enthusiast"
+            cta="LGKJ"
+          />
+        </HobbiesSection>
       </div>
     </SimpleLayout>
-  )
+  );
 }
