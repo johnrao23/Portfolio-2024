@@ -11,7 +11,7 @@ import FairbnbImg from "../assets/fairbnb.png";
 import LNImg from "../assets/LucasNoahPic.jpeg";
 import NYCImg from "../assets/NYC.png";
 import SDImg from "../assets/DeskSetup.webp";
-import resumePDF from "../assets/Resume2023.pdf";
+import resumePDF from "../assets/Resume2024.pdf";
 import { Card } from "./Card";
 
 const Main: React.FC = () => {
