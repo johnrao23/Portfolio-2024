@@ -9,8 +9,8 @@ import {
   LinkedInIcon,
   MailIcon,
 } from "./SocialIcons";
-import AvatarImg from "../assets/AvatarImg.jpg";
-import CartoonAvi from "../assets/CartoonAvi.webp";
+import AvatarImg from "../assets/AvatarImg3.png";
+// import CartoonAvi from "../assets/CartoonAvi.webp";
 
 const About: React.FC = () => {
   function SocialLink({
@@ -44,10 +44,10 @@ const About: React.FC = () => {
           <div className="lg:pl-20">
             <div className="max-w-xs px-2.5 lg:max-w-none">
               <img
-                src={CartoonAvi}
+                src={AvatarImg}
                 alt=""
                 sizes="(min-width: 1024px) 32rem, 20rem"
-                className="aspect-square rotate-3 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
+                className="aspect-square rotate-2 rounded-2xl bg-zinc-100 object-cover dark:bg-zinc-800"
               />
             </div>
           </div>
