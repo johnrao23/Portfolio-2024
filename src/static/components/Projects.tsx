@@ -1,54 +1,63 @@
-import { Card } from './Card';
-import { SimpleLayout } from './SimpleLayout';
+import { Card } from "./Card";
+import { SimpleLayout } from "./SimpleLayout";
 import { GalaxyIcon } from "./SocialIcons";
-import { OdinLogo, BvBLogo, PTLogo, TSLogo, WLLogo } from './Logos';
+import { OdinLogo, BvBLogo, PTLogo, TSLogo, WLLogo } from "./Logos";
 
 const projects = [
   {
-    name: '3D Portfolio',
+    name: "3D Portfolio",
     description:
-      'Interactive experience allowing users to explore my world while having fun!',
-    link: { href: 'https://johnrao.com', label: 'johnrao.com' },
+      "Interactive experience allowing users to explore my world while having fun!",
+    link: { href: "https://johnrao.com", label: "johnrao.com" },
     logo: GalaxyIcon,
   },
   {
-    name: 'Fairbnb',
+    name: "Fairbnb",
     description:
-      'Rental booking application that uses the power of AI to answer user inqueries.',
-    link: { href: 'https://www.getfairbnb.com/', label: 'getfairbnb.com' },
+      "Rental booking application that uses the power of AI to answer user inqueries.",
+    link: { href: "https://www.getfairbnb.com/", label: "getfairbnb.com" },
     logo: PTLogo,
   },
   {
-    name: 'Wek Law',
+    name: "Wek Law",
     description:
-      'Legal Website I designed and developed for a major law firm in Florida.',
-    link: { href: 'https://www.getfairbnb.com/', label: 'weklaw.com' },
+      "Legal Website I designed and developed for a major law firm in Florida.",
+    link: { href: "https://weklaw.vercel.app/", label: "weklaw.com" },
     logo: WLLogo,
   },
   {
-    name: 'BvB Trading',
+    name: "BvB Trading",
     description:
-      'Psuedo stock trading app to practice trading stocks using our money, instead of yours.',
-    link: { href: 'https://www.bullvsbeartrading.com', label: 'bullvsbeartrading.com' },
+      "Psuedo stock trading app to practice trading stocks using our money, instead of yours.",
+    link: {
+      href: "https://www.bullvsbeartrading.com",
+      label: "bullvsbeartrading.com",
+    },
     logo: BvBLogo,
   },
   {
-    name: 'Terp Solutions',
+    name: "Terp Solutions",
     description:
-      'Worked with a startup to design and develop an e-commerce website from scratch.',
-    link: { href: 'https://web.archive.org/web/20200302001846/https://terpsolutions.com/', label: 'terpsolutions.com' },
+      "Worked with a startup to design and develop an e-commerce website from scratch.",
+    link: {
+      href: "https://web.archive.org/web/20200302001846/https://terpsolutions.com/",
+      label: "terpsolutions.com",
+    },
     logo: TSLogo,
   },
   {
-    name: 'The Odin Project',
+    name: "The Odin Project",
     description:
-      'This is where my journey into web development began and I have not stopped since!',
-    link: { href: 'https://www.theodinproject.com/', label: 'theodinproject.com' },
+      "This is where my journey into web development began and I have not stopped since!",
+    link: {
+      href: "https://www.theodinproject.com/",
+      label: "theodinproject.com",
+    },
     logo: OdinLogo,
   },
-]
+];
 
-function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function LinkIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path
@@ -56,7 +65,7 @@ function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         fill="currentColor"
       />
     </svg>
-  )
+  );
 }
 
 export default function Projects() {
@@ -72,7 +81,7 @@ export default function Projects() {
         {projects.map((project) => (
           <Card as="li" key={project.name}>
             <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:ring-0">
-            <project.logo className="h-8 w-8" />
+              <project.logo className="h-8 w-8" />
             </div>
             <h2 className="mt-6 text-base font-semibold text-zinc-800 dark:text-zinc-100">
               <Card.Link to={project.link.href}>{project.name}</Card.Link>
@@ -86,5 +95,5 @@ export default function Projects() {
         ))}
       </ul>
     </SimpleLayout>
-  )
+  );
 }

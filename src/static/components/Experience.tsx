@@ -47,7 +47,7 @@ export default function Experience() {
       <div className="space-y-20">
         <ExperienceSection title="Professional Experience">
           <Appearance
-            href="https://www.weklaw.com"
+            href="https://weklaw.vercel.app"
             title="Web Developer at Weisser, Elazar & Kantor, PLLC"
             description="Designed and developed a comprehensive website using Next.js and Tailwind UI, integrated accessibility compliance, multi-language support, and live chat features. Utilized Google Analytics and Firebase/Firestore to enhance user engagement and manage user information."
             event="2024"

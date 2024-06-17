@@ -262,7 +262,7 @@ const Main: React.FC = () => {
     return (
       <div className="space-y-20">
         <SpeakingSection
-          href="https://www.weklaw.com"
+          href="https://weklaw.vercel.app"
           title="Web Developer at Weisser, Elazar & Kantor, PLLC"
           description="Designed and developed a comprehensive website from scratch using Next.js, styled with Tailwind UI for a modern and responsive user experience."
           event="2024"

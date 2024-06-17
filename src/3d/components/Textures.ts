@@ -99,13 +99,13 @@ let URL: URL = {
   johnrao: "https://johnrao.com/static",
   bullVsBearTrading: "https://www.bullvsbeartrading.com",
   getFairbnb: "https://www.getfairbnb.com",
-  wekLawURL: "https://www.weklaw.com/",
+  wekLawURL: "https://weklaw.vercel.app/",
   gitHub: "https://github.com/johnrao23/Portfolio-2024",
   twitter: "https://twitter.com/0xRao",
   LinkedIn: "https://www.linkedin.com/in/john-rao",
   email: "mailto:johnrao23@gmail.com",
   githubBullVsBear: "https://github.com/johnrao23/bull-vs-bear-trading",
-  wekLaw: "https://www.weklaw.com/",
+  wekLaw: "https://weklaw.vercel.app/",
 };
 
 // Export all defined structures
