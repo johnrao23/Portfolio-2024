@@ -142,7 +142,7 @@ const Main: React.FC = () => {
       },
       {
         company: "Kallijax",
-        title: "Web Designer",
+        title: "Web Developer",
         logo: kallijaxLogo,
         start: "2018",
         end: "2023",
