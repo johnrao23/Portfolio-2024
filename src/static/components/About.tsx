@@ -84,11 +84,10 @@ const About: React.FC = () => {
               </p>
               <p>
                 Determined to transition fully into tech, I dedicated myself to
-                learning web development full-time. This journey led me to my
-                first official role as a web developer, where I designed and
-                developed a website from scratch for a major law firm in
-                Florida. This achievement solidified my passion for my new
-                career path.
+                learning web development full-time. This journey led me to
+                various projects, including my current role where I am designing
+                and developing a website for a major law firm in Florida. These
+                experiences have solidified my passion for my new career path.
               </p>
               <p>
                 Today, I am driven and motivated by the possibilities that a
