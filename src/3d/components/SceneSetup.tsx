@@ -313,6 +313,7 @@ export const setupScene = ({
     40,
   );
   floatingLabel(scene, 21, 4.5, -100, "Static");
+  floatingLabel(scene, 21, 4.5, -100, "Static");
   floatingLabel(scene, 27.875, 4.5, -100, "Github");
   floatingLabel(scene, 34.86, 4.5, -100, "LinkedIn");
   floatingLabel(scene, 42.875, 4.5, -100, "Twitter");
