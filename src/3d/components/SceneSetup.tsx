@@ -316,7 +316,7 @@ export const setupScene = ({
   floatingLabel(scene, 27.875, 4.5, -100, "Github");
   floatingLabel(scene, 34.86, 4.5, -100, "LinkedIn");
   floatingLabel(scene, 42.875, 4.5, -100, "Twitter");
-  floatingLabel(scene, 50.26, 4.5, -100, "Email");
+  floatingLabel(scene, 50.23, 4.5, -100, "Email");
   allSkillsSection(
     scene,
     manager,
